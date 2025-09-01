@@ -1,0 +1,226 @@
+{
+  "navigation": {
+    "home": "Home",
+    "admin": "Administration",
+    "login": "Login",
+    "logout": "Logout",
+    "lots": "Lots",
+    "plots": "Plots",
+    "users": "Users",
+    "sales": "Sales",
+    "reservations": "Reservations",
+    "why_live_here": "Why live here",
+    "about_us": "About us",
+    "view_map": "View map"
+  },
+  "states": {
+    "available": "Available",
+    "reserved": "Reserved",
+    "sold": "Sold"
+  },
+  "actions": {
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel",
+    "view": "View",
+    "upload": "Upload",
+    "download": "Download"
+  },
+  "forms": {
+    "name": "Name",
+    "description": "Description",
+    "photo": "Photo",
+    "location": "Location",
+    "width": "Width",
+    "length": "Length",
+    "number": "Number",
+    "email": "Email",
+    "password": "Password",
+    "contact": "Contact",
+    "date": "Date",
+    "role": "Role"
+  },
+  "messages": {
+    "success_create": "Successfully created",
+    "success_update": "Successfully updated",
+    "success_delete": "Successfully deleted",
+    "error_generic": "An error occurred",
+    "error_auth": "Invalid credentials",
+    "error_permission": "You don't have permission for this action",
+    "confirm_delete": "Are you sure you want to delete this item?",
+    "loading": "Loading...",
+    "no_data": "No data available"
+  },
+  "titles": {
+    "dashboard": "Dashboard",
+    "lot_management": "Lot Management",
+    "plot_management": "Plot Management",
+    "user_management": "User Management",
+    "sales_report": "Sales Report",
+    "map_view": "Map View",
+    "main_title": "Real Estate Impact - Your perfect home awaits",
+    "brand": "MEGA PROJECTS REAL ESTATE"
+  },
+  "index": {
+    "page_title": "Real Estate Impact - Your perfect home awaits",
+    "meta_description": "Discover sustainable real estate developments with the best location, complete infrastructure and superior quality of life.",
+    "meta_keywords": "real estate, lots, land, sustainable developments, real estate investment",
+    "hero": {
+      "title": "Find the perfect home in the ideal place",
+      "subtitle": "Sustainable real estate developments with strategic location, complete infrastructure and the best quality of life for your family.",
+      "description": "Explore our residential areas with high-precision interactive maps that allow you to know every detail before making the most important decision of your life.",
+      "cta": "Explore residential areas"
+    },
+    "why_live_here": {
+      "title": "Why choose to live here?",
+      "subtitle": "Discover the 4 main reasons that make this place the best option for your new life",
+      "reasons": {
+        "location": {
+          "title": "Strategic Location",
+          "description": "Located minutes from shopping centers, quality schools, hospitals and main access roads. Everything you need is within reach of your family.",
+          "features": [
+            "5 min from main shopping center",
+            "3 min from prestigious schools",
+            "8 min from regional hospital",
+            "Direct highway access"
+          ]
+        },
+        "infrastructure": {
+          "title": "Complete Infrastructure",
+          "description": "Development with first-class infrastructure: paved streets, public lighting, drinking water, electricity and completely installed drainage system.",
+          "features": [
+            "Paved and signposted streets",
+            "Underground electrical system",
+            "Drinking water and drainage network",
+            "Fiber optic internet available"
+          ]
+        },
+        "lifestyle": {
+          "title": "Superior Quality of Life",
+          "description": "Spaces designed for the well-being of the whole family: green areas, playgrounds, walking paths and recreation areas that promote a healthy life in community.",
+          "features": [
+            "40% of area designated for green spaces",
+            "Safe children's playgrounds",
+            "Pedestrian and bike paths",
+            "Family gathering areas"
+          ]
+        },
+        "investment": {
+          "title": "Smart Investment",
+          "description": "The area shows sustained growth of 15% annually in appreciation. Your investment will not only give you a home, but also a solid patrimony for your family's future.",
+          "features": [
+            "15% average annual growth",
+            "High appreciation zone",
+            "Financing facilities",
+            "Immediate title deed"
+          ]
+        }
+      }
+    },
+    "loteamiento_cta": {
+      "title": "Explore our residential areas with total precision",
+      "description": "Discover each available lot with our high-precision interactive map. See exact dimensions, specific location and all the features you need to make the best decision.",
+      "features": [
+        "High-resolution interactive maps",
+        "Exact dimensions of each lot",
+        "Real-time satellite view",
+        "Updated availability status"
+      ],
+      "cta": "View interactive map",
+      "note": "Explore all our available projects"
+    },
+    "about_us": {
+      "title": "About us",
+      "subtitle": "More than a decade creating prosperous and sustainable communities",
+      "story": {
+        "title": "Our Story",
+        "description1": "Since 2010, Mega Projects Real Estate has been dedicated to developing communities that combine technological innovation with environmental responsibility. We believe that every family deserves a place where their dreams can flourish.",
+        "description2": "Our approach goes beyond the simple sale of land: we create integral living spaces where quality, sustainability and well-being come together to form truly special communities."
+      },
+      "values": {
+        "title": "Our Values",
+        "transparency": {
+          "title": "Transparency",
+          "text": "Clear and precise information at every stage of the process"
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "text": "Developments that respect and improve the natural environment"
+        },
+        "innovation": {
+          "title": "Innovation",
+          "text": "Cutting-edge technology for a superior experience"
+        },
+        "commitment": {
+          "title": "Commitment",
+          "text": "We accompany our clients at every step"
+        }
+      },
+      "stats": {
+        "title": "Our Experience",
+        "years": "15+",
+        "years_label": "Years of experience",
+        "families": "2,500+",
+        "families_label": "Benefited families",
+        "projects": "25",
+        "projects_label": "Completed projects",
+        "satisfaction": "98%",
+        "satisfaction_label": "Customer satisfaction"
+      }
+    },
+    "footer": {
+      "brand_title": "MEGA PROJECTS REAL ESTATE",
+      "brand_description": "Creating prosperous and sustainable communities since 2010. Your perfect home is waiting for you.",
+      "navigation_title": "Navigation",
+      "contact_title": "Contact",
+      "address": "Main Avenue 1234\nCity, State 12345",
+      "phone": "+52 (555) 555-1234",
+      "email": "info@megaproyectos.com",
+      "hours": "Mon - Fri: 9:00 AM - 6:00 PM\nSat: 9:00 AM - 2:00 PM",
+      "actions_title": "Ready to get started?",
+      "view_lots_cta": "View residential areas",
+      "call_now_cta": "Call now",
+      "copyright": "© 2025 Mega Projects Real Estate. All rights reserved.",
+      "legal": {
+        "terms": "Terms of use",
+        "privacy": "Privacy policy",
+        "legal": "Legal notice"
+      },
+      "attribution": "Developed with high-precision mapping technology",
+      "social": {
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "whatsapp": "WhatsApp"
+      }
+    },
+    "carousel": {
+      "prev_aria": "View previous reason",
+      "next_aria": "View next reason",
+      "reason1_aria": "Go to reason 1: Strategic Location",
+      "reason2_aria": "Go to reason 2: Complete Infrastructure",
+      "reason3_aria": "Go to reason 3: Superior Quality of Life",
+      "reason4_aria": "Go to reason 4: Smart Investment"
+    },
+    "image_alts": {
+      "hero": "Panoramic view of sustainable real estate development with modern houses and green areas",
+      "location": "Aerial view showing strategic location near shopping centers, schools and hospitals",
+      "infrastructure": "Modern infrastructure with paved streets, lighting and complete services",
+      "lifestyle": "Family enjoying green areas and recreational spaces in the development",
+      "investment": "Graph of real estate growth and land appreciation in the area",
+      "map_preview": "Preview of interactive map showing available lots with different colors according to availability",
+      "team": "Professional team from Mega Projects Real Estate working in modern office"
+    },
+    "aria_labels": {
+      "main_nav": "Main navigation",
+      "main_section": "Main section",
+      "why_live_section": "Why live here",
+      "loteamiento_section": "Residential areas section",
+      "about_section": "About us",
+      "carousel": "Carousel of reasons to live here",
+      "carousel_indicators": "Reason indicators",
+      "footer_nav": "Footer navigation links"
+    }
+  }
+}

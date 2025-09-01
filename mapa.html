@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mapa Loteamiento - Inmobiliaria Impacto</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      /* Ajustes puntuales para mapa */
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+      #map {
+        height: calc(100vh - 60px);
+      }
+      header.map-header {
+        height: 60px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      }
+      .map-controls {
+        position: absolute;
+        top: 80px;
+        left: 16px;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="map-header">
+      <button id="back" class="back-btn-mapa" aria-label="volver">←</button>
+      <h2 class="map-title">LOTEAMIENTO ALTA VISTA</h2>
+      <div style="flex: 1"></div>
+      <div class="map-actions">
+        <button id="satToggle" class="small-btn">Satélite</button>
+        <button id="grayToggle" class="small-btn">Escala gris</button>
+      </div>
+    </header>
+
+    <div id="map"></div>
+
+    <!-- Librerías -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/togeojson@0.16.0"></script>
+
+    <script src="assets/js/mapa.js"></script>
+  </body>
+</html>

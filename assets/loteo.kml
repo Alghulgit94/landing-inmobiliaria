@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Loteamiento Generado - Centro -25.700327,-56.240594</name>
+    <Placemark>
+      <name>L1-1</name>
+      <description>Parcela L1-1</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24093296,-25.69976106,0 -56.24081333,-25.69976106,0 -56.24081333,-25.70003056,0 -56.24093296,-25.70003056,0 -56.24093296,-25.69976106,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L1-2</name>
+      <description>Parcela L1-2</description>
+      <ExtendedData>
+        <Data name="estado"><value>reservado</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24081333,-25.69965675,0 -56.24069370,-25.69965675,0 -56.24069370,-25.69992625,0 -56.24081333,-25.69992625,0 -56.24081333,-25.69965675,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L1-3</name>
+      <description>Parcela L1-3</description>
+      <ExtendedData>
+        <Data name="estado"><value>vendido</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24069370,-25.69955144,0 -56.24057407,-25.69955144,0 -56.24057407,-25.69982094,0 -56.24069370,-25.69982094,0 -56.24069370,-25.69955144,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L1-4</name>
+      <description>Parcela L1-4</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24057407,-25.69944613,0 -56.24045444,-25.69944613,0 -56.24045444,-25.69971563,0 -56.24057407,-25.69971563,0 -56.24057407,-25.69944613,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L1-5</name>
+      <description>Parcela L1-5</description>
+      <ExtendedData>
+        <Data name="estado"><value>reservado</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24045444,-25.69934082,0 -56.24033481,-25.69934082,0 -56.24033481,-25.69961032,0 -56.24045444,-25.69961032,0 -56.24045444,-25.69934082,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L2-1</name>
+      <description>Parcela L2-1</description>
+      <ExtendedData>
+        <Data name="estado"><value>vendido</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24093296,-25.69999642,0 -56.24081333,-25.69999642,0 -56.24081333,-25.70026592,0 -56.24093296,-25.70026592,0 -56.24093296,-25.69999642,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L2-2</name>
+      <description>Parcela L2-2</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24081333,-25.69989111,0 -56.24069370,-25.69989111,0 -56.24069370,-25.70016061,0 -56.24081333,-25.70016061,0 -56.24081333,-25.69989111,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L2-3</name>
+      <description>Parcela L2-3</description>
+      <ExtendedData>
+        <Data name="estado"><value>reservado</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24069370,-25.69978580,0 -56.24057407,-25.69978580,0 -56.24057407,-25.70005530,0 -56.24069370,-25.70005530,0 -56.24069370,-25.69978580,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L2-4</name>
+      <description>Parcela L2-4</description>
+      <ExtendedData>
+        <Data name="estado"><value>vendido</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24057407,-25.69968049,0 -56.24045444,-25.69968049,0 -56.24045444,-25.69995000,0 -56.24057407,-25.69995000,0 -56.24057407,-25.69968049,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L2-5</name>
+      <description>Parcela L2-5</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24045444,-25.69957518,0 -56.24033481,-25.69957518,0 -56.24033481,-25.69984468,0 -56.24045444,-25.69984468,0 -56.24045444,-25.69957518,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L3-1</name>
+      <description>Parcela L3-1</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24093296,-25.70023178,0 -56.24081333,-25.70023178,0 -56.24081333,-25.70050128,0 -56.24093296,-25.70050128,0 -56.24093296,-25.70023178,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L3-2</name>
+      <description>Parcela L3-2</description>
+      <ExtendedData>
+        <Data name="estado"><value>reservado</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24081333,-25.70012647,0 -56.24069370,-25.70012647,0 -56.24069370,-25.70039597,0 -56.24081333,-25.70039597,0 -56.24081333,-25.70012647,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L3-3</name>
+      <description>Parcela L3-3</description>
+      <ExtendedData>
+        <Data name="estado"><value>vendido</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24069370,-25.70002116,0 -56.24057407,-25.70002116,0 -56.24057407,-25.70029066,0 -56.24069370,-25.70029066,0 -56.24069370,-25.70002116,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L3-4</name>
+      <description>Parcela L3-4</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24057407,-25.69991585,0 -56.24045444,-25.69991585,0 -56.24045444,-25.70018535,0 -56.24057407,-25.70018535,0 -56.24057407,-25.69991585,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L3-5</name>
+      <description>Parcela L3-5</description>
+      <ExtendedData>
+        <Data name="estado"><value>reservado</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24045444,-25.69981054,0 -56.24033481,-25.69981054,0 -56.24033481,-25.70008004,0 -56.24045444,-25.70008004,0 -56.24045444,-25.69981054,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L4-1</name>
+      <description>Parcela L4-1</description>
+      <ExtendedData>
+        <Data name="estado"><value>vendido</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24093296,-25.70046614,0 -56.24081333,-25.70046614,0 -56.24081333,-25.70073564,0 -56.24093296,-25.70073564,0 -56.24093296,-25.70046614,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L4-2</name>
+      <description>Parcela L4-2</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24081333,-25.70036083,0 -56.24069370,-25.70036083,0 -56.24069370,-25.70063033,0 -56.24081333,-25.70063033,0 -56.24081333,-25.70036083,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L4-3</name>
+      <description>Parcela L4-3</description>
+      <ExtendedData>
+        <Data name="estado"><value>reservado</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24069370,-25.70025552,0 -56.24057407,-25.70025552,0 -56.24057407,-25.70052502,0 -56.24069370,-25.70052502,0 -56.24069370,-25.70025552,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L4-4</name>
+      <description>Parcela L4-4</description>
+      <ExtendedData>
+        <Data name="estado"><value>vendido</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24057407,-25.70015021,0 -56.24045444,-25.70015021,0 -56.24045444,-25.70041971,0 -56.24057407,-25.70041971,0 -56.24057407,-25.70015021,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+    <Placemark>
+      <name>L4-5</name>
+      <description>Parcela L4-5</description>
+      <ExtendedData>
+        <Data name="estado"><value>disponible</value></Data>
+      </ExtendedData>
+      <Polygon>
+        <outerBoundaryIs>
+          <LinearRing>
+            <coordinates>
+              -56.24045444,-25.70004490,0 -56.24033481,-25.70004490,0 -56.24033481,-25.70031440,0 -56.24045444,-25.70031440,0 -56.24045444,-25.70004490,0
+            </coordinates>
+          </LinearRing>
+        </outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+
+  </Document>
+</kml>

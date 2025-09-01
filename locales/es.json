@@ -1,0 +1,226 @@
+{
+  "navigation": {
+    "home": "Inicio",
+    "admin": "Administración",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "lots": "Loteamientos",
+    "plots": "Parcelas",
+    "users": "Usuarios",
+    "sales": "Ventas",
+    "reservations": "Reservas",
+    "why_live_here": "Por qué vivir aquí",
+    "about_us": "Nosotros",
+    "view_map": "Ver mapa"
+  },
+  "states": {
+    "available": "Disponible",
+    "reserved": "Reservado",
+    "sold": "Vendido"
+  },
+  "actions": {
+    "create": "Crear",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "view": "Ver",
+    "upload": "Subir",
+    "download": "Descargar"
+  },
+  "forms": {
+    "name": "Nombre",
+    "description": "Descripción",
+    "photo": "Foto",
+    "location": "Ubicación",
+    "width": "Ancho",
+    "length": "Largo",
+    "number": "Número",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "contact": "Contacto",
+    "date": "Fecha",
+    "role": "Rol"
+  },
+  "messages": {
+    "success_create": "Creado exitosamente",
+    "success_update": "Actualizado exitosamente",
+    "success_delete": "Eliminado exitosamente",
+    "error_generic": "Ha ocurrido un error",
+    "error_auth": "Credenciales incorrectas",
+    "error_permission": "No tienes permisos para esta acción",
+    "confirm_delete": "¿Estás seguro de que quieres eliminar este elemento?",
+    "loading": "Cargando...",
+    "no_data": "No hay datos disponibles"
+  },
+  "titles": {
+    "dashboard": "Panel de Control",
+    "lot_management": "Gestión de Loteamientos",
+    "plot_management": "Gestión de Parcelas",
+    "user_management": "Gestión de Usuarios",
+    "sales_report": "Reporte de Ventas",
+    "map_view": "Vista de Mapa",
+    "main_title": "Inmobiliaria Impacto - Tu hogar perfecto te espera",
+    "brand": "INMOBILIARIA MEGA PROYECTOS"
+  },
+  "index": {
+    "page_title": "Inmobiliaria Impacto - Tu hogar perfecto te espera",
+    "meta_description": "Descubre desarrollos inmobiliarios sustentables con la mejor ubicación, infraestructura completa y calidad de vida superior.",
+    "meta_keywords": "inmobiliaria, lotes, terrenos, desarrollos sustentables, inversión inmobiliaria",
+    "hero": {
+      "title": "Encuentra el hogar perfecto en el lugar ideal",
+      "subtitle": "Desarrollos inmobiliarios sustentables con ubicación estratégica, infraestructura completa y la mejor calidad de vida para tu familia.",
+      "description": "Explora nuestros loteamientos con mapas interactivos de alta precisión que te permiten conocer cada detalle antes de tomar la decisión más importante de tu vida.",
+      "cta": "Explorar loteamientos"
+    },
+    "why_live_here": {
+      "title": "¿Por qué elegir vivir aquí?",
+      "subtitle": "Descubre las 4 razones principales que hacen de este lugar la mejor opción para tu nueva vida",
+      "reasons": {
+        "location": {
+          "title": "Ubicación Estratégica",
+          "description": "Ubicado a minutos de centros comerciales, escuelas de calidad, hospitales y principales vías de acceso. Todo lo que necesitas está al alcance de tu familia.",
+          "features": [
+            "5 min del centro comercial principal",
+            "3 min de colegios de prestigio",
+            "8 min del hospital regional",
+            "Acceso directo a autopista"
+          ]
+        },
+        "infrastructure": {
+          "title": "Infraestructura Completa",
+          "description": "Desarrollo con infraestructura de primer nivel: calles pavimentadas, alumbrado público, agua potable, electricidad y sistema de drenaje completamente instalados.",
+          "features": [
+            "Calles pavimentadas y señalizadas",
+            "Sistema eléctrico subterráneo",
+            "Red de agua potable y drenaje",
+            "Internet fibra óptica disponible"
+          ]
+        },
+        "lifestyle": {
+          "title": "Calidad de Vida Superior",
+          "description": "Espacios diseñados para el bienestar de toda la familia: áreas verdes, parques infantiles, senderos para caminar y zonas de recreación que fomentan una vida saludable y en comunidad.",
+          "features": [
+            "40% del área destinada a espacios verdes",
+            "Parques infantiles seguros",
+            "Senderos peatonales y ciclovías",
+            "Áreas de convivencia familiar"
+          ]
+        },
+        "investment": {
+          "title": "Inversión Inteligente",
+          "description": "La zona presenta un crecimiento sostenido del 15% anual en valorización. Tu inversión no solo te dará un hogar, sino también un patrimonio sólido para el futuro de tu familia.",
+          "features": [
+            "15% crecimiento anual promedio",
+            "Zona de alta plusvalía",
+            "Facilidades de financiamiento",
+            "Escrituración inmediata"
+          ]
+        }
+      }
+    },
+    "loteamiento_cta": {
+      "title": "Explora nuestros loteamientos con precisión total",
+      "description": "Descubre cada lote disponible con nuestro mapa interactivo de alta precisión. Ve dimensiones exactas, ubicación específica y todas las características que necesitas para tomar la mejor decisión.",
+      "features": [
+        "Mapas interactivos de alta resolución",
+        "Dimensiones exactas de cada lote",
+        "Vista satelital en tiempo real",
+        "Estado de disponibilidad actualizado"
+      ],
+      "cta": "Ver mapa interactivo",
+      "note": "Explora todos nuestros proyectos disponibles"
+    },
+    "about_us": {
+      "title": "Nosotros",
+      "subtitle": "Más de una década creando comunidades prósperas y sostenibles",
+      "story": {
+        "title": "Nuestra Historia",
+        "description1": "Desde 2010, Inmobiliaria Mega Proyectos se ha dedicado a desarrollar comunidades que combinan innovación tecnológica con responsabilidad ambiental. Creemos que cada familia merece un lugar donde sus sueños puedan florecer.",
+        "description2": "Nuestro enfoque va más allá de la simple venta de terrenos: creamos espacios de vida integral donde la calidad, sustentabilidad y bienestar se encuentran para formar comunidades verdaderamente especiales."
+      },
+      "values": {
+        "title": "Nuestros Valores",
+        "transparency": {
+          "title": "Transparencia",
+          "text": "Información clara y precisa en cada etapa del proceso"
+        },
+        "sustainability": {
+          "title": "Sustentabilidad",
+          "text": "Desarrollos que respetan y mejoran el entorno natural"
+        },
+        "innovation": {
+          "title": "Innovación",
+          "text": "Tecnología de punta para una experiencia superior"
+        },
+        "commitment": {
+          "title": "Compromiso",
+          "text": "Acompañamos a nuestros clientes en cada paso"
+        }
+      },
+      "stats": {
+        "title": "Nuestra Experiencia",
+        "years": "15+",
+        "years_label": "Años de experiencia",
+        "families": "2,500+",
+        "families_label": "Familias beneficiadas",
+        "projects": "25",
+        "projects_label": "Proyectos completados",
+        "satisfaction": "98%",
+        "satisfaction_label": "Satisfacción del cliente"
+      }
+    },
+    "footer": {
+      "brand_title": "INMOBILIARIA MEGA PROYECTOS",
+      "brand_description": "Creando comunidades prósperas y sostenibles desde 2010. Tu hogar perfecto te está esperando.",
+      "navigation_title": "Navegación",
+      "contact_title": "Contacto",
+      "address": "Av. Principal 1234\nCiudad, Estado 12345",
+      "phone": "+52 (555) 555-1234",
+      "email": "info@megaproyectos.com",
+      "hours": "Lun - Vie: 9:00 AM - 6:00 PM\nSáb: 9:00 AM - 2:00 PM",
+      "actions_title": "¿Listo para comenzar?",
+      "view_lots_cta": "Ver loteamientos",
+      "call_now_cta": "Llamar ahora",
+      "copyright": "© 2025 Inmobiliaria Mega Proyectos. Todos los derechos reservados.",
+      "legal": {
+        "terms": "Términos de uso",
+        "privacy": "Política de privacidad",
+        "legal": "Aviso legal"
+      },
+      "attribution": "Desarrollado con tecnología de mapas de alta precisión",
+      "social": {
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "whatsapp": "WhatsApp"
+      }
+    },
+    "carousel": {
+      "prev_aria": "Ver razón anterior",
+      "next_aria": "Ver siguiente razón",
+      "reason1_aria": "Ir a razón 1: Ubicación Estratégica",
+      "reason2_aria": "Ir a razón 2: Infraestructura Completa",
+      "reason3_aria": "Ir a razón 3: Calidad de Vida Superior",
+      "reason4_aria": "Ir a razón 4: Inversión Inteligente"
+    },
+    "image_alts": {
+      "hero": "Vista panorámica de desarrollo inmobiliario sustentable con casas modernas y áreas verdes",
+      "location": "Vista aérea mostrando ubicación estratégica cerca de centros comerciales, escuelas y hospitales",
+      "infrastructure": "Infraestructura moderna con calles pavimentadas, alumbrado y servicios completos",
+      "lifestyle": "Familia disfrutando de áreas verdes y espacios recreativos en el desarrollo",
+      "investment": "Gráfico de crecimiento inmobiliario y valorización de terrenos en la zona",
+      "map_preview": "Vista previa del mapa interactivo mostrando lotes disponibles con diferentes colores según disponibilidad",
+      "team": "Equipo profesional de Inmobiliaria Mega Proyectos trabajando en oficina moderna"
+    },
+    "aria_labels": {
+      "main_nav": "Navegación principal",
+      "main_section": "Sección principal",
+      "why_live_section": "Por qué elegir vivir aquí",
+      "loteamiento_section": "Sección de loteamientos",
+      "about_section": "Acerca de nosotros",
+      "carousel": "Carrusel de razones para vivir aquí",
+      "carousel_indicators": "Indicadores de razones",
+      "footer_nav": "Enlaces de navegación del pie de página"
+    }
+  }
+}

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="index.page_title">Inmobiliaria Impacto - Tu hogar perfecto te espera</title>
+  
+  <!-- External Stylesheets -->
+  <link rel="stylesheet" href="assets/css/index.css" />
+  
+  <!-- Meta tags -->
+  <meta name="description" data-i18n="index.meta_description" content="Descubre desarrollos inmobiliarios sustentables con la mejor ubicación, infraestructura completa y calidad de vida superior." />
+  <meta name="keywords" data-i18n="index.meta_keywords" content="inmobiliaria, lotes, terrenos, desarrollos sustentables, inversión inmobiliaria" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" data-i18n="index.page_title" content="Inmobiliaria Impacto - Tu hogar perfecto te espera" />
+  <meta property="og:description" data-i18n="index.meta_description" content="Descubre desarrollos inmobiliarios sustentables con la mejor ubicación e infraestructura completa." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="#" />
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "INMOBILIARIA MEGA PROYECTOS",
+    "description": "Desarrollos inmobiliarios sustentables con ubicación estratégica e infraestructura completa",
+    "url": "#"
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <h1 class="brand" data-i18n="titles.brand">INMOBILIARIA MEGA PROYECTOS</h1>
+      <nav class="main-nav" role="navigation" data-i18n-attr="aria-label:aria_labels.main_nav">
+        <a href="#why-live-here" data-i18n="navigation.why_live_here">Por qué vivir aquí</a>
+        <a href="#loteamiento" data-i18n="navigation.lots">Loteamientos</a>
+        <a href="#about-us" data-i18n="navigation.about_us">Nosotros</a>
+        
+        <!-- Language Selector -->
+        <div class="language-selector-wrapper">
+          <select id="language-selector" class="language-selector" aria-label="Seleccionar idioma / Select language / Sprache wählen">
+            <option value="es" data-flag="🇪🇸" selected>🇪🇸</option>
+            <option value="en" data-flag="🇺🇸">🇺🇸</option>
+            <option value="de" data-flag="🇩🇪">🇩🇪</option>
+          </select>
+        </div>
+        
+        <a href="mapa.html" class="cta" data-i18n="navigation.view_map">Ver mapa</a>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main">
+    <!-- 1. Hero Section -->
+    <section class="hero" role="banner" data-i18n-attr="aria-label:aria_labels.main_section">
+      <div class="hero__video-background">
+        <video class="hero__video" autoplay muted loop playsinline>
+          <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+          <!-- Fallback for browsers that don't support video -->
+        </video>
+        <div class="hero__overlay"></div>
+      </div>
+      <div class="container hero__container">
+        <div class="hero__content">
+          <div class="hero__text">
+            <h2 class="hero__title" data-i18n="index.hero.title">
+              Encuentra el hogar perfecto en el lugar ideal
+            </h2>
+            <p class="hero__subtitle lead" data-i18n="index.hero.subtitle">
+              Desarrollos inmobiliarios sustentables con ubicación estratégica, 
+              infraestructura completa y la mejor calidad de vida para tu familia.
+            </p>
+            <p class="hero__description" data-i18n="index.hero.description">
+              Explora nuestros loteamientos con mapas interactivos de alta precisión 
+              que te permiten conocer cada detalle antes de tomar la decisión más 
+              importante de tu vida.
+            </p>
+            <div class="hero__actions">
+              <a class="btn-primary hero__cta" href="mapa.html" data-i18n="index.hero.cta">
+                Explorar loteamientos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Why Choose to Live Here Section -->
+    <section id="why-live-here" class="section why-live-section" data-i18n-attr="aria-label:aria_labels.why_live_section">
+      <div class="container">
+        <header class="section__header">
+          <h3 class="section__title" data-i18n="index.why_live_here.title">¿Por qué elegir vivir aquí?</h3>
+          <p class="section__subtitle" data-i18n="index.why_live_here.subtitle">
+            Descubre las 4 razones principales que hacen de este lugar 
+            la mejor opción para tu nueva vida
+          </p>
+        </header>
+        
+        <div class="reasons-carousel" data-i18n-attr="aria-label:aria_labels.carousel">
+          <div class="reasons-carousel__container">
+            <div class="reasons-carousel__track" id="reasonsTrack">
+              
+              <!-- Reason 1: Ubicación Estratégica -->
+              <article class="reason-card reason-card--active" data-reason="1">
+                <div class="reason-card__image-container">
+                  <img
+                    src="https://picsum.photos/seed/location/600/400"
+                    data-i18n-attr="alt:index.image_alts.location"
+                    alt="Vista aérea mostrando ubicación estratégica cerca de centros comerciales, escuelas y hospitales"
+                    class="reason-card__image"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="reason-card__content">
+                  <h4 class="reason-card__title" data-i18n="index.why_live_here.reasons.location.title">Ubicación Estratégica</h4>
+                  <p class="reason-card__description" data-i18n="index.why_live_here.reasons.location.description">
+                    Ubicado a minutos de centros comerciales, escuelas de calidad, 
+                    hospitales y principales vías de acceso. Todo lo que necesitas 
+                    está al alcance de tu familia.
+                  </p>
+                  <ul class="reason-card__features">
+                    <li data-i18n="index.why_live_here.reasons.location.features.0">5 min del centro comercial principal</li>
+                    <li data-i18n="index.why_live_here.reasons.location.features.1">3 min de colegios de prestigio</li>
+                    <li data-i18n="index.why_live_here.reasons.location.features.2">8 min del hospital regional</li>
+                    <li data-i18n="index.why_live_here.reasons.location.features.3">Acceso directo a autopista</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Reason 2: Infraestructura Completa -->
+              <article class="reason-card" data-reason="2">
+                <div class="reason-card__image-container">
+                  <img
+                    src="https://picsum.photos/seed/infrastructure/600/400"
+                    data-i18n-attr="alt:index.image_alts.infrastructure"
+                    alt="Infraestructura moderna con calles pavimentadas, alumbrado y servicios completos"
+                    class="reason-card__image"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="reason-card__content">
+                  <h4 class="reason-card__title" data-i18n="index.why_live_here.reasons.infrastructure.title">Infraestructura Completa</h4>
+                  <p class="reason-card__description" data-i18n="index.why_live_here.reasons.infrastructure.description">
+                    Desarrollo con infraestructura de primer nivel: calles pavimentadas, 
+                    alumbrado público, agua potable, electricidad y sistema de drenaje 
+                    completamente instalados.
+                  </p>
+                  <ul class="reason-card__features">
+                    <li data-i18n="index.why_live_here.reasons.infrastructure.features.0">Calles pavimentadas y señalizadas</li>
+                    <li data-i18n="index.why_live_here.reasons.infrastructure.features.1">Sistema eléctrico subterráneo</li>
+                    <li data-i18n="index.why_live_here.reasons.infrastructure.features.2">Red de agua potable y drenaje</li>
+                    <li data-i18n="index.why_live_here.reasons.infrastructure.features.3">Internet fibra óptica disponible</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Reason 3: Calidad de Vida Superior -->
+              <article class="reason-card" data-reason="3">
+                <div class="reason-card__image-container">
+                  <img
+                    src="https://picsum.photos/seed/lifestyle/600/400"
+                    data-i18n-attr="alt:index.image_alts.lifestyle"
+                    alt="Familia disfrutando de áreas verdes y espacios recreativos en el desarrollo"
+                    class="reason-card__image"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="reason-card__content">
+                  <h4 class="reason-card__title" data-i18n="index.why_live_here.reasons.lifestyle.title">Calidad de Vida Superior</h4>
+                  <p class="reason-card__description" data-i18n="index.why_live_here.reasons.lifestyle.description">
+                    Espacios diseñados para el bienestar de toda la familia: áreas verdes, 
+                    parques infantiles, senderos para caminar y zonas de recreación que 
+                    fomentan una vida saludable y en comunidad.
+                  </p>
+                  <ul class="reason-card__features">
+                    <li data-i18n="index.why_live_here.reasons.lifestyle.features.0">40% del área destinada a espacios verdes</li>
+                    <li data-i18n="index.why_live_here.reasons.lifestyle.features.1">Parques infantiles seguros</li>
+                    <li data-i18n="index.why_live_here.reasons.lifestyle.features.2">Senderos peatonales y ciclovías</li>
+                    <li data-i18n="index.why_live_here.reasons.lifestyle.features.3">Áreas de convivencia familiar</li>
+                  </ul>
+                </div>
+              </article>
+
+              <!-- Reason 4: Inversión Inteligente -->
+              <article class="reason-card" data-reason="4">
+                <div class="reason-card__image-container">
+                  <img
+                    src="https://picsum.photos/seed/investment/600/400"
+                    data-i18n-attr="alt:index.image_alts.investment"
+                    alt="Gráfico de crecimiento inmobiliario y valorización de terrenos en la zona"
+                    class="reason-card__image"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="reason-card__content">
+                  <h4 class="reason-card__title" data-i18n="index.why_live_here.reasons.investment.title">Inversión Inteligente</h4>
+                  <p class="reason-card__description" data-i18n="index.why_live_here.reasons.investment.description">
+                    La zona presenta un crecimiento sostenido del 15% anual en 
+                    valorización. Tu inversión no solo te dará un hogar, sino 
+                    también un patrimonio sólido para el futuro de tu familia.
+                  </p>
+                  <ul class="reason-card__features">
+                    <li data-i18n="index.why_live_here.reasons.investment.features.0">15% crecimiento anual promedio</li>
+                    <li data-i18n="index.why_live_here.reasons.investment.features.1">Zona de alta plusvalía</li>
+                    <li data-i18n="index.why_live_here.reasons.investment.features.2">Facilidades de financiamiento</li>
+                    <li data-i18n="index.why_live_here.reasons.investment.features.3">Escrituración inmediata</li>
+                  </ul>
+                </div>
+              </article>
+              
+            </div>
+          </div>
+          
+          <!-- Carousel Navigation -->
+          <div class="reasons-carousel__nav">
+            <button class="carousel-btn carousel-btn--prev" id="prevBtn" data-i18n-attr="aria-label:index.carousel.prev_aria" type="button">
+              ‹
+            </button>
+            <button class="carousel-btn carousel-btn--next" id="nextBtn" data-i18n-attr="aria-label:index.carousel.next_aria" type="button">
+              ›
+            </button>
+          </div>
+          
+          <!-- Carousel Indicators -->
+          <div class="reasons-carousel__indicators" role="tablist" data-i18n-attr="aria-label:aria_labels.carousel_indicators">
+            <button class="carousel-indicator carousel-indicator--active" data-slide="1" data-i18n-attr="aria-label:index.carousel.reason1_aria" role="tab" type="button"></button>
+            <button class="carousel-indicator" data-slide="2" data-i18n-attr="aria-label:index.carousel.reason2_aria" role="tab" type="button"></button>
+            <button class="carousel-indicator" data-slide="3" data-i18n-attr="aria-label:index.carousel.reason3_aria" role="tab" type="button"></button>
+            <button class="carousel-indicator" data-slide="4" data-i18n-attr="aria-label:index.carousel.reason4_aria" role="tab" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Loteamiento CTA Section -->
+    <section id="loteamiento" class="section loteamiento-cta" data-i18n-attr="aria-label:aria_labels.loteamiento_section">
+      <div class="container">
+        <div class="loteamiento-cta__content">
+          <div class="loteamiento-cta__text">
+            <h3 class="loteamiento-cta__title" data-i18n="index.loteamiento_cta.title">
+              Explora nuestros loteamientos con precisión total
+            </h3>
+            <p class="loteamiento-cta__description" data-i18n="index.loteamiento_cta.description">
+              Descubre cada lote disponible con nuestro mapa interactivo de alta precisión. 
+              Ve dimensiones exactas, ubicación específica y todas las características 
+              que necesitas para tomar la mejor decisión.
+            </p>
+            
+            <div class="loteamiento-features">
+              <div class="feature-item">
+                <span class="feature-item__icon" aria-hidden="true">🗺️</span>
+                <span class="feature-item__text" data-i18n="index.loteamiento_cta.features.0">Mapas interactivos de alta resolución</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-item__icon" aria-hidden="true">📐</span>
+                <span class="feature-item__text" data-i18n="index.loteamiento_cta.features.1">Dimensiones exactas de cada lote</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-item__icon" aria-hidden="true">🏞️</span>
+                <span class="feature-item__text" data-i18n="index.loteamiento_cta.features.2">Vista satelital en tiempo real</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-item__icon" aria-hidden="true">📊</span>
+                <span class="feature-item__text" data-i18n="index.loteamiento_cta.features.3">Estado de disponibilidad actualizado</span>
+              </div>
+            </div>
+            
+            <div class="loteamiento-cta__actions">
+              <a href="mapa.html" class="btn-primary loteamiento-cta__button" data-i18n="index.loteamiento_cta.cta">
+                Ver mapa interactivo
+              </a>
+              <p class="loteamiento-cta__note">
+                <small data-i18n="index.loteamiento_cta.note">Explora todos nuestros proyectos disponibles</small>
+              </p>
+            </div>
+          </div>
+          
+          <div class="loteamiento-cta__media">
+            <img
+              src="https://picsum.photos/seed/map-preview/700/500"
+              data-i18n-attr="alt:index.image_alts.map_preview"
+              alt="Vista previa del mapa interactivo mostrando lotes disponibles con diferentes colores según disponibilidad"
+              class="loteamiento-cta__image"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. About Us Section -->
+    <section id="about-us" class="section about-section light" data-i18n-attr="aria-label:aria_labels.about_section">
+      <div class="container">
+        <header class="section__header">
+          <h3 class="section__title" data-i18n="index.about_us.title">Nosotros</h3>
+          <p class="section__subtitle" data-i18n="index.about_us.subtitle">
+            Más de una década creando comunidades prósperas y sostenibles
+          </p>
+        </header>
+        
+        <div class="about-content">
+          <div class="about-story">
+            <article class="about-story__text">
+              <h4 class="about-story__title" data-i18n="index.about_us.story.title">Nuestra Historia</h4>
+              <p class="about-story__description" data-i18n="index.about_us.story.description1">
+                Desde 2010, <strong>Inmobiliaria Mega Proyectos</strong> se ha dedicado 
+                a desarrollar comunidades que combinan innovación tecnológica con 
+                responsabilidad ambiental. Creemos que cada familia merece un lugar 
+                donde sus sueños puedan florecer.
+              </p>
+              <p class="about-story__description" data-i18n="index.about_us.story.description2">
+                Nuestro enfoque va más allá de la simple venta de terrenos: creamos 
+                espacios de vida integral donde la calidad, sustentabilidad y 
+                bienestar se encuentran para formar comunidades verdaderamente especiales.
+              </p>
+            </article>
+            
+            <div class="about-values">
+              <h4 class="about-values__title" data-i18n="index.about_us.values.title">Nuestros Valores</h4>
+              <div class="values-grid">
+                <div class="value-item">
+                  <h5 class="value-item__title" data-i18n="index.about_us.values.transparency.title">Transparencia</h5>
+                  <p class="value-item__text" data-i18n="index.about_us.values.transparency.text">
+                    Información clara y precisa en cada etapa del proceso
+                  </p>
+                </div>
+                <div class="value-item">
+                  <h5 class="value-item__title" data-i18n="index.about_us.values.sustainability.title">Sustentabilidad</h5>
+                  <p class="value-item__text" data-i18n="index.about_us.values.sustainability.text">
+                    Desarrollos que respetan y mejoran el entorno natural
+                  </p>
+                </div>
+                <div class="value-item">
+                  <h5 class="value-item__title" data-i18n="index.about_us.values.innovation.title">Innovación</h5>
+                  <p class="value-item__text" data-i18n="index.about_us.values.innovation.text">
+                    Tecnología de punta para una experiencia superior
+                  </p>
+                </div>
+                <div class="value-item">
+                  <h5 class="value-item__title" data-i18n="index.about_us.values.commitment.title">Compromiso</h5>
+                  <p class="value-item__text" data-i18n="index.about_us.values.commitment.text">
+                    Acompañamos a nuestros clientes en cada paso
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="about-stats">
+            <h4 class="about-stats__title" data-i18n="index.about_us.stats.title">Nuestra Experiencia</h4>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-item__number" data-i18n="index.about_us.stats.years">15+</span>
+                <span class="stat-item__label" data-i18n="index.about_us.stats.years_label">Años de experiencia</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-item__number" data-i18n="index.about_us.stats.families">2,500+</span>
+                <span class="stat-item__label" data-i18n="index.about_us.stats.families_label">Familias beneficiadas</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-item__number" data-i18n="index.about_us.stats.projects">25</span>
+                <span class="stat-item__label" data-i18n="index.about_us.stats.projects_label">Proyectos completados</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-item__number" data-i18n="index.about_us.stats.satisfaction">98%</span>
+                <span class="stat-item__label" data-i18n="index.about_us.stats.satisfaction_label">Satisfacción del cliente</span>
+              </div>
+            </div>
+            
+            <div class="about-image">
+              <img
+                src="https://picsum.photos/seed/team/600/400"
+                data-i18n-attr="alt:index.image_alts.team"
+                alt="Equipo profesional de Inmobiliaria Mega Proyectos trabajando en oficina moderna"
+                class="about__team-image"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 5. Footer Section -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__content">
+        
+        <!-- Brand Section -->
+        <div class="footer__section footer__section--brand">
+          <h4 class="footer__brand-title" data-i18n="index.footer.brand_title">INMOBILIARIA MEGA PROYECTOS</h4>
+          <p class="footer__brand-description" data-i18n="index.footer.brand_description">
+            Creando comunidades prósperas y sostenibles desde 2010. 
+            Tu hogar perfecto te está esperando.
+          </p>
+          <div class="footer__social">
+            <a href="#" class="social-link" target="_blank" rel="noopener">
+              <span aria-hidden="true">📘</span> <span data-i18n="index.footer.social.facebook">Facebook</span>
+            </a>
+            <a href="#" class="social-link" target="_blank" rel="noopener">
+              <span aria-hidden="true">📷</span> <span data-i18n="index.footer.social.instagram">Instagram</span>
+            </a>
+            <a href="#" class="social-link" target="_blank" rel="noopener">
+              <span aria-hidden="true">💬</span> <span data-i18n="index.footer.social.whatsapp">WhatsApp</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="footer__section footer__section--nav">
+          <h5 class="footer__section-title" data-i18n="index.footer.navigation_title">Navegación</h5>
+          <nav class="footer__nav" role="navigation" data-i18n-attr="aria-label:aria_labels.footer_nav">
+            <a href="#" class="footer__link" data-i18n="navigation.home">Inicio</a>
+            <a href="#why-live-here" class="footer__link" data-i18n="navigation.why_live_here">Por qué vivir aquí</a>
+            <a href="#loteamiento" class="footer__link" data-i18n="navigation.lots">Loteamientos</a>
+            <a href="#about-us" class="footer__link" data-i18n="navigation.about_us">Nosotros</a>
+            <a href="mapa.html" class="footer__link" data-i18n="navigation.view_map">Ver mapa</a>
+          </nav>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="footer__section footer__section--contact">
+          <h5 class="footer__section-title" data-i18n="index.footer.contact_title">Contacto</h5>
+          <address class="footer__contact">
+            <div class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">📍</span>
+              <span class="contact-item__text" data-i18n="index.footer.address">
+                Av. Principal 1234<br>
+                Ciudad, Estado 12345
+              </span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">📞</span>
+              <a href="tel:+525555551234" class="contact-item__link" data-i18n="index.footer.phone">
+                +52 (555) 555-1234
+              </a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">✉️</span>
+              <a href="mailto:info@megaproyectos.com" class="contact-item__link" data-i18n="index.footer.email">
+                info@megaproyectos.com
+              </a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__icon" aria-hidden="true">🕒</span>
+              <span class="contact-item__text" data-i18n="index.footer.hours">
+                Lun - Vie: 9:00 AM - 6:00 PM<br>
+                Sáb: 9:00 AM - 2:00 PM
+              </span>
+            </div>
+          </address>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="footer__section footer__section--actions">
+          <h5 class="footer__section-title" data-i18n="index.footer.actions_title">¿Listo para comenzar?</h5>
+          <div class="footer__actions">
+            <a href="mapa.html" class="btn-outline footer__cta" data-i18n="index.footer.view_lots_cta">
+              Ver loteamientos
+            </a>
+            <a href="tel:+525555551234" class="btn-primary footer__cta" data-i18n="index.footer.call_now_cta">
+              Llamar ahora
+            </a>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- Footer Bottom -->
+      <div class="footer__bottom">
+        <div class="footer__legal">
+          <small class="footer__copyright" data-i18n="index.footer.copyright">
+            © 2025 Inmobiliaria Mega Proyectos. Todos los derechos reservados.
+          </small>
+          <div class="footer__legal-links">
+            <a href="#" class="footer__legal-link" data-i18n="index.footer.legal.terms">Términos de uso</a>
+            <a href="#" class="footer__legal-link" data-i18n="index.footer.legal.privacy">Política de privacidad</a>
+            <a href="#" class="footer__legal-link" data-i18n="index.footer.legal.legal">Aviso legal</a>
+          </div>
+        </div>
+        <small class="footer__attribution" data-i18n="index.footer.attribution">
+          Desarrollado con tecnología de mapas de alta precisión
+        </small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>

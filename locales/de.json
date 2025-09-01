@@ -1,0 +1,226 @@
+{
+  "navigation": {
+    "home": "Startseite",
+    "admin": "Verwaltung",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "lots": "Grundstücke",
+    "plots": "Parzellen",
+    "users": "Benutzer",
+    "sales": "Verkäufe",
+    "reservations": "Reservierungen",
+    "why_live_here": "Warum hier leben",
+    "about_us": "Über uns",
+    "view_map": "Karte anzeigen"
+  },
+  "states": {
+    "available": "Verfügbar",
+    "reserved": "Reserviert",
+    "sold": "Verkauft"
+  },
+  "actions": {
+    "create": "Erstellen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "view": "Anzeigen",
+    "upload": "Hochladen",
+    "download": "Herunterladen"
+  },
+  "forms": {
+    "name": "Name",
+    "description": "Beschreibung",
+    "photo": "Foto",
+    "location": "Standort",
+    "width": "Breite",
+    "length": "Länge",
+    "number": "Nummer",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "contact": "Kontakt",
+    "date": "Datum",
+    "role": "Rolle"
+  },
+  "messages": {
+    "success_create": "Erfolgreich erstellt",
+    "success_update": "Erfolgreich aktualisiert",
+    "success_delete": "Erfolgreich gelöscht",
+    "error_generic": "Ein Fehler ist aufgetreten",
+    "error_auth": "Ungültige Anmeldedaten",
+    "error_permission": "Sie haben keine Berechtigung für diese Aktion",
+    "confirm_delete": "Sind Sie sicher, dass Sie dieses Element löschen möchten?",
+    "loading": "Laden...",
+    "no_data": "Keine Daten verfügbar"
+  },
+  "titles": {
+    "dashboard": "Dashboard",
+    "lot_management": "Grundstücksverwaltung",
+    "plot_management": "Parzellenverwaltung",
+    "user_management": "Benutzerverwaltung",
+    "sales_report": "Verkaufsbericht",
+    "map_view": "Kartenansicht",
+    "main_title": "Immobilien Impact - Ihr perfektes Zuhause wartet auf Sie",
+    "brand": "IMMOBILIEN MEGA PROJEKTE"
+  },
+  "index": {
+    "page_title": "Immobilien Impact - Ihr perfektes Zuhause wartet auf Sie",
+    "meta_description": "Entdecken Sie nachhaltige Immobilienentwicklungen mit der besten Lage, vollständiger Infrastruktur und überlegener Lebensqualität.",
+    "meta_keywords": "immobilien, grundstücke, bauland, nachhaltige entwicklungen, immobilieninvestition",
+    "hero": {
+      "title": "Finden Sie das perfekte Zuhause am idealen Ort",
+      "subtitle": "Nachhaltige Immobilienentwicklungen mit strategischer Lage, vollständiger Infrastruktur und der besten Lebensqualität für Ihre Familie.",
+      "description": "Erkunden Sie unsere Wohngebiete mit hochpräzisen interaktiven Karten, die es Ihnen ermöglichen, jedes Detail zu kennen, bevor Sie die wichtigste Entscheidung Ihres Lebens treffen.",
+      "cta": "Wohngebiete erkunden"
+    },
+    "why_live_here": {
+      "title": "Warum sich für das Leben hier entscheiden?",
+      "subtitle": "Entdecken Sie die 4 Hauptgründe, die diesen Ort zur besten Option für Ihr neues Leben machen",
+      "reasons": {
+        "location": {
+          "title": "Strategische Lage",
+          "description": "Nur wenige Minuten von Einkaufszentren, Qualitätsschulen, Krankenhäusern und Hauptverkehrswegen entfernt. Alles was Sie brauchen ist in Reichweite Ihrer Familie.",
+          "features": [
+            "5 Min. zum Haupteinkaufszentrum",
+            "3 Min. zu Prestigeschulen",
+            "8 Min. zum Regionalkrankenhaus",
+            "Direkter Autobahnzugang"
+          ]
+        },
+        "infrastructure": {
+          "title": "Vollständige Infrastruktur",
+          "description": "Entwicklung mit erstklassiger Infrastruktur: gepflasterte Straßen, öffentliche Beleuchtung, Trinkwasser, Strom und vollständig installiertes Abwassersystem.",
+          "features": [
+            "Gepflasterte und beschilderte Straßen",
+            "Unterirdisches Stromsystem",
+            "Trinkwasser- und Abwassernetz",
+            "Glasfaser-Internet verfügbar"
+          ]
+        },
+        "lifestyle": {
+          "title": "Überlegene Lebensqualität",
+          "description": "Räume, die für das Wohlbefinden der ganzen Familie konzipiert sind: Grünflächen, Spielplätze, Wanderwege und Erholungszonen, die ein gesundes Leben in der Gemeinschaft fördern.",
+          "features": [
+            "40% der Fläche für Grünflächen bestimmt",
+            "Sichere Kinderspielplätze",
+            "Fußgänger- und Radwege",
+            "Familiäre Begegnungsbereiche"
+          ]
+        },
+        "investment": {
+          "title": "Intelligente Investition",
+          "description": "Die Zone zeigt ein nachhaltiges Wachstum von 15% jährlich bei der Wertsteigerung. Ihre Investition gibt Ihnen nicht nur ein Zuhause, sondern auch ein solides Vermögen für die Zukunft Ihrer Familie.",
+          "features": [
+            "15% jährliches Durchschnittswachstum",
+            "Zone mit hoher Wertsteigerung",
+            "Finanzierungsmöglichkeiten",
+            "Sofortige Eigentumsurkunde"
+          ]
+        }
+      }
+    },
+    "loteamiento_cta": {
+      "title": "Erkunden Sie unsere Wohngebiete mit totaler Präzision",
+      "description": "Entdecken Sie jedes verfügbare Grundstück mit unserer hochpräzisen interaktiven Karte. Sehen Sie genaue Abmessungen, spezifische Lage und alle Eigenschaften, die Sie für die beste Entscheidung benötigen.",
+      "features": [
+        "Hochauflösende interaktive Karten",
+        "Genaue Abmessungen jedes Grundstücks",
+        "Echtzeit-Satellitenbild",
+        "Aktualisierter Verfügbarkeitsstatus"
+      ],
+      "cta": "Interaktive Karte anzeigen",
+      "note": "Erkunden Sie alle unsere verfügbaren Projekte"
+    },
+    "about_us": {
+      "title": "Über uns",
+      "subtitle": "Mehr als ein Jahrzehnt der Schaffung prosperierender und nachhaltiger Gemeinschaften",
+      "story": {
+        "title": "Unsere Geschichte",
+        "description1": "Seit 2010 widmet sich Immobilien Mega Projekte der Entwicklung von Gemeinschaften, die technologische Innovation mit Umweltverantwortung verbinden. Wir glauben, dass jede Familie einen Ort verdient, wo ihre Träume gedeihen können.",
+        "description2": "Unser Ansatz geht über den einfachen Verkauf von Grundstücken hinaus: Wir schaffen integrierte Lebensräume, in denen Qualität, Nachhaltigkeit und Wohlbefinden zusammenkommen, um wirklich besondere Gemeinschaften zu bilden."
+      },
+      "values": {
+        "title": "Unsere Werte",
+        "transparency": {
+          "title": "Transparenz",
+          "text": "Klare und präzise Informationen in jeder Phase des Prozesses"
+        },
+        "sustainability": {
+          "title": "Nachhaltigkeit",
+          "text": "Entwicklungen, die die natürliche Umgebung respektieren und verbessern"
+        },
+        "innovation": {
+          "title": "Innovation",
+          "text": "Spitzentechnologie für ein überlegenes Erlebnis"
+        },
+        "commitment": {
+          "title": "Engagement",
+          "text": "Wir begleiten unsere Kunden bei jedem Schritt"
+        }
+      },
+      "stats": {
+        "title": "Unsere Erfahrung",
+        "years": "15+",
+        "years_label": "Jahre Erfahrung",
+        "families": "2.500+",
+        "families_label": "Begünstigte Familien",
+        "projects": "25",
+        "projects_label": "Abgeschlossene Projekte",
+        "satisfaction": "98%",
+        "satisfaction_label": "Kundenzufriedenheit"
+      }
+    },
+    "footer": {
+      "brand_title": "IMMOBILIEN MEGA PROJEKTE",
+      "brand_description": "Seit 2010 schaffen wir prosperierende und nachhaltige Gemeinschaften. Ihr perfektes Zuhause wartet auf Sie.",
+      "navigation_title": "Navigation",
+      "contact_title": "Kontakt",
+      "address": "Hauptstraße 1234\nStadt, Staat 12345",
+      "phone": "+52 (555) 555-1234",
+      "email": "info@megaproyectos.com",
+      "hours": "Mo - Fr: 9:00 - 18:00 Uhr\nSa: 9:00 - 14:00 Uhr",
+      "actions_title": "Bereit anzufangen?",
+      "view_lots_cta": "Wohngebiete ansehen",
+      "call_now_cta": "Jetzt anrufen",
+      "copyright": "© 2025 Immobilien Mega Projekte. Alle Rechte vorbehalten.",
+      "legal": {
+        "terms": "Nutzungsbedingungen",
+        "privacy": "Datenschutzrichtlinie",
+        "legal": "Rechtliche Hinweise"
+      },
+      "attribution": "Entwickelt mit hochpräziser Kartentechnologie",
+      "social": {
+        "facebook": "Facebook",
+        "instagram": "Instagram",
+        "whatsapp": "WhatsApp"
+      }
+    },
+    "carousel": {
+      "prev_aria": "Vorherigen Grund anzeigen",
+      "next_aria": "Nächsten Grund anzeigen",
+      "reason1_aria": "Zu Grund 1 gehen: Strategische Lage",
+      "reason2_aria": "Zu Grund 2 gehen: Vollständige Infrastruktur",
+      "reason3_aria": "Zu Grund 3 gehen: Überlegene Lebensqualität",
+      "reason4_aria": "Zu Grund 4 gehen: Intelligente Investition"
+    },
+    "image_alts": {
+      "hero": "Panoramablick auf nachhaltige Immobilienentwicklung mit modernen Häusern und Grünflächen",
+      "location": "Luftaufnahme zeigt strategische Lage in der Nähe von Einkaufszentren, Schulen und Krankenhäusern",
+      "infrastructure": "Moderne Infrastruktur mit gepflasterten Straßen, Beleuchtung und vollständigen Dienstleistungen",
+      "lifestyle": "Familie genießt Grünflächen und Erholungsräume in der Entwicklung",
+      "investment": "Grafik des Immobilienwachstums und Wertsteigerung von Grundstücken in der Zone",
+      "map_preview": "Vorschau der interaktiven Karte zeigt verfügbare Grundstücke mit verschiedenen Farben je nach Verfügbarkeit",
+      "team": "Professionelles Team von Immobilien Mega Projekte arbeitet im modernen Büro"
+    },
+    "aria_labels": {
+      "main_nav": "Hauptnavigation",
+      "main_section": "Hauptbereich",
+      "why_live_section": "Warum hier leben",
+      "loteamiento_section": "Wohngebietsbereich",
+      "about_section": "Über uns",
+      "carousel": "Karussell der Gründe hier zu leben",
+      "carousel_indicators": "Grund-Indikatoren",
+      "footer_nav": "Fußzeilen-Navigationslinks"
+    }
+  }
+}
