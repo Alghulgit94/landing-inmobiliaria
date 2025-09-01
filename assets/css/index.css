@@ -1,5 +1,8 @@
 /* 
  * Index Page Styles - Inmobiliaria Mega Proyectos
+ * Google Fonts: Inter (Professional alternative to Avenir LT Std)
+ * Typography: 3 weights - 400 (Regular), 500 (Medium), 700 (Bold)
+ * 
  * Color Palette:
  * Primary Dark: #1A1A1A
  * White: #FFFFFF  
@@ -13,6 +16,9 @@
  * Dark Gray: #222121
  */
 
+/* Google Fonts Import - Inter (3 weights: 400, 500, 700) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
 :root {
   --color-primary-dark: #1A1A1A;
   --color-white: #FFFFFF;
@@ -25,11 +31,33 @@
   --color-dark-blue: #122223;
   --color-dark-gray: #222121;
   
-  /* Typography */
-  --font-family-primary: 'Arial', 'Helvetica', sans-serif;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
+  /* Typography - Google Fonts Inter */
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-weight-normal: 400;    /* Regular - for paragraphs and body text */
+  --font-weight-medium: 500;    /* Medium - for subtitles and emphasis */
+  --font-weight-bold: 700;      /* Bold - for titles and headings */
+  
+  /* Typography Scale - Modern responsive typography */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 1.875rem;    /* 30px */
+  --font-size-4xl: 2.25rem;     /* 36px */
+  --font-size-5xl: 3rem;        /* 48px */
+  
+  /* Line Heights - Optimized for readability */
+  --line-height-tight: 1.25;    /* For large headings */
+  --line-height-snug: 1.375;    /* For smaller headings */
+  --line-height-normal: 1.5;    /* For body text */
+  --line-height-relaxed: 1.625; /* For large body text */
+  
+  /* Letter Spacing - Subtle adjustments for elegance */
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
   
   /* Spacing */
   --spacing-xs: 0.5rem;
@@ -68,33 +96,258 @@ html {
 
 body {
   font-family: var(--font-family-primary);
-  line-height: 1.6;
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--color-primary-dark);
   background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Typography */
-h1, h2, h3, h4, h5, h6 {
+/* ===========================
+   TYPOGRAPHY SYSTEM - REAL ESTATE
+   ========================== */
+
+/* 1. TITLES (Main Headings - h1, h2, Hero Titles) */
+h1, h2, .hero__title, .section__title {
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
-  line-height: 1.2;
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  margin-bottom: var(--spacing-md);
+  color: var(--color-primary-dark);
+}
+
+h1 { 
+  font-size: var(--font-size-5xl); /* 48px */
+}
+
+h2 { 
+  font-size: var(--font-size-4xl); /* 36px */
+}
+
+.hero__title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--color-white);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.section__title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-green-primary);
+  text-align: center;
+}
+
+/* 2. SUBTITLES (Secondary Headings - h3, h4, Section Subtitles) */
+h3, h4, .hero__subtitle, .section__subtitle, .about-story__title, .about-values__title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
   margin-bottom: var(--spacing-sm);
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h3 { 
+  font-size: var(--font-size-3xl); /* 30px */
+  color: var(--color-primary-dark);
+}
 
-p {
+h4 { 
+  font-size: var(--font-size-2xl); /* 24px */
+  color: var(--color-primary-dark);
+}
+
+.hero__subtitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-white);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.section__subtitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-dark-gray);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 3. PARAGRAPHS (Body Text, Descriptions) */
+p, .hero__description, .about-story__description, .loteamiento-cta__description {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  color: var(--color-primary-dark);
   margin-bottom: var(--spacing-sm);
 }
 
+.hero__description {
+  color: var(--color-white);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+}
+
+.about-story__description, .loteamiento-cta__description {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-dark-gray);
+}
+
+/* Lead Paragraph Variant */
 .lead {
-  font-size: 1.25rem;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-dark-gray);
+}
+
+/* 4. HYPERLINKS (Navigation, Footer Links) */
+a, .main-nav a, .footer__link, .social-link {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  letter-spacing: var(--letter-spacing-normal);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.main-nav a {
+  color: var(--color-primary-dark);
+  font-weight: var(--font-weight-medium);
+}
+
+.main-nav a:hover {
+  color: var(--color-green-primary);
+}
+
+.footer__link {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: var(--font-weight-normal);
+}
+
+.footer__link:hover {
+  color: var(--color-gold-accent);
+}
+
+/* 5. CTAs (Call-to-Action Buttons) */
+.btn-primary, .btn-outline, .hero__cta, .loteamiento-cta__button, .main-nav .cta {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.btn-primary, .hero__cta {
+  background-color: var(--color-green-primary);
+  color: var(--color-white);
+  border-color: var(--color-green-primary);
+}
+
+.btn-primary:hover, .hero__cta:hover {
+  background-color: var(--color-dark-blue);
+  border-color: var(--color-dark-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.loteamiento-cta__button {
+  background-color: var(--color-gold-accent);
+  color: var(--color-primary-dark);
+  border-color: var(--color-gold-accent);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-md) var(--spacing-xl);
+}
+
+.main-nav .cta {
+  background-color: var(--color-red-accent);
+  color: var(--color-white);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
+}
+
+/* ===========================
+   SPECIALIZED TYPOGRAPHY
+   ========================== */
+
+/* Brand Typography */
+.brand, .footer__brand-title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-green-primary);
+}
+
+.footer__brand-title {
+  color: var(--color-white);
+  font-size: var(--font-size-xl);
+}
+
+/* Card Typography */
+.reason-card__title, .value-item__title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-2xl);
+  color: var(--color-green-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.reason-card__description, .value-item__text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-dark-gray);
+}
+
+/* Statistics Typography */
+.stat-item__number {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-4xl);
+  line-height: var(--line-height-tight);
+  color: var(--color-gold-accent);
+}
+
+.stat-item__label {
+  font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   color: var(--color-dark-gray);
+}
+
+/* Feature List Typography */
+.feature-item__text, .reason-card__features li {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-base);
+  color: var(--color-dark-gray);
+}
+
+/* Footer Section Titles */
+.footer__section-title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  color: var(--color-gold-accent);
+  margin-bottom: var(--spacing-md);
 }
 
 /* Container */
@@ -104,36 +357,11 @@ p {
   padding: 0 var(--spacing-md);
 }
 
-/* Buttons */
-.btn-primary {
-  display: inline-block;
-  background-color: var(--color-green-primary);
-  color: var(--color-white);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  font-weight: var(--font-weight-medium);
-  transition: var(--transition-normal);
-  border: 2px solid var(--color-green-primary);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-dark-blue);
-  border-color: var(--color-dark-blue);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
+/* Buttons - Base styles now handled in Typography section */
 .btn-outline {
-  display: inline-block;
   background-color: transparent;
   color: var(--color-green-primary);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  font-weight: var(--font-weight-medium);
-  transition: var(--transition-normal);
-  border: 2px solid var(--color-green-primary);
+  border-color: var(--color-green-primary);
 }
 
 .btn-outline:hover {
@@ -160,12 +388,7 @@ p {
 }
 
 
-.brand {
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-green-primary);
-  margin: 0;
-}
+/* Brand styling now handled in Typography section */
 
 .main-nav {
   display: flex;
@@ -173,23 +396,18 @@ p {
 }
 
 .main-nav a {
-  text-decoration: none;
-  color: var(--color-primary-dark);
-  font-weight: var(--font-weight-medium);
-  transition: var(--transition-fast);
+  /* Base typography handled in Typography section */
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
 }
 
 .main-nav a:hover {
-  color: var(--color-green-primary);
+  /* Color handled in Typography section */
   background-color: var(--color-light-gray);
 }
 
 .main-nav .cta {
-  background-color: var(--color-red-accent);
-  color: var(--color-white);
-  padding: var(--spacing-xs) var(--spacing-md);
+  /* Base typography and styling handled in Typography section */
   border-radius: var(--radius-md);
 }
 
@@ -346,23 +564,13 @@ p {
   width: 100%;
 }
 
-.hero__title {
-  font-size: 3rem;
-  color: var(--color-white);
-  margin-bottom: var(--spacing-md);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
+/* Hero text styles now handled in Typography section */
 .hero__subtitle {
   margin-bottom: var(--spacing-md);
-  color: var(--color-white);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero__description {
-  color: var(--color-white);
   margin-bottom: var(--spacing-lg);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .hero__actions {
@@ -370,16 +578,13 @@ p {
 }
 
 .hero__cta {
-  font-size: 1.125rem;
-  padding: var(--spacing-md) var(--spacing-xl);
+  /* Typography handled in Typography section */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
 }
 
 .hero__cta:hover {
-  transform: translateY(-2px);
+  /* Base hover handled in Typography section */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
 }
 
 /* Why Live Here Section */
@@ -436,14 +641,11 @@ p {
   flex: 1;
 }
 
-.reason-card__title {
-  color: var(--color-green-primary);
-  margin-bottom: var(--spacing-md);
-}
+/* Reason card title styling handled in Typography section */
 
 .reason-card__description {
   margin-bottom: var(--spacing-md);
-  color: var(--color-dark-gray);
+  /* Color and typography handled in Typography section */
 }
 
 .reason-card__features {
@@ -835,8 +1037,38 @@ p {
   font-size: 0.875rem;
 }
 
-/* Responsive Design */
+/* ===========================
+   RESPONSIVE TYPOGRAPHY
+   ========================== */
+
+/* Tablet Breakpoint (768px and below) */
 @media (max-width: 768px) {
+  /* Typography Adjustments */
+  .hero__title {
+    font-size: var(--font-size-4xl); /* 36px -> smaller on tablet */
+  }
+  
+  .section__title {
+    font-size: var(--font-size-3xl); /* 30px -> smaller on tablet */
+  }
+  
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .brand {
+    font-size: var(--font-size-xl);
+  }
+  
+  /* Layout Adjustments */
   .header-inner {
     flex-direction: column;
     gap: var(--spacing-md);
@@ -866,10 +1098,6 @@ p {
   
   .hero {
     min-height: 70vh;
-  }
-  
-  .hero__title {
-    font-size: 2.25rem;
   }
   
   .hero__content {
@@ -920,7 +1148,64 @@ p {
   }
 }
 
+/* Mobile Breakpoint (480px and below) */
 @media (max-width: 480px) {
+  /* Typography Adjustments for Mobile */
+  .hero__title {
+    font-size: var(--font-size-3xl); /* 30px -> smaller on mobile */
+  }
+  
+  .section__title {
+    font-size: var(--font-size-2xl); /* 24px -> smaller on mobile */
+  }
+  
+  h1 {
+    font-size: var(--font-size-3xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  h3 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .hero__subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero__description {
+    font-size: var(--font-size-base);
+  }
+  
+  .section__subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .brand {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero__cta, .btn-primary {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+  
+  .main-nav a {
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+  }
+  
+  .reason-card__title {
+    font-size: var(--font-size-xl);
+  }
+  
+  .stat-item__number {
+    font-size: var(--font-size-3xl);
+  }
+  
+  /* Layout Adjustments */
   .container {
     padding: 0 var(--spacing-sm);
   }
@@ -934,25 +1219,11 @@ p {
     min-height: 60vh;
   }
   
-  .hero__title {
-    font-size: 2rem;
-  }
-  
-  .hero__cta {
-    font-size: 1rem;
-    padding: var(--spacing-sm) var(--spacing-lg);
-  }
-  
   .reasons-carousel__nav {
     display: none;
   }
   
   .main-nav {
     gap: var(--spacing-sm);
-  }
-  
-  .main-nav a {
-    padding: var(--spacing-xs);
-    font-size: 0.875rem;
   }
 }
