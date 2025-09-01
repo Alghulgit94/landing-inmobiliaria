@@ -45,3 +45,6 @@ coverage/
 # backend files
 
 /backend/
+
+# videos files
+/videos/
