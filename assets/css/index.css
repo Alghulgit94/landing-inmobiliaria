@@ -60,7 +60,7 @@
   --letter-spacing-wide: 0.025em;
   
   /* Spacing */
-  --spacing-xs: 0.5rem;
+  --spacing-xs: 0.3rem;
   --spacing-sm: 1rem;
   --spacing-md: 1.5rem;
   --spacing-lg: 2rem;
@@ -371,7 +371,10 @@ a, .main-nav a, .footer__link, .social-link {
   box-shadow: var(--shadow-md);
 }
 
-/* Header */
+/* ===========================
+   HEADER - CLEAN FLEXBOX LAYOUT
+   ========================== */
+
 .site-header {
   background-color: var(--color-white);
   box-shadow: var(--shadow-sm);
@@ -381,90 +384,210 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 .header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Maximum spacing between sections */
   align-items: center;
-  padding: var(--spacing-md) 0;
+  padding: var(--spacing-xs) var(--spacing-xs);
+  min-height: 60px;
 }
 
+/* LEFT Section - Brand/Logo */
+.header-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; /* Prevent shrinking */
+}
 
-/* Brand styling now handled in Typography section */
+.header-left .brand {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Brand Logo Styles */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.brand-logo:hover {
+  transform: translateY(-1px);
+}
+
+.brand-logo .logo {
+  height: 35px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  transition: var(--transition-fast);
+}
+
+.brand-logo:hover .logo {
+  filter: drop-shadow(0 2px 4px rgba(31, 75, 67, 0.15));
+}
+
+.brand-logo:hover .brand-text__mega,
+.brand-logo:hover .brand-text__proyectos {
+  color: var(--color-dark-blue);
+  text-shadow: 0 1px 2px rgba(31, 75, 67, 0.1);
+}
+
+/* Brand Text Styles */
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.brand-text__mega {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  color: var(--color-green-primary);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+.brand-text__proyectos {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-xs);
+  color: var(--color-green-primary);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+/* CENTER Section - Main Navigation */
+.header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Takes available space, stays centered */
+  max-width: 500px; /* Prevent nav from being too wide */
+}
 
 .main-nav {
   display: flex;
   gap: var(--spacing-lg);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
 .main-nav a {
-  /* Base typography handled in Typography section */
   padding: var(--spacing-xs) var(--spacing-sm);
   border-radius: var(--radius-sm);
+  white-space: nowrap;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  transition: var(--transition-fast);
 }
 
 .main-nav a:hover {
-  /* Color handled in Typography section */
   background-color: var(--color-light-gray);
-}
-
-.main-nav .cta {
-  /* Base typography and styling handled in Typography section */
-  border-radius: var(--radius-md);
-}
-
-.main-nav .cta:hover {
-  background-color: var(--color-green-primary);
-  color: var(--color-white);
   transform: translateY(-1px);
+}
+
+/* RIGHT Section - CTA + Language Selector */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* CTA Button in Header */
+.header-right .cta {
+  background-color: var(--color-red-accent);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border: 2px solid var(--color-red-accent);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  transition: var(--transition-normal);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.header-right .cta:hover {
+  background-color: var(--color-green-primary);
+  border-color: var(--color-green-primary);
+  color: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Language Selector */
 .language-selector-wrapper {
   position: relative;
-  display: inline-block;
-  margin: 0 var(--spacing-sm);
+  display: flex;
+  align-items: center;
 }
 
 .language-selector {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-color: transparent;
+  background-color: var(--color-white);
   border: 2px solid var(--color-light-gray);
   border-radius: var(--radius-md);
   padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-xs) var(--spacing-sm);
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: inherit;
+  font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: var(--transition-fast);
-  min-width: 60px;
+  min-width: 55px;
   text-align: center;
   color: var(--color-primary-dark);
   background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
   background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 8px;
+  background-position: right 6px center;
+  background-size: 6px;
+  box-shadow: var(--shadow-sm);
 }
 
 .language-selector:hover {
   border-color: var(--color-green-primary);
   background-color: var(--color-light-gray);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .language-selector:focus {
   outline: none;
   border-color: var(--color-green-primary);
-  box-shadow: 0 0 0 2px rgba(31, 75, 67, 0.1);
+  box-shadow: 0 0 0 3px rgba(31, 75, 67, 0.15);
 }
 
 .language-selector:active {
-  transform: translateY(1px);
+  transform: translateY(0);
 }
 
 .language-selector option {
   background-color: var(--color-white);
   color: var(--color-primary-dark);
   padding: var(--spacing-xs);
-  font-size: 1.1rem;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium);
 }
 
 .language-selector option:hover {
@@ -1068,26 +1191,67 @@ a, .main-nav a, .footer__link, .social-link {
     font-size: var(--font-size-xl);
   }
   
-  /* Layout Adjustments */
+  /* Header Layout Adjustments for Tablet */
   .header-inner {
-    flex-direction: column;
+    grid-template-columns: 1fr; /* Stack all sections vertically on tablet */
     gap: var(--spacing-md);
     text-align: center;
+    padding: var(--spacing-sm) 0; /* Consistent padding on tablet */
+    min-height: auto; /* Allow natural height based on stacked content */
+  }
+  
+  .header-left,
+  .header-center,
+  .header-right {
+    justify-content: center;
+  }
+  
+  .header-left .brand {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  /* Responsive Logo Adjustments for Tablet */
+  .brand-logo .logo {
+    height: 50px; /* Proportional size for tablet */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 100px; /* Prevent oversized logo on tablet */
+  }
+  
+  /* Responsive Brand Text for Tablet */
+  .brand-text__mega {
+    font-size: var(--font-size-base); /* 16px - slightly smaller on tablet */
+  }
+  
+  .brand-text__proyectos {
+    font-size: var(--font-size-sm); /* 14px - proportionally smaller */
   }
   
   .main-nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: var(--spacing-sm);
   }
   
-  .language-selector-wrapper {
-    margin: var(--spacing-xs) var(--spacing-sm);
+  .main-nav a {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .header-right {
+    justify-content: center;
+    gap: var(--spacing-sm);
   }
   
   .language-selector {
     min-width: 50px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+  }
+  
+  .header-right .cta {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
   }
   
   .loteamiento-cta__content,
@@ -1192,9 +1356,60 @@ a, .main-nav a, .footer__link, .social-link {
     padding: var(--spacing-sm) var(--spacing-lg);
   }
   
+  /* Header Mobile Adjustments */
+  .header-inner {
+    padding: var(--spacing-sm) 0; /* Consistent padding on mobile */
+    min-height: auto; /* Allow natural height based on smaller logo and stacked content */
+  }
+  
+  .header-left .brand {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  /* Responsive Logo Adjustments for Mobile */
+  .brand-logo .logo {
+    height: 40px; /* Compact size for mobile */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 80px; /* Prevent oversized logo on mobile */
+  }
+  
+  /* Responsive Brand Text for Mobile */
+  .brand-logo {
+    gap: calc(var(--spacing-sm) * 0.75); /* Smaller gap on mobile */
+  }
+  
+  .brand-text__mega {
+    font-size: var(--font-size-sm); /* 14px - compact for mobile */
+  }
+  
+  .brand-text__proyectos {
+    font-size: var(--font-size-xs); /* 12px - very compact for mobile */
+  }
+  
+  .main-nav {
+    gap: var(--spacing-xs);
+  }
+  
   .main-nav a {
     padding: var(--spacing-xs);
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
+  }
+  
+  .header-right {
+    gap: var(--spacing-xs);
+  }
+  
+  .language-selector {
+    min-width: 45px;
+    font-size: 0.8rem;
+    padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
+  }
+  
+  .header-right .cta {
+    font-size: var(--font-size-xs);
+    padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
+    letter-spacing: normal;
   }
   
   .reason-card__title {
