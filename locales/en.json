@@ -74,47 +74,47 @@
       "cta": "Explore residential areas"
     },
     "why_live_here": {
-      "title": "Why choose to live here?",
-      "subtitle": "Discover the 4 main reasons that make this place the best option for your new life",
+      "title": "Why choose to live in Colonia Independencia?",
+      "subtitle": "Discover the 4 main reasons that make Colonia Independencia the ideal place for your new life",
       "reasons": {
-        "location": {
-          "title": "Strategic Location",
-          "description": "Located minutes from shopping centers, quality schools, hospitals and main access roads. Everything you need is within reach of your family.",
+        "schools": {
+          "title": "Excellence in Education",
+          "description": "Access to exclusive German schools and top-level bilingual education. Your family will have unique educational opportunities in the region.",
           "features": [
-            "5 min from main shopping center",
-            "3 min from prestigious schools",
-            "8 min from regional hospital",
-            "Direct highway access"
+            "Exclusive German schools",
+            "Quality bilingual education",
+            "International programs",
+            "Prestigious public schools"
           ]
         },
-        "infrastructure": {
-          "title": "Complete Infrastructure",
-          "description": "Development with first-class infrastructure: paved streets, public lighting, drinking water, electricity and completely installed drainage system.",
+        "club": {
+          "title": "Private German Club",
+          "description": "Enjoy the prestigious German club with sports, cultural and educational facilities. Learn languages, sports, art and music in an exclusive environment.",
           "features": [
-            "Paved and signposted streets",
-            "Underground electrical system",
-            "Drinking water and drainage network",
-            "Fiber optic internet available"
+            "Complete sports facilities",
+            "Language classes (German, English)",
+            "Art and music workshops",
+            "Cultural activities"
           ]
         },
-        "lifestyle": {
-          "title": "Superior Quality of Life",
-          "description": "Spaces designed for the well-being of the whole family: green areas, playgrounds, walking paths and recreation areas that promote a healthy life in community.",
+        "tranquility": {
+          "title": "Peace and Space",
+          "description": "A serene place with ample land perfect for agro-industry and country living. Escape the city bustle without losing conveniences.",
           "features": [
-            "40% of area designated for green spaces",
-            "Safe children's playgrounds",
-            "Pedestrian and bike paths",
-            "Family gathering areas"
+            "Quiet and safe environment",
+            "Large lots available",
+            "Ideal for agro-industry",
+            "Country living with urban services"
           ]
         },
-        "investment": {
-          "title": "Smart Investment",
-          "description": "The area shows sustained growth of 15% annually in appreciation. Your investment will not only give you a home, but also a solid patrimony for your family's future.",
+        "connectivity": {
+          "title": "Strategic Connectivity",
+          "description": "Privileged location close to other important cities and shopping centers. The best of both worlds: tranquility and accessibility.",
           "features": [
-            "15% average annual growth",
-            "High appreciation zone",
-            "Financing facilities",
-            "Immediate title deed"
+            "Near shopping centers",
+            "Connection to major cities",
+            "Access to important highways",
+            "Nearby urban services"
           ]
         }
       }
@@ -205,10 +205,10 @@
     },
     "image_alts": {
       "hero": "Panoramic view of sustainable real estate development with modern houses and green areas",
-      "location": "Aerial view showing strategic location near shopping centers, schools and hospitals",
-      "infrastructure": "Modern infrastructure with paved streets, lighting and complete services",
-      "lifestyle": "Family enjoying green areas and recreational spaces in the development",
-      "investment": "Graph of real estate growth and land appreciation in the area",
+      "schools": "Students at German school in Colonia Independencia with excellent bilingual education",
+      "club": "Facilities of the private German club with sports, artistic and cultural areas",
+      "tranquility": "Serene landscape of Colonia Independencia with ample land and country environment",
+      "connectivity": "Map showing Colonia Independencia's connectivity with cities and shopping centers",
       "map_preview": "Preview of interactive map showing available lots with different colors according to availability",
       "team": "Professional team from Mega Projects Real Estate working in modern office"
     },

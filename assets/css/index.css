@@ -304,7 +304,7 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 /* Card Typography */
-.reason-card__title, .value-item__title {
+.reason-item__title, .value-item__title {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-2xl);
@@ -312,7 +312,7 @@ a, .main-nav a, .footer__link, .social-link {
   margin-bottom: var(--spacing-md);
 }
 
-.reason-card__description, .value-item__text {
+.reason-item__description, .value-item__text {
   font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
   color: var(--color-dark-gray);
@@ -334,7 +334,7 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 /* Feature List Typography */
-.feature-item__text, .reason-card__features li {
+.feature-item__text, .reason-item__features li {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-base);
@@ -715,80 +715,85 @@ a, .main-nav a, .footer__link, .social-link {
   background-color: var(--color-white);
 }
 
-.reasons-carousel {
-  position: relative;
-  max-width: 800px;
+/* Reasons Grid Layout */
+.reasons-grid {
+  max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xxl);
 }
 
-.reasons-carousel__container {
-  overflow: hidden;
+.reason-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  background-color: var(--color-white);
+  padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-}
-
-.reasons-carousel__track {
-  display: flex;
-  transition: transform var(--transition-slow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   will-change: transform;
 }
 
-/* GSAP Animation Enhancements */
-.gsap-carousel-card {
-  will-change: transform, opacity;
+.reason-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(26, 26, 26, 0.15);
 }
 
-.reason-card {
-  min-width: 100%;
-  background-color: var(--color-white);
-  padding: var(--spacing-xl);
-  display: flex;
-  gap: var(--spacing-lg);
-  align-items: center;
-  opacity: 0;
-  transition: opacity var(--transition-normal);
+.reason-item--reverse {
+  flex-direction: row-reverse;
 }
 
-.reason-card--active {
-  opacity: 1;
-}
-
-.reason-card__image-container {
-  flex: 0 0 300px;
-}
-
-.reason-card__image {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-}
-
-.reason-card__content {
+.reason-item__content {
   flex: 1;
+  padding-right: var(--spacing-lg);
 }
 
-/* Reason card title styling handled in Typography section */
+.reason-item--reverse .reason-item__content {
+  padding-right: 0;
+  padding-left: var(--spacing-lg);
+}
 
-.reason-card__description {
+.reason-item__image-container {
+  flex: 0 0 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.reason-item__image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.reason-item:hover .reason-item__image {
+  transform: scale(1.05);
+}
+
+.reason-item__title {
   margin-bottom: var(--spacing-md);
-  /* Color and typography handled in Typography section */
 }
 
-.reason-card__features {
+.reason-item__description {
+  margin-bottom: var(--spacing-md);
+}
+
+.reason-item__features {
   list-style: none;
   padding: 0;
 }
 
-.reason-card__features li {
+.reason-item__features li {
   position: relative;
   padding-left: var(--spacing-lg);
   margin-bottom: var(--spacing-xs);
   color: var(--color-dark-gray);
 }
 
-.reason-card__features li::before {
+.reason-item__features li::before {
   content: "✓";
   position: absolute;
   left: 0;
@@ -796,63 +801,17 @@ a, .main-nav a, .footer__link, .social-link {
   font-weight: var(--font-weight-bold);
 }
 
-/* Carousel Navigation */
-.reasons-carousel__nav {
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 50%;
-  left: -60px;
-  right: -60px;
-  transform: translateY(-50%);
+/* GSAP Animation Classes */
+.gsap-reason-item {
+  will-change: transform, opacity;
 }
 
-.carousel-btn {
-  width: 50px;
-  height: 50px;
-  border: none;
-  background-color: var(--color-white);
-  color: var(--color-green-primary);
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow-md);
-  transition: var(--transition-fast);
+.gsap-reason-content {
+  will-change: transform, opacity;
 }
 
-.carousel-btn:hover {
-  background-color: var(--color-green-primary);
-  color: var(--color-white);
-  transform: scale(1.1);
-}
-
-/* Carousel Indicators */
-.reasons-carousel__indicators {
-  display: flex;
-  justify-content: center;
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-lg);
-}
-
-.carousel-indicator {
-  width: 12px;
-  height: 12px;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--color-light-gray);
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.carousel-indicator--active {
-  background-color: var(--color-green-primary);
-}
-
-.carousel-indicator:hover {
-  background-color: var(--color-gold-accent);
+.gsap-reason-image {
+  will-change: transform, opacity, scale;
 }
 
 /* Loteamiento CTA Section */
@@ -1273,27 +1232,28 @@ a, .main-nav a, .footer__link, .social-link {
     padding: var(--spacing-lg) 0;
   }
   
-  .reason-card {
+  .reason-item,
+  .reason-item--reverse {
     flex-direction: column;
     text-align: center;
     padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
   }
   
-  .reason-card__image-container {
+  .reason-item__content,
+  .reason-item--reverse .reason-item__content {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  .reason-item__image-container {
     flex: none;
     width: 100%;
     max-width: 400px;
   }
   
-  .reasons-carousel__nav {
-    left: -40px;
-    right: -40px;
-  }
-  
-  .carousel-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1.25rem;
+  .reason-item__image {
+    height: 250px;
   }
   
   .values-grid,
@@ -1417,7 +1377,7 @@ a, .main-nav a, .footer__link, .social-link {
     letter-spacing: normal;
   }
   
-  .reason-card__title {
+  .reason-item__title {
     font-size: var(--font-size-xl);
   }
   
@@ -1439,8 +1399,13 @@ a, .main-nav a, .footer__link, .social-link {
     min-height: 60vh;
   }
   
-  .reasons-carousel__nav {
-    display: none;
+  /* Mobile specific reason item adjustments */
+  .reasons-grid {
+    gap: var(--spacing-xl);
+  }
+  
+  .reason-item {
+    padding: var(--spacing-md);
   }
   
   .main-nav {
@@ -1490,7 +1455,7 @@ a, .main-nav a, .footer__link, .social-link {
 /* Section animation initial states for scroll triggers */
 .section__title,
 .section__subtitle,
-.reasons-carousel,
+.reasons-grid,
 .loteamiento-cta__text,
 .loteamiento-cta__media,
 .feature-item,
@@ -1503,7 +1468,6 @@ a, .main-nav a, .footer__link, .social-link {
 /* Improved button hover states for GSAP */
 .btn-primary,
 .btn-outline,
-.carousel-btn,
 .social-link {
   transition: none; /* Let GSAP handle all transitions */
 }

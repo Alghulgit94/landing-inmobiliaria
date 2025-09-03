@@ -52,7 +52,7 @@
       // Initialize animations by section
       initHeaderAnimations();
       initHeroAnimations();
-      initCarouselAnimations();
+      initReasonsGridAnimations();
       initScrollTriggerAnimations();
       
       console.log('GSAP animations initialized successfully');
@@ -232,86 +232,66 @@
   }
 
   /**
-   * Enhanced Carousel Animations (replaces vanilla JS transitions)
+   * Reasons Grid Animations (replaces carousel animations)
    */
-  function initCarouselAnimations() {
+  function initReasonsGridAnimations() {
     if (prefersReducedMotion) return;
     
-    const track = document.getElementById('reasonsTrack');
-    const reasonCards = document.querySelectorAll('.reason-card');
-    const indicators = document.querySelectorAll('.carousel-indicator');
+    const reasonItems = document.querySelectorAll('.reason-item');
     
-    if (!track || reasonCards.length === 0) return;
+    if (reasonItems.length === 0) return;
     
-    // Enhanced transition function for carousel
-    window.animateCarouselTransition = function(fromIndex, toIndex) {
-      const fromCard = reasonCards[fromIndex];
-      const toCard = reasonCards[toIndex];
-      const fromIndicator = indicators[fromIndex];
-      const toIndicator = indicators[toIndex];
+    // Set up hover animations for each reason item
+    reasonItems.forEach((item, index) => {
+      const content = item.querySelector('.reason-item__content');
+      const image = item.querySelector('.reason-item__image');
+      const features = item.querySelectorAll('.reason-item__features li');
       
-      if (!fromCard || !toCard) return;
-      
-      // Create transition timeline
-      const transitionTimeline = gsap.timeline();
-      
-      // Animate out current card
-      transitionTimeline
-        .to(fromCard, {
-          x: fromIndex < toIndex ? -100 : 100,
-          opacity: 0,
-          duration: ANIMATION_CONFIG.fast,
-          ease: ANIMATION_CONFIG.ease.slide
-        })
-        .set(fromCard, {
-          className: 'reason-card'
-        })
-        .set(fromIndicator, {
-          className: 'carousel-indicator'
-        }, 0);
-      
-      // Animate in new card
-      transitionTimeline
-        .set(toCard, {
-          x: fromIndex < toIndex ? 100 : -100,
-          opacity: 0,
-          className: 'reason-card reason-card--active'
-        })
-        .set(toIndicator, {
-          className: 'carousel-indicator carousel-indicator--active'
-        })
-        .to(toCard, {
-          x: 0,
-          opacity: 1,
-          duration: ANIMATION_CONFIG.fast,
-          ease: ANIMATION_CONFIG.ease.slide
-        });
-      
-      return transitionTimeline;
-    };
-    
-    // Add indicator hover animations
-    indicators.forEach(indicator => {
-      indicator.addEventListener('mouseenter', () => {
+      // Hover enter animation
+      item.addEventListener('mouseenter', () => {
         if (!prefersReducedMotion) {
-          gsap.to(indicator, {
-            scale: 1.2,
+          gsap.to(image, {
+            scale: 1.05,
+            duration: ANIMATION_CONFIG.normal,
+            ease: ANIMATION_CONFIG.ease.smooth
+          });
+          
+          gsap.to(features, {
+            x: 5,
             duration: ANIMATION_CONFIG.fast,
+            stagger: ANIMATION_CONFIG.stagger.fast,
             ease: ANIMATION_CONFIG.ease.smooth
           });
         }
       });
       
-      indicator.addEventListener('mouseleave', () => {
+      // Hover leave animation
+      item.addEventListener('mouseleave', () => {
         if (!prefersReducedMotion) {
-          gsap.to(indicator, {
+          gsap.to(image, {
             scale: 1,
+            duration: ANIMATION_CONFIG.normal,
+            ease: ANIMATION_CONFIG.ease.smooth
+          });
+          
+          gsap.to(features, {
+            x: 0,
             duration: ANIMATION_CONFIG.fast,
+            stagger: ANIMATION_CONFIG.stagger.fast,
             ease: ANIMATION_CONFIG.ease.smooth
           });
         }
       });
     });
+    
+    // Keep the carousel transition function for backward compatibility
+    // (in case other parts of the code still reference it)
+    window.animateCarouselTransition = function(fromIndex, toIndex) {
+      // Return a dummy timeline for compatibility
+      const dummyTimeline = gsap.timeline();
+      dummyTimeline.set({}, {duration: 0.01});
+      return dummyTimeline;
+    };
   }
 
   /**
@@ -325,13 +305,21 @@
     if (whyLiveSection) {
       const sectionTitle = whyLiveSection.querySelector('.section__title');
       const sectionSubtitle = whyLiveSection.querySelector('.section__subtitle');
-      const carousel = whyLiveSection.querySelector('.reasons-carousel');
+      const reasonsGrid = whyLiveSection.querySelector('.reasons-grid');
       
-      gsap.set([sectionTitle, sectionSubtitle, carousel], {
+      const reasonItems = whyLiveSection.querySelectorAll('.reason-item');
+      
+      gsap.set([sectionTitle, sectionSubtitle], {
         y: 50,
         opacity: 0
       });
       
+      gsap.set(reasonItems, {
+        y: 80,
+        opacity: 0
+      });
+      
+      // Animate section header
       gsap.to([sectionTitle, sectionSubtitle], {
         y: 0,
         opacity: 1,
@@ -346,16 +334,53 @@
         }
       });
       
-      gsap.to(carousel, {
-        y: 0,
-        opacity: 1,
-        duration: ANIMATION_CONFIG.normal,
-        ease: ANIMATION_CONFIG.ease.slide,
-        scrollTrigger: {
-          trigger: carousel,
-          start: "top 85%",
-          toggleActions: "play none none reverse"
-        }
+      // Animate each reason item with stagger effect
+      reasonItems.forEach((item, index) => {
+        const content = item.querySelector('.reason-item__content');
+        const image = item.querySelector('.reason-item__image');
+        const features = item.querySelectorAll('.reason-item__features li');
+        
+        // Set initial states for item elements
+        gsap.set(content, { x: item.classList.contains('reason-item--reverse') ? 50 : -50, opacity: 0 });
+        gsap.set(image, { x: item.classList.contains('reason-item--reverse') ? -50 : 50, opacity: 0, scale: 0.9 });
+        gsap.set(features, { y: 20, opacity: 0 });
+        
+        // Create timeline for this reason item
+        const itemTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: item,
+            start: "top 85%",
+            toggleActions: "play none none reverse"
+          }
+        });
+        
+        itemTimeline
+          .to(item, {
+            y: 0,
+            opacity: 1,
+            duration: ANIMATION_CONFIG.normal,
+            ease: ANIMATION_CONFIG.ease.slide
+          })
+          .to(content, {
+            x: 0,
+            opacity: 1,
+            duration: ANIMATION_CONFIG.normal,
+            ease: ANIMATION_CONFIG.ease.slide
+          }, "-=0.5")
+          .to(image, {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: ANIMATION_CONFIG.normal,
+            ease: ANIMATION_CONFIG.ease.slide
+          }, "-=0.4")
+          .to(features, {
+            y: 0,
+            opacity: 1,
+            duration: ANIMATION_CONFIG.fast,
+            stagger: ANIMATION_CONFIG.stagger.fast,
+            ease: ANIMATION_CONFIG.ease.smooth
+          }, "-=0.2");
       });
     }
     

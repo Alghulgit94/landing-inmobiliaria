@@ -74,47 +74,47 @@
       "cta": "Explorar loteamientos"
     },
     "why_live_here": {
-      "title": "¿Por qué elegir vivir aquí?",
-      "subtitle": "Descubre las 4 razones principales que hacen de este lugar la mejor opción para tu nueva vida",
+      "title": "¿Por qué elegir vivir en Colonia Independencia?",
+      "subtitle": "Descubre las 4 razones principales que hacen de Colonia Independencia el lugar ideal para tu nueva vida",
       "reasons": {
-        "location": {
-          "title": "Ubicación Estratégica",
-          "description": "Ubicado a minutos de centros comerciales, escuelas de calidad, hospitales y principales vías de acceso. Todo lo que necesitas está al alcance de tu familia.",
+        "schools": {
+          "title": "Educación de Excelencia",
+          "description": "Acceso a colegios alemanes exclusivos y educación bilingüe de primer nivel. Tu familia tendrá oportunidades educativas únicas en la región.",
           "features": [
-            "5 min del centro comercial principal",
-            "3 min de colegios de prestigio",
-            "8 min del hospital regional",
-            "Acceso directo a autopista"
+            "Colegios alemanes exclusivos",
+            "Educación bilingüe de calidad",
+            "Programas internacionales",
+            "Escuelas públicas de prestigio"
           ]
         },
-        "infrastructure": {
-          "title": "Infraestructura Completa",
-          "description": "Desarrollo con infraestructura de primer nivel: calles pavimentadas, alumbrado público, agua potable, electricidad y sistema de drenaje completamente instalados.",
+        "club": {
+          "title": "Club Alemán Privado",
+          "description": "Disfruta del prestigioso club alemán con instalaciones deportivas, culturales y educativas. Aprende idiomas, deportes, arte y música en un ambiente exclusivo.",
           "features": [
-            "Calles pavimentadas y señalizadas",
-            "Sistema eléctrico subterráneo",
-            "Red de agua potable y drenaje",
-            "Internet fibra óptica disponible"
+            "Instalaciones deportivas completas",
+            "Clases de idiomas (alemán, inglés)",
+            "Talleres de arte y música",
+            "Actividades culturales"
           ]
         },
-        "lifestyle": {
-          "title": "Calidad de Vida Superior",
-          "description": "Espacios diseñados para el bienestar de toda la familia: áreas verdes, parques infantiles, senderos para caminar y zonas de recreación que fomentan una vida saludable y en comunidad.",
+        "tranquility": {
+          "title": "Tranquilidad y Espacio",
+          "description": "Un lugar sereno con amplios terrenos perfectos para agroindustria y vida campestre. Escapa del bullicio de la ciudad sin perder comodidades.",
           "features": [
-            "40% del área destinada a espacios verdes",
-            "Parques infantiles seguros",
-            "Senderos peatonales y ciclovías",
-            "Áreas de convivencia familiar"
+            "Ambiente tranquilo y seguro",
+            "Terrenos amplios disponibles",
+            "Ideal para agroindustria",
+            "Vida campestre con servicios urbanos"
           ]
         },
-        "investment": {
-          "title": "Inversión Inteligente",
-          "description": "La zona presenta un crecimiento sostenido del 15% anual en valorización. Tu inversión no solo te dará un hogar, sino también un patrimonio sólido para el futuro de tu familia.",
+        "connectivity": {
+          "title": "Conectividad Estratégica",
+          "description": "Ubicación privilegiada cerca de otras ciudades importantes y centros comerciales. Lo mejor de ambos mundos: tranquilidad y accesibilidad.",
           "features": [
-            "15% crecimiento anual promedio",
-            "Zona de alta plusvalía",
-            "Facilidades de financiamiento",
-            "Escrituración inmediata"
+            "Cerca de centros comerciales",
+            "Conexión con ciudades principales",
+            "Acceso a carreteras importantes",
+            "Servicios urbanos cercanos"
           ]
         }
       }
@@ -205,10 +205,10 @@
     },
     "image_alts": {
       "hero": "Vista panorámica de desarrollo inmobiliario sustentable con casas modernas y áreas verdes",
-      "location": "Vista aérea mostrando ubicación estratégica cerca de centros comerciales, escuelas y hospitales",
-      "infrastructure": "Infraestructura moderna con calles pavimentadas, alumbrado y servicios completos",
-      "lifestyle": "Familia disfrutando de áreas verdes y espacios recreativos en el desarrollo",
-      "investment": "Gráfico de crecimiento inmobiliario y valorización de terrenos en la zona",
+      "schools": "Estudiantes en colegio alemán de Colonia Independencia con educación bilingüe de excelencia",
+      "club": "Instalaciones del club alemán privado con áreas deportivas, artísticas y culturales",
+      "tranquility": "Paisaje sereno de Colonia Independencia con amplios terrenos y ambiente campestre",
+      "connectivity": "Mapa mostrando la conectividad de Colonia Independencia con ciudades y centros comerciales",
       "map_preview": "Vista previa del mapa interactivo mostrando lotes disponibles con diferentes colores según disponibilidad",
       "team": "Equipo profesional de Inmobiliaria Mega Proyectos trabajando en oficina moderna"
     },

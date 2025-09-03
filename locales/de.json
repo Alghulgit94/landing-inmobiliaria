@@ -74,47 +74,47 @@
       "cta": "Wohngebiete erkunden"
     },
     "why_live_here": {
-      "title": "Warum sich für das Leben hier entscheiden?",
-      "subtitle": "Entdecken Sie die 4 Hauptgründe, die diesen Ort zur besten Option für Ihr neues Leben machen",
+      "title": "Warum sich für das Leben in Colonia Independencia entscheiden?",
+      "subtitle": "Entdecken Sie die 4 Hauptgründe, die Colonia Independencia zum idealen Ort für Ihr neues Leben machen",
       "reasons": {
-        "location": {
-          "title": "Strategische Lage",
-          "description": "Nur wenige Minuten von Einkaufszentren, Qualitätsschulen, Krankenhäusern und Hauptverkehrswegen entfernt. Alles was Sie brauchen ist in Reichweite Ihrer Familie.",
+        "schools": {
+          "title": "Exzellenz in der Bildung",
+          "description": "Zugang zu exklusiven deutschen Schulen und zweisprachiger Bildung auf höchstem Niveau. Ihre Familie wird einzigartige Bildungsmöglichkeiten in der Region haben.",
           "features": [
-            "5 Min. zum Haupteinkaufszentrum",
-            "3 Min. zu Prestigeschulen",
-            "8 Min. zum Regionalkrankenhaus",
-            "Direkter Autobahnzugang"
+            "Exklusive deutsche Schulen",
+            "Qualitätszweisprachige Bildung",
+            "Internationale Programme",
+            "Renommierte öffentliche Schulen"
           ]
         },
-        "infrastructure": {
-          "title": "Vollständige Infrastruktur",
-          "description": "Entwicklung mit erstklassiger Infrastruktur: gepflasterte Straßen, öffentliche Beleuchtung, Trinkwasser, Strom und vollständig installiertes Abwassersystem.",
+        "club": {
+          "title": "Privater Deutscher Club",
+          "description": "Genießen Sie den prestigeträchtigen deutschen Club mit Sport-, Kultur- und Bildungseinrichtungen. Lernen Sie Sprachen, Sport, Kunst und Musik in exklusiver Atmosphäre.",
           "features": [
-            "Gepflasterte und beschilderte Straßen",
-            "Unterirdisches Stromsystem",
-            "Trinkwasser- und Abwassernetz",
-            "Glasfaser-Internet verfügbar"
+            "Vollständige Sportanlagen",
+            "Sprachkurse (Deutsch, Englisch)",
+            "Kunst- und Musikworkshops",
+            "Kulturelle Aktivitäten"
           ]
         },
-        "lifestyle": {
-          "title": "Überlegene Lebensqualität",
-          "description": "Räume, die für das Wohlbefinden der ganzen Familie konzipiert sind: Grünflächen, Spielplätze, Wanderwege und Erholungszonen, die ein gesundes Leben in der Gemeinschaft fördern.",
+        "tranquility": {
+          "title": "Ruhe und Raum",
+          "description": "Ein ruhiger Ort mit weitläufigen Grundstücken, perfekt für Agroindustrie und Ländliches Leben. Entfliehen Sie dem Stadttrubel ohne Komfort zu verlieren.",
           "features": [
-            "40% der Fläche für Grünflächen bestimmt",
-            "Sichere Kinderspielplätze",
-            "Fußgänger- und Radwege",
-            "Familiäre Begegnungsbereiche"
+            "Ruhige und sichere Umgebung",
+            "Große Grundstücke verfügbar",
+            "Ideal für Agroindustrie",
+            "Ländliches Leben mit städtischen Diensten"
           ]
         },
-        "investment": {
-          "title": "Intelligente Investition",
-          "description": "Die Zone zeigt ein nachhaltiges Wachstum von 15% jährlich bei der Wertsteigerung. Ihre Investition gibt Ihnen nicht nur ein Zuhause, sondern auch ein solides Vermögen für die Zukunft Ihrer Familie.",
+        "connectivity": {
+          "title": "Strategische Konnektivität",
+          "description": "Privilegierte Lage in der Nähe anderer wichtiger Städte und Einkaufszentren. Das Beste aus beiden Welten: Ruhe und Zugänglichkeit.",
           "features": [
-            "15% jährliches Durchschnittswachstum",
-            "Zone mit hoher Wertsteigerung",
-            "Finanzierungsmöglichkeiten",
-            "Sofortige Eigentumsurkunde"
+            "Nahe Einkaufszentren",
+            "Verbindung zu Großstädten",
+            "Zugang zu wichtigen Autobahnen",
+            "Nahegelegene städtische Dienste"
           ]
         }
       }
@@ -205,10 +205,10 @@
     },
     "image_alts": {
       "hero": "Panoramablick auf nachhaltige Immobilienentwicklung mit modernen Häusern und Grünflächen",
-      "location": "Luftaufnahme zeigt strategische Lage in der Nähe von Einkaufszentren, Schulen und Krankenhäusern",
-      "infrastructure": "Moderne Infrastruktur mit gepflasterten Straßen, Beleuchtung und vollständigen Dienstleistungen",
-      "lifestyle": "Familie genießt Grünflächen und Erholungsräume in der Entwicklung",
-      "investment": "Grafik des Immobilienwachstums und Wertsteigerung von Grundstücken in der Zone",
+      "schools": "Schüler der deutschen Schule in Colonia Independencia mit exzellenter zweisprachiger Bildung",
+      "club": "Einrichtungen des privaten deutschen Clubs mit Sport-, Kunst- und Kulturbereichen",
+      "tranquility": "Ruhige Landschaft von Colonia Independencia mit weitläufigen Grundstücken und ländlicher Atmosphäre",
+      "connectivity": "Karte zeigt die Konnektivität von Colonia Independencia mit Städten und Einkaufszentren",
       "map_preview": "Vorschau der interaktiven Karte zeigt verfügbare Grundstücke mit verschiedenen Farben je nach Verfügbarkeit",
       "team": "Professionelles Team von Immobilien Mega Projekte arbeitet im modernen Büro"
     },
