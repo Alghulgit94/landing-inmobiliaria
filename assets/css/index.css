@@ -733,6 +733,11 @@ a, .main-nav a, .footer__link, .social-link {
   will-change: transform;
 }
 
+/* GSAP Animation Enhancements */
+.gsap-carousel-card {
+  will-change: transform, opacity;
+}
+
 .reason-card {
   min-width: 100%;
   background-color: var(--color-white);
@@ -1440,5 +1445,82 @@ a, .main-nav a, .footer__link, .social-link {
   
   .main-nav {
     gap: var(--spacing-sm);
+  }
+}
+
+/* ===========================
+   GSAP ANIMATION ENHANCEMENTS
+   =========================== */
+
+/* Performance optimizations for GSAP animations */
+.gsap-element {
+  will-change: transform, opacity;
+}
+
+/* Header animation initial states */
+.site-header {
+  transform: translateY(-100px);
+}
+
+.brand-logo,
+.main-nav a,
+.language-selector-wrapper,
+.header-right .cta {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/* Hero section animation initial states */
+.hero__title,
+.hero__subtitle, 
+.hero__description {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.hero__cta {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.hero__overlay {
+  opacity: 0;
+}
+
+/* Section animation initial states for scroll triggers */
+.section__title,
+.section__subtitle,
+.reasons-carousel,
+.loteamiento-cta__text,
+.loteamiento-cta__media,
+.feature-item,
+.value-item,
+.about__team-image,
+.footer__section {
+  /* Initial states will be set by GSAP */
+}
+
+/* Improved button hover states for GSAP */
+.btn-primary,
+.btn-outline,
+.carousel-btn,
+.social-link {
+  transition: none; /* Let GSAP handle all transitions */
+}
+
+/* Accessibility: Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  /* Ensure GSAP respects reduced motion */
+  .gsap-element {
+    will-change: auto;
   }
 }

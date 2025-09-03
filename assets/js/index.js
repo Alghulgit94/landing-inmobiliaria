@@ -267,9 +267,28 @@
       return;
     }
 
+    const previousSlideIndex = currentSlide;
     isTransitioning = true;
-    currentSlide = slideIndex;
     
+    // Use GSAP animation if available, otherwise fallback to CSS
+    if (typeof window.animateCarouselTransition === 'function') {
+      const timeline = window.animateCarouselTransition(previousSlideIndex, slideIndex);
+      
+      if (timeline) {
+        // Update current slide after GSAP animation
+        currentSlide = slideIndex;
+        
+        // Reset transition flag when GSAP animation completes
+        timeline.eventCallback("onComplete", () => {
+          isTransitioning = false;
+        });
+        
+        return;
+      }
+    }
+    
+    // Fallback to original CSS-based animation
+    currentSlide = slideIndex;
     updateCarouselDisplay();
     updateCarouselTransform();
 
