@@ -382,6 +382,51 @@
             ease: ANIMATION_CONFIG.ease.smooth
           }, "-=0.2");
       });
+      
+      // Why Live Here CTA animation
+      const whyLiveCta = whyLiveSection.querySelector('.why-live-cta');
+      if (whyLiveCta) {
+        const ctaTitle = whyLiveCta.querySelector('.why-live-cta__title');
+        const ctaDescription = whyLiveCta.querySelector('.why-live-cta__description');
+        const ctaButton = whyLiveCta.querySelector('.why-live-cta__button');
+        
+        gsap.set([ctaTitle, ctaDescription, ctaButton], {
+          y: 50,
+          opacity: 0
+        });
+        
+        const ctaTimeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: whyLiveCta,
+            start: "top 90%",
+            toggleActions: "play none none reverse"
+          }
+        });
+        
+        ctaTimeline
+          .to(whyLiveCta, {
+            opacity: 1,
+            duration: ANIMATION_CONFIG.fast
+          })
+          .to(ctaTitle, {
+            y: 0,
+            opacity: 1,
+            duration: ANIMATION_CONFIG.normal,
+            ease: ANIMATION_CONFIG.ease.slide
+          })
+          .to(ctaDescription, {
+            y: 0,
+            opacity: 1,
+            duration: ANIMATION_CONFIG.normal,
+            ease: ANIMATION_CONFIG.ease.slide
+          }, "-=0.3")
+          .to(ctaButton, {
+            y: 0,
+            opacity: 1,
+            duration: ANIMATION_CONFIG.fast,
+            ease: ANIMATION_CONFIG.ease.elastic
+          }, "-=0.2");
+      }
     }
     
     // Loteamiento CTA section

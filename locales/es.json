@@ -11,7 +11,8 @@
     "reservations": "Reservas",
     "why_live_here": "Por qué vivir aquí",
     "about_us": "Nosotros",
-    "view_map": "Ver mapa"
+    "view_map": "Ver mapa",
+    "get_reservation": "Reservar lote ya"
   },
   "states": {
     "available": "Disponible",
@@ -76,6 +77,10 @@
     "why_live_here": {
       "title": "¿Por qué elegir vivir en Colonia Independencia?",
       "subtitle": "Descubre las 4 razones principales que hacen de Colonia Independencia el lugar ideal para tu nueva vida",
+      "cta": {
+        "text": "¡Encuentra tu lote ideal ahora!",
+        "description": "Explora nuestros loteamientos disponibles y descubre el lugar perfecto para construir tu futuro en Colonia Independencia"
+      },
       "reasons": {
         "schools": {
           "title": "Educación de Excelencia",

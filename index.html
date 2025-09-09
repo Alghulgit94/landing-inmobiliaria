@@ -125,11 +125,11 @@
               <h2 class="hero__title" data-i18n="index.hero.title">
                 Encuentra el hogar perfecto en el lugar ideal
               </h2>
-              <p class="hero__subtitle lead" data-i18n="index.hero.subtitle">
+              <!-- <p class="hero__subtitle lead" data-i18n="index.hero.subtitle">
                 Desarrollos inmobiliarios sustentables con ubicación
                 estratégica, infraestructura completa y la mejor calidad de vida
                 para tu familia.
-              </p>
+              </p> -->
               <p class="hero__description" data-i18n="index.hero.description">
                 Explora nuestros loteamientos con mapas interactivos de alta
                 precisión que te permiten conocer cada detalle antes de tomar la
@@ -169,277 +169,230 @@
             </p>
           </header>
 
-          <div
-            class="reasons-carousel"
-            data-i18n-attr="aria-label:aria_labels.carousel"
-          >
-            <div class="reasons-carousel__container">
-              <div class="reasons-carousel__track" id="reasonsTrack">
-                <!-- Reason 1: Ubicación Estratégica -->
-                <article
-                  class="reason-card reason-card--active"
-                  data-reason="1"
+          <div class="reasons-grid">
+            <!-- Reason 1: Education Excellence -->
+            <article class="reason-item" data-reason="schools">
+              <div class="reason-item__content">
+                <h4
+                  class="reason-item__title"
+                  data-i18n="index.why_live_here.reasons.schools.title"
                 >
-                  <div class="reason-card__image-container">
-                    <img
-                      src="https://picsum.photos/seed/location/600/400"
-                      data-i18n-attr="alt:index.image_alts.location"
-                      alt="Vista aérea mostrando ubicación estratégica cerca de centros comerciales, escuelas y hospitales"
-                      class="reason-card__image"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="reason-card__content">
-                    <h4
-                      class="reason-card__title"
-                      data-i18n="index.why_live_here.reasons.location.title"
-                    >
-                      Ubicación Estratégica
-                    </h4>
-                    <p
-                      class="reason-card__description"
-                      data-i18n="index.why_live_here.reasons.location.description"
-                    >
-                      Ubicado a minutos de centros comerciales, escuelas de
-                      calidad, hospitales y principales vías de acceso. Todo lo
-                      que necesitas está al alcance de tu familia.
-                    </p>
-                    <ul class="reason-card__features">
-                      <li
-                        data-i18n="index.why_live_here.reasons.location.features.0"
-                      >
-                        5 min del centro comercial principal
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.location.features.1"
-                      >
-                        3 min de colegios de prestigio
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.location.features.2"
-                      >
-                        8 min del hospital regional
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.location.features.3"
-                      >
-                        Acceso directo a autopista
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-
-                <!-- Reason 2: Infraestructura Completa -->
-                <article class="reason-card" data-reason="2">
-                  <div class="reason-card__image-container">
-                    <img
-                      src="https://picsum.photos/seed/infrastructure/600/400"
-                      data-i18n-attr="alt:index.image_alts.infrastructure"
-                      alt="Infraestructura moderna con calles pavimentadas, alumbrado y servicios completos"
-                      class="reason-card__image"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="reason-card__content">
-                    <h4
-                      class="reason-card__title"
-                      data-i18n="index.why_live_here.reasons.infrastructure.title"
-                    >
-                      Infraestructura Completa
-                    </h4>
-                    <p
-                      class="reason-card__description"
-                      data-i18n="index.why_live_here.reasons.infrastructure.description"
-                    >
-                      Desarrollo con infraestructura de primer nivel: calles
-                      pavimentadas, alumbrado público, agua potable,
-                      electricidad y sistema de drenaje completamente
-                      instalados.
-                    </p>
-                    <ul class="reason-card__features">
-                      <li
-                        data-i18n="index.why_live_here.reasons.infrastructure.features.0"
-                      >
-                        Calles pavimentadas y señalizadas
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.infrastructure.features.1"
-                      >
-                        Sistema eléctrico subterráneo
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.infrastructure.features.2"
-                      >
-                        Red de agua potable y drenaje
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.infrastructure.features.3"
-                      >
-                        Internet fibra óptica disponible
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-
-                <!-- Reason 3: Calidad de Vida Superior -->
-                <article class="reason-card" data-reason="3">
-                  <div class="reason-card__image-container">
-                    <img
-                      src="https://picsum.photos/seed/lifestyle/600/400"
-                      data-i18n-attr="alt:index.image_alts.lifestyle"
-                      alt="Familia disfrutando de áreas verdes y espacios recreativos en el desarrollo"
-                      class="reason-card__image"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="reason-card__content">
-                    <h4
-                      class="reason-card__title"
-                      data-i18n="index.why_live_here.reasons.lifestyle.title"
-                    >
-                      Calidad de Vida Superior
-                    </h4>
-                    <p
-                      class="reason-card__description"
-                      data-i18n="index.why_live_here.reasons.lifestyle.description"
-                    >
-                      Espacios diseñados para el bienestar de toda la familia:
-                      áreas verdes, parques infantiles, senderos para caminar y
-                      zonas de recreación que fomentan una vida saludable y en
-                      comunidad.
-                    </p>
-                    <ul class="reason-card__features">
-                      <li
-                        data-i18n="index.why_live_here.reasons.lifestyle.features.0"
-                      >
-                        40% del área destinada a espacios verdes
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.lifestyle.features.1"
-                      >
-                        Parques infantiles seguros
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.lifestyle.features.2"
-                      >
-                        Senderos peatonales y ciclovías
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.lifestyle.features.3"
-                      >
-                        Áreas de convivencia familiar
-                      </li>
-                    </ul>
-                  </div>
-                </article>
-
-                <!-- Reason 4: Inversión Inteligente -->
-                <article class="reason-card" data-reason="4">
-                  <div class="reason-card__image-container">
-                    <img
-                      src="https://picsum.photos/seed/investment/600/400"
-                      data-i18n-attr="alt:index.image_alts.investment"
-                      alt="Gráfico de crecimiento inmobiliario y valorización de terrenos en la zona"
-                      class="reason-card__image"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div class="reason-card__content">
-                    <h4
-                      class="reason-card__title"
-                      data-i18n="index.why_live_here.reasons.investment.title"
-                    >
-                      Inversión Inteligente
-                    </h4>
-                    <p
-                      class="reason-card__description"
-                      data-i18n="index.why_live_here.reasons.investment.description"
-                    >
-                      La zona presenta un crecimiento sostenido del 15% anual en
-                      valorización. Tu inversión no solo te dará un hogar, sino
-                      también un patrimonio sólido para el futuro de tu familia.
-                    </p>
-                    <ul class="reason-card__features">
-                      <li
-                        data-i18n="index.why_live_here.reasons.investment.features.0"
-                      >
-                        15% crecimiento anual promedio
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.investment.features.1"
-                      >
-                        Zona de alta plusvalía
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.investment.features.2"
-                      >
-                        Facilidades de financiamiento
-                      </li>
-                      <li
-                        data-i18n="index.why_live_here.reasons.investment.features.3"
-                      >
-                        Escrituración inmediata
-                      </li>
-                    </ul>
-                  </div>
-                </article>
+                  Educación de Excelencia
+                </h4>
+                <p
+                  class="reason-item__description"
+                  data-i18n="index.why_live_here.reasons.schools.description"
+                >
+                  Acceso a colegios alemanes exclusivos y educación bilingüe de
+                  primer nivel. Tu familia tendrá oportunidades educativas
+                  únicas en la región.
+                </p>
+                <ul class="reason-item__features">
+                  <li
+                    data-i18n="index.why_live_here.reasons.schools.features.0"
+                  >
+                    Colegios alemanes exclusivos
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.schools.features.1"
+                  >
+                    Educación bilingüe de calidad
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.schools.features.2"
+                  >
+                    Programas internacionales
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.schools.features.3"
+                  >
+                    Escuelas públicas de prestigio
+                  </li>
+                </ul>
               </div>
-            </div>
+              <div class="reason-item__image-container">
+                <img
+                  src="https://picsum.photos/seed/german-school/600/400"
+                  data-i18n-attr="alt:index.image_alts.schools"
+                  alt="Estudiantes en colegio alemán de Colonia Independencia con educación bilingüe de excelencia"
+                  class="reason-item__image"
+                  loading="lazy"
+                />
+              </div>
+            </article>
 
-            <!-- Carousel Navigation -->
-            <div class="reasons-carousel__nav">
-              <button
-                class="carousel-btn carousel-btn--prev"
-                id="prevBtn"
-                data-i18n-attr="aria-label:index.carousel.prev_aria"
-                type="button"
-              >
-                ‹
-              </button>
-              <button
-                class="carousel-btn carousel-btn--next"
-                id="nextBtn"
-                data-i18n-attr="aria-label:index.carousel.next_aria"
-                type="button"
-              >
-                ›
-              </button>
-            </div>
-
-            <!-- Carousel Indicators -->
-            <div
-              class="reasons-carousel__indicators"
-              role="tablist"
-              data-i18n-attr="aria-label:aria_labels.carousel_indicators"
+            <!-- Reason 2: Private German Club -->
+            <article
+              class="reason-item reason-item--reverse"
+              data-reason="club"
             >
-              <button
-                class="carousel-indicator carousel-indicator--active"
-                data-slide="1"
-                data-i18n-attr="aria-label:index.carousel.reason1_aria"
-                role="tab"
-                type="button"
-              ></button>
-              <button
-                class="carousel-indicator"
-                data-slide="2"
-                data-i18n-attr="aria-label:index.carousel.reason2_aria"
-                role="tab"
-                type="button"
-              ></button>
-              <button
-                class="carousel-indicator"
-                data-slide="3"
-                data-i18n-attr="aria-label:index.carousel.reason3_aria"
-                role="tab"
-                type="button"
-              ></button>
-              <button
-                class="carousel-indicator"
-                data-slide="4"
-                data-i18n-attr="aria-label:index.carousel.reason4_aria"
-                role="tab"
-                type="button"
-              ></button>
+              <div class="reason-item__content">
+                <h4
+                  class="reason-item__title"
+                  data-i18n="index.why_live_here.reasons.club.title"
+                >
+                  Club Alemán Privado
+                </h4>
+                <p
+                  class="reason-item__description"
+                  data-i18n="index.why_live_here.reasons.club.description"
+                >
+                  Disfruta del prestigioso club alemán con instalaciones
+                  deportivas, culturales y educativas. Aprende idiomas,
+                  deportes, arte y música en un ambiente exclusivo.
+                </p>
+                <ul class="reason-item__features">
+                  <li data-i18n="index.why_live_here.reasons.club.features.0">
+                    Instalaciones deportivas completas
+                  </li>
+                  <li data-i18n="index.why_live_here.reasons.club.features.1">
+                    Clases de idiomas (alemán, inglés)
+                  </li>
+                  <li data-i18n="index.why_live_here.reasons.club.features.2">
+                    Talleres de arte y música
+                  </li>
+                  <li data-i18n="index.why_live_here.reasons.club.features.3">
+                    Actividades culturales
+                  </li>
+                </ul>
+              </div>
+              <div class="reason-item__image-container">
+                <img
+                  src="https://picsum.photos/seed/german-club/600/400"
+                  data-i18n-attr="alt:index.image_alts.club"
+                  alt="Instalaciones del club alemán privado con áreas deportivas, artísticas y culturales"
+                  class="reason-item__image"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+            <!-- Reason 3: Tranquility and Space -->
+            <article class="reason-item" data-reason="tranquility">
+              <div class="reason-item__content">
+                <h4
+                  class="reason-item__title"
+                  data-i18n="index.why_live_here.reasons.tranquility.title"
+                >
+                  Tranquilidad y Espacio
+                </h4>
+                <p
+                  class="reason-item__description"
+                  data-i18n="index.why_live_here.reasons.tranquility.description"
+                >
+                  Un lugar sereno con amplios terrenos perfectos para
+                  agroindustria y vida campestre. Escapa del bullicio de la
+                  ciudad sin perder comodidades.
+                </p>
+                <ul class="reason-item__features">
+                  <li
+                    data-i18n="index.why_live_here.reasons.tranquility.features.0"
+                  >
+                    Ambiente tranquilo y seguro
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.tranquility.features.1"
+                  >
+                    Terrenos amplios disponibles
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.tranquility.features.2"
+                  >
+                    Ideal para agroindustria
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.tranquility.features.3"
+                  >
+                    Vida campestre con servicios urbanos
+                  </li>
+                </ul>
+              </div>
+              <div class="reason-item__image-container">
+                <img
+                  src="https://picsum.photos/seed/tranquil-land/600/400"
+                  data-i18n-attr="alt:index.image_alts.tranquility"
+                  alt="Paisaje sereno de Colonia Independencia con amplios terrenos y ambiente campestre"
+                  class="reason-item__image"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+
+            <!-- Reason 4: Strategic Connectivity -->
+            <article
+              class="reason-item reason-item--reverse"
+              data-reason="connectivity"
+            >
+              <div class="reason-item__content">
+                <h4
+                  class="reason-item__title"
+                  data-i18n="index.why_live_here.reasons.connectivity.title"
+                >
+                  Conectividad Estratégica
+                </h4>
+                <p
+                  class="reason-item__description"
+                  data-i18n="index.why_live_here.reasons.connectivity.description"
+                >
+                  Ubicación privilegiada cerca de otras ciudades importantes y
+                  centros comerciales. Lo mejor de ambos mundos: tranquilidad y
+                  accesibilidad.
+                </p>
+                <ul class="reason-item__features">
+                  <li
+                    data-i18n="index.why_live_here.reasons.connectivity.features.0"
+                  >
+                    Cerca de centros comerciales
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.connectivity.features.1"
+                  >
+                    Conexión con ciudades principales
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.connectivity.features.2"
+                  >
+                    Acceso a carreteras importantes
+                  </li>
+                  <li
+                    data-i18n="index.why_live_here.reasons.connectivity.features.3"
+                  >
+                    Servicios urbanos cercanos
+                  </li>
+                </ul>
+              </div>
+              <div class="reason-item__image-container">
+                <img
+                  src="https://picsum.photos/seed/connectivity/600/400"
+                  data-i18n-attr="alt:index.image_alts.connectivity"
+                  alt="Mapa mostrando la conectividad de Colonia Independencia con ciudades y centros comerciales"
+                  class="reason-item__image"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+          </div>
+
+          <!-- CTA Section for Loteamientos -->
+          <div class="why-live-cta">
+            <div class="why-live-cta__content">
+              <h4
+                class="why-live-cta__title"
+                data-i18n="index.why_live_here.cta.text"
+              >
+                ¡Encuentra tu lote ideal ahora!
+              </h4>
+              <p
+                class="why-live-cta__description"
+                data-i18n="index.why_live_here.cta.description"
+              >
+                Explora nuestros loteamientos disponibles y descubre el lugar
+                perfecto para construir tu futuro en Colonia Independencia
+              </p>
+              <a href="mapa.html" class="btn-primary why-live-cta__button">
+                <span data-i18n="navigation.get_reservation">Ver mapa</span>
+                <span class="cta-arrow">→</span>
+              </a>
             </div>
           </div>
         </div>

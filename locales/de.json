@@ -4,14 +4,15 @@
     "admin": "Verwaltung",
     "login": "Anmelden",
     "logout": "Abmelden",
-    "lots": "Grundstücke",
+    "lots": "Immobilien",
     "plots": "Parzellen",
     "users": "Benutzer",
     "sales": "Verkäufe",
     "reservations": "Reservierungen",
     "why_live_here": "Warum hier leben",
     "about_us": "Über uns",
-    "view_map": "Karte anzeigen"
+    "view_map": "Karte anzeigen",
+    "get_reservation": "Grundstück jetzt reservieren"
   },
   "states": {
     "available": "Verfügbar",
@@ -76,6 +77,10 @@
     "why_live_here": {
       "title": "Warum sich für das Leben in Colonia Independencia entscheiden?",
       "subtitle": "Entdecken Sie die 4 Hauptgründe, die Colonia Independencia zum idealen Ort für Ihr neues Leben machen",
+      "cta": {
+        "text": "Finden Sie jetzt Ihr ideales Grundstück!",
+        "description": "Erkunden Sie unsere verfügbaren Wohngebiete und entdecken Sie den perfekten Ort, um Ihre Zukunft in Colonia Independencia aufzubauen"
+      },
       "reasons": {
         "schools": {
           "title": "Exzellenz in der Bildung",

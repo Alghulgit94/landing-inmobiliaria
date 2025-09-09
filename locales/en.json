@@ -11,7 +11,8 @@
     "reservations": "Reservations",
     "why_live_here": "Why live here",
     "about_us": "About us",
-    "view_map": "View map"
+    "view_map": "View map",
+    "get_reservation": "Reserve lot now"
   },
   "states": {
     "available": "Available",
@@ -76,6 +77,10 @@
     "why_live_here": {
       "title": "Why choose to live in Colonia Independencia?",
       "subtitle": "Discover the 4 main reasons that make Colonia Independencia the ideal place for your new life",
+      "cta": {
+        "text": "Find your ideal lot now!",
+        "description": "Explore our available residential areas and discover the perfect place to build your future in Colonia Independencia"
+      },
       "reasons": {
         "schools": {
           "title": "Excellence in Education",

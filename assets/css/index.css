@@ -814,6 +814,104 @@ a, .main-nav a, .footer__link, .social-link {
   will-change: transform, opacity, scale;
 }
 
+/* Why Live Here CTA Section */
+.why-live-cta {
+  margin-top: var(--spacing-xxl);
+  padding: var(--spacing-xl);
+  background: linear-gradient(135deg, var(--color-green-primary) 0%, var(--color-dark-blue) 100%);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-live-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.why-live-cta__content {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.why-live-cta__title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-md);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.why-live-cta__description {
+  font-size: var(--font-size-lg);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-xl);
+  opacity: 0.9;
+  line-height: var(--line-height-relaxed);
+}
+
+.why-live-cta__button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  background-color: var(--color-gold-accent);
+  color: var(--color-primary-dark);
+  border: none;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(231, 200, 115, 0.3);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-live-cta__button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--transition-normal);
+}
+
+.why-live-cta__button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.why-live-cta__button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(231, 200, 115, 0.4);
+  background-color: #f0d285;
+}
+
+.cta-arrow {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  transition: transform var(--transition-normal);
+}
+
+.why-live-cta__button:hover .cta-arrow {
+  transform: translateX(5px);
+}
+
 /* Loteamiento CTA Section */
 .loteamiento-cta {
   background: linear-gradient(135deg, var(--color-green-primary) 0%, var(--color-dark-blue) 100%);
@@ -1254,6 +1352,25 @@ a, .main-nav a, .footer__link, .social-link {
   
   .reason-item__image {
     height: 250px;
+  }
+  
+  /* Why Live CTA Mobile */
+  .why-live-cta {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+  }
+  
+  .why-live-cta__title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .why-live-cta__description {
+    font-size: var(--font-size-base);
+  }
+  
+  .why-live-cta__button {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-sm) var(--spacing-lg);
   }
   
   .values-grid,
