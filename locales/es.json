@@ -124,6 +124,141 @@
         }
       }
     },
+    "loteamientos": {
+      "title": "Nuestros Loteamientos",
+      "subtitle": "Descubre tu lote ideal en las mejores ubicaciones disponibles",
+      "filters": {
+        "colonia_independencia": "Colonia Independencia",
+        "other_options": "Otras Opciones"
+      },
+      "products": {
+        "lote_premium_vista_norte": {
+          "title": "Lote Premium Vista Norte",
+          "subtitle": "Zona residencial exclusiva",
+          "features": {
+            "size": "15m x 30m (450m²)",
+            "green_area": "Área verde cercana",
+            "schools": "Cerca de colegios"
+          }
+        },
+        "lote_comercial_centro": {
+          "title": "Lote Comercial Centro",
+          "subtitle": "Zona comercial estratégica",
+          "features": {
+            "size": "20m x 25m (500m²)",
+            "main_avenue": "Avenida principal",
+            "commercial_zone": "Zona comercial"
+          }
+        },
+        "lote_familiar_los_robles": {
+          "title": "Lote Familiar Los Robles",
+          "subtitle": "Ideal para vivienda familiar",
+          "features": {
+            "size": "12m x 35m (420m²)",
+            "full_services": "Servicios completos",
+            "family_zone": "Zona familiar"
+          }
+        },
+        "lote_agroindustrial_sur": {
+          "title": "Lote Agroindustrial Sur",
+          "subtitle": "Perfecto para agroindustria",
+          "features": {
+            "size": "50m x 100m (5000m²)",
+            "agro_use": "Uso agroindustrial",
+            "water_access": "Acceso a agua"
+          }
+        },
+        "lote_valle_verde": {
+          "title": "Lote Valle Verde",
+          "subtitle": "Vista panorámica",
+          "features": {
+            "size": "18m x 25m (450m²)",
+            "valley_view": "Vista al valle"
+          }
+        },
+        "lote_industrial_pro": {
+          "title": "Lote Industrial Pro",
+          "subtitle": "Uso industrial",
+          "features": {
+            "size": "30m x 40m (1200m²)",
+            "industrial_zone": "Zona industrial"
+          }
+        },
+        "lote_club_exclusivo": {
+          "title": "Lote Club Exclusivo",
+          "subtitle": "Cerca del club alemán",
+          "features": {
+            "size": "16m x 28m (448m²)",
+            "exclusive_zone": "Zona exclusiva"
+          }
+        },
+        "lote_esquinero_plus": {
+          "title": "Lote Esquinero Plus",
+          "subtitle": "Doble frente",
+          "features": {
+            "size": "20m x 22m (440m²)",
+            "corner_privilege": "Esquina privilegiada"
+          }
+        },
+        "lote_metro_este": {
+          "title": "Lote Metro Este",
+          "subtitle": "Conectividad urbana",
+          "features": {
+            "size": "10m x 25m (250m²)",
+            "public_transport": "Transporte público"
+          }
+        },
+        "lote_brisa_mar": {
+          "title": "Lote Brisa Mar",
+          "subtitle": "Vista al océano",
+          "features": {
+            "size": "18m x 40m (720m²)",
+            "ocean_view": "Vista al mar"
+          }
+        },
+        "lote_rural_norte": {
+          "title": "Lote Rural Norte",
+          "subtitle": "Desarrollo agrícola",
+          "features": {
+            "size": "100m x 150m (15000m²)",
+            "agricultural_use": "Uso agrícola"
+          }
+        },
+        "lote_urbano_plus": {
+          "title": "Lote Urbano Plus",
+          "subtitle": "Servicios completos",
+          "features": {
+            "size": "12m x 30m (360m²)",
+            "urban_zone": "Zona urbana"
+          }
+        },
+        "lote_comercial_sur": {
+          "title": "Lote Comercial Sur",
+          "subtitle": "Alto tráfico vehicular",
+          "features": {
+            "size": "15m x 20m (300m²)",
+            "commercial_zone": "Zona comercial"
+          }
+        },
+        "lote_vista_montana": {
+          "title": "Lote Vista Montaña",
+          "subtitle": "Premium residencial",
+          "features": {
+            "size": "22m x 35m (770m²)",
+            "mountain_view": "Vista a montañas"
+          }
+        },
+        "lote_eco_premium": {
+          "title": "Lote Eco Premium",
+          "subtitle": "Certificado ecológico",
+          "features": {
+            "size": "25m x 30m (750m²)",
+            "eco_friendly": "Eco-friendly"
+          }
+        }
+      },
+      "cta": "Ver Mapa"
+    },
     "loteamiento_cta": {
       "title": "Explora nuestros loteamientos con precisión total",
       "description": "Descubre cada lote disponible con nuestro mapa interactivo de alta precisión. Ve dimensiones exactas, ubicación específica y todas las características que necesitas para tomar la mejor decisión.",
@@ -137,42 +272,25 @@
       "note": "Explora todos nuestros proyectos disponibles"
     },
     "about_us": {
-      "title": "Nosotros",
-      "subtitle": "Más de una década creando comunidades prósperas y sostenibles",
-      "story": {
-        "title": "Nuestra Historia",
-        "description1": "Desde 2010, Inmobiliaria Mega Proyectos se ha dedicado a desarrollar comunidades que combinan innovación tecnológica con responsabilidad ambiental. Creemos que cada familia merece un lugar donde sus sueños puedan florecer.",
-        "description2": "Nuestro enfoque va más allá de la simple venta de terrenos: creamos espacios de vida integral donde la calidad, sustentabilidad y bienestar se encuentran para formar comunidades verdaderamente especiales."
-      },
-      "values": {
-        "title": "Nuestros Valores",
-        "transparency": {
-          "title": "Transparencia",
-          "text": "Información clara y precisa en cada etapa del proceso"
+      "title": "Conoce a Nuestro Equipo de Expertos",
+      "subtitle": "Profesionales dedicados que hacen realidad tus sueños inmobiliarios",
+      "team": {
+        "john_powell": {
+          "name": "John Powell",
+          "title": "Soporte al Cliente"
         },
-        "sustainability": {
-          "title": "Sustentabilidad",
-          "text": "Desarrollos que respetan y mejoran el entorno natural"
+        "thomas_powell": {
+          "name": "Thomas Powell",
+          "title": "Marketing"
         },
-        "innovation": {
-          "title": "Innovación",
-          "text": "Tecnología de punta para una experiencia superior"
+        "tom_wilson": {
+          "name": "Tom Wilson",
+          "title": "Diseñador"
         },
-        "commitment": {
-          "title": "Compromiso",
-          "text": "Acompañamos a nuestros clientes en cada paso"
+        "samuel_palmer": {
+          "name": "Samuel Palmer",
+          "title": "Marketing"
         }
-      },
-      "stats": {
-        "title": "Nuestra Experiencia",
-        "years": "15+",
-        "years_label": "Años de experiencia",
-        "families": "2,500+",
-        "families_label": "Familias beneficiadas",
-        "projects": "25",
-        "projects_label": "Proyectos completados",
-        "satisfaction": "98%",
-        "satisfaction_label": "Satisfacción del cliente"
       }
     },
     "footer": {

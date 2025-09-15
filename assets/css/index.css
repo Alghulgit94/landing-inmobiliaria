@@ -912,172 +912,333 @@ a, .main-nav a, .footer__link, .social-link {
   transform: translateX(5px);
 }
 
-/* Loteamiento CTA Section */
-.loteamiento-cta {
-  background: linear-gradient(135deg, var(--color-green-primary) 0%, var(--color-dark-blue) 100%);
-  color: var(--color-white);
+/* Loteamientos Products Section */
+.loteamientos-section {
+  background-color: var(--color-white);
 }
 
-.loteamiento-cta__content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-xl);
-  align-items: center;
-}
-
-.loteamiento-cta__title {
-  color: var(--color-white);
-  margin-bottom: var(--spacing-md);
-}
-
-.loteamiento-cta__description {
-  margin-bottom: var(--spacing-lg);
-  font-size: 1.125rem;
-}
-
-.loteamiento-features {
-  display: grid;
+/* Location Filter Chips */
+.location-filters {
+  display: flex;
+  justify-content: center;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  flex-wrap: wrap;
 }
 
-.feature-item {
+.location-chip {
+  background-color: var(--color-light-gray);
+  color: var(--color-primary-dark);
+  border: 1px solid var(--color-light-gray);
+  border-radius: 20px;
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-transform: none;
+  letter-spacing: var(--letter-spacing-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.location-chip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: var(--color-green-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--transition-normal);
+  z-index: -1;
+}
+
+.location-chip:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.location-chip:hover {
+  color: var(--color-white);
+  border-color: var(--color-green-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.location-chip--active {
+  background-color: var(--color-green-primary);
+  color: var(--color-white);
+  border-color: var(--color-green-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.location-chip--active::before {
+  width: 300px;
+  height: 300px;
+  background-color: var(--color-dark-blue);
+}
+
+.location-chip--active:hover {
+  background-color: var(--color-dark-blue);
+  border-color: var(--color-dark-blue);
+}
+
+.location-chip:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(31, 75, 67, 0.3);
+}
+
+/* Products Grid - Horizontal 2x4 Layout */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Product Card - Flexible Size */
+.product-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  position: relative;
+  will-change: transform;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(26, 26, 26, 0.12);
+}
+
+/* Product Card Image - Smaller */
+.product-card__image-container {
+  position: relative;
+  overflow: hidden;
+  height: 120px;
+}
+
+.product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.03);
+}
+
+/* Product Card Content - Flexible */
+.product-card__content {
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.product-card__title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  color: var(--color-green-primary);
+  margin-bottom: var(--spacing-xs);
+  line-height: var(--line-height-snug);
+}
+
+.product-card__subtitle {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-dark-gray);
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.9;
+}
+
+/* Land Info - Compact */
+.product-card__land-info {
+  margin-bottom: var(--spacing-sm);
+  flex: 1;
+}
+
+.land-info-item {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-xs);
 }
 
-.feature-item__icon {
-  font-size: 1.25rem;
+.land-info-item:last-child {
+  margin-bottom: 0;
 }
 
-.feature-item__text {
-  font-weight: var(--font-weight-medium);
+.land-info-icon {
+  font-size: 0.875rem;
+  min-width: 16px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
-.loteamiento-cta__button {
+.land-info-text {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-dark-gray);
+  flex: 1;
+}
+
+/* Product Card Button - Compact */
+.product-card__btn {
+  width: 100%;
   background-color: var(--color-gold-accent);
   color: var(--color-primary-dark);
-  border-color: var(--color-gold-accent);
-  font-size: 1.125rem;
-  padding: var(--spacing-md) var(--spacing-xl);
+  border: 2px solid var(--color-gold-accent);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
+  text-decoration: none;
+  display: block;
+  text-align: center;
 }
 
-.loteamiento-cta__button:hover {
-  background-color: var(--color-white);
-  color: var(--color-green-primary);
-  border-color: var(--color-white);
+.product-card__btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: var(--color-green-primary);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all var(--transition-normal);
+  z-index: -1;
 }
 
-.loteamiento-cta__note {
-  margin-top: var(--spacing-sm);
+.product-card__btn:hover::before {
+  width: 200px;
+  height: 200px;
 }
 
-.loteamiento-cta__note small {
-  color: rgba(255, 255, 255, 0.8);
+.product-card__btn:hover {
+  color: var(--color-white);
+  border-color: var(--color-green-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(231, 200, 115, 0.3);
 }
 
-.loteamiento-cta__image {
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
+.product-card__btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(231, 200, 115, 0.4);
+}
+
+.product-card__btn:active {
+  transform: translateY(0);
 }
 
 /* About Us Section */
+/* About Section - Team Layout */
 .about-section {
-  background-color: var(--color-cream);
-}
-
-.about-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--spacing-xl);
-}
-
-.about-story__title {
-  color: var(--color-green-primary);
-  margin-bottom: var(--spacing-md);
-}
-
-.about-story__description {
-  margin-bottom: var(--spacing-md);
-  color: var(--color-dark-gray);
-}
-
-.about-values {
-  margin-top: var(--spacing-xl);
-}
-
-.about-values__title {
-  color: var(--color-green-primary);
-  margin-bottom: var(--spacing-md);
-}
-
-.values-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-md);
-}
-
-.value-item {
   background-color: var(--color-white);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
 }
 
-.value-item__title {
-  color: var(--color-green-primary);
-  margin-bottom: var(--spacing-xs);
-  font-size: 1rem;
-}
-
-.value-item__text {
-  font-size: 0.875rem;
-  color: var(--color-dark-gray);
-  margin: 0;
-}
-
-.about-stats__title {
-  color: var(--color-green-primary);
-  margin-bottom: var(--spacing-md);
-}
-
-.stats-grid {
+/* Team Grid Layout */
+.team-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.stat-item {
-  text-align: center;
-  background-color: var(--color-white);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.stat-item__number {
-  display: block;
-  font-size: 2rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-gold-accent);
-}
-
-.stat-item__label {
-  font-size: 0.875rem;
-  color: var(--color-dark-gray);
-}
-
-.about__team-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: var(--radius-md);
+/* Team Member Card */
+.team-card {
+  position: relative;
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  height: 350px;
+  background-color: var(--color-white);
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* Team Card Image - Full Coverage */
+.team-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.team-card:hover .team-card__image {
+  transform: scale(1.05);
+}
+
+/* Text Overlay */
+.team-card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+  padding: var(--spacing-lg);
+  transition: all var(--transition-normal);
+}
+
+.team-card:hover .team-card__overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+}
+
+/* Team Card Content */
+.team-card__content {
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+.team-card__name {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  margin-bottom: var(--spacing-xs);
+  line-height: var(--line-height-snug);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.team-card__title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  margin: 0;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Footer */
@@ -1316,10 +1477,71 @@ a, .main-nav a, .footer__link, .social-link {
     padding: var(--spacing-xs) var(--spacing-sm);
   }
   
-  .loteamiento-cta__content,
-  .about-content {
-    grid-template-columns: 1fr;
-    text-align: center;
+  /* Loteamientos Products Responsive - Tablet */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .location-filters {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .location-chip {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  .product-card {
+    min-height: 300px;
+  }
+  
+  .product-card__image-container {
+    height: 140px;
+  }
+  
+  .product-card__content {
+    padding: var(--spacing-md);
+  }
+  
+  .product-card__title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .product-card__subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .land-info-item {
+    font-size: var(--font-size-sm);
+  }
+  
+  .product-card__btn {
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  /* Team Grid - Tablet: 2x2 Layout */
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+  }
+  
+  .team-card {
+    height: 300px;
+  }
+  
+  .team-card__overlay {
+    padding: var(--spacing-md);
+  }
+  
+  .team-card__name {
+    font-size: var(--font-size-lg);
+  }
+  
+  .team-card__title {
+    font-size: var(--font-size-base);
   }
   
   .hero {
@@ -1373,10 +1595,6 @@ a, .main-nav a, .footer__link, .social-link {
     padding: var(--spacing-sm) var(--spacing-lg);
   }
   
-  .values-grid,
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
   
   .footer__content {
     grid-template-columns: 1fr;
@@ -1527,6 +1745,89 @@ a, .main-nav a, .footer__link, .social-link {
   
   .main-nav {
     gap: var(--spacing-sm);
+  }
+  
+  /* Loteamientos Products Responsive - Mobile */
+  .location-filters {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .location-chip {
+    font-size: var(--font-size-xs);
+    padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: var(--spacing-md);
+  }
+  
+  .product-card {
+    min-height: 280px;
+  }
+  
+  .product-card__image-container {
+    height: 120px;
+  }
+  
+  .product-card__content {
+    padding: var(--spacing-sm);
+  }
+  
+  .product-card__title {
+    font-size: var(--font-size-base);
+    white-space: normal;
+    line-height: var(--line-height-snug);
+  }
+  
+  .product-card__subtitle {
+    font-size: var(--font-size-sm);
+    white-space: normal;
+  }
+  
+  .land-info-item {
+    font-size: var(--font-size-xs);
+  }
+  
+  .land-info-text {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+  
+  .product-card__btn {
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+  
+  /* Team Grid - Mobile: Single Column */
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .team-card {
+    height: 280px;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .team-card__overlay {
+    padding: var(--spacing-md);
+  }
+  
+  .team-card__name {
+    font-size: var(--font-size-lg);
+  }
+  
+  .team-card__title {
+    font-size: var(--font-size-base);
   }
 }
 

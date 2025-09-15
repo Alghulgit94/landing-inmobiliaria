@@ -394,3 +394,173 @@
   });
 
 })();
+
+/**
+ * Loteamientos Products Filtering - Inmobiliaria Mega Proyectos
+ * Filter products by location with smooth animations
+ */
+
+(function() {
+  'use strict';
+
+  // DOM elements
+  let locationChips = [];
+  let productCards = [];
+
+  /**
+   * Initialize the loteamientos filtering when the DOM is loaded
+   */
+  function initializeLoteamientosFilter() {
+    // Get DOM elements
+    locationChips = document.querySelectorAll('.location-chip');
+    productCards = document.querySelectorAll('.product-card');
+
+    // Validate required elements exist
+    if (!validateFilterElements()) {
+      console.log('Loteamientos filter: Elements not found. Filter will not function.');
+      return;
+    }
+
+    // Bind event listeners
+    bindFilterEventListeners();
+    
+    // Set initial state (Colonia Independencia active by default)
+    showProductsByLocation('colonia-independencia');
+
+    console.log('Loteamientos filter initialized successfully');
+  }
+
+  /**
+   * Validate that all required DOM elements exist
+   * @returns {boolean} True if all elements are found
+   */
+  function validateFilterElements() {
+    return locationChips.length > 0 && productCards.length > 0;
+  }
+
+  /**
+   * Bind all event listeners for the filter
+   */
+  function bindFilterEventListeners() {
+    locationChips.forEach(chip => {
+      chip.addEventListener('click', handleChipClick);
+      chip.addEventListener('keydown', handleChipKeydown);
+    });
+  }
+
+  /**
+   * Handle chip click event
+   * @param {Event} event - Click event
+   */
+  function handleChipClick(event) {
+    const chip = event.target;
+    const location = chip.getAttribute('data-location');
+    
+    if (location) {
+      setActiveChip(chip);
+      showProductsByLocation(location);
+    }
+  }
+
+  /**
+   * Handle chip keydown event for accessibility
+   * @param {KeyboardEvent} event - Keydown event
+   */
+  function handleChipKeydown(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleChipClick(event);
+    }
+  }
+
+  /**
+   * Set the active chip and remove active class from others
+   * @param {HTMLElement} activeChip - The chip to set as active
+   */
+  function setActiveChip(activeChip) {
+    // Remove active class from all chips
+    locationChips.forEach(chip => {
+      chip.classList.remove('location-chip--active');
+      chip.setAttribute('aria-pressed', 'false');
+    });
+    
+    // Add active class to clicked chip
+    activeChip.classList.add('location-chip--active');
+    activeChip.setAttribute('aria-pressed', 'true');
+  }
+
+  /**
+   * Show products for the selected location
+   * @param {string} location - The location to filter by
+   */
+  function showProductsByLocation(location) {
+    productCards.forEach(card => {
+      const cardLocation = card.getAttribute('data-location');
+      
+      if (cardLocation === location) {
+        // Show card with animation
+        card.style.display = 'block';
+        
+        // Trigger reflow for smooth animation
+        card.offsetHeight;
+        
+        // Add entrance animation
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        // Animate to visible state
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 50);
+        
+      } else {
+        // Hide card with animation
+        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(-20px)';
+        
+        // Hide after animation completes
+        setTimeout(() => {
+          card.style.display = 'none';
+        }, 300);
+      }
+    });
+
+    // Update section with count
+    updateProductCount(location);
+  }
+
+  /**
+   * Update the visible product count (optional enhancement)
+   * @param {string} location - The current location filter
+   */
+  function updateProductCount(location) {
+    const visibleProducts = document.querySelectorAll(`[data-location="${location}"]`);
+    console.log(`Showing ${visibleProducts.length} products for location: ${location}`);
+  }
+
+  /**
+   * Public API for external control (if needed)
+   */
+  window.LoteamientosFilterAPI = {
+    showProductsByLocation,
+    setActiveChip: (location) => {
+      const chip = document.querySelector(`[data-location="${location}"]`);
+      if (chip) {
+        setActiveChip(chip);
+        showProductsByLocation(location);
+      }
+    }
+  };
+
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeLoteamientosFilter);
+  } else {
+    // DOM is already loaded
+    initializeLoteamientosFilter();
+  }
+
+})();

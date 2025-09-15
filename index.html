@@ -398,91 +398,449 @@
         </div>
       </section>
 
-      <!-- 3. Loteamiento CTA Section -->
+      <!-- 3. Loteamientos Products Section -->
       <section
         id="loteamiento"
-        class="section loteamiento-cta"
+        class="section loteamientos-section"
         data-i18n-attr="aria-label:aria_labels.loteamiento_section"
       >
         <div class="container">
-          <div class="loteamiento-cta__content">
-            <div class="loteamiento-cta__text">
-              <h3
-                class="loteamiento-cta__title"
-                data-i18n="index.loteamiento_cta.title"
-              >
-                Explora nuestros loteamientos con precisión total
-              </h3>
-              <p
-                class="loteamiento-cta__description"
-                data-i18n="index.loteamiento_cta.description"
-              >
-                Descubre cada lote disponible con nuestro mapa interactivo de
-                alta precisión. Ve dimensiones exactas, ubicación específica y
-                todas las características que necesitas para tomar la mejor
-                decisión.
-              </p>
+          <header class="section__header">
+            <h3 class="section__title" data-i18n="index.loteamientos.title">
+              Nuestros Loteamientos
+            </h3>
+            <p class="section__subtitle" data-i18n="index.loteamientos.subtitle">
+              Descubre tu lote ideal en las mejores ubicaciones disponibles
+            </p>
+          </header>
 
-              <div class="loteamiento-features">
-                <div class="feature-item">
-                  <span class="feature-item__icon" aria-hidden="true">🗺️</span>
-                  <span
-                    class="feature-item__text"
-                    data-i18n="index.loteamiento_cta.features.0"
-                    >Mapas interactivos de alta resolución</span
-                  >
-                </div>
-                <div class="feature-item">
-                  <span class="feature-item__icon" aria-hidden="true">📐</span>
-                  <span
-                    class="feature-item__text"
-                    data-i18n="index.loteamiento_cta.features.1"
-                    >Dimensiones exactas de cada lote</span
-                  >
-                </div>
-                <div class="feature-item">
-                  <span class="feature-item__icon" aria-hidden="true">🏞️</span>
-                  <span
-                    class="feature-item__text"
-                    data-i18n="index.loteamiento_cta.features.2"
-                    >Vista satelital en tiempo real</span
-                  >
-                </div>
-                <div class="feature-item">
-                  <span class="feature-item__icon" aria-hidden="true">📊</span>
-                  <span
-                    class="feature-item__text"
-                    data-i18n="index.loteamiento_cta.features.3"
-                    >Estado de disponibilidad actualizado</span
-                  >
-                </div>
+          <!-- Location Filter Chips -->
+          <div class="location-filters">
+            <button 
+              class="location-chip location-chip--active" 
+              data-location="colonia-independencia"
+              data-i18n="index.loteamientos.filters.colonia_independencia"
+            >
+              Colonia Independencia
+            </button>
+            <button 
+              class="location-chip" 
+              data-location="other-options"
+              data-i18n="index.loteamientos.filters.other_options"
+            >
+              Otras Opciones
+            </button>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="products-grid">
+            <!-- Product Card Template - Colonia Independencia -->
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot1/400/300"
+                  alt="Lote residencial en Colonia Independencia con vista panorámica"
+                  class="product-card__image"
+                  loading="lazy"
+                />
               </div>
-
-              <div class="loteamiento-cta__actions">
-                <a
-                  href="mapa.html"
-                  class="btn-primary loteamiento-cta__button"
-                  data-i18n="index.loteamiento_cta.cta"
-                >
-                  Ver mapa interactivo
-                </a>
-                <p class="loteamiento-cta__note">
-                  <small data-i18n="index.loteamiento_cta.note"
-                    >Explora todos nuestros proyectos disponibles</small
-                  >
-                </p>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Premium Vista Norte</h4>
+                <p class="product-card__subtitle">Zona residencial exclusiva</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">15m x 30m (450m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🌲</span>
+                    <span class="land-info-text">Área verde cercana</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🏫</span>
+                    <span class="land-info-text">Cerca de colegios</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
               </div>
-            </div>
+            </article>
 
-            <div class="loteamiento-cta__media">
-              <img
-                src="https://picsum.photos/seed/map-preview/700/500"
-                data-i18n-attr="alt:index.image_alts.map_preview"
-                alt="Vista previa del mapa interactivo mostrando lotes disponibles con diferentes colores según disponibilidad"
-                class="loteamiento-cta__image"
-                loading="lazy"
-              />
-            </div>
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot2/400/300"
+                  alt="Lote comercial en Colonia Independencia con acceso principal"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Comercial Centro</h4>
+                <p class="product-card__subtitle">Zona comercial estratégica</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">20m x 25m (500m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🛣️</span>
+                    <span class="land-info-text">Avenida principal</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🏪</span>
+                    <span class="land-info-text">Zona comercial</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot3/400/300"
+                  alt="Lote familiar en Colonia Independencia con servicios completos"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Familiar Los Robles</h4>
+                <p class="product-card__subtitle">Ideal para vivienda familiar</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">12m x 35m (420m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">⚡</span>
+                    <span class="land-info-text">Servicios completos</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">👨‍👩‍👧‍👦</span>
+                    <span class="land-info-text">Zona familiar</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot4/400/300"
+                  alt="Lote agroindustrial en Colonia Independencia con amplios espacios"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Agroindustrial Sur</h4>
+                <p class="product-card__subtitle">Perfecto para agroindustria</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">50m x 100m (5000m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🚜</span>
+                    <span class="land-info-text">Uso agroindustrial</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">💧</span>
+                    <span class="land-info-text">Acceso a agua</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot5/400/300"
+                  alt="Lote residencial en Colonia Independencia con vista al valle"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Valle Verde</h4>
+                <p class="product-card__subtitle">Vista panorámica</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">18m x 25m (450m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🌄</span>
+                    <span class="land-info-text">Vista al valle</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot6/400/300"
+                  alt="Lote industrial en Colonia Independencia con acceso carretero"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Industrial Pro</h4>
+                <p class="product-card__subtitle">Uso industrial</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">30m x 40m (1200m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🏭</span>
+                    <span class="land-info-text">Zona industrial</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot7/400/300"
+                  alt="Lote exclusivo en Colonia Independencia cerca del club alemán"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Club Exclusivo</h4>
+                <p class="product-card__subtitle">Cerca del club alemán</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">16m x 28m (448m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🏛️</span>
+                    <span class="land-info-text">Zona exclusiva</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="colonia-independencia">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lot8/400/300"
+                  alt="Lote esquinero en Colonia Independencia con doble frente"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Esquinero Plus</h4>
+                <p class="product-card__subtitle">Doble frente</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">20m x 22m (440m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🏘️</span>
+                    <span class="land-info-text">Esquina privilegiada</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <!-- Other Options Products -->
+            <article class="product-card" data-location="other-options" style="display: none;">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lotother1/400/300"
+                  alt="Lote residencial en zona metropolitana con conectividad"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Metro Este</h4>
+                <p class="product-card__subtitle">Conectividad urbana</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">10m x 25m (250m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🚌</span>
+                    <span class="land-info-text">Transporte público</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="other-options" style="display: none;">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lotother2/400/300"
+                  alt="Lote costero con vista al mar y brisa natural"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Brisa Mar</h4>
+                <p class="product-card__subtitle">Vista al océano</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">18m x 40m (720m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🌊</span>
+                    <span class="land-info-text">Vista al mar</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="other-options" style="display: none;">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lotother3/400/300"
+                  alt="Lote rural con amplios espacios para desarrollo agrícola"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Rural Norte</h4>
+                <p class="product-card__subtitle">Desarrollo agrícola</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">100m x 150m (15000m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🌾</span>
+                    <span class="land-info-text">Uso agrícola</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="other-options" style="display: none;">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lotother4/400/300"
+                  alt="Lote urbano moderno con servicios completos"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Urbano Plus</h4>
+                <p class="product-card__subtitle">Servicios completos</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">12m x 30m (360m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🏙️</span>
+                    <span class="land-info-text">Zona urbana</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="other-options" style="display: none;">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lotother5/400/300"
+                  alt="Lote comercial estratégico en zona de alto tráfico"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Comercial Sur</h4>
+                <p class="product-card__subtitle">Alto tráfico vehicular</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">15m x 20m (300m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🛒</span>
+                    <span class="land-info-text">Zona comercial</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="other-options" style="display: none;">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lotother6/400/300"
+                  alt="Lote residencial premium con vista panorámica a las montañas"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Vista Montaña</h4>
+                <p class="product-card__subtitle">Premium residencial</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">22m x 35m (770m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">⛰️</span>
+                    <span class="land-info-text">Vista a montañas</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
+
+            <article class="product-card" data-location="other-options" style="display: none;">
+              <div class="product-card__image-container">
+                <img
+                  src="https://picsum.photos/seed/lotother7/400/300"
+                  alt="Lote ecológico con certificación ambiental"
+                  class="product-card__image"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-card__content">
+                <h4 class="product-card__title">Lote Eco Premium</h4>
+                <p class="product-card__subtitle">Certificado ecológico</p>
+                <div class="product-card__land-info">
+                  <div class="land-info-item">
+                    <span class="land-info-icon">📐</span>
+                    <span class="land-info-text">25m x 30m (750m²)</span>
+                  </div>
+                  <div class="land-info-item">
+                    <span class="land-info-icon">🌱</span>
+                    <span class="land-info-text">Eco-friendly</span>
+                  </div>
+                </div>
+                <a href="mapa.html" class="product-card__btn">Ver Mapa</a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -496,176 +854,75 @@
         <div class="container">
           <header class="section__header">
             <h3 class="section__title" data-i18n="index.about_us.title">
-              Nosotros
+              Meet Our Team of Experts
             </h3>
             <p class="section__subtitle" data-i18n="index.about_us.subtitle">
-              Más de una década creando comunidades prósperas y sostenibles
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </header>
 
-          <div class="about-content">
-            <div class="about-story">
-              <article class="about-story__text">
-                <h4
-                  class="about-story__title"
-                  data-i18n="index.about_us.story.title"
-                >
-                  Nuestra Historia
-                </h4>
-                <p
-                  class="about-story__description"
-                  data-i18n="index.about_us.story.description1"
-                >
-                  Desde 2010, <strong>Inmobiliaria Mega Proyectos</strong> se ha
-                  dedicado a desarrollar comunidades que combinan innovación
-                  tecnológica con responsabilidad ambiental. Creemos que cada
-                  familia merece un lugar donde sus sueños puedan florecer.
-                </p>
-                <p
-                  class="about-story__description"
-                  data-i18n="index.about_us.story.description2"
-                >
-                  Nuestro enfoque va más allá de la simple venta de terrenos:
-                  creamos espacios de vida integral donde la calidad,
-                  sustentabilidad y bienestar se encuentran para formar
-                  comunidades verdaderamente especiales.
-                </p>
-              </article>
-
-              <div class="about-values">
-                <h4
-                  class="about-values__title"
-                  data-i18n="index.about_us.values.title"
-                >
-                  Nuestros Valores
-                </h4>
-                <div class="values-grid">
-                  <div class="value-item">
-                    <h5
-                      class="value-item__title"
-                      data-i18n="index.about_us.values.transparency.title"
-                    >
-                      Transparencia
-                    </h5>
-                    <p
-                      class="value-item__text"
-                      data-i18n="index.about_us.values.transparency.text"
-                    >
-                      Información clara y precisa en cada etapa del proceso
-                    </p>
-                  </div>
-                  <div class="value-item">
-                    <h5
-                      class="value-item__title"
-                      data-i18n="index.about_us.values.sustainability.title"
-                    >
-                      Sustentabilidad
-                    </h5>
-                    <p
-                      class="value-item__text"
-                      data-i18n="index.about_us.values.sustainability.text"
-                    >
-                      Desarrollos que respetan y mejoran el entorno natural
-                    </p>
-                  </div>
-                  <div class="value-item">
-                    <h5
-                      class="value-item__title"
-                      data-i18n="index.about_us.values.innovation.title"
-                    >
-                      Innovación
-                    </h5>
-                    <p
-                      class="value-item__text"
-                      data-i18n="index.about_us.values.innovation.text"
-                    >
-                      Tecnología de punta para una experiencia superior
-                    </p>
-                  </div>
-                  <div class="value-item">
-                    <h5
-                      class="value-item__title"
-                      data-i18n="index.about_us.values.commitment.title"
-                    >
-                      Compromiso
-                    </h5>
-                    <p
-                      class="value-item__text"
-                      data-i18n="index.about_us.values.commitment.text"
-                    >
-                      Acompañamos a nuestros clientes en cada paso
-                    </p>
-                  </div>
+          <div class="team-grid">
+            <!-- Team Member 1: John Powell -->
+            <div class="team-card">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face"
+                alt="John Powell - Service Support"
+                class="team-card__image"
+                loading="lazy"
+              />
+              <div class="team-card__overlay">
+                <div class="team-card__content">
+                  <h4 class="team-card__name" data-i18n="index.about_us.team.john_powell.name">John Powell</h4>
+                  <p class="team-card__title" data-i18n="index.about_us.team.john_powell.title">Service Support</p>
                 </div>
               </div>
             </div>
 
-            <div class="about-stats">
-              <h4
-                class="about-stats__title"
-                data-i18n="index.about_us.stats.title"
-              >
-                Nuestra Experiencia
-              </h4>
-              <div class="stats-grid">
-                <div class="stat-item">
-                  <span
-                    class="stat-item__number"
-                    data-i18n="index.about_us.stats.years"
-                    >15+</span
-                  >
-                  <span
-                    class="stat-item__label"
-                    data-i18n="index.about_us.stats.years_label"
-                    >Años de experiencia</span
-                  >
-                </div>
-                <div class="stat-item">
-                  <span
-                    class="stat-item__number"
-                    data-i18n="index.about_us.stats.families"
-                    >2,500+</span
-                  >
-                  <span
-                    class="stat-item__label"
-                    data-i18n="index.about_us.stats.families_label"
-                    >Familias beneficiadas</span
-                  >
-                </div>
-                <div class="stat-item">
-                  <span
-                    class="stat-item__number"
-                    data-i18n="index.about_us.stats.projects"
-                    >25</span
-                  >
-                  <span
-                    class="stat-item__label"
-                    data-i18n="index.about_us.stats.projects_label"
-                    >Proyectos completados</span
-                  >
-                </div>
-                <div class="stat-item">
-                  <span
-                    class="stat-item__number"
-                    data-i18n="index.about_us.stats.satisfaction"
-                    >98%</span
-                  >
-                  <span
-                    class="stat-item__label"
-                    data-i18n="index.about_us.stats.satisfaction_label"
-                    >Satisfacción del cliente</span
-                  >
+            <!-- Team Member 2: Thomas Powell -->
+            <div class="team-card">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face"
+                alt="Thomas Powell - Marketing"
+                class="team-card__image"
+                loading="lazy"
+              />
+              <div class="team-card__overlay">
+                <div class="team-card__content">
+                  <h4 class="team-card__name" data-i18n="index.about_us.team.thomas_powell.name">Thomas Powell</h4>
+                  <p class="team-card__title" data-i18n="index.about_us.team.thomas_powell.title">Marketing</p>
                 </div>
               </div>
+            </div>
 
-              <div class="about-image">
-                <img
-                  src="https://picsum.photos/seed/team/600/400"
-                  data-i18n-attr="alt:index.image_alts.team"
-                  alt="Equipo profesional de Inmobiliaria Mega Proyectos trabajando en oficina moderna"
-                  class="about__team-image"
-                  loading="lazy"
-                />
+            <!-- Team Member 3: Tom Wilson -->
+            <div class="team-card">
+              <img
+                src="https://images.unsplash.com/photo-1494790108755-2616b612b732?w=400&h=500&fit=crop&crop=face"
+                alt="Tom Wilson - Designer"
+                class="team-card__image"
+                loading="lazy"
+              />
+              <div class="team-card__overlay">
+                <div class="team-card__content">
+                  <h4 class="team-card__name" data-i18n="index.about_us.team.tom_wilson.name">Tom Wilson</h4>
+                  <p class="team-card__title" data-i18n="index.about_us.team.tom_wilson.title">Designer</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Team Member 4: Samuel Palmer -->
+            <div class="team-card">
+              <img
+                src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=500&fit=crop&crop=face"
+                alt="Samuel Palmer - Marketing"
+                class="team-card__image"
+                loading="lazy"
+              />
+              <div class="team-card__overlay">
+                <div class="team-card__content">
+                  <h4 class="team-card__name" data-i18n="index.about_us.team.samuel_palmer.name">Samuel Palmer</h4>
+                  <p class="team-card__title" data-i18n="index.about_us.team.samuel_palmer.title">Marketing</p>
+                </div>
               </div>
             </div>
           </div>

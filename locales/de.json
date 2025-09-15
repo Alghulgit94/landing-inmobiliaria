@@ -124,6 +124,141 @@
         }
       }
     },
+    "loteamientos": {
+      "title": "Unsere Wohngebiete",
+      "subtitle": "Entdecken Sie Ihr ideales Grundstück in den besten verfügbaren Standorten",
+      "filters": {
+        "colonia_independencia": "Colonia Independencia",
+        "other_options": "Andere Optionen"
+      },
+      "products": {
+        "lote_premium_vista_norte": {
+          "title": "Premium Nordblick Grundstück",
+          "subtitle": "Exklusives Wohngebiet",
+          "features": {
+            "size": "15m x 30m (450m²)",
+            "green_area": "Nahegelegene Grünfläche",
+            "schools": "Nahe Schulen"
+          }
+        },
+        "lote_comercial_centro": {
+          "title": "Gewerbezentrum Grundstück",
+          "subtitle": "Strategisches Gewerbegebiet",
+          "features": {
+            "size": "20m x 25m (500m²)",
+            "main_avenue": "Hauptstraße",
+            "commercial_zone": "Gewerbegebiet"
+          }
+        },
+        "lote_familiar_los_robles": {
+          "title": "Los Robles Familien Grundstück",
+          "subtitle": "Ideal für Familienwohnung",
+          "features": {
+            "size": "12m x 35m (420m²)",
+            "full_services": "Vollständige Dienstleistungen",
+            "family_zone": "Familienzone"
+          }
+        },
+        "lote_agroindustrial_sur": {
+          "title": "Süd Agroindustrielles Grundstück",
+          "subtitle": "Perfekt für Agroindustrie",
+          "features": {
+            "size": "50m x 100m (5000m²)",
+            "agro_use": "Agroindustrielle Nutzung",
+            "water_access": "Wasserzugang"
+          }
+        },
+        "lote_valle_verde": {
+          "title": "Grünes Tal Grundstück",
+          "subtitle": "Panoramablick",
+          "features": {
+            "size": "18m x 25m (450m²)",
+            "valley_view": "Talblick"
+          }
+        },
+        "lote_industrial_pro": {
+          "title": "Industrie Pro Grundstück",
+          "subtitle": "Industrielle Nutzung",
+          "features": {
+            "size": "30m x 40m (1200m²)",
+            "industrial_zone": "Industriegebiet"
+          }
+        },
+        "lote_club_exclusivo": {
+          "title": "Exklusiver Club Grundstück",
+          "subtitle": "Nahe dem deutschen Club",
+          "features": {
+            "size": "16m x 28m (448m²)",
+            "exclusive_zone": "Exklusive Zone"
+          }
+        },
+        "lote_esquinero_plus": {
+          "title": "Eckgrundstück Plus",
+          "subtitle": "Doppelte Front",
+          "features": {
+            "size": "20m x 22m (440m²)",
+            "corner_privilege": "Privilegierte Ecke"
+          }
+        },
+        "lote_metro_este": {
+          "title": "Metro Ost Grundstück",
+          "subtitle": "Städtische Konnektivität",
+          "features": {
+            "size": "10m x 25m (250m²)",
+            "public_transport": "Öffentlicher Verkehr"
+          }
+        },
+        "lote_brisa_mar": {
+          "title": "Meeresbrise Grundstück",
+          "subtitle": "Meerblick",
+          "features": {
+            "size": "18m x 40m (720m²)",
+            "ocean_view": "Meerblick"
+          }
+        },
+        "lote_rural_norte": {
+          "title": "Nord Ländliches Grundstück",
+          "subtitle": "Landwirtschaftliche Entwicklung",
+          "features": {
+            "size": "100m x 150m (15000m²)",
+            "agricultural_use": "Landwirtschaftliche Nutzung"
+          }
+        },
+        "lote_urbano_plus": {
+          "title": "Urban Plus Grundstück",
+          "subtitle": "Vollständige Dienstleistungen",
+          "features": {
+            "size": "12m x 30m (360m²)",
+            "urban_zone": "Städtisches Gebiet"
+          }
+        },
+        "lote_comercial_sur": {
+          "title": "Süd Gewerbe Grundstück",
+          "subtitle": "Hoher Fahrzeugverkehr",
+          "features": {
+            "size": "15m x 20m (300m²)",
+            "commercial_zone": "Gewerbegebiet"
+          }
+        },
+        "lote_vista_montana": {
+          "title": "Bergblick Grundstück",
+          "subtitle": "Premium Wohngegend",
+          "features": {
+            "size": "22m x 35m (770m²)",
+            "mountain_view": "Bergblick"
+          }
+        },
+        "lote_eco_premium": {
+          "title": "Öko Premium Grundstück",
+          "subtitle": "Ökologisches Zertifikat",
+          "features": {
+            "size": "25m x 30m (750m²)",
+            "eco_friendly": "Umweltfreundlich"
+          }
+        }
+      },
+      "cta": "Karte Anzeigen"
+    },
     "loteamiento_cta": {
       "title": "Erkunden Sie unsere Wohngebiete mit totaler Präzision",
       "description": "Entdecken Sie jedes verfügbare Grundstück mit unserer hochpräzisen interaktiven Karte. Sehen Sie genaue Abmessungen, spezifische Lage und alle Eigenschaften, die Sie für die beste Entscheidung benötigen.",
@@ -137,42 +272,25 @@
       "note": "Erkunden Sie alle unsere verfügbaren Projekte"
     },
     "about_us": {
-      "title": "Über uns",
-      "subtitle": "Mehr als ein Jahrzehnt der Schaffung prosperierender und nachhaltiger Gemeinschaften",
-      "story": {
-        "title": "Unsere Geschichte",
-        "description1": "Seit 2010 widmet sich Immobilien Mega Projekte der Entwicklung von Gemeinschaften, die technologische Innovation mit Umweltverantwortung verbinden. Wir glauben, dass jede Familie einen Ort verdient, wo ihre Träume gedeihen können.",
-        "description2": "Unser Ansatz geht über den einfachen Verkauf von Grundstücken hinaus: Wir schaffen integrierte Lebensräume, in denen Qualität, Nachhaltigkeit und Wohlbefinden zusammenkommen, um wirklich besondere Gemeinschaften zu bilden."
-      },
-      "values": {
-        "title": "Unsere Werte",
-        "transparency": {
-          "title": "Transparenz",
-          "text": "Klare und präzise Informationen in jeder Phase des Prozesses"
+      "title": "Lernen Sie unser Expertenteam kennen",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "team": {
+        "john_powell": {
+          "name": "John Powell",
+          "title": "Kundenbetreuung"
         },
-        "sustainability": {
-          "title": "Nachhaltigkeit",
-          "text": "Entwicklungen, die die natürliche Umgebung respektieren und verbessern"
+        "thomas_powell": {
+          "name": "Thomas Powell",
+          "title": "Marketing"
         },
-        "innovation": {
-          "title": "Innovation",
-          "text": "Spitzentechnologie für ein überlegenes Erlebnis"
+        "tom_wilson": {
+          "name": "Tom Wilson",
+          "title": "Designer"
         },
-        "commitment": {
-          "title": "Engagement",
-          "text": "Wir begleiten unsere Kunden bei jedem Schritt"
+        "samuel_palmer": {
+          "name": "Samuel Palmer",
+          "title": "Marketing"
         }
-      },
-      "stats": {
-        "title": "Unsere Erfahrung",
-        "years": "15+",
-        "years_label": "Jahre Erfahrung",
-        "families": "2.500+",
-        "families_label": "Begünstigte Familien",
-        "projects": "25",
-        "projects_label": "Abgeschlossene Projekte",
-        "satisfaction": "98%",
-        "satisfaction_label": "Kundenzufriedenheit"
       }
     },
     "footer": {
