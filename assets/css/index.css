@@ -222,7 +222,7 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 .main-nav a {
-  color: var(--color-primary-dark);
+  color: var(--color-light-gray);
   font-weight: var(--font-weight-medium);
 }
 
@@ -376,7 +376,7 @@ a, .main-nav a, .footer__link, .social-link {
    ========================== */
 
 .site-header {
-  background-color: var(--color-white);
+  background-color: var(--color-green-primary);
   box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
@@ -452,7 +452,7 @@ a, .main-nav a, .footer__link, .social-link {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-lg);
-  color: var(--color-green-primary);
+  color: var(--color-white);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   transition: var(--transition-fast);
@@ -462,7 +462,7 @@ a, .main-nav a, .footer__link, .social-link {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-xs);
-  color: var(--color-green-primary);
+  color: var(--color-white);
   letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   transition: var(--transition-fast);
@@ -511,13 +511,13 @@ a, .main-nav a, .footer__link, .social-link {
 
 /* CTA Button in Header */
 .header-right .cta {
-  background-color: var(--color-red-accent);
-  color: var(--color-white);
+  background-color: var(--color-white);
+  color: var(--color-green-primary);
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-bold);
   padding: var(--spacing-xs) var(--spacing-md);
-  border: 2px solid var(--color-red-accent);
+  border: 2px solid var(--color-green-primary);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   transition: var(--transition-normal);
@@ -528,8 +528,8 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 .header-right .cta:hover {
-  background-color: var(--color-green-primary);
-  border-color: var(--color-green-primary);
+  background-color: var(--color-red-accent);
+  border-color: var(--color-red-accent);
   color: var(--color-white);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);

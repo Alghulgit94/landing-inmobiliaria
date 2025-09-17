@@ -3,52 +3,129 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mapa Loteamiento</title>
+    <title>Mapa Loteamiento - Mega Proyectos</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <style>
-      /* Ajustes puntuales para mapa */
-      body,
-      html {
-        height: 100%;
-        margin: 0;
-      }
-      #map {
-        height: calc(100vh - 60px);
-      }
-      header.map-header {
-        height: 60px;
-        background: #fff;
-        display: flex;
-        align-items: center;
-        padding: 0 16px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
-      }
-      .map-controls {
-        position: absolute;
-        top: 80px;
-        left: 16px;
-        z-index: 1000;
-      }
-    </style>
+    <link rel="stylesheet" href="assets/css/index.css" />
+    <link rel="stylesheet" href="assets/css/mapa.css" />
   </head>
   <body>
-    <header class="map-header">
-      <button id="back" class="back-btn-mapa" aria-label="volver">←</button>
-      <h2 class="map-title">LOTEAMIENTO COLONIA INDEPENDENCIA</h2>
-      <div style="flex: 1"></div>
-      <div class="map-actions">
-        <button id="satToggle" class="small-btn">Satélite</button>
-        <button id="grayToggle" class="small-btn">Escala gris</button>
-      </div>
-    </header>
+    <div class="map-layout">
+      <!-- Header -->
+      <header class="map-header">
+        <h1 class="map-title">Loteamiento Colonia Independencia</h1>
+      </header>
 
-    <div id="map"></div>
+      <!-- Left Sidebar - Info Panel -->
+      <aside class="sidebar-left" id="sidebarLeft">
+        <div class="sidebar-header">
+          <h2 class="sidebar-title">Información del Lote</h2>
+          <button class="sidebar-close" id="sidebarClose" aria-label="Cerrar">&times;</button>
+        </div>
+        
+        <div class="sidebar-content">
+          <!-- Empty State -->
+          <div class="empty-state" id="emptyState">
+            <div class="empty-state-icon">🗺️</div>
+            <h3>Selecciona un Lote</h3>
+            <p>Haz clic en cualquier lote del mapa para ver información detallada, incluyendo precio, dimensiones y estado de disponibilidad.</p>
+          </div>
 
-    <!-- Librerías -->
+          <!-- Parcel Information -->
+          <div class="parcel-info" id="parcelInfo">
+            <div class="parcel-image">
+              <img id="parcelImage" src="" alt="Imagen del lote" />
+            </div>
+
+            <span class="status-badge" id="parcelStatusBadge">Disponible</span>
+
+            <div class="info-section">
+              <div class="info-label">Lote</div>
+              <div class="info-value" id="parcelName">N/A</div>
+            </div>
+
+            <div class="info-section">
+              <div class="info-label">Ubicación</div>
+              <div class="info-value" id="parcelLocation">Colonia Independencia</div>
+            </div>
+
+            <div class="info-section">
+              <div class="info-label">Coordenadas</div>
+              <div class="info-value" id="parcelCoordinates">N/A</div>
+            </div>
+
+            <div class="info-section">
+              <div class="info-label">Dimensiones</div>
+              <div class="info-value" id="parcelDimensions">N/A</div>
+            </div>
+
+            <div class="price-display">
+              <div class="info-label">Precio</div>
+              <div class="price-amount" id="parcelPrice">Consultar</div>
+            </div>
+
+            <button class="reserve-btn" id="reserveBtn">
+              Reservar Lote
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Center - Map Container -->
+      <main class="map-container">
+        <div id="map"></div>
+      </main>
+
+      <!-- Right Sidebar - Utilities -->
+      <aside class="sidebar-right">
+        <!-- Map Controls Section -->
+        <div class="map-controls-section">
+          <h3 class="section-title">Controles</h3>
+          <div class="map-controls">
+            <button id="satToggle" class="map-btn">Satélite</button>
+            <button id="grayToggle" class="map-btn">Escala Gris</button>
+          </div>
+        </div>
+
+        <!-- Legend Section -->
+        <div class="legend-section">
+          <h3 class="section-title">Estado de Lotes</h3>
+          
+          <div class="legend-item" data-status="disponible">
+            <input type="checkbox" class="legend-checkbox" id="filterDisponible" checked>
+            <div class="legend-color disponible"></div>
+            <label for="filterDisponible" class="legend-label">Disponible</label>
+            <span class="legend-count" id="countDisponible">0</span>
+          </div>
+
+          <div class="legend-item" data-status="reservado">
+            <input type="checkbox" class="legend-checkbox" id="filterReservado" checked>
+            <div class="legend-color reservado"></div>
+            <label for="filterReservado" class="legend-label">Reservado</label>
+            <span class="legend-count" id="countReservado">0</span>
+          </div>
+
+          <div class="legend-item" data-status="vendido">
+            <input type="checkbox" class="legend-checkbox" id="filterVendido" checked>
+            <div class="legend-color vendido"></div>
+            <label for="filterVendido" class="legend-label">Vendido</label>
+            <span class="legend-count" id="countVendido">0</span>
+          </div>
+        </div>
+
+        <!-- Zoom Controls Section -->
+        <div class="zoom-section">
+          <h3 class="section-title">Zoom</h3>
+          <div class="zoom-controls">
+            <button class="zoom-btn" id="zoomIn" aria-label="Acercar">+</button>
+            <button class="zoom-btn" id="zoomOut" aria-label="Alejar">−</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Libraries -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/togeojson@0.16.0"></script>
-
     <script src="assets/js/mapa.js"></script>
   </body>
 </html>
