@@ -548,6 +548,108 @@ html {
 }
 
 /* ===========================
+   PARCEL TOOLTIP
+   =========================== */
+.parcel-tooltip {
+  position: absolute;
+  z-index: 2000;
+  background: var(--color-white);
+  border: 1px solid var(--color-light-gray);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-sm);
+  min-width: 120px;
+  max-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast), 
+              visibility var(--transition-fast);
+  pointer-events: none;
+  font-family: var(--font-family-primary);
+}
+
+.parcel-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tooltip-name {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  color: var(--color-green-primary);
+  line-height: var(--line-height-snug);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.tooltip-dimensions {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xs);
+  color: var(--color-primary-dark);
+  line-height: var(--line-height-normal);
+}
+
+/* Side-pointing arrow that points toward mouse cursor */
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: drop-shadow(-1px 0 1px rgba(26, 26, 26, 0.1));
+}
+
+/* Default arrow points left (tooltip on right side of cursor) */
+.parcel-tooltip.arrow-left .tooltip-arrow {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 8px solid var(--color-white);
+  left: -8px;
+}
+
+.parcel-tooltip.arrow-left .tooltip-arrow::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-right: 9px solid var(--color-light-gray);
+  left: 1px;
+  top: -7px;
+  z-index: -1;
+}
+
+/* Arrow points right (tooltip on left side of cursor) */
+.parcel-tooltip.arrow-right .tooltip-arrow {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 8px solid var(--color-white);
+  right: -8px;
+  left: auto;
+}
+
+.parcel-tooltip.arrow-right .tooltip-arrow::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  border-left: 9px solid var(--color-light-gray);
+  right: 1px;
+  left: auto;
+  top: -7px;
+  z-index: -1;
+}
+
+/* ===========================
    RESPONSIVE DESIGN
    =========================== */
 @media (max-width: 1024px) {
@@ -557,6 +659,12 @@ html {
 
   .sidebar-left.open {
     width: 280px;
+  }
+  
+  /* Tooltip adjustments for tablet */
+  .parcel-tooltip {
+    max-width: 180px;
+    font-size: var(--font-size-xs);
   }
 }
 
@@ -601,6 +709,21 @@ html {
   .map-title {
     font-size: var(--font-size-lg);
   }
+  
+  /* Mobile tooltip adjustments */
+  .parcel-tooltip {
+    max-width: 160px;
+    padding: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+  }
+  
+  .tooltip-name {
+    font-size: var(--font-size-xs);
+  }
+  
+  .tooltip-dimensions {
+    font-size: 0.65rem; /* Smaller than xs for mobile */
+  }
 }
 
 @media (max-width: 480px) {
@@ -620,5 +743,52 @@ html {
   .sidebar-left {
     top: 60px;
     height: calc(100vh - 60px);
+  }
+  
+  /* Extra small mobile tooltip adjustments */
+  .parcel-tooltip {
+    max-width: 140px;
+    padding: 6px;
+    min-width: 100px;
+  }
+  
+  .tooltip-name {
+    font-size: 0.65rem;
+    line-height: 1.2;
+  }
+  
+  .tooltip-dimensions {
+    font-size: 0.6rem;
+    line-height: 1.1;
+  }
+  
+  .parcel-tooltip.arrow-left .tooltip-arrow {
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-right-width: 6px;
+    left: -6px;
+  }
+  
+  .parcel-tooltip.arrow-left .tooltip-arrow::before {
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    border-right-width: 7px;
+    left: 1px;
+    top: -6px;
+  }
+  
+  .parcel-tooltip.arrow-right .tooltip-arrow {
+    border-top-width: 5px;
+    border-bottom-width: 5px;
+    border-left-width: 6px;
+    right: -6px;
+  }
+  
+  .parcel-tooltip.arrow-right .tooltip-arrow::before {
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 7px;
+    right: 1px;
+    top: -6px;
   }
 }

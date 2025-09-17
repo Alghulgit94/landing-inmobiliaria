@@ -2,6 +2,191 @@
 // Disable default zoom control since we'll use custom ones
 const map = L.map('map', { zoomControl: false, zoomAnimation: true }).setView([-25.700357, -56.240920], 17);
 
+// ===========================
+// TOOLTIP CLASS - Following Single Responsibility Principle
+// ===========================
+class ParcelTooltip {
+  constructor(containerId) {
+    this.tooltip = document.getElementById(containerId);
+    this.nameElement = document.getElementById('tooltipName');
+    this.dimensionsElement = document.getElementById('tooltipDimensions');
+    this.isVisible = false;
+    this.currentTarget = null;
+    
+    // Bind methods to preserve context
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
+    this.updatePosition = this.updatePosition.bind(this);
+    
+    // Initialize error handling
+    if (!this.tooltip || !this.nameElement || !this.dimensionsElement) {
+      console.warn('Tooltip elements not found. Tooltip functionality will be disabled.');
+      this.enabled = false;
+    } else {
+      this.enabled = true;
+    }
+  }
+  
+  /**
+   * Format parcel dimensions for display
+   * @param {Object} parcelData - The parcel data object
+   * @returns {string} Formatted dimensions string
+   */
+  formatDimensions(parcelData) {
+    // Check for pre-formatted dimensions
+    const preFormatted = parcelData.largoxancho || parcelData.LargoxAncho || parcelData.dimensions;
+    if (preFormatted && preFormatted !== 'null' && preFormatted !== '') {
+      return preFormatted;
+    }
+    
+    // Try to construct from individual values
+    const largo = parcelData.largo || parcelData.Largo || parcelData.length;
+    const ancho = parcelData.ancho || parcelData.Ancho || parcelData.width;
+    
+    if (largo && ancho && largo !== 'null' && ancho !== 'null') {
+      return `${largo} x ${ancho}`;
+    }
+    
+    // Fallback to area if available
+    const area = parcelData.area || parcelData.Area || parcelData.superficie || parcelData.Superficie;
+    if (area && area !== 'null' && area !== '') {
+      return `${area} m²`;
+    }
+    
+    return 'Dimensiones no disponibles';
+  }
+  
+  /**
+   * Show tooltip with parcel information
+   * @param {Object} parcelData - The parcel data object
+   * @param {number} x - Mouse X coordinate (viewport coordinates)
+   * @param {number} y - Mouse Y coordinate (viewport coordinates)
+   */
+  show(parcelData, x, y) {
+    if (!this.enabled || !parcelData) return;
+    
+    // Update content
+    const name = parcelData.name || 'Lote sin nombre';
+    const dimensions = this.formatDimensions(parcelData);
+    
+    this.nameElement.textContent = name;
+    this.dimensionsElement.textContent = dimensions;
+    
+    // Update ARIA attributes for accessibility
+    this.tooltip.setAttribute('aria-hidden', 'false');
+    
+    // Show tooltip first to ensure it renders
+    this.tooltip.classList.add('visible');
+    this.isVisible = true;
+    
+    // Initialize with default arrow direction
+    this.tooltip.classList.add('arrow-left');
+    this.tooltip.classList.remove('arrow-right');
+    
+    // Use requestAnimationFrame to ensure tooltip is rendered before positioning
+    requestAnimationFrame(() => {
+      this.updatePosition(x, y);
+    });
+  }
+  
+  /**
+   * Hide tooltip
+   */
+  hide() {
+    if (!this.enabled) return;
+    
+    this.tooltip.classList.remove('visible');
+    this.tooltip.setAttribute('aria-hidden', 'true');
+    this.isVisible = false;
+    this.currentTarget = null;
+  }
+  
+  /**
+   * Update tooltip position with side arrow pointing toward mouse
+   * @param {number} x - Mouse X coordinate (viewport coordinates)
+   * @param {number} y - Mouse Y coordinate (viewport coordinates)
+   */
+  updatePosition(x, y) {
+    if (!this.enabled || !this.isVisible) return;
+    
+    const mapContainer = document.querySelector('.map-container');
+    if (!mapContainer) return;
+    
+    const containerRect = mapContainer.getBoundingClientRect();
+    
+    // Convert viewport coordinates to container-relative coordinates
+    let mouseX = x - containerRect.left;
+    let mouseY = y - containerRect.top;
+    
+    // Get tooltip dimensions - handle case where it's not rendered yet
+    const tooltipRect = this.tooltip.getBoundingClientRect();
+    const tooltipWidth = tooltipRect.width || 150; // fallback width
+    const tooltipHeight = tooltipRect.height || 60; // fallback height
+    
+    // Position tooltip to the right of the cursor with side arrow pointing left
+    const arrowOffset = 12; // Space for the arrow
+    const cursorOffset = 5; // Small gap between cursor and arrow
+    const padding = 10;
+    
+    // Calculate initial position (to the right of cursor)
+    let left = mouseX + cursorOffset + arrowOffset;
+    let top = mouseY - (tooltipHeight / 2); // Center vertically on cursor
+    
+    const containerWidth = containerRect.width;
+    const containerHeight = containerRect.height;
+    
+    // Check if tooltip would overflow right edge
+    if (left + tooltipWidth > containerWidth - padding) {
+      // Position to the left of cursor instead
+      left = mouseX - cursorOffset - arrowOffset - tooltipWidth;
+      
+      // Update arrow to point right (will be handled in CSS with a class)
+      this.tooltip.classList.add('arrow-right');
+      this.tooltip.classList.remove('arrow-left');
+    } else {
+      // Position to the right of cursor (default)
+      this.tooltip.classList.add('arrow-left');
+      this.tooltip.classList.remove('arrow-right');
+    }
+    
+    // Ensure tooltip doesn't go beyond left edge
+    if (left < padding) {
+      left = padding;
+    }
+    
+    // Vertical boundary checking
+    if (top < padding) {
+      top = padding;
+    } else if (top + tooltipHeight > containerHeight - padding) {
+      top = containerHeight - tooltipHeight - padding;
+    }
+    
+    // Apply position
+    this.tooltip.style.left = `${left}px`;
+    this.tooltip.style.top = `${top}px`;
+    this.tooltip.style.transform = 'none';
+  }
+  
+  /**
+   * Check if tooltip is currently visible
+   * @returns {boolean}
+   */
+  isTooltipVisible() {
+    return this.isVisible;
+  }
+  
+  /**
+   * Get current target
+   * @returns {Object|null}
+   */
+  getCurrentTarget() {
+    return this.currentTarget;
+  }
+}
+
+// Initialize tooltip instance
+const parcelTooltip = new ParcelTooltip('parcelTooltip');
+
 // Tile layer (usar OSM y estilizar con CSS para escala de grises)
 const base = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 20 });
 base.addTo(map);
@@ -114,6 +299,11 @@ function showParcelSidebar(parcelData) {
   // Check if elements exist
   if (!sidebarLeft || !parcelInfo) {
     return;
+  }
+  
+  // Hide tooltip when opening sidebar to prevent conflicts
+  if (parcelTooltip.enabled) {
+    parcelTooltip.hide();
   }
   
   // Set header image (use placeholder if no image available)
@@ -430,19 +620,35 @@ fetch('assets/loteo.kml')
           opacity: 1
         },
         onEachFeature: (feature, layer) => {
-          // Hover effects
+          // Enhanced hover effects with tooltip integration
           layer.on('mouseover', function(e) {
             const currentLayer = e.target;
             const hoverStyle = getHoverStyle(estado);
             
+            // Apply hover styling
             currentLayer.setStyle({
               ...hoverStyle,
               fillOpacity: 0.9
             });
+            
+            // Show tooltip with precise mouse coordinates
+            if (parcelTooltip.enabled && e.originalEvent) {
+              const mouseX = e.originalEvent.clientX;
+              const mouseY = e.originalEvent.clientY;
+              parcelTooltip.show(loteData, mouseX, mouseY);
+            }
           });
 
           layer.on('mouseout', function(e) {
             const currentLayer = e.target;
+            
+            // Clean up any pending tooltip updates
+            if (layer._tooltipUpdateTimer) {
+              clearTimeout(layer._tooltipUpdateTimer);
+              layer._tooltipUpdateTimer = null;
+            }
+            
+            // Reset layer styling
             currentLayer.setStyle({
               color: '#1F4B43',
               weight: 2,
@@ -451,6 +657,26 @@ fetch('assets/loteo.kml')
               dashArray: '',
               opacity: 1
             });
+            
+            // Hide tooltip
+            if (parcelTooltip.enabled) {
+              parcelTooltip.hide();
+            }
+          });
+          
+          // Update tooltip position on mouse move for smoother experience
+          layer.on('mousemove', function(e) {
+            if (parcelTooltip.enabled && parcelTooltip.isTooltipVisible() && e.originalEvent) {
+              const mouseX = e.originalEvent.clientX;
+              const mouseY = e.originalEvent.clientY;
+              // Throttle updates to improve performance
+              if (!layer._tooltipUpdateTimer) {
+                layer._tooltipUpdateTimer = setTimeout(() => {
+                  parcelTooltip.updatePosition(mouseX, mouseY);
+                  layer._tooltipUpdateTimer = null;
+                }, 16); // ~60fps
+              }
+            }
           });
           
           // Click handler - now opens sidebar instead of modal
