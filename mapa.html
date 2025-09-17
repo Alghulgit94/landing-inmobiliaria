@@ -19,15 +19,21 @@
       <aside class="sidebar-left" id="sidebarLeft">
         <div class="sidebar-header">
           <h2 class="sidebar-title">Información del Lote</h2>
-          <button class="sidebar-close" id="sidebarClose" aria-label="Cerrar">&times;</button>
+          <button class="sidebar-close" id="sidebarClose" aria-label="Cerrar">
+            &times;
+          </button>
         </div>
-        
+
         <div class="sidebar-content">
           <!-- Empty State -->
           <div class="empty-state" id="emptyState">
             <div class="empty-state-icon">🗺️</div>
             <h3>Selecciona un Lote</h3>
-            <p>Haz clic en cualquier lote del mapa para ver información detallada, incluyendo precio, dimensiones y estado de disponibilidad.</p>
+            <p>
+              Haz clic en cualquier lote del mapa para ver información
+              detallada, incluyendo precio, dimensiones y estado de
+              disponibilidad.
+            </p>
           </div>
 
           <!-- Parcel Information -->
@@ -45,7 +51,9 @@
 
             <div class="info-section">
               <div class="info-label">Ubicación</div>
-              <div class="info-value" id="parcelLocation">Colonia Independencia</div>
+              <div class="info-value" id="parcelLocation">
+                Colonia Independencia
+              </div>
             </div>
 
             <div class="info-section">
@@ -63,9 +71,7 @@
               <div class="price-amount" id="parcelPrice">Consultar</div>
             </div>
 
-            <button class="reserve-btn" id="reserveBtn">
-              Reservar Lote
-            </button>
+            <button class="reserve-btn" id="reserveBtn">Reservar Lote</button>
           </div>
         </div>
       </aside>
@@ -80,32 +86,57 @@
         <!-- Map Controls Section -->
         <div class="map-controls-section">
           <h3 class="section-title">Controles</h3>
-          <div class="map-controls">
-            <button id="satToggle" class="map-btn">Satélite</button>
-            <button id="grayToggle" class="map-btn">Escala Gris</button>
+
+          <div class="legend-item" data-control="satellite">
+            <input type="checkbox" class="legend-checkbox" id="satToggle" />
+            <div class="legend-color satellite"></div>
+            <label for="satToggle" class="legend-label">Satélite</label>
+          </div>
+
+          <div class="legend-item" data-control="grayscale">
+            <input type="checkbox" class="legend-checkbox" id="grayToggle" />
+            <div class="legend-color grayscale"></div>
+            <label for="grayToggle" class="legend-label">Escala Gris</label>
           </div>
         </div>
 
         <!-- Legend Section -->
         <div class="legend-section">
           <h3 class="section-title">Estado de Lotes</h3>
-          
+
           <div class="legend-item" data-status="disponible">
-            <input type="checkbox" class="legend-checkbox" id="filterDisponible" checked>
+            <input
+              type="checkbox"
+              class="legend-checkbox"
+              id="filterDisponible"
+              checked
+            />
             <div class="legend-color disponible"></div>
-            <label for="filterDisponible" class="legend-label">Disponible</label>
+            <label for="filterDisponible" class="legend-label"
+              >Disponible</label
+            >
             <span class="legend-count" id="countDisponible">0</span>
           </div>
 
           <div class="legend-item" data-status="reservado">
-            <input type="checkbox" class="legend-checkbox" id="filterReservado" checked>
+            <input
+              type="checkbox"
+              class="legend-checkbox"
+              id="filterReservado"
+              checked
+            />
             <div class="legend-color reservado"></div>
             <label for="filterReservado" class="legend-label">Reservado</label>
             <span class="legend-count" id="countReservado">0</span>
           </div>
 
           <div class="legend-item" data-status="vendido">
-            <input type="checkbox" class="legend-checkbox" id="filterVendido" checked>
+            <input
+              type="checkbox"
+              class="legend-checkbox"
+              id="filterVendido"
+              checked
+            />
             <div class="legend-color vendido"></div>
             <label for="filterVendido" class="legend-label">Vendido</label>
             <span class="legend-count" id="countVendido">0</span>

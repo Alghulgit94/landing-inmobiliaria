@@ -514,9 +514,9 @@ map.on('click', function(e) {
 
 // UI botones - removed back button as per requirements
 
-// Enhanced Satélite toggle with proper styling
+// Enhanced Satélite toggle with checkbox functionality
 let satLayer = null;
-document.getElementById('satToggle')?.addEventListener('click', function () {
+document.getElementById('satToggle')?.addEventListener('change', function () {
   if (!satLayer) {
     satLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', { 
       subdomains: ['mt0', 'mt1', 'mt2', 'mt3'], 
@@ -524,24 +524,21 @@ document.getElementById('satToggle')?.addEventListener('click', function () {
       attribution: '© Google'
     });
   }
-  if (map.hasLayer(satLayer)) { 
-    map.removeLayer(satLayer); 
-    this.classList.remove('active'); 
-  } else { 
+  if (this.checked) { 
     satLayer.addTo(map); 
-    this.classList.add('active'); 
+  } else { 
+    map.removeLayer(satLayer); 
   }
 });
 
-// Enhanced Gray toggle with better visual feedback
+// Enhanced Gray toggle with checkbox functionality
 let gray = false; // Start with normal colors
-document.getElementById('grayToggle')?.addEventListener('click', function () {
-  gray = !gray;
+document.getElementById('grayToggle')?.addEventListener('change', function () {
+  gray = this.checked;
   const tiles = document.querySelectorAll('.leaflet-tile');
   tiles.forEach(t => { 
     t.style.filter = gray ? 'grayscale(100%) contrast(95%) brightness(92%)' : 'none'; 
   });
-  this.classList.toggle('active');
   
   // Apply filter to future tiles as well
   const observer = new MutationObserver(function(mutations) {

@@ -33,12 +33,12 @@ html {
    =========================== */
 .map-header {
   grid-area: header;
-  height: 80px;
-  background: var(--color-white);
+  height: 60px;
+  background: var(--color-green-primary);
   display: flex;
   align-items: center;
-  padding: 0 var(--spacing-lg);
-  box-shadow: var(--shadow-md);
+  padding: 0 var(--spacing-sm);
+  box-shadow: var(--shadow-sm);
   border-bottom: 2px solid var(--color-light-gray);
   z-index: 1001;
 }
@@ -46,11 +46,11 @@ html {
 .map-title {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-2xl);
-  color: var(--color-green-primary);
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
   margin: 0;
   letter-spacing: var(--letter-spacing-wide);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 /* ===========================
@@ -389,6 +389,14 @@ html {
 
 .legend-color.vendido {
   background-color: #dc3545;
+}
+
+.legend-color.satellite {
+  background-color: #007bff;
+}
+
+.legend-color.grayscale {
+  background-color: #6c757d;
 }
 
 .legend-label {
