@@ -1,6 +1,6 @@
 // Mapa Leaflet + carga de KML -> GeoJSON usando toGeoJSON
 // Disable default zoom control since we'll use custom ones
-const map = L.map('map', { zoomControl: false, zoomAnimation: true }).setView([-25.700357, -56.240920], 17);
+const map = L.map('map', { zoomControl: false, zoomAnimation: true }).setView([-25.695804, -56.174242], 17);
 
 // ===========================
 // TOOLTIP CLASS - Following Single Responsibility Principle
