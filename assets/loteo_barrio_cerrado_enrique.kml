@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="loteamiento_planta_urbana" id="loteamiento_planta_urbana">
+	<SimpleField name="FID_" type="float"></SimpleField>
+	<SimpleField name="SUP_SIG_M2" type="float"></SimpleField>
+	<SimpleField name="DPTO" type="string"></SimpleField>
+	<SimpleField name="DIST" type="float"></SimpleField>
+	<SimpleField name="PADRON" type="float"></SimpleField>
+	<SimpleField name="ZONA" type="string"></SimpleField>
+	<SimpleField name="MZ" type="string"></SimpleField>
+	<SimpleField name="LOTE" type="string"></SimpleField>
+	<SimpleField name="MZ_AGR" type="string"></SimpleField>
+	<SimpleField name="LOTE_AGR" type="float"></SimpleField>
+	<SimpleField name="NOMBRE_OBJ" type="string"></SimpleField>
+	<SimpleField name="SUP_LEGAL" type="string"></SimpleField>
+	<SimpleField name="REG_PROF" type="float"></SimpleField>
+	<SimpleField name="FINCA" type="string"></SimpleField>
+	<SimpleField name="COLONIA" type="string"></SimpleField>
+	<SimpleField name="MATRICULA" type="string"></SimpleField>
+</Schema>
+<Folder><name>loteamiento_planta_urbana</name>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">1</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4594.488</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">1</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4591,59</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3649</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1759455366792,-25.6935038918973 -56.175152817296,-25.6936837142829 -56.1752810997291,-25.6941758251034 -56.1760738222212,-25.6939960021078 -56.1759455366793,-25.6935038918973 -56.1759455366792,-25.6935038918973</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">2</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4202.274</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">2</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4199,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3650</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.175152817296,-25.6936837142829 -56.1744761038388,-25.6938372177382 -56.1746135464975,-25.694364479885 -56.1752902627982,-25.6942109758718 -56.175152817296,-25.6936837142829 -56.175152817296,-25.6936837142829</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">3</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4202.273</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">3</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4199,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3651</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1744761038388,-25.6938372177382 -56.1737993887344,-25.6939907180074 -56.1739368285494,-25.6945179807121 -56.1746135464975,-25.694364479885 -56.1744761038388,-25.6938372177382 -56.1744761038388,-25.6938372177382</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">5</SimpleData>
+		<SimpleData name="SUP_SIG_M2">7111.077</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">5</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">7106,6</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3653</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1730408731713,-25.694162768962 -56.1723910981751,-25.694310151186 -56.172664728032,-25.6953599251141 -56.1732516671202,-25.6949714592402 -56.1730408731713,-25.694162768962</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">6</SimpleData>
+		<SimpleData name="SUP_SIG_M2">8972.574</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">6</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">8966,93</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3654</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1723910981751,-25.694310151186 -56.171740231214,-25.6944577777996 -56.1720768001658,-25.6957490404225 -56.172664728032,-25.6953599251141 -56.1723910981751,-25.694310151186</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">7</SimpleData>
+		<SimpleData name="SUP_SIG_M2">10405.617</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">7</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">10399,07</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3655</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.171740231214,-25.6944577777996 -56.1711118467743,-25.6946003019079 -56.1714783253744,-25.6960063413882 -56.1721067168563,-25.6958638158991 -56.171740231214,-25.6944577777996 -56.171740231214,-25.6944577777996</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">8</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3902.107</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">8</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3899,65</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3656</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1721067168563,-25.6958638158991 -56.1714783253744,-25.6960063413882 -56.1716157569482,-25.6965336059415 -56.1722441510711,-25.6963910799345 -56.1721067168563,-25.6958638158991</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">9</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3902.107</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">9</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3899,65</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3657</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1722441510711,-25.6963910799345 -56.1716157569482,-25.6965336059415 -56.1717531896669,-25.6970608703574 -56.1723815864307,-25.6969183438325 -56.1722441510711,-25.6963910799345</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">10</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3902.132</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">10</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3899,65</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3658</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1723815864307,-25.6969183438325 -56.1717531896669,-25.6970608703574 -56.1718906235305,-25.6975881346358 -56.1725190247291,-25.6974456140854 -56.1723815864307,-25.6969183438325</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">11</SimpleData>
+		<SimpleData name="SUP_SIG_M2">7943.736</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">11</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">7938,73</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3659</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1718906235305,-25.6975881346358 -56.1718906235305,-25.6975881346358 -56.172028058539,-25.6981153987769 -56.1733073457818,-25.6978252410264 -56.1731699088534,-25.6972979912009 -56.1718906235305,-25.6975881346358</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">12</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3314.503</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">12</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3312,42</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3660</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1730049755439,-25.696665250532 -56.172471210687,-25.6967863247117 -56.1726086474549,-25.6973135884032 -56.173142414555,-25.6971925137835 -56.1730049755439,-25.6966652505319 -56.1730049755439,-25.696665250532</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">13</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3314.503</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">13</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3312,42</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3661</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1728675376778,-25.6961379871429 -56.1723337750642,-25.6962590608828 -56.172471210687,-25.6967863247117 -56.1730049755439,-25.696665250532 -56.1728675376778,-25.6961379871429 -56.1728675376778,-25.6961379871429</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">14</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3605.651</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">14</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3603,41</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3662</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1726922194588,-25.6954653938862 -56.1722100769228,-25.6957844962345 -56.1723337750642,-25.6962590608828 -56.1728675376778,-25.6961379871429 -56.1726922194588,-25.6954653938862</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">15</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4764.236</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">15</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4761,24</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3663</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1732354905536,-25.6951058209846 -56.1726922174445,-25.6954653861582 -56.1728675376778,-25.6961379871429 -56.1734108128885,-25.695778421745 -56.1732354905536,-25.6951058209846 -56.1732354905536,-25.6951058209846</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">16</SimpleData>
+		<SimpleData name="SUP_SIG_M2">5625.642</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">16</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">5622,1</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3664</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1739643184436,-25.6946234397288 -56.1733228234501,-25.6950480193308 -56.1734981462039,-25.6957206200015 -56.174139644779,-25.6952960394065 -56.1739643184436,-25.6946234397288 -56.1739643184436,-25.6946234397288</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">17</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4272.311</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">17</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4269,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3665</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1746410369604,-25.6944699387902 -56.1739643184436,-25.6946234397288 -56.1741040503288,-25.6951594899764 -56.1747807717367,-25.6950059884706 -56.1746410369604,-25.6944699387902</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">18</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4272.312</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">18</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4269,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3666</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1753177538299,-25.6943164346654 -56.1746410369604,-25.6944699387902 -56.1747807717367,-25.6950059884706 -56.1754574914972,-25.6948524837784 -56.1753177538299,-25.6943164346654</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">19</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4272.313</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">19</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4269,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3667</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1754574914972,-25.6948524837784 -56.1747807717367,-25.6950059884706 -56.1749205076966,-25.6955420380088 -56.1755972303482,-25.6953885327493 -56.1754574914972,-25.6948524837784</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">20</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4272.311</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">20</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4269,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3668</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1747807717367,-25.6950059884706 -56.1741040503288,-25.6951594899764 -56.1742437833976,-25.6956955400818 -56.1749205076966,-25.6955420380088 -56.1747807717367,-25.6950059884706</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">23</SimpleData>
+		<SimpleData name="SUP_SIG_M2">5817.936</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">23</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">5814,27</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3671</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1749479968773,-25.6956474903602 -56.1742712720095,-25.6958009925449 -56.1740586004061,-25.6959461443747 -56.1741126647938,-25.6961758938256 -56.1740444335676,-25.6964201910526 -56.1750877342538,-25.6961835397283 -56.1749479968773,-25.6956474903602 -56.1749479968773,-25.6956474903602</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">24</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4272.313</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">24</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4269,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3672</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1756247200977,-25.6954939849891 -56.1749479968773,-25.6956474903602 -56.1750877342538,-25.6961835397283 -56.1757644603653,-25.6960300337899 -56.1756247200977,-25.6954939849891</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">25</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4272.313</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">25</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4269,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3673</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1757644603653,-25.6960300337899 -56.1750877342538,-25.6961835397282 -56.175227472814,-25.6967195889541 -56.1759042018372,-25.6965660824441 -56.1757644603653,-25.6960300337899</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">26</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4272.312</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">26</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4269,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3674</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1750877342538,-25.6961835397283 -56.1744110064947,-25.6963370424802 -56.1745507421635,-25.6968730922734 -56.1752274728139,-25.6967195889542 -56.1750877342538,-25.6961835397283</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">27</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3132.377</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">27</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3148,44</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3675</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1744110064947,-25.6963370424802 -56.1740444335676,-25.6964201910526 -56.1739249909782,-25.6970150383099 -56.1745507421635,-25.6968730922734 -56.1744110064947,-25.6963370424802 -56.1744110064947,-25.6963370424802</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">28</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4202.273</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">28</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4199,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3676</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1745782313126,-25.6969785446692 -56.1739014984458,-25.6971320449135 -56.1740389419057,-25.6976593073969 -56.1747156776166,-25.6975058065947 -56.1745782313126,-25.6969785446692 -56.1745782313126,-25.6969785446692</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">29</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4202.274</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">29</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4199,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3677</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1752549625318,-25.6968250412384 -56.1745782313126,-25.6969785446692 -56.1747156776166,-25.6975058065947 -56.1753924116798,-25.6973523026058 -56.1752549625318,-25.6968250412384 -56.1752549625318,-25.6968250412384</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">30</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4202.276</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">30</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4199,62</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3678</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1759316921034,-25.696671534621 -56.1752549625318,-25.6968250412384 -56.1753924116798,-25.6973523026058 -56.1760691440953,-25.6971987954304 -56.1759316921034,-25.696671534621 -56.1759316921034,-25.696671534621</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">31</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4594.489</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">31</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4591,59</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3679</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1767335940156,-25.6965268592122 -56.1759408555339,-25.6967066853459 -56.1760691440953,-25.6971987954304 -56.1768618856863,-25.6970189686865 -56.1767335940156,-25.6965268592122 -56.1767335940156,-25.6965268592122</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">32</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3922.125</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">32</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3919,65</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3680</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1766053033426,-25.6960347496182 -56.1759285781659,-25.6961882594844 -56.1760568661846,-25.6966803695995 -56.1767335940156,-25.6965268592122 -56.1766053033426,-25.6960347496182 -56.1766053033426,-25.6960347496182</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">33</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3922.125</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">33</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3919,65</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3681</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1764770136675,-25.6955426399042 -56.1758002911449,-25.6956961492496 -56.1759285781659,-25.6961882594844 -56.1766053033426,-25.6960347496182 -56.1764770136675,-25.6955426399042 -56.1764770136675,-25.6955426399042</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">4</SimpleData>
+		<SimpleData name="SUP_SIG_M2">5967.267</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">4</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">5963,51</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3652</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1737993887344,-25.6939907180074 -56.1730408731713,-25.694162768962 -56.1732516671202,-25.6949714592402 -56.1739368285494,-25.6945179807121 -56.1737993887344,-25.6939907180074</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">21</SimpleData>
+		<SimpleData name="SUP_SIG_M2">4270.494</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">21</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">4267,8</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3669</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.174139644779,-25.6952960394065 -56.1734981462039,-25.6957206200015 -56.1736327032987,-25.6962368240513 -56.1742712720095,-25.6958009925449 -56.174139644779,-25.6952960394065</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">22</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3701.021</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">22</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3698,69</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3670</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1734108128885,-25.695778421745 -56.1728675376778,-25.6961379871429 -56.1730049755439,-25.696665250532 -56.1735457688954,-25.6962961574492 -56.1734108128885,-25.695778421745</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">34</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3641.973</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">34</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3639,67</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3682</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1763303980663,-25.6949802286674 -56.1756536785769,-25.6951337374175 -56.1757728011475,-25.6955906970524 -56.1764495231013,-25.6954371878187 -56.1763303980663,-25.6949802286674 -56.1763303980663,-25.6949802286674</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">35</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3922.124</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">35</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3919,65</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3683</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.176202110529,-25.6944881186966 -56.1755253936937,-25.6946416269258 -56.1756536785769,-25.6951337374175 -56.1763303980663,-25.6949802286674 -56.176202110529,-25.6944881186966 -56.176202110529,-25.6944881186966</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">36</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3922.176</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">36</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">LOTE</SimpleData>
+		<SimpleData name="SUP_LEGAL">3919,65</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3683</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1760738221956,-25.6939960021136 -56.1753971080142,-25.694149509822 -56.1755253936937,-25.6946416269258 -56.176202110529,-25.6944881186966 -56.1760738221956,-25.6939960021136 -56.1760738221956,-25.6939960021136</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">37</SimpleData>
+		<SimpleData name="SUP_SIG_M2">3457.881</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">1</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">CALLE PROYECTADA</SimpleData>
+		<SimpleData name="SUP_LEGAL">3455,69</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3684</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1753971080399,-25.6941495098162 -56.1752810997291,-25.6941758251034 -56.1759408555339,-25.6967066853459 -56.1760568661591,-25.6966803696053 -56.1753971080399,-25.6941495098162</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">38</SimpleData>
+		<SimpleData name="SUP_SIG_M2">7126.144</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">2</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">CALLE PROYECTADA</SimpleData>
+		<SimpleData name="SUP_LEGAL">7121,36</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3685</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1752902627713,-25.6942109758779 -56.1739368285225,-25.6945179807182 -56.1720768001388,-25.6957490404286 -56.1725190247022,-25.6974456140915 -56.1731699088265,-25.697297991207 -56.173142414528,-25.6971925137896 -56.1726086456342,-25.697313581917 -56.1722100768959,-25.6957844962406 -56.1739643184167,-25.694623439735 -56.1753177520091,-25.6943164281792 -56.1752902627713,-25.6942109758779</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">39</SimpleData>
+		<SimpleData name="SUP_SIG_M2">1354.527</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">3</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">CALLE PROYECTADA</SimpleData>
+		<SimpleData name="SUP_LEGAL">1353,67</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3686</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1733228234501,-25.6950480193308 -56.1732354905536,-25.6951058209846 -56.1735457688954,-25.6962961574492 -56.1736327032987,-25.6962368240513 -56.1733228234501,-25.6950480193308</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">40</SimpleData>
+		<SimpleData name="SUP_SIG_M2">1680.910</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">4</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">CALLE PROYECTADA</SimpleData>
+		<SimpleData name="SUP_LEGAL">1679,85</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3687</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1755972303482,-25.6953885327493 -56.1742437833976,-25.6956955400818 -56.1742712720094,-25.6958009925449 -56.1756247200977,-25.6954939849891 -56.1755972303482,-25.6953885327493</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">41</SimpleData>
+		<SimpleData name="SUP_SIG_M2">2489.600</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">5</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">CALLE PROYECTADA</SimpleData>
+		<SimpleData name="SUP_LEGAL">2488,03</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3688</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1759042018372,-25.6965660824441 -56.1739249909782,-25.6970150383099 -56.1739014984458,-25.6971320449135 -56.1759316921034,-25.696671534621 -56.1759042018372,-25.6965660824441</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">42</SimpleData>
+		<SimpleData name="SUP_SIG_M2">840.455</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="LOTE_AGR">6</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">CALLE PROYECTADA</SimpleData>
+		<SimpleData name="SUP_LEGAL">839,93</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3689</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1764495231013,-25.6954371878187 -56.1757728011475,-25.6955906970524 -56.1758002911449,-25.6956961492496 -56.1764770136676,-25.6955426399048 -56.1764495231013,-25.6954371878187</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>ff0000ff</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#loteamiento_planta_urbana">
+		<SimpleData name="FID_">43</SimpleData>
+		<SimpleData name="SUP_SIG_M2">14068.844</SimpleData>
+		<SimpleData name="DPTO">E</SimpleData>
+		<SimpleData name="DIST">4</SimpleData>
+		<SimpleData name="PADRON">580</SimpleData>
+		<SimpleData name="NOMBRE_OBJ">PLAZA</SimpleData>
+		<SimpleData name="SUP_LEGAL">14060</SimpleData>
+		<SimpleData name="REG_PROF">475</SimpleData>
+		<SimpleData name="COLONIA">PLANTA URBANA</SimpleData>
+		<SimpleData name="MATRICULA">E04/3690</SimpleData>
+	</SchemaData></ExtendedData>
+      <MultiGeometry><Polygon><outerBoundaryIs><LinearRing><coordinates>-56.1740586004062,-25.6959461443747 -56.1730049755439,-25.6966652505319 -56.1733073457818,-25.6978252410264 -56.1740389419059,-25.6976593073972 -56.1739014984459,-25.6971320449134 -56.1740444335677,-25.6964201910526 -56.1741126647939,-25.6961758938256 -56.1740586004062,-25.6959461443747 -56.1740586004062,-25.6959461443747</coordinates></LinearRing></outerBoundaryIs></Polygon></MultiGeometry>
+  </Placemark>
+</Folder>
+</Document></kml>

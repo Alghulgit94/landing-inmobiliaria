@@ -92,6 +92,7 @@
         </div>
       </main>
 
+
       <!-- Right Sidebar - Utilities -->
       <aside class="sidebar-right">
         <!-- Map Controls Section -->
@@ -161,6 +162,87 @@
           </div>
         </div>
       </aside>
+      </div>
+
+      <!-- Mobile Components -->
+      <!-- Mobile Floating Action Buttons -->
+      <div class="mobile-fabs" id="mobileFabs">
+        <button class="mobile-fab" id="mobileMapToggle" aria-label="Opciones de Mapa" title="Mapa">#</button>
+        <button class="mobile-fab" id="mobileLegendToggle" aria-label="Estado de Lotes" title="Leyenda">A</button>
+      </div>
+
+      <!-- Mobile Bottom Parcel Card -->
+      <div class="mobile-parcel-card" id="mobileParcelCard">
+        <!-- Close button positioned in top-right corner -->
+        <button class="mobile-card-close" id="mobileCardClose" aria-label="Cerrar">
+          &times;
+        </button>
+        
+        <div class="mobile-card-content">
+          <div class="mobile-card-image">
+            <img id="mobileCardImage" src="" alt="Imagen del lote" />
+          </div>
+          <div class="mobile-card-details">
+            <h3 class="mobile-card-title" id="mobileCardTitle">Lote N/A</h3>
+            <span class="mobile-card-status" id="mobileCardStatus">Disponible</span>
+            <p class="mobile-card-location" id="mobileCardLocation">Colonia Independencia</p>
+            <p class="mobile-card-coordinates" id="mobileCardCoordinates">N/A, N/A</p>
+            <p class="mobile-card-price" id="mobileCardPrice">Consultar</p>
+          </div>
+        </div>
+        
+        <div class="mobile-card-actions">
+          <button class="mobile-reserve-btn" id="mobileReserveBtn">Reservar</button>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Sheets -->
+      <!-- Map Options Bottom Sheet -->
+      <div class="mobile-bottom-sheet-backdrop" id="mapSheetBackdrop"></div>
+      <div class="mobile-bottom-sheet" id="mapBottomSheet">
+        <div class="mobile-bottom-sheet-header">
+          <div class="mobile-bottom-sheet-handle"></div>
+          <h3 class="mobile-bottom-sheet-title">Opciones de Mapa</h3>
+        </div>
+        <div class="mobile-bottom-sheet-content">
+          <div class="mobile-sheet-option" id="mobileSatelliteOption">
+            <input type="checkbox" class="mobile-sheet-checkbox" id="mobileSatToggle" />
+            <label for="mobileSatToggle" class="mobile-sheet-label">Satélite</label>
+          </div>
+          <div class="mobile-sheet-option" id="mobileGrayscaleOption">
+            <input type="checkbox" class="mobile-sheet-checkbox" id="mobileGrayToggle" />
+            <label for="mobileGrayToggle" class="mobile-sheet-label">Escala de Grises</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legend Bottom Sheet -->
+      <div class="mobile-bottom-sheet-backdrop" id="legendSheetBackdrop"></div>
+      <div class="mobile-bottom-sheet" id="legendBottomSheet">
+        <div class="mobile-bottom-sheet-header">
+          <div class="mobile-bottom-sheet-handle"></div>
+          <h3 class="mobile-bottom-sheet-title">Estado de Lotes</h3>
+        </div>
+        <div class="mobile-bottom-sheet-content">
+          <div class="mobile-sheet-option" id="mobileDisponibleOption">
+            <input type="checkbox" class="mobile-sheet-checkbox" id="mobileFilterDisponible" checked />
+            <div class="mobile-sheet-color disponible"></div>
+            <label for="mobileFilterDisponible" class="mobile-sheet-label">Disponible</label>
+            <span class="mobile-sheet-count" id="mobileCountDisponible">0</span>
+          </div>
+          <div class="mobile-sheet-option" id="mobileReservadoOption">
+            <input type="checkbox" class="mobile-sheet-checkbox" id="mobileFilterReservado" checked />
+            <div class="mobile-sheet-color reservado"></div>
+            <label for="mobileFilterReservado" class="mobile-sheet-label">Reservado</label>
+            <span class="mobile-sheet-count" id="mobileCountReservado">0</span>
+          </div>
+          <div class="mobile-sheet-option" id="mobileVendidoOption">
+            <input type="checkbox" class="mobile-sheet-checkbox" id="mobileFilterVendido" checked />
+            <div class="mobile-sheet-color vendido"></div>
+            <label for="mobileFilterVendido" class="mobile-sheet-label">Vendido</label>
+            <span class="mobile-sheet-count" id="mobileCountVendido">0</span>
+          </div>
+        </div>
       </div>
     </div>
 

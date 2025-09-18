@@ -650,8 +650,380 @@ html {
 }
 
 /* ===========================
-   RESPONSIVE DESIGN
+   MOBILE COMPONENTS - Floating Parcel Card
    =========================== */
+.mobile-parcel-card {
+  position: fixed;
+  bottom: 20px;
+  left: 16px;
+  right: 16px;
+  height: auto;
+  min-height: 120px;
+  background: var(--color-white);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  z-index: 1500;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  display: none; /* Hidden by default - only show on mobile via media query */
+  padding: 16px;
+  border: 2px solid var(--color-green-primary);
+  opacity: 0;
+  transform: translateY(100px) scale(0.95);
+}
+
+/* Mobile card visible state */
+.mobile-parcel-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+.mobile-card-content {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: center;
+}
+
+.mobile-card-image {
+  width: 80px;
+  height: 80px;
+  background: var(--color-light-gray);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mobile-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mobile-card-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+.mobile-card-title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  color: var(--color-primary-dark);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.mobile-card-status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 4px 0;
+  width: fit-content;
+  max-width: max-content;
+}
+
+.mobile-card-status.disponible {
+  background-color: #28a745;
+  color: var(--color-white);
+}
+
+.mobile-card-status.reservado {
+  background-color: #ffc107;
+  color: var(--color-primary-dark);
+}
+
+.mobile-card-status.vendido {
+  background-color: #dc3545;
+  color: var(--color-white);
+}
+
+.mobile-card-location {
+  font-family: var(--font-family-primary);
+  font-size: 11px;
+  color: var(--color-dark-gray);
+  margin: 0;
+}
+
+.mobile-card-coordinates {
+  font-family: var(--font-family-primary);
+  font-size: 10px;
+  color: var(--color-dark-gray);
+  margin: 0;
+  opacity: 0.8;
+}
+
+.mobile-card-price {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  color: var(--color-green-primary);
+  margin: 2px 0 0 0;
+}
+
+.mobile-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-light-gray);
+}
+
+.mobile-reserve-btn {
+  background: var(--color-green-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  min-height: 44px;
+  width: 100%;
+}
+
+.mobile-reserve-btn:hover {
+  background: var(--color-dark-blue);
+  transform: translateY(-1px);
+}
+
+.mobile-card-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--color-dark-gray);
+  font-size: 20px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-normal);
+  z-index: 10;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.mobile-card-close:hover {
+  background: var(--color-light-gray);
+}
+
+/* ===========================
+   MOBILE COMPONENTS - Floating Action Buttons
+   =========================== */
+.mobile-fabs {
+  position: fixed;
+  top: 80px;
+  right: 16px;
+  z-index: 1400;
+  display: none; /* Hidden by default - only show on mobile via media query */
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-fab {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-white);
+  border: 2px solid var(--color-green-primary);
+  color: var(--color-green-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: 18px;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.mobile-fab:hover {
+  background: var(--color-green-primary);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.mobile-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===========================
+   MOBILE COMPONENTS - Bottom Sheets
+   =========================== */
+.mobile-bottom-sheet {
+  position: fixed;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  max-height: 60vh;
+  background: var(--color-white);
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+  z-index: 1600;
+  transition: bottom 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  display: none; /* Hidden by default - only show on mobile via media query */
+}
+
+.mobile-bottom-sheet.visible {
+  bottom: 0 !important;
+  transform: translateY(0) !important;
+}
+
+.mobile-bottom-sheet-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1550;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  display: none; /* Hidden by default - only show on mobile via media query */
+}
+
+.mobile-bottom-sheet-backdrop.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.mobile-bottom-sheet-header {
+  padding: 16px 20px 8px;
+  border-bottom: 1px solid var(--color-light-gray);
+  position: relative;
+}
+
+.mobile-bottom-sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--color-light-gray);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+  cursor: grab;
+}
+
+.mobile-bottom-sheet-title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  color: var(--color-primary-dark);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  text-align: center;
+}
+
+.mobile-bottom-sheet-content {
+  padding: 20px;
+  max-height: calc(60vh - 80px);
+  overflow-y: auto;
+}
+
+.mobile-sheet-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-light-gray);
+  cursor: pointer;
+  transition: var(--transition-normal);
+  min-height: 44px;
+}
+
+.mobile-sheet-option:last-child {
+  border-bottom: none;
+}
+
+.mobile-sheet-option:hover {
+  background: rgba(47, 139, 70, 0.05);
+}
+
+.mobile-sheet-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-green-primary);
+}
+
+.mobile-sheet-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.mobile-sheet-color.disponible {
+  background-color: #28a745;
+}
+
+.mobile-sheet-color.reservado {
+  background-color: #ffc107;
+}
+
+.mobile-sheet-color.vendido {
+  background-color: #dc3545;
+}
+
+.mobile-sheet-label {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-dark);
+  flex: 1;
+}
+
+.mobile-sheet-count {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xs);
+  color: var(--color-dark-gray);
+  background: var(--color-light-gray);
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN - Enhanced Mobile First
+   =========================== */
+
+/* DESKTOP: Ensure mobile components are hidden on large screens */
+@media (min-width: 768px) {
+  .mobile-parcel-card,
+  .mobile-fabs,
+  .mobile-bottom-sheet,
+  .mobile-bottom-sheet-backdrop {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* TABLET: Intermediate breakpoint */
+@media (max-width: 1024px) and (min-width: 768px) {
+  /* Tablet-specific rules can go here if needed */
+}
+
 @media (max-width: 1024px) {
   .sidebar-right {
     width: 220px;
@@ -668,46 +1040,68 @@ html {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  /* MOBILE LAYOUT ACTIVATION */
   .map-content {
     grid-template-columns: 1fr;
     grid-template-areas: "map";
-    margin: var(--spacing-sm);
-  }
-
-  .sidebar-left {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    height: calc(100vh - 80px);
-    width: 0;
-    z-index: 2000;
+    margin: 0;
     border-radius: 0;
-    border-right: none;
-  }
-
-  .sidebar-left.open {
-    width: 100vw;
-  }
-
-  .sidebar-content {
-    padding: var(--spacing-sm);
-  }
-
-  .empty-state {
-    padding: var(--spacing-md);
-  }
-
-  .sidebar-right {
-    display: none;
+    box-shadow: none;
+    border: none;
   }
 
   .map-header {
+    height: 70px;
     padding: 0 var(--spacing-md);
   }
 
   .map-title {
     font-size: var(--font-size-lg);
+  }
+
+  /* Hide desktop sidebars completely on mobile */
+  .sidebar-left,
+  .sidebar-right {
+    display: none !important;
+  }
+
+  /* Show mobile components on mobile screens */
+  .mobile-parcel-card {
+    display: block !important;
+    z-index: 2000 !important;
+  }
+  
+  /* Mobile card visible state */
+  .mobile-parcel-card.visible {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  .mobile-fabs {
+    display: flex !important;
+    z-index: 1900 !important;
+  }
+
+  .mobile-bottom-sheet {
+    display: block !important;
+    z-index: 2100 !important;
+  }
+
+  .mobile-bottom-sheet-backdrop {
+    display: block !important;
+    z-index: 2050 !important;
+  }
+
+  /* Remove map margins for full screen */
+  .map-container {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  #map {
+    height: 100%;
+    width: 100%;
   }
   
   /* Mobile tooltip adjustments */
@@ -722,7 +1116,12 @@ html {
   }
   
   .tooltip-dimensions {
-    font-size: 0.65rem; /* Smaller than xs for mobile */
+    font-size: 0.65rem;
+  }
+
+  /* Adjust FAB position based on header height */
+  .mobile-fabs {
+    top: 86px;
   }
 }
 
@@ -736,13 +1135,38 @@ html {
     font-size: var(--font-size-base);
   }
 
-  .map-content {
-    margin: var(--spacing-xs);
+  /* Adjust FAB position for smaller header */
+  .mobile-fabs {
+    top: 76px;
   }
 
-  .sidebar-left {
-    top: 60px;
-    height: calc(100vh - 60px);
+  /* Smaller mobile card for very small screens */
+  .mobile-parcel-card {
+    height: 110px;
+    bottom: 20px !important;
+    left: 8px;
+    right: 8px;
+    padding: 12px;
+  }
+
+  .mobile-card-content {
+    grid-template-columns: 70px 1fr auto;
+    gap: 10px;
+  }
+
+  .mobile-card-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .mobile-card-title {
+    font-size: var(--font-size-sm);
+  }
+
+  .mobile-reserve-btn {
+    padding: 6px 12px;
+    font-size: 11px;
+    min-width: 70px;
   }
   
   /* Extra small mobile tooltip adjustments */
@@ -790,5 +1214,38 @@ html {
     border-left-width: 7px;
     right: 1px;
     top: -6px;
+  }
+}
+
+/* Landscape phones */
+@media (max-width: 767px) and (orientation: landscape) {
+  .mobile-fabs {
+    top: 70px;
+    right: 12px;
+  }
+
+  .mobile-parcel-card {
+    height: 100px;
+    bottom: -110px;
+  }
+
+  .mobile-card-content {
+    grid-template-columns: 70px 1fr auto;
+  }
+
+  .mobile-card-image {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Hide zoom controls on mobile - native touch gestures preferred */
+@media (max-width: 767px) {
+  .zoom-section {
+    display: none;
+  }
+  
+  .leaflet-control-zoom {
+    display: none !important;
   }
 }
