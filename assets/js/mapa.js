@@ -795,18 +795,24 @@ class MobileBottomSheets {
 const base = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 20 });
 base.addTo(map);
 
-// Control de capas por estado
+// Control de capas por estado y tipo de objeto
 const capas = {
   disponibles: L.layerGroup(),
   reservados: L.layerGroup(),
-  vendidos: L.layerGroup()
+  vendidos: L.layerGroup(),
+  // Add layers for non-LOTE objects that don't use estado-based categorization
+  plazas: L.layerGroup(),
+  callesProyectadas: L.layerGroup()
 };
 
 // Filter state management
 let filterState = {
   disponibles: true,
   reservados: true,
-  vendidos: true
+  vendidos: true,
+  // New layer types are visible by default
+  plazas: true,
+  callesProyectadas: true
 };
 
 // Parcel counts for legend
@@ -843,6 +849,223 @@ function getHoverStyle(estado) {
   if (estado.includes('res')) return { fillColor: '#e0a800', weight: 3, color: '#1F4B43' };
   if (estado.includes('ven')) return { fillColor: '#bd2130', weight: 3, color: '#1F4B43' };
   return { fillColor: '#545b62', weight: 3, color: '#1F4B43' };
+}
+
+// Object Type Detection and Styling (SOLID Principles Implementation)
+// ================================================================
+
+// Object type constants for better maintainability
+const OBJECT_TYPES = {
+  LOTE: 'LOTE',
+  PLAZA: 'PLAZA',
+  CALLE_PROYECTADA: 'CALLE PROYECTADA'
+};
+
+// Color scheme constants for different object types
+const OBJECT_COLORS = {
+  [OBJECT_TYPES.LOTE]: {
+    border: '#1F4B43',
+    // Uses existing estado-based colors
+  },
+  [OBJECT_TYPES.PLAZA]: {
+    border: '#1F4B43',
+    fill: '#FFB366', // Light orange (project color variation)
+    fillHover: '#FF9F40' // Darker orange for hover
+  },
+  [OBJECT_TYPES.CALLE_PROYECTADA]: {
+    border: '#1F4B43',
+    fill: '#9E9E9E', // Gray
+    fillHover: '#757575' // Darker gray for hover
+  }
+};
+
+// Single Responsibility: Object type detection
+function detectObjectType(properties) {
+  const nombreObj = properties.NOMBRE_OBJ || properties.nombre_obj || '';
+  const normalizedType = nombreObj.toString().toUpperCase().trim();
+  
+  // Return recognized types or default to LOTE
+  return Object.values(OBJECT_TYPES).includes(normalizedType) 
+    ? normalizedType 
+    : OBJECT_TYPES.LOTE;
+}
+
+// Single Responsibility: Style determination based on object type
+function getObjectStyle(objectType, estado = '') {
+  const baseStyle = {
+    color: OBJECT_COLORS[objectType].border,
+    weight: 2,
+    fillOpacity: 0.7,
+    dashArray: '',
+    opacity: 1
+  };
+
+  if (objectType === OBJECT_TYPES.LOTE) {
+    // Use existing estado-based coloring for LOTE objects
+    return {
+      ...baseStyle,
+      fillColor: colorByEstado(estado)
+    };
+  } else {
+    // Use fixed colors for non-LOTE objects
+    return {
+      ...baseStyle,
+      fillColor: OBJECT_COLORS[objectType].fill
+    };
+  }
+}
+
+// Single Responsibility: Hover style determination
+function getObjectHoverStyle(objectType, estado = '') {
+  const baseHoverStyle = {
+    weight: 3,
+    color: '#1F4B43',
+    fillOpacity: 0.9
+  };
+
+  if (objectType === OBJECT_TYPES.LOTE) {
+    // Use existing estado-based hover styling for LOTE objects
+    const estadoHover = getHoverStyle(estado);
+    return {
+      ...baseHoverStyle,
+      fillColor: estadoHover.fillColor
+    };
+  } else {
+    // Use fixed hover colors for non-LOTE objects
+    return {
+      ...baseHoverStyle,
+      fillColor: OBJECT_COLORS[objectType].fillHover
+    };
+  }
+}
+
+// Interface Segregation: Separate concerns for different object behaviors
+function shouldObjectBeClickable(objectType) {
+  return objectType === OBJECT_TYPES.LOTE;
+}
+
+function shouldObjectShowTooltip(objectType) {
+  return objectType === OBJECT_TYPES.LOTE;
+}
+
+// Dependency Inversion: Event handler factory that depends on abstractions
+function createObjectEventHandlers(objectType, objectData, estado = '') {
+  const eventHandlers = {};
+
+  // Always add mouseover and mouseout for styling changes
+  eventHandlers.mouseover = function (e) {
+    const currentLayer = e.target;
+    const hoverStyle = getObjectHoverStyle(objectType, estado);
+
+    // Apply hover styling
+    currentLayer.setStyle(hoverStyle);
+
+    // Show tooltip only for objects that should have tooltips
+    if (shouldObjectShowTooltip(objectType) && parcelTooltip.enabled && e.originalEvent) {
+      const mouseX = e.originalEvent.clientX;
+      const mouseY = e.originalEvent.clientY;
+      parcelTooltip.show(objectData, mouseX, mouseY);
+    }
+  };
+
+  eventHandlers.mouseout = function (e) {
+    const currentLayer = e.target;
+
+    // Clean up any pending tooltip updates
+    if (currentLayer._tooltipUpdateTimer) {
+      clearTimeout(currentLayer._tooltipUpdateTimer);
+      currentLayer._tooltipUpdateTimer = null;
+    }
+
+    // Reset layer styling
+    const originalStyle = getObjectStyle(objectType, estado);
+    currentLayer.setStyle(originalStyle);
+
+    // Hide tooltip only for objects that show tooltips
+    if (shouldObjectShowTooltip(objectType) && parcelTooltip.enabled) {
+      parcelTooltip.hide();
+    }
+  };
+
+  // Add mousemove only for objects that show tooltips
+  if (shouldObjectShowTooltip(objectType)) {
+    eventHandlers.mousemove = function (e) {
+      if (parcelTooltip.enabled && parcelTooltip.isTooltipVisible() && e.originalEvent) {
+        const currentLayer = e.target;
+        const mouseX = e.originalEvent.clientX;
+        const mouseY = e.originalEvent.clientY;
+        // Throttle updates to improve performance
+        if (!currentLayer._tooltipUpdateTimer) {
+          currentLayer._tooltipUpdateTimer = setTimeout(() => {
+            parcelTooltip.updatePosition(mouseX, mouseY);
+            currentLayer._tooltipUpdateTimer = null;
+          }, 16); // ~60fps
+        }
+      }
+    };
+  }
+
+  // Add click handler only for clickable objects
+  if (shouldObjectBeClickable(objectType)) {
+    eventHandlers.click = function (e) {
+      // Stop event propagation to prevent map click
+      if (e.originalEvent) {
+        e.originalEvent.stopPropagation();
+        e.originalEvent.preventDefault();
+      }
+      L.DomEvent.stopPropagation(e);
+
+      const isMobile = mobileResponsiveManager && mobileResponsiveManager.isMobileDevice();
+
+      // Proper mobile/desktop switching
+      if (isMobile) {
+        // Hide desktop sidebar if it's open
+        if (isSidebarVisible) {
+          hideParcelSidebar();
+        }
+        // Show mobile floating card
+        if (mobileParcelCard) {
+          mobileParcelCard.show(objectData);
+        }
+      } else {
+        // Hide mobile card if it's visible
+        if (mobileParcelCard && mobileParcelCard.isCardVisible()) {
+          mobileParcelCard.hide();
+        }
+        // Show desktop sidebar
+        showParcelSidebar(objectData);
+      }
+    };
+  }
+
+  return eventHandlers;
+}
+
+// Open/Closed Principle: Easily extendable layer categorization
+function categorizeObjectToLayer(objectType, estado = '') {
+  // For LOTE objects, use estado-based categorization
+  if (objectType === OBJECT_TYPES.LOTE) {
+    const key = (estado || '').toString().toLowerCase();
+    if (key.includes('disp')) {
+      return 'disponibles';
+    } else if (key.includes('res')) {
+      return 'reservados';
+    } else if (key.includes('ven')) {
+      return 'vendidos';
+    } else {
+      return 'disponibles'; // default for LOTE objects
+    }
+  }
+  
+  // For non-LOTE objects, use type-based categorization
+  switch (objectType) {
+    case OBJECT_TYPES.PLAZA:
+      return 'plazas';
+    case OBJECT_TYPES.CALLE_PROYECTADA:
+      return 'callesProyectadas';
+    default:
+      return 'disponibles'; // fallback
+  }
 }
 
 // Initialize DOM elements
@@ -1233,15 +1456,20 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
     geojson.features.forEach(f => {
       // toGeoJSON transforma <Data name="..."><value>..</value></Data> a properties.name = value
       const props = f.properties || {};
+      
+      // Detect object type first (Single Responsibility)
+      const objectType = detectObjectType(props);
+      
       // Normalizar estado: buscar en properties.estado o en cualquier propiedad que contenga "estado" o "status"
       let estado = props.estado || props.Estado || props.status || props.Status || '';
-      // A veces en KML vienen como <name> para el lote
+      // A veces en KML vienen como <name> para el objeto
       const nombre = props.name || f.properties.name || props.Name || 'Sin nombre';
 
-      // Enhanced lote data object
-      const loteData = {
+      // Enhanced object data (renamed from loteData to reflect that it can be any object type)
+      const objectData = {
         name: nombre,
         estado: estado,
+        objectType: objectType, // Add object type to data
         area: props.area || props.Area || props.superficie || props.Superficie || null,
         precio: props.precio || props.Precio || props.price || props.Price || null,
         largo: props.largo || props.Largo || props.length || null,
@@ -1251,123 +1479,40 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
         ...props // Include all other properties
       };
 
-      // Create enhanced layer with hover effects and sidebar integration
+      // Get appropriate styling based on object type (Single Responsibility)
+      const objectStyle = getObjectStyle(objectType, estado);
+      
+      // Create event handlers based on object type (Dependency Inversion)
+      const eventHandlers = createObjectEventHandlers(objectType, objectData, estado);
+
+      // Create enhanced layer with type-appropriate styling and behavior
       const layer = L.geoJSON(f, {
-        style: {
-          color: '#1F4B43',
-          weight: 2,
-          fillColor: colorByEstado(estado),
-          fillOpacity: 0.7,
-          dashArray: '',
-          opacity: 1
-        },
+        style: objectStyle,
         onEachFeature: (feature, layer) => {
-          // Enhanced hover effects with tooltip integration
-          layer.on('mouseover', function (e) {
-            const currentLayer = e.target;
-            const hoverStyle = getHoverStyle(estado);
-
-            // Apply hover styling
-            currentLayer.setStyle({
-              ...hoverStyle,
-              fillOpacity: 0.9
-            });
-
-            // Show tooltip with precise mouse coordinates
-            if (parcelTooltip.enabled && e.originalEvent) {
-              const mouseX = e.originalEvent.clientX;
-              const mouseY = e.originalEvent.clientY;
-              parcelTooltip.show(loteData, mouseX, mouseY);
-            }
-          });
-
-          layer.on('mouseout', function (e) {
-            const currentLayer = e.target;
-
-            // Clean up any pending tooltip updates
-            if (layer._tooltipUpdateTimer) {
-              clearTimeout(layer._tooltipUpdateTimer);
-              layer._tooltipUpdateTimer = null;
-            }
-
-            // Reset layer styling
-            currentLayer.setStyle({
-              color: '#1F4B43',
-              weight: 2,
-              fillColor: colorByEstado(estado),
-              fillOpacity: 0.7,
-              dashArray: '',
-              opacity: 1
-            });
-
-            // Hide tooltip
-            if (parcelTooltip.enabled) {
-              parcelTooltip.hide();
-            }
-          });
-
-          // Update tooltip position on mouse move for smoother experience
-          layer.on('mousemove', function (e) {
-            if (parcelTooltip.enabled && parcelTooltip.isTooltipVisible() && e.originalEvent) {
-              const mouseX = e.originalEvent.clientX;
-              const mouseY = e.originalEvent.clientY;
-              // Throttle updates to improve performance
-              if (!layer._tooltipUpdateTimer) {
-                layer._tooltipUpdateTimer = setTimeout(() => {
-                  parcelTooltip.updatePosition(mouseX, mouseY);
-                  layer._tooltipUpdateTimer = null;
-                }, 16); // ~60fps
-              }
-            }
-          });
-
-          // Click handler - responsive to mobile/desktop
-          layer.on('click', function (e) {
-            // Stop event propagation to prevent map click
-            if (e.originalEvent) {
-              e.originalEvent.stopPropagation();
-              e.originalEvent.preventDefault();
-            }
-            L.DomEvent.stopPropagation(e);
-
-            const isMobile = mobileResponsiveManager && mobileResponsiveManager.isMobileDevice();
-
-            // Proper mobile/desktop switching
-            if (isMobile) {
-              // Hide desktop sidebar if it's open
-              if (isSidebarVisible) {
-                hideParcelSidebar();
-              }
-              // Show mobile floating card
-              if (mobileParcelCard) {
-                mobileParcelCard.show(loteData);
-              }
-            } else {
-              // Hide mobile card if it's visible
-              if (mobileParcelCard && mobileParcelCard.isCardVisible()) {
-                mobileParcelCard.hide();
-              }
-              // Show desktop sidebar
-              showParcelSidebar(loteData);
-            }
+          // Apply event handlers dynamically based on object type
+          Object.keys(eventHandlers).forEach(eventName => {
+            layer.on(eventName, eventHandlers[eventName]);
           });
         }
       });
 
-      // Añadir a la capa correspondiente y contar parcelas
-      const key = (estado || '').toString().toLowerCase();
-      if (key.includes('disp')) {
-        capas.disponibles.addLayer(layer);
-        parcelCounts.disponibles++;
-      } else if (key.includes('res')) {
-        capas.reservados.addLayer(layer);
-        parcelCounts.reservados++;
-      } else if (key.includes('ven')) {
-        capas.vendidos.addLayer(layer);
-        parcelCounts.vendidos++;
-      } else {
-        capas.disponibles.addLayer(layer); // por defecto
-        parcelCounts.disponibles++;
+      // Categorize object to appropriate layer (Open/Closed Principle)
+      const layerCategory = categorizeObjectToLayer(objectType, estado);
+      capas[layerCategory].addLayer(layer);
+      
+      // Update parcel counts only for LOTE objects
+      if (objectType === OBJECT_TYPES.LOTE) {
+        switch (layerCategory) {
+          case 'disponibles':
+            parcelCounts.disponibles++;
+            break;
+          case 'reservados':
+            parcelCounts.reservados++;
+            break;
+          case 'vendidos':
+            parcelCounts.vendidos++;
+            break;
+        }
       }
     });
 
@@ -1375,13 +1520,22 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
     capas.disponibles.addTo(map);
     capas.reservados.addTo(map);
     capas.vendidos.addTo(map);
+    // Add non-LOTE object layers
+    capas.plazas.addTo(map);
+    capas.callesProyectadas.addTo(map);
 
     // Update parcel counts in the sidebar legend and mobile
     updateParcelCounts();
     updateMobileParcelCounts();
 
-    // Ajustar vista a los bounds de todos los lotes
-    const all = L.featureGroup([capas.disponibles, capas.reservados, capas.vendidos]);
+    // Ajustar vista a los bounds de todos los objetos
+    const all = L.featureGroup([
+      capas.disponibles, 
+      capas.reservados, 
+      capas.vendidos,
+      capas.plazas,
+      capas.callesProyectadas
+    ]);
     try {
       map.fitBounds(all.getBounds(), { padding: [40, 40] });
     } catch (e) {

@@ -859,6 +859,12 @@ html {
   min-width: 44px;
 }
 
+.fab-icon {
+  width: 24px;
+  height: 24px;
+  transition: var(--transition-normal);
+}
+
 .mobile-fab:hover {
   background: var(--color-green-primary);
   color: var(--color-white);
