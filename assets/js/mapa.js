@@ -545,20 +545,12 @@ class MobileBottomSheets {
     const mapToggle = document.getElementById('mobileMapToggle');
     const legendToggle = document.getElementById('mobileLegendToggle');
 
-    console.log('Initializing FABs:', { mapToggle, legendToggle });
-
     if (mapToggle) {
       mapToggle.addEventListener('click', this.handleMapToggle);
-      console.log('Map FAB click listener added');
-    } else {
-      console.warn('mobileMapToggle element not found');
     }
 
     if (legendToggle) {
       legendToggle.addEventListener('click', this.handleLegendToggle);
-      console.log('Legend FAB click listener added');
-    } else {
-      console.warn('mobileLegendToggle element not found');
     }
   }
 
@@ -710,14 +702,10 @@ class MobileBottomSheets {
   }
 
   showSheet(sheetKey) {
-    console.log('showSheet called with:', sheetKey);
     const sheet = this.sheets[sheetKey];
     const backdrop = this.backdrops[sheetKey];
 
-    console.log('Elements found:', { sheet, backdrop });
-
     if (!sheet || !backdrop) {
-      console.warn('Sheet or backdrop not found for:', sheetKey);
       return;
     }
 
@@ -776,7 +764,6 @@ class MobileBottomSheets {
   }
 
   handleMapToggle() {
-    console.log('Map toggle clicked, currentSheet:', this.currentSheet);
     if (this.currentSheet === 'map') {
       this.hideSheet('map');
     } else {
@@ -785,7 +772,6 @@ class MobileBottomSheets {
   }
 
   handleLegendToggle() {
-    console.log('Legend toggle clicked, currentSheet:', this.currentSheet);
     if (this.currentSheet === 'legend') {
       this.hideSheet('legend');
     } else {
