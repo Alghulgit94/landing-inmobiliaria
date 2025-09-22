@@ -1,6 +1,6 @@
 // Mapa Leaflet + carga de KML -> GeoJSON usando toGeoJSON
 // Disable default zoom control since we'll use custom ones
-const map = L.map('map', { zoomControl: false, zoomAnimation: true }).setView([-25.695804, -56.174242], 17);
+const map = L.map('map', { zoomControl: false, zoomAnimation: true }).setView([-25.695804, -56.174242], 16);
 
 // ===========================
 // TOOLTIP CLASS - Following Single Responsibility Principle
@@ -206,7 +206,7 @@ class MobileResponsiveManager {
 
   init() {
     if (this.initialized) return;
-    
+
     this.checkScreenSize();
     window.addEventListener('resize', this.handleResize);
     this.initialized = true;
@@ -215,7 +215,7 @@ class MobileResponsiveManager {
   checkScreenSize() {
     const wasMobile = this.isMobile;
     this.isMobile = window.innerWidth < this.breakpoint;
-    
+
     if (wasMobile !== this.isMobile) {
       this.handleLayoutChange();
     }
@@ -288,7 +288,7 @@ class MobileParcelCard {
     }
 
     this.card = document.getElementById('mobileParcelCard');
-    
+
     if (!this.card) {
       console.error('Mobile parcel card element with ID "mobileParcelCard" not found in DOM!');
       return;
@@ -350,7 +350,7 @@ class MobileParcelCard {
       e.preventDefault();
       const opacity = Math.max(0.3, 1 - (deltaY / 200));
       const translateY = Math.min(deltaY, 150);
-      
+
       this.card.style.transform = `translateY(${translateY}px)`;
       this.card.style.opacity = opacity;
     }
@@ -358,7 +358,7 @@ class MobileParcelCard {
 
   handleTouchEnd(e) {
     if (!this.isDragging || !this.isVisible) return;
-    
+
     this.isDragging = false;
     const deltaY = this.currentY - this.startY;
 
@@ -394,7 +394,7 @@ class MobileParcelCard {
     } else {
       return;
     }
-    
+
     // Use requestAnimationFrame for smooth animation
     requestAnimationFrame(() => {
       this.card.classList.add('visible');
@@ -468,12 +468,12 @@ class MobileParcelCard {
     if (!this.card) return;
 
     this.card.classList.remove('visible');
-    
+
     // Hide after animation completes
     setTimeout(() => {
       this.card.style.display = 'none';
     }, 300);
-    
+
     this.isVisible = false;
     this.currentParcelData = null;
   }
@@ -674,7 +674,7 @@ class MobileBottomSheets {
 
         element.addEventListener('touchmove', (e) => {
           if (!isDragging) return;
-          
+
           currentY = e.touches[0].clientY;
           const deltaY = currentY - startY;
 
@@ -687,7 +687,7 @@ class MobileBottomSheets {
 
         element.addEventListener('touchend', () => {
           if (!isDragging) return;
-          
+
           isDragging = false;
           const deltaY = currentY - startY;
 
@@ -716,7 +716,7 @@ class MobileBottomSheets {
 
     // Show backdrop
     backdrop.classList.add('visible');
-    
+
     // Show sheet with slight delay for smooth animation
     setTimeout(() => {
       sheet.classList.add('visible');
@@ -737,7 +737,7 @@ class MobileBottomSheets {
     // Hide sheet
     sheet.classList.remove('visible');
     sheet.style.transform = '';
-    
+
     // Hide backdrop with delay
     setTimeout(() => {
       backdrop.classList.remove('visible');
@@ -883,10 +883,10 @@ const OBJECT_COLORS = {
 function detectObjectType(properties) {
   const nombreObj = properties.NOMBRE_OBJ || properties.nombre_obj || '';
   const normalizedType = nombreObj.toString().toUpperCase().trim();
-  
+
   // Return recognized types or default to LOTE
-  return Object.values(OBJECT_TYPES).includes(normalizedType) 
-    ? normalizedType 
+  return Object.values(OBJECT_TYPES).includes(normalizedType)
+    ? normalizedType
     : OBJECT_TYPES.LOTE;
 }
 
@@ -1056,7 +1056,7 @@ function categorizeObjectToLayer(objectType, estado = '') {
       return 'disponibles'; // default for LOTE objects
     }
   }
-  
+
   // For non-LOTE objects, use type-based categorization
   switch (objectType) {
     case OBJECT_TYPES.PLAZA:
@@ -1099,15 +1099,15 @@ function initializeSidebarElements() {
 function initializeMobileComponents() {
   // Initialize mobile responsive manager
   mobileResponsiveManager = new MobileResponsiveManager();
-  
+
   // Initialize mobile components
   mobileParcelCard = new MobileParcelCard();
   mobileBottomSheets = new MobileBottomSheets();
-  
+
   // Store in global scope for responsive manager access
   window.mobileParcelCard = mobileParcelCard;
   window.mobileBottomSheets = mobileBottomSheets;
-  
+
   // Initialize mobile components - they will be shown/hidden via CSS media queries
   mobileParcelCard.init();
   mobileBottomSheets.init();
@@ -1456,10 +1456,10 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
     geojson.features.forEach(f => {
       // toGeoJSON transforma <Data name="..."><value>..</value></Data> a properties.name = value
       const props = f.properties || {};
-      
+
       // Detect object type first (Single Responsibility)
       const objectType = detectObjectType(props);
-      
+
       // Normalizar estado: buscar en properties.estado o en cualquier propiedad que contenga "estado" o "status"
       let estado = props.estado || props.Estado || props.status || props.Status || '';
       // A veces en KML vienen como <name> para el objeto
@@ -1481,7 +1481,7 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
 
       // Get appropriate styling based on object type (Single Responsibility)
       const objectStyle = getObjectStyle(objectType, estado);
-      
+
       // Create event handlers based on object type (Dependency Inversion)
       const eventHandlers = createObjectEventHandlers(objectType, objectData, estado);
 
@@ -1499,7 +1499,7 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
       // Categorize object to appropriate layer (Open/Closed Principle)
       const layerCategory = categorizeObjectToLayer(objectType, estado);
       capas[layerCategory].addLayer(layer);
-      
+
       // Update parcel counts only for LOTE objects
       if (objectType === OBJECT_TYPES.LOTE) {
         switch (layerCategory) {
@@ -1530,8 +1530,8 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
 
     // Ajustar vista a los bounds de todos los objetos
     const all = L.featureGroup([
-      capas.disponibles, 
-      capas.reservados, 
+      capas.disponibles,
+      capas.reservados,
       capas.vendidos,
       capas.plazas,
       capas.callesProyectadas

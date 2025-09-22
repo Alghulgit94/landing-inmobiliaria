@@ -658,7 +658,8 @@ html {
   left: 16px;
   right: 16px;
   height: auto;
-  min-height: 120px;
+  min-height: 140px;
+  max-height: 220px;
   background: var(--color-white);
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -669,6 +670,7 @@ html {
   border: 2px solid var(--color-green-primary);
   opacity: 0;
   transform: translateY(100px) scale(0.95);
+  overflow-y: auto;
 }
 
 /* Mobile card visible state */
@@ -681,8 +683,8 @@ html {
   display: grid;
   grid-template-columns: 80px 1fr;
   gap: 12px;
-  margin-bottom: 12px;
-  align-items: center;
+  margin-bottom: 10px;
+  align-items: flex-start;
 }
 
 .mobile-card-image {
@@ -703,9 +705,10 @@ html {
 .mobile-card-details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 4px;
+  justify-content: flex-start;
+  gap: 3px;
   min-width: 0;
+  overflow: hidden;
 }
 
 .mobile-card-title {
@@ -776,7 +779,9 @@ html {
   justify-content: center;
   width: 100%;
   padding-top: 8px;
+  margin-top: auto;
   border-top: 1px solid var(--color-light-gray);
+  flex-shrink: 0;
 }
 
 .mobile-reserve-btn {
@@ -1148,31 +1153,52 @@ html {
 
   /* Smaller mobile card for very small screens */
   .mobile-parcel-card {
-    height: 110px;
+    min-height: 140px;
+    height: auto;
+    max-height: 200px;
     bottom: 20px !important;
     left: 8px;
     right: 8px;
     padding: 12px;
+    overflow-y: auto;
   }
 
   .mobile-card-content {
-    grid-template-columns: 70px 1fr auto;
-    gap: 10px;
+    grid-template-columns: 60px 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
   }
 
   .mobile-card-image {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 
   .mobile-card-title {
     font-size: var(--font-size-sm);
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+
+  .mobile-card-details {
+    gap: 2px;
+  }
+
+  .mobile-card-price {
+    font-size: var(--font-size-sm);
+    margin: 2px 0;
+  }
+
+  .mobile-card-actions {
+    padding-top: 6px;
+    margin-top: 4px;
   }
 
   .mobile-reserve-btn {
-    padding: 6px 12px;
-    font-size: 11px;
-    min-width: 70px;
+    padding: 8px 12px;
+    font-size: 12px;
+    min-width: 80px;
+    min-height: 36px;
   }
   
   /* Extra small mobile tooltip adjustments */
@@ -1231,17 +1257,22 @@ html {
   }
 
   .mobile-parcel-card {
-    height: 100px;
-    bottom: -110px;
+    min-height: 120px;
+    height: auto;
+    max-height: 140px;
+    bottom: 10px;
+    overflow-y: auto;
   }
 
   .mobile-card-content {
-    grid-template-columns: 70px 1fr auto;
+    grid-template-columns: 60px 1fr;
+    gap: 8px;
+    margin-bottom: 6px;
   }
 
   .mobile-card-image {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
   }
 }
 
