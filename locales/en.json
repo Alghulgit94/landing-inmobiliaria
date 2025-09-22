@@ -1,283 +1,174 @@
 {
   "navigation": {
     "home": "Home",
-    "admin": "Administration",
-    "login": "Login",
-    "logout": "Logout",
-    "lots": "Lots",
-    "plots": "Plots",
-    "users": "Users",
-    "sales": "Sales",
-    "reservations": "Reservations",
+    "lots": "Developments",
     "why_live_here": "Why live here",
     "about_us": "About us",
     "view_map": "View map",
-    "get_reservation": "Reserve lot now"
-  },
-  "states": {
-    "available": "Available",
-    "reserved": "Reserved",
-    "sold": "Sold"
-  },
-  "actions": {
-    "create": "Create",
-    "edit": "Edit",
-    "delete": "Delete",
-    "save": "Save",
-    "cancel": "Cancel",
-    "view": "View",
-    "upload": "Upload",
-    "download": "Download"
-  },
-  "forms": {
-    "name": "Name",
-    "description": "Description",
-    "photo": "Photo",
-    "location": "Location",
-    "width": "Width",
-    "length": "Length",
-    "number": "Number",
-    "email": "Email",
-    "password": "Password",
-    "contact": "Contact",
-    "date": "Date",
-    "role": "Role"
-  },
-  "messages": {
-    "success_create": "Successfully created",
-    "success_update": "Successfully updated",
-    "success_delete": "Successfully deleted",
-    "error_generic": "An error occurred",
-    "error_auth": "Invalid credentials",
-    "error_permission": "You don't have permission for this action",
-    "confirm_delete": "Are you sure you want to delete this item?",
-    "loading": "Loading...",
-    "no_data": "No data available"
+    "get_reservation": "Reserve a lot"
   },
   "titles": {
-    "dashboard": "Dashboard",
-    "lot_management": "Lot Management",
-    "plot_management": "Plot Management",
-    "user_management": "User Management",
-    "sales_report": "Sales Report",
-    "map_view": "Map View",
-    "main_title": "Real Estate Impact - Your perfect home awaits",
+    "main_title": "Impact Real Estate — Your new home in Colonia Independencia",
     "brand": "MEGA PROJECTS REAL ESTATE"
   },
   "index": {
-    "page_title": "Real Estate Impact - Your perfect home awaits",
-    "meta_description": "Discover sustainable real estate developments with the best location, complete infrastructure and superior quality of life.",
-    "meta_keywords": "real estate, lots, land, sustainable developments, real estate investment",
+    "page_title": "Impact Real Estate — Your new home in Colonia Independencia",
+    "meta_description": "Quiet, secure developments in Colonia Independencia with interactive maps, build-ready lots and local support. Ideal for retirees and families seeking a peaceful life.",
+    "meta_keywords": "lots, land, retirement, Colonia Independencia, peaceful living, secure investment",
     "hero": {
-      "title": "Find the perfect home in the ideal place",
-      "subtitle": "Sustainable real estate developments with strategic location, complete infrastructure and the best quality of life for your family.",
-      "description": "Explore our residential areas with high-precision interactive maps that allow you to know every detail before making the most important decision of your life.",
-      "cta": "Explore residential areas"
+      "title": "A peaceful place to start your next chapter",
+      "subtitle": "Lots designed for people seeking safety, space and community.",
+      "description": "Browse our developments with high-precision interactive maps. See real dimensions, exact location and live availability — all from your browser.",
+      "cta": "View interactive map"
     },
     "why_live_here": {
-      "title": "Why choose to live in Colonia Independencia?",
-      "subtitle": "Discover the 4 main reasons that make Colonia Independencia the ideal place for your new life",
+      "title": "Why choose Colonia Independencia?",
+      "subtitle": "Four clear reasons to move: safety, community, services and connectivity.",
       "cta": {
         "text": "Find your ideal lot now!",
-        "description": "Explore our available residential areas and discover the perfect place to build your future in Colonia Independencia"
+        "description": "Explore available projects and find the plot that fits your life plan."
       },
       "reasons": {
         "schools": {
-          "title": "Excellence in Education",
-          "description": "Access to exclusive German schools and top-level bilingual education. Your family will have unique educational opportunities in the region.",
+          "title": "Excellent education",
+          "description": "High-quality schooling options — bilingual and international programs great for families.",
           "features": [
-            "Exclusive German schools",
-            "Quality bilingual education",
+            "German-language schools available",
+            "High-standard bilingual education",
             "International programs",
-            "Prestigious public schools"
+            "Reputable public schools"
           ]
         },
         "club": {
-          "title": "Private German Club",
-          "description": "Enjoy the prestigious German club with sports, cultural and educational facilities. Learn languages, sports, art and music in an exclusive environment.",
+          "title": "German club & cultural life",
+          "description": "A private club and cultural activities to help you integrate, stay active and enjoy community life.",
           "features": [
-            "Complete sports facilities",
-            "Language classes (German, English)",
-            "Art and music workshops",
-            "Cultural activities"
+            "Sports and recreational facilities",
+            "German and English classes",
+            "Arts and workshops",
+            "Regular community events"
           ]
         },
         "tranquility": {
-          "title": "Peace and Space",
-          "description": "A serene place with ample land perfect for agro-industry and country living. Escape the city bustle without losing conveniences.",
+          "title": "Peace and space",
+          "description": "Spacious lots in a calm setting — privacy, fresh air and room for hobbies or small-scale farming.",
           "features": [
-            "Quiet and safe environment",
-            "Large lots available",
-            "Ideal for agro-industry",
-            "Country living with urban services"
+            "Safe, peaceful environment",
+            "Large plots available",
+            "Perfect for gardening or agri-projects",
+            "Urban services nearby"
           ]
         },
         "connectivity": {
-          "title": "Strategic Connectivity",
-          "description": "Privileged location close to other important cities and shopping centers. The best of both worlds: tranquility and accessibility.",
+          "title": "Strategic connectivity",
+          "description": "Close to cities and shopping centers: countryside calm with easy access to services and roads.",
           "features": [
             "Near shopping centers",
-            "Connection to major cities",
-            "Access to important highways",
-            "Nearby urban services"
+            "Connected to main cities",
+            "Access to major roads",
+            "Urban services within reach"
           ]
         }
       }
     },
     "loteamientos": {
-      "title": "Our Residential Areas",
-      "subtitle": "Discover your ideal lot in the best available locations",
+      "title": "Our Developments",
+      "subtitle": "Build-ready lots: family, commercial and agricultural options.",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
-        "other_options": "Other Options"
+        "other_options": "Other options"
       },
       "products": {
         "lote_premium_vista_norte": {
           "title": "Premium North View Lot",
           "subtitle": "Exclusive residential area",
           "features": {
-            "size": "15m x 30m (450m²)",
+            "size": "15m x 30m (450 m²)",
             "green_area": "Nearby green area",
-            "schools": "Near schools"
+            "schools": "Close to schools"
           }
         },
         "lote_comercial_centro": {
-          "title": "Commercial Center Lot",
-          "subtitle": "Strategic commercial zone",
+          "title": "Commercial Lot - Center",
+          "subtitle": "Visibility and traffic",
           "features": {
-            "size": "20m x 25m (500m²)",
+            "size": "20m x 25m (500 m²)",
             "main_avenue": "Main avenue",
-            "commercial_zone": "Commercial zone"
+            "commercial_zone": "Commercial area"
           }
         },
         "lote_familiar_los_robles": {
           "title": "Los Robles Family Lot",
-          "subtitle": "Ideal for family housing",
+          "subtitle": "Perfect for a home",
           "features": {
-            "size": "12m x 35m (420m²)",
-            "full_services": "Full services",
-            "family_zone": "Family zone"
+            "size": "12m x 35m (420 m²)",
+            "full_services": "Full utilities",
+            "family_zone": "Family-friendly area"
           }
         },
         "lote_agroindustrial_sur": {
-          "title": "South Agro-industrial Lot",
-          "subtitle": "Perfect for agro-industry",
+          "title": "Agroindustrial South Lot",
+          "subtitle": "For productive projects",
           "features": {
-            "size": "50m x 100m (5000m²)",
-            "agro_use": "Agro-industrial use",
+            "size": "50m x 100m (5,000 m²)",
+            "agro_use": "Agroindustrial use",
             "water_access": "Water access"
           }
         },
         "lote_valle_verde": {
-          "title": "Green Valley Lot",
+          "title": "Valle Verde Lot",
           "subtitle": "Panoramic view",
           "features": {
-            "size": "18m x 25m (450m²)",
+            "size": "18m x 25m (450 m²)",
             "valley_view": "Valley view"
           }
         },
         "lote_industrial_pro": {
           "title": "Industrial Pro Lot",
-          "subtitle": "Industrial use",
+          "subtitle": "Industrial area",
           "features": {
-            "size": "30m x 40m (1200m²)",
+            "size": "30m x 40m (1,200 m²)",
             "industrial_zone": "Industrial zone"
           }
         },
         "lote_club_exclusivo": {
           "title": "Exclusive Club Lot",
-          "subtitle": "Near German club",
+          "subtitle": "Close to the German club",
           "features": {
-            "size": "16m x 28m (448m²)",
-            "exclusive_zone": "Exclusive zone"
+            "size": "16m x 28m (448 m²)",
+            "exclusive_zone": "Exclusive area"
           }
         },
         "lote_esquinero_plus": {
           "title": "Corner Plus Lot",
-          "subtitle": "Double front",
+          "subtitle": "Double frontage and visibility",
           "features": {
-            "size": "20m x 22m (440m²)",
-            "corner_privilege": "Privileged corner"
-          }
-        },
-        "lote_metro_este": {
-          "title": "Metro East Lot",
-          "subtitle": "Urban connectivity",
-          "features": {
-            "size": "10m x 25m (250m²)",
-            "public_transport": "Public transport"
-          }
-        },
-        "lote_brisa_mar": {
-          "title": "Sea Breeze Lot",
-          "subtitle": "Ocean view",
-          "features": {
-            "size": "18m x 40m (720m²)",
-            "ocean_view": "Ocean view"
-          }
-        },
-        "lote_rural_norte": {
-          "title": "North Rural Lot",
-          "subtitle": "Agricultural development",
-          "features": {
-            "size": "100m x 150m (15000m²)",
-            "agricultural_use": "Agricultural use"
-          }
-        },
-        "lote_urbano_plus": {
-          "title": "Urban Plus Lot",
-          "subtitle": "Full services",
-          "features": {
-            "size": "12m x 30m (360m²)",
-            "urban_zone": "Urban zone"
-          }
-        },
-        "lote_comercial_sur": {
-          "title": "South Commercial Lot",
-          "subtitle": "High vehicle traffic",
-          "features": {
-            "size": "15m x 20m (300m²)",
-            "commercial_zone": "Commercial zone"
-          }
-        },
-        "lote_vista_montana": {
-          "title": "Mountain View Lot",
-          "subtitle": "Premium residential",
-          "features": {
-            "size": "22m x 35m (770m²)",
-            "mountain_view": "Mountain view"
-          }
-        },
-        "lote_eco_premium": {
-          "title": "Eco Premium Lot",
-          "subtitle": "Ecological certificate",
-          "features": {
-            "size": "25m x 30m (750m²)",
-            "eco_friendly": "Eco-friendly"
+            "size": "20m x 22m (440 m²)",
+            "corner_privilege": "Prime corner"
           }
         }
       },
-      "cta": "View Map"
+      "cta": "View interactive map"
     },
     "loteamiento_cta": {
-      "title": "Explore our residential areas with total precision",
-      "description": "Discover each available lot with our high-precision interactive map. See exact dimensions, specific location and all the features you need to make the best decision.",
+      "title": "Explore our developments with total accuracy",
+      "description": "Interactive map with real dimensions, satellite imagery and live availability. Everything you need to decide with confidence.",
       "features": [
         "High-resolution interactive maps",
-        "Exact dimensions of each lot",
+        "Exact lot dimensions",
         "Real-time satellite view",
         "Updated availability status"
       ],
       "cta": "View interactive map",
-      "note": "Explore all our available projects"
+      "note": "Check availability — some lots are unique"
     },
     "about_us": {
-      "title": "Meet Our Team of Experts",
-      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "title": "Meet our team",
+      "subtitle": "Local professionals guiding your move step by step",
       "team": {
         "john_powell": {
           "name": "John Powell",
-          "title": "Service Support"
+          "title": "Customer Support"
         },
         "thomas_powell": {
           "name": "Thomas Powell",
@@ -295,15 +186,15 @@
     },
     "footer": {
       "brand_title": "MEGA PROJECTS REAL ESTATE",
-      "brand_description": "Creating prosperous and sustainable communities since 2010. Your perfect home is waiting for you.",
+      "brand_description": "We build safe, sustainable communities since 2010. Your ideal home awaits in Colonia Independencia.",
       "navigation_title": "Navigation",
       "contact_title": "Contact",
-      "address": "Main Avenue 1234\nCity, State 12345",
+      "address": "Av. Principal 1234\nColonia Independencia",
       "phone": "+52 (555) 555-1234",
       "email": "info@megaproyectos.com",
-      "hours": "Mon - Fri: 9:00 AM - 6:00 PM\nSat: 9:00 AM - 2:00 PM",
+      "hours": "Mon - Fri: 09:00 - 18:00\nSat: 09:00 - 14:00",
       "actions_title": "Ready to get started?",
-      "view_lots_cta": "View residential areas",
+      "view_lots_cta": "View developments",
       "call_now_cta": "Call now",
       "copyright": "© 2025 Mega Projects Real Estate. All rights reserved.",
       "legal": {
@@ -311,38 +202,28 @@
         "privacy": "Privacy policy",
         "legal": "Legal notice"
       },
-      "attribution": "Developed with high-precision mapping technology",
+      "attribution": "Powered by high-precision maps",
       "social": {
         "facebook": "Facebook",
         "instagram": "Instagram",
         "whatsapp": "WhatsApp"
       }
     },
-    "carousel": {
-      "prev_aria": "View previous reason",
-      "next_aria": "View next reason",
-      "reason1_aria": "Go to reason 1: Strategic Location",
-      "reason2_aria": "Go to reason 2: Complete Infrastructure",
-      "reason3_aria": "Go to reason 3: Superior Quality of Life",
-      "reason4_aria": "Go to reason 4: Smart Investment"
-    },
     "image_alts": {
-      "hero": "Panoramic view of sustainable real estate development with modern houses and green areas",
-      "schools": "Students at German school in Colonia Independencia with excellent bilingual education",
-      "club": "Facilities of the private German club with sports, artistic and cultural areas",
-      "tranquility": "Serene landscape of Colonia Independencia with ample land and country environment",
-      "connectivity": "Map showing Colonia Independencia's connectivity with cities and shopping centers",
-      "map_preview": "Preview of interactive map showing available lots with different colors according to availability",
-      "team": "Professional team from Mega Projects Real Estate working in modern office"
+      "hero": "Development panorama with houses and green areas",
+      "schools": "Children at a bilingual school",
+      "club": "Community club facilities",
+      "tranquility": "Countryside landscape with wide plots",
+      "connectivity": "Map showing local road connections"
     },
     "aria_labels": {
       "main_nav": "Main navigation",
       "main_section": "Main section",
       "why_live_section": "Why live here",
-      "loteamiento_section": "Residential areas section",
+      "loteamiento_section": "Developments section",
       "about_section": "About us",
       "carousel": "Carousel of reasons to live here",
-      "carousel_indicators": "Reason indicators",
+      "carousel_indicators": "Carousel indicators",
       "footer_nav": "Footer navigation links"
     }
   }

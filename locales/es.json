@@ -1,124 +1,71 @@
 {
   "navigation": {
     "home": "Inicio",
-    "admin": "Administración",
-    "login": "Iniciar Sesión",
-    "logout": "Cerrar Sesión",
     "lots": "Loteamientos",
-    "plots": "Parcelas",
-    "users": "Usuarios",
-    "sales": "Ventas",
-    "reservations": "Reservas",
     "why_live_here": "Por qué vivir aquí",
     "about_us": "Nosotros",
     "view_map": "Ver mapa",
     "get_reservation": "Reservar lote ya"
   },
-  "states": {
-    "available": "Disponible",
-    "reserved": "Reservado",
-    "sold": "Vendido"
-  },
-  "actions": {
-    "create": "Crear",
-    "edit": "Editar",
-    "delete": "Eliminar",
-    "save": "Guardar",
-    "cancel": "Cancelar",
-    "view": "Ver",
-    "upload": "Subir",
-    "download": "Descargar"
-  },
-  "forms": {
-    "name": "Nombre",
-    "description": "Descripción",
-    "photo": "Foto",
-    "location": "Ubicación",
-    "width": "Ancho",
-    "length": "Largo",
-    "number": "Número",
-    "email": "Correo electrónico",
-    "password": "Contraseña",
-    "contact": "Contacto",
-    "date": "Fecha",
-    "role": "Rol"
-  },
-  "messages": {
-    "success_create": "Creado exitosamente",
-    "success_update": "Actualizado exitosamente",
-    "success_delete": "Eliminado exitosamente",
-    "error_generic": "Ha ocurrido un error",
-    "error_auth": "Credenciales incorrectas",
-    "error_permission": "No tienes permisos para esta acción",
-    "confirm_delete": "¿Estás seguro de que quieres eliminar este elemento?",
-    "loading": "Cargando...",
-    "no_data": "No hay datos disponibles"
-  },
   "titles": {
-    "dashboard": "Panel de Control",
-    "lot_management": "Gestión de Loteamientos",
-    "plot_management": "Gestión de Parcelas",
-    "user_management": "Gestión de Usuarios",
-    "sales_report": "Reporte de Ventas",
-    "map_view": "Vista de Mapa",
-    "main_title": "Inmobiliaria Impacto - Tu hogar perfecto te espera",
+    "main_title": "Inmobiliaria Impacto — Tu nuevo hogar en Colonia Independencia",
     "brand": "INMOBILIARIA MEGA PROYECTOS"
   },
   "index": {
-    "page_title": "Inmobiliaria Impacto - Tu hogar perfecto te espera",
-    "meta_description": "Descubre desarrollos inmobiliarios sustentables con la mejor ubicación, infraestructura completa y calidad de vida superior.",
-    "meta_keywords": "inmobiliaria, lotes, terrenos, desarrollos sustentables, inversión inmobiliaria",
+    "page_title": "Inmobiliaria Impacto — Tu nuevo hogar en Colonia Independencia",
+    "meta_description": "Loteamientos en Colonia Independencia pensados para una vida tranquila, segura y cerca de servicios. Mapas interactivos, lotes listos para construir y asesoría personalizada.",
+    "meta_keywords": "lotes, terrenos, retiro, jubilados, Colonia Independencia, vida tranquila, inversión segura",
     "hero": {
-      "title": "Encuentra el hogar perfecto en el lugar ideal",
-      "subtitle": "Desarrollos inmobiliarios sustentables con ubicación estratégica, infraestructura completa y la mejor calidad de vida para tu familia.",
-      "description": "Explora nuestros loteamientos con mapas interactivos de alta precisión que te permiten conocer cada detalle antes de tomar la decisión más importante de tu vida.",
-      "cta": "Explorar loteamientos"
+      "title": "Un lugar tranquilo donde empezar tu nueva vida",
+      "subtitle": "Lotes pensados para quienes buscan seguridad, espacio y comunidad.",
+      "description": "Explora nuestros loteamientos con mapas interactivos de alta precisión. Verás dimensiones reales, ubicación exacta y disponibilidad en tiempo real — todo desde tu navegador.",
+      "cta": "Ver mapa interactivo"
     },
     "why_live_here": {
       "title": "¿Por qué elegir vivir en Colonia Independencia?",
-      "subtitle": "Descubre las 4 razones principales que hacen de Colonia Independencia el lugar ideal para tu nueva vida",
+      "subtitle": "Cuatro razones claras para mudarte: seguridad, comunidad, servicios y conexión.",
       "cta": {
         "text": "¡Encuentra tu lote ideal ahora!",
-        "description": "Explora nuestros loteamientos disponibles y descubre el lugar perfecto para construir tu futuro en Colonia Independencia"
+        "description": "Explora los proyectos disponibles y descubre el lote que encaja con tu plan de vida."
       },
       "reasons": {
         "schools": {
-          "title": "Educación de Excelencia",
-          "description": "Acceso a colegios alemanes exclusivos y educación bilingüe de primer nivel. Tu familia tendrá oportunidades educativas únicas en la región.",
+          "title": "Educación de excelencia",
+          "description": "Opciones educativas de alto nivel — colegios bilingües y programas internacionales ideales para familias que valoran la educación.",
           "features": [
-            "Colegios alemanes exclusivos",
+            "Colegios con programas en alemán",
             "Educación bilingüe de calidad",
             "Programas internacionales",
             "Escuelas públicas de prestigio"
           ]
         },
         "club": {
-          "title": "Club Alemán Privado",
-          "description": "Disfruta del prestigioso club alemán con instalaciones deportivas, culturales y educativas. Aprende idiomas, deportes, arte y música en un ambiente exclusivo.",
+          "title": "Club alemán y vida cultural",
+          "description": "Un club privado y actividades culturales que facilitan integración, ocio y aprendizaje en un entorno familiar.",
           "features": [
-            "Instalaciones deportivas completas",
-            "Clases de idiomas (alemán, inglés)",
-            "Talleres de arte y música",
-            "Actividades culturales"
+            "Instalaciones deportivas y recreativas",
+            "Clases de alemán e inglés",
+            "Talleres culturales y artísticos",
+            "Eventos comunitarios regulares"
           ]
         },
         "tranquility": {
-          "title": "Tranquilidad y Espacio",
-          "description": "Un lugar sereno con amplios terrenos perfectos para agroindustria y vida campestre. Escapa del bullicio de la ciudad sin perder comodidades.",
+          "title": "Tranquilidad y espacio",
+          "description": "Terrenos amplios en un entorno sereno: privacidad, aire puro y espacio para disfrutar hobbies o proyectos rurales.",
           "features": [
-            "Ambiente tranquilo y seguro",
-            "Terrenos amplios disponibles",
-            "Ideal para agroindustria",
-            "Vida campestre con servicios urbanos"
+            "Ambiente seguro y apacible",
+            "Parcelas amplias disponibles",
+            "Ideal para huerto o agroproyectos",
+            "Servicios urbanos a mano"
           ]
         },
         "connectivity": {
-          "title": "Conectividad Estratégica",
-          "description": "Ubicación privilegiada cerca de otras ciudades importantes y centros comerciales. Lo mejor de ambos mundos: tranquilidad y accesibilidad.",
+          "title": "Conectividad estratégica",
+          "description": "Cercanía a ciudades y centros comerciales: lo mejor del campo con acceso simple a servicios y transporte.",
           "features": [
             "Cerca de centros comerciales",
             "Conexión con ciudades principales",
-            "Acceso a carreteras importantes",
+            "Acceso a carreteras principales",
             "Servicios urbanos cercanos"
           ]
         }
@@ -126,44 +73,44 @@
     },
     "loteamientos": {
       "title": "Nuestros Loteamientos",
-      "subtitle": "Descubre tu lote ideal en las mejores ubicaciones disponibles",
+      "subtitle": "Lotes listos para construir: familiares, comerciales y agroindustriales.",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
-        "other_options": "Otras Opciones"
+        "other_options": "Otras opciones"
       },
       "products": {
         "lote_premium_vista_norte": {
           "title": "Lote Premium Vista Norte",
           "subtitle": "Zona residencial exclusiva",
           "features": {
-            "size": "15m x 30m (450m²)",
+            "size": "15m x 30m (450 m²)",
             "green_area": "Área verde cercana",
             "schools": "Cerca de colegios"
           }
         },
         "lote_comercial_centro": {
           "title": "Lote Comercial Centro",
-          "subtitle": "Zona comercial estratégica",
+          "subtitle": "Visibilidad y tránsito",
           "features": {
-            "size": "20m x 25m (500m²)",
+            "size": "20m x 25m (500 m²)",
             "main_avenue": "Avenida principal",
             "commercial_zone": "Zona comercial"
           }
         },
         "lote_familiar_los_robles": {
           "title": "Lote Familiar Los Robles",
-          "subtitle": "Ideal para vivienda familiar",
+          "subtitle": "Ideal para vivienda",
           "features": {
-            "size": "12m x 35m (420m²)",
+            "size": "12m x 35m (420 m²)",
             "full_services": "Servicios completos",
             "family_zone": "Zona familiar"
           }
         },
         "lote_agroindustrial_sur": {
           "title": "Lote Agroindustrial Sur",
-          "subtitle": "Perfecto para agroindustria",
+          "subtitle": "Para proyectos productivos",
           "features": {
-            "size": "50m x 100m (5000m²)",
+            "size": "50m x 100m (5.000 m²)",
             "agro_use": "Uso agroindustrial",
             "water_access": "Acceso a agua"
           }
@@ -172,15 +119,15 @@
           "title": "Lote Valle Verde",
           "subtitle": "Vista panorámica",
           "features": {
-            "size": "18m x 25m (450m²)",
+            "size": "18m x 25m (450 m²)",
             "valley_view": "Vista al valle"
           }
         },
         "lote_industrial_pro": {
           "title": "Lote Industrial Pro",
-          "subtitle": "Uso industrial",
+          "subtitle": "Zona industrial",
           "features": {
-            "size": "30m x 40m (1200m²)",
+            "size": "30m x 40m (1.200 m²)",
             "industrial_zone": "Zona industrial"
           }
         },
@@ -188,80 +135,24 @@
           "title": "Lote Club Exclusivo",
           "subtitle": "Cerca del club alemán",
           "features": {
-            "size": "16m x 28m (448m²)",
+            "size": "16m x 28m (448 m²)",
             "exclusive_zone": "Zona exclusiva"
           }
         },
         "lote_esquinero_plus": {
           "title": "Lote Esquinero Plus",
-          "subtitle": "Doble frente",
+          "subtitle": "Doble frente y visibilidad",
           "features": {
-            "size": "20m x 22m (440m²)",
+            "size": "20m x 22m (440 m²)",
             "corner_privilege": "Esquina privilegiada"
-          }
-        },
-        "lote_metro_este": {
-          "title": "Lote Metro Este",
-          "subtitle": "Conectividad urbana",
-          "features": {
-            "size": "10m x 25m (250m²)",
-            "public_transport": "Transporte público"
-          }
-        },
-        "lote_brisa_mar": {
-          "title": "Lote Brisa Mar",
-          "subtitle": "Vista al océano",
-          "features": {
-            "size": "18m x 40m (720m²)",
-            "ocean_view": "Vista al mar"
-          }
-        },
-        "lote_rural_norte": {
-          "title": "Lote Rural Norte",
-          "subtitle": "Desarrollo agrícola",
-          "features": {
-            "size": "100m x 150m (15000m²)",
-            "agricultural_use": "Uso agrícola"
-          }
-        },
-        "lote_urbano_plus": {
-          "title": "Lote Urbano Plus",
-          "subtitle": "Servicios completos",
-          "features": {
-            "size": "12m x 30m (360m²)",
-            "urban_zone": "Zona urbana"
-          }
-        },
-        "lote_comercial_sur": {
-          "title": "Lote Comercial Sur",
-          "subtitle": "Alto tráfico vehicular",
-          "features": {
-            "size": "15m x 20m (300m²)",
-            "commercial_zone": "Zona comercial"
-          }
-        },
-        "lote_vista_montana": {
-          "title": "Lote Vista Montaña",
-          "subtitle": "Premium residencial",
-          "features": {
-            "size": "22m x 35m (770m²)",
-            "mountain_view": "Vista a montañas"
-          }
-        },
-        "lote_eco_premium": {
-          "title": "Lote Eco Premium",
-          "subtitle": "Certificado ecológico",
-          "features": {
-            "size": "25m x 30m (750m²)",
-            "eco_friendly": "Eco-friendly"
           }
         }
       },
-      "cta": "Ver Mapa"
+      "cta": "Ver mapa interactivo"
     },
     "loteamiento_cta": {
       "title": "Explora nuestros loteamientos con precisión total",
-      "description": "Descubre cada lote disponible con nuestro mapa interactivo de alta precisión. Ve dimensiones exactas, ubicación específica y todas las características que necesitas para tomar la mejor decisión.",
+      "description": "Mapa interactivo con dimensiones reales, imágenes satelitales y disponibilidad actualizada. Todo lo que necesitas para decidir con seguridad.",
       "features": [
         "Mapas interactivos de alta resolución",
         "Dimensiones exactas de cada lote",
@@ -269,11 +160,11 @@
         "Estado de disponibilidad actualizado"
       ],
       "cta": "Ver mapa interactivo",
-      "note": "Explora todos nuestros proyectos disponibles"
+      "note": "Consulta disponibilidad — algunos lotes son únicos"
     },
     "about_us": {
-      "title": "Conoce a Nuestro Equipo de Expertos",
-      "subtitle": "Profesionales dedicados que hacen realidad tus sueños inmobiliarios",
+      "title": "Conoce a nuestro equipo",
+      "subtitle": "Profesionales locales que acompañan tu mudanza paso a paso",
       "team": {
         "john_powell": {
           "name": "John Powell",
@@ -295,13 +186,13 @@
     },
     "footer": {
       "brand_title": "INMOBILIARIA MEGA PROYECTOS",
-      "brand_description": "Creando comunidades prósperas y sostenibles desde 2010. Tu hogar perfecto te está esperando.",
+      "brand_description": "Construimos comunidades seguras y sostenibles desde 2010. Tu hogar ideal te espera en Colonia Independencia.",
       "navigation_title": "Navegación",
       "contact_title": "Contacto",
-      "address": "Av. Principal 1234\nCiudad, Estado 12345",
+      "address": "Av. Principal 1234\nColonia Independencia",
       "phone": "+52 (555) 555-1234",
       "email": "info@megaproyectos.com",
-      "hours": "Lun - Vie: 9:00 AM - 6:00 PM\nSáb: 9:00 AM - 2:00 PM",
+      "hours": "Lun - Vie: 9:00 - 18:00\nSáb: 9:00 - 14:00",
       "actions_title": "¿Listo para comenzar?",
       "view_lots_cta": "Ver loteamientos",
       "call_now_cta": "Llamar ahora",
@@ -311,29 +202,19 @@
         "privacy": "Política de privacidad",
         "legal": "Aviso legal"
       },
-      "attribution": "Desarrollado con tecnología de mapas de alta precisión",
+      "attribution": "Mapas de alta precisión",
       "social": {
         "facebook": "Facebook",
         "instagram": "Instagram",
         "whatsapp": "WhatsApp"
       }
     },
-    "carousel": {
-      "prev_aria": "Ver razón anterior",
-      "next_aria": "Ver siguiente razón",
-      "reason1_aria": "Ir a razón 1: Ubicación Estratégica",
-      "reason2_aria": "Ir a razón 2: Infraestructura Completa",
-      "reason3_aria": "Ir a razón 3: Calidad de Vida Superior",
-      "reason4_aria": "Ir a razón 4: Inversión Inteligente"
-    },
     "image_alts": {
-      "hero": "Vista panorámica de desarrollo inmobiliario sustentable con casas modernas y áreas verdes",
-      "schools": "Estudiantes en colegio alemán de Colonia Independencia con educación bilingüe de excelencia",
-      "club": "Instalaciones del club alemán privado con áreas deportivas, artísticas y culturales",
-      "tranquility": "Paisaje sereno de Colonia Independencia con amplios terrenos y ambiente campestre",
-      "connectivity": "Mapa mostrando la conectividad de Colonia Independencia con ciudades y centros comerciales",
-      "map_preview": "Vista previa del mapa interactivo mostrando lotes disponibles con diferentes colores según disponibilidad",
-      "team": "Equipo profesional de Inmobiliaria Mega Proyectos trabajando en oficina moderna"
+      "hero": "Panorámica del desarrollo: casas, áreas verdes y caminos",
+      "schools": "Niños en colegio bilingüe",
+      "club": "Instalaciones del club comunitario",
+      "tranquility": "Paisaje campestre con terrenos amplios",
+      "connectivity": "Mapa de la zona con conexiones viales"
     },
     "aria_labels": {
       "main_nav": "Navegación principal",
@@ -342,8 +223,8 @@
       "loteamiento_section": "Sección de loteamientos",
       "about_section": "Acerca de nosotros",
       "carousel": "Carrusel de razones para vivir aquí",
-      "carousel_indicators": "Indicadores de razones",
-      "footer_nav": "Enlaces de navegación del pie de página"
+      "carousel_indicators": "Indicadores del carrusel",
+      "footer_nav": "Enlaces del pie de página"
     }
   }
 }

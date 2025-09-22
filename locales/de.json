@@ -1,283 +1,174 @@
 {
   "navigation": {
-    "home": "Startseite",
-    "admin": "Verwaltung",
-    "login": "Anmelden",
-    "logout": "Abmelden",
-    "lots": "Immobilien",
-    "plots": "Parzellen",
-    "users": "Benutzer",
-    "sales": "Verkäufe",
-    "reservations": "Reservierungen",
+    "home": "Start",
+    "lots": "Projekte",
     "why_live_here": "Warum hier leben",
     "about_us": "Über uns",
-    "view_map": "Karte anzeigen",
-    "get_reservation": "Grundstück jetzt reservieren"
-  },
-  "states": {
-    "available": "Verfügbar",
-    "reserved": "Reserviert",
-    "sold": "Verkauft"
-  },
-  "actions": {
-    "create": "Erstellen",
-    "edit": "Bearbeiten",
-    "delete": "Löschen",
-    "save": "Speichern",
-    "cancel": "Abbrechen",
-    "view": "Anzeigen",
-    "upload": "Hochladen",
-    "download": "Herunterladen"
-  },
-  "forms": {
-    "name": "Name",
-    "description": "Beschreibung",
-    "photo": "Foto",
-    "location": "Standort",
-    "width": "Breite",
-    "length": "Länge",
-    "number": "Nummer",
-    "email": "E-Mail",
-    "password": "Passwort",
-    "contact": "Kontakt",
-    "date": "Datum",
-    "role": "Rolle"
-  },
-  "messages": {
-    "success_create": "Erfolgreich erstellt",
-    "success_update": "Erfolgreich aktualisiert",
-    "success_delete": "Erfolgreich gelöscht",
-    "error_generic": "Ein Fehler ist aufgetreten",
-    "error_auth": "Ungültige Anmeldedaten",
-    "error_permission": "Sie haben keine Berechtigung für diese Aktion",
-    "confirm_delete": "Sind Sie sicher, dass Sie dieses Element löschen möchten?",
-    "loading": "Laden...",
-    "no_data": "Keine Daten verfügbar"
+    "view_map": "Karte ansehen",
+    "get_reservation": "Grundstück reservieren"
   },
   "titles": {
-    "dashboard": "Dashboard",
-    "lot_management": "Grundstücksverwaltung",
-    "plot_management": "Parzellenverwaltung",
-    "user_management": "Benutzerverwaltung",
-    "sales_report": "Verkaufsbericht",
-    "map_view": "Kartenansicht",
-    "main_title": "Immobilien Impact - Ihr perfektes Zuhause wartet auf Sie",
-    "brand": "IMMOBILIEN MEGA PROJEKTE"
+    "main_title": "Impact Immobilien — Ihr neues Zuhause in Colonia Independencia",
+    "brand": "MEGA PROJEKTE IMMOBILIEN"
   },
   "index": {
-    "page_title": "Immobilien Impact - Ihr perfektes Zuhause wartet auf Sie",
-    "meta_description": "Entdecken Sie nachhaltige Immobilienentwicklungen mit der besten Lage, vollständiger Infrastruktur und überlegener Lebensqualität.",
-    "meta_keywords": "immobilien, grundstücke, bauland, nachhaltige entwicklungen, immobilieninvestition",
+    "page_title": "Impact Immobilien — Ihr neues Zuhause in Colonia Independencia",
+    "meta_description": "Ruhige, sichere Grundstücksentwicklungen in Colonia Independencia mit interaktiven Karten, bautauglichen Parzellen und lokaler Betreuung. Ideal für Ruheständler und Familien.",
+    "meta_keywords": "grundstücke, parzellen, ruhestand, Colonia Independencia, ruhiges wohnen, sichere investition",
     "hero": {
-      "title": "Finden Sie das perfekte Zuhause am idealen Ort",
-      "subtitle": "Nachhaltige Immobilienentwicklungen mit strategischer Lage, vollständiger Infrastruktur und der besten Lebensqualität für Ihre Familie.",
-      "description": "Erkunden Sie unsere Wohngebiete mit hochpräzisen interaktiven Karten, die es Ihnen ermöglichen, jedes Detail zu kennen, bevor Sie die wichtigste Entscheidung Ihres Lebens treffen.",
-      "cta": "Wohngebiete erkunden"
+      "title": "Ein ruhiger Ort für Ihr neues Kapitel",
+      "subtitle": "Grundstücke für Menschen, die Sicherheit, Raum und Gemeinschaft suchen.",
+      "description": "Entdecken Sie unsere Projekte mit hochpräzisen interaktiven Karten. Sehen Sie Maße, genaue Lage und aktuelle Verfügbarkeit direkt im Browser.",
+      "cta": "Interaktive Karte ansehen"
     },
     "why_live_here": {
-      "title": "Warum sich für das Leben in Colonia Independencia entscheiden?",
-      "subtitle": "Entdecken Sie die 4 Hauptgründe, die Colonia Independencia zum idealen Ort für Ihr neues Leben machen",
+      "title": "Warum Colonia Independencia?",
+      "subtitle": "Vier gute Gründe: Sicherheit, Gemeinschaft, Versorgung und Anbindung.",
       "cta": {
         "text": "Finden Sie jetzt Ihr ideales Grundstück!",
-        "description": "Erkunden Sie unsere verfügbaren Wohngebiete und entdecken Sie den perfekten Ort, um Ihre Zukunft in Colonia Independencia aufzubauen"
+        "description": "Entdecken Sie verfügbare Projekte und wählen Sie das Grundstück, das zu Ihrem Lebensplan passt."
       },
       "reasons": {
         "schools": {
-          "title": "Exzellenz in der Bildung",
-          "description": "Zugang zu exklusiven deutschen Schulen und zweisprachiger Bildung auf höchstem Niveau. Ihre Familie wird einzigartige Bildungsmöglichkeiten in der Region haben.",
+          "title": "Hervorragende Bildung",
+          "description": "Qualitativ hochwertige Schulangebote — bilingual und international, ideal für Familien.",
           "features": [
-            "Exklusive deutsche Schulen",
-            "Qualitätszweisprachige Bildung",
+            "Deutsche Schulangebote verfügbar",
+            "Hochwertige bilingualer Unterricht",
             "Internationale Programme",
             "Renommierte öffentliche Schulen"
           ]
         },
         "club": {
-          "title": "Privater Deutscher Club",
-          "description": "Genießen Sie den prestigeträchtigen deutschen Club mit Sport-, Kultur- und Bildungseinrichtungen. Lernen Sie Sprachen, Sport, Kunst und Musik in exklusiver Atmosphäre.",
+          "title": "Deutscher Klub & Kultur",
+          "description": "Ein privater Klub und kulturelle Angebote, die Integration, Freizeit und Gemeinschaft fördern.",
           "features": [
-            "Vollständige Sportanlagen",
-            "Sprachkurse (Deutsch, Englisch)",
-            "Kunst- und Musikworkshops",
-            "Kulturelle Aktivitäten"
+            "Sport- und Freizeiteinrichtungen",
+            "Deutsch- und Englischkurse",
+            "Kunst- und Werkstattangebote",
+            "Regelmäßige Gemeinschaftsveranstaltungen"
           ]
         },
         "tranquility": {
           "title": "Ruhe und Raum",
-          "description": "Ein ruhiger Ort mit weitläufigen Grundstücken, perfekt für Agroindustrie und Ländliches Leben. Entfliehen Sie dem Stadttrubel ohne Komfort zu verlieren.",
+          "description": "Große Parzellen in ruhiger Lage — Privatsphäre, frische Luft und Platz für Hobbys oder kleine Landwirtschaftsprojekte.",
           "features": [
-            "Ruhige und sichere Umgebung",
-            "Große Grundstücke verfügbar",
-            "Ideal für Agroindustrie",
-            "Ländliches Leben mit städtischen Diensten"
+            "Sichere, ruhige Umgebung",
+            "Große Parzellen verfügbar",
+            "Ideal für Gartenbau oder Agrarprojekte",
+            "Städtische Versorgung in Reichweite"
           ]
         },
         "connectivity": {
-          "title": "Strategische Konnektivität",
-          "description": "Privilegierte Lage in der Nähe anderer wichtiger Städte und Einkaufszentren. Das Beste aus beiden Welten: Ruhe und Zugänglichkeit.",
+          "title": "Strategische Anbindung",
+          "description": "Nahe zu Städten und Einkaufszentren: Ländliche Ruhe mit einfacher Erreichbarkeit von Dienstleistungen und Straßen.",
           "features": [
-            "Nahe Einkaufszentren",
-            "Verbindung zu Großstädten",
-            "Zugang zu wichtigen Autobahnen",
-            "Nahegelegene städtische Dienste"
+            "In der Nähe von Einkaufszentren",
+            "Anbindung an Hauptstädte",
+            "Zugang zu wichtigen Straßen",
+            "Städtische Dienste in Reichweite"
           ]
         }
       }
     },
     "loteamientos": {
-      "title": "Unsere Wohngebiete",
-      "subtitle": "Entdecken Sie Ihr ideales Grundstück in den besten verfügbaren Standorten",
+      "title": "Unsere Projekte",
+      "subtitle": "Bautaugliche Parzellen: Wohn-, Gewerbe- und Agrarflächen.",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
-        "other_options": "Andere Optionen"
+        "other_options": "Weitere Optionen"
       },
       "products": {
         "lote_premium_vista_norte": {
-          "title": "Premium Nordblick Grundstück",
-          "subtitle": "Exklusives Wohngebiet",
+          "title": "Premium Parzelle Nordblick",
+          "subtitle": "Exklusive Wohnlage",
           "features": {
-            "size": "15m x 30m (450m²)",
-            "green_area": "Nahegelegene Grünfläche",
-            "schools": "Nahe Schulen"
+            "size": "15m x 30m (450 m²)",
+            "green_area": "Nahe Grünfläche",
+            "schools": "In der Nähe von Schulen"
           }
         },
         "lote_comercial_centro": {
-          "title": "Gewerbezentrum Grundstück",
-          "subtitle": "Strategisches Gewerbegebiet",
+          "title": "Gewerbeparzelle Zentrum",
+          "subtitle": "Sichtbarkeit und Verkehr",
           "features": {
-            "size": "20m x 25m (500m²)",
+            "size": "20m x 25m (500 m²)",
             "main_avenue": "Hauptstraße",
             "commercial_zone": "Gewerbegebiet"
           }
         },
         "lote_familiar_los_robles": {
-          "title": "Los Robles Familien Grundstück",
-          "subtitle": "Ideal für Familienwohnung",
+          "title": "Familienparzelle Los Robles",
+          "subtitle": "Perfekt für ein Zuhause",
           "features": {
-            "size": "12m x 35m (420m²)",
-            "full_services": "Vollständige Dienstleistungen",
-            "family_zone": "Familienzone"
+            "size": "12m x 35m (420 m²)",
+            "full_services": "Voll erschlossen",
+            "family_zone": "Familienfreundliche Zone"
           }
         },
         "lote_agroindustrial_sur": {
-          "title": "Süd Agroindustrielles Grundstück",
-          "subtitle": "Perfekt für Agroindustrie",
+          "title": "Agroindustrielle Parzelle Süd",
+          "subtitle": "Für produktive Projekte",
           "features": {
-            "size": "50m x 100m (5000m²)",
+            "size": "50m x 100m (5.000 m²)",
             "agro_use": "Agroindustrielle Nutzung",
             "water_access": "Wasserzugang"
           }
         },
         "lote_valle_verde": {
-          "title": "Grünes Tal Grundstück",
+          "title": "Valle Verde Parzelle",
           "subtitle": "Panoramablick",
           "features": {
-            "size": "18m x 25m (450m²)",
+            "size": "18m x 25m (450 m²)",
             "valley_view": "Talblick"
           }
         },
         "lote_industrial_pro": {
-          "title": "Industrie Pro Grundstück",
-          "subtitle": "Industrielle Nutzung",
+          "title": "Industrial Pro Parzelle",
+          "subtitle": "Industriezone",
           "features": {
-            "size": "30m x 40m (1200m²)",
+            "size": "30m x 40m (1.200 m²)",
             "industrial_zone": "Industriegebiet"
           }
         },
         "lote_club_exclusivo": {
-          "title": "Exklusiver Club Grundstück",
-          "subtitle": "Nahe dem deutschen Club",
+          "title": "Club-Exklusiv Parzelle",
+          "subtitle": "Nahe am deutschen Klub",
           "features": {
-            "size": "16m x 28m (448m²)",
+            "size": "16m x 28m (448 m²)",
             "exclusive_zone": "Exklusive Zone"
           }
         },
         "lote_esquinero_plus": {
-          "title": "Eckgrundstück Plus",
-          "subtitle": "Doppelte Front",
+          "title": "Eckparzelle Plus",
+          "subtitle": "Doppelte Front und Sichtbarkeit",
           "features": {
-            "size": "20m x 22m (440m²)",
-            "corner_privilege": "Privilegierte Ecke"
-          }
-        },
-        "lote_metro_este": {
-          "title": "Metro Ost Grundstück",
-          "subtitle": "Städtische Konnektivität",
-          "features": {
-            "size": "10m x 25m (250m²)",
-            "public_transport": "Öffentlicher Verkehr"
-          }
-        },
-        "lote_brisa_mar": {
-          "title": "Meeresbrise Grundstück",
-          "subtitle": "Meerblick",
-          "features": {
-            "size": "18m x 40m (720m²)",
-            "ocean_view": "Meerblick"
-          }
-        },
-        "lote_rural_norte": {
-          "title": "Nord Ländliches Grundstück",
-          "subtitle": "Landwirtschaftliche Entwicklung",
-          "features": {
-            "size": "100m x 150m (15000m²)",
-            "agricultural_use": "Landwirtschaftliche Nutzung"
-          }
-        },
-        "lote_urbano_plus": {
-          "title": "Urban Plus Grundstück",
-          "subtitle": "Vollständige Dienstleistungen",
-          "features": {
-            "size": "12m x 30m (360m²)",
-            "urban_zone": "Städtisches Gebiet"
-          }
-        },
-        "lote_comercial_sur": {
-          "title": "Süd Gewerbe Grundstück",
-          "subtitle": "Hoher Fahrzeugverkehr",
-          "features": {
-            "size": "15m x 20m (300m²)",
-            "commercial_zone": "Gewerbegebiet"
-          }
-        },
-        "lote_vista_montana": {
-          "title": "Bergblick Grundstück",
-          "subtitle": "Premium Wohngegend",
-          "features": {
-            "size": "22m x 35m (770m²)",
-            "mountain_view": "Bergblick"
-          }
-        },
-        "lote_eco_premium": {
-          "title": "Öko Premium Grundstück",
-          "subtitle": "Ökologisches Zertifikat",
-          "features": {
-            "size": "25m x 30m (750m²)",
-            "eco_friendly": "Umweltfreundlich"
+            "size": "20m x 22m (440 m²)",
+            "corner_privilege": "Premium-Ecke"
           }
         }
       },
-      "cta": "Karte Anzeigen"
+      "cta": "Interaktive Karte ansehen"
     },
     "loteamiento_cta": {
-      "title": "Erkunden Sie unsere Wohngebiete mit totaler Präzision",
-      "description": "Entdecken Sie jedes verfügbare Grundstück mit unserer hochpräzisen interaktiven Karte. Sehen Sie genaue Abmessungen, spezifische Lage und alle Eigenschaften, die Sie für die beste Entscheidung benötigen.",
+      "title": "Entdecken Sie unsere Projekte mit höchster Präzision",
+      "description": "Interaktive Karte mit exakten Maßen, Satellitenansicht und aktueller Verfügbarkeit. Alles, um sicher zu entscheiden.",
       "features": [
         "Hochauflösende interaktive Karten",
-        "Genaue Abmessungen jedes Grundstücks",
-        "Echtzeit-Satellitenbild",
-        "Aktualisierter Verfügbarkeitsstatus"
+        "Exakte Parzellengrößen",
+        "Echtzeit-Satellitenansicht",
+        "Aktueller Verfügbarkeitsstatus"
       ],
-      "cta": "Interaktive Karte anzeigen",
-      "note": "Erkunden Sie alle unsere verfügbaren Projekte"
+      "cta": "Interaktive Karte ansehen",
+      "note": "Verfügbarkeit prüfen — einige Parzellen sind einzigartig"
     },
     "about_us": {
-      "title": "Lernen Sie unser Expertenteam kennen",
-      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "title": "Lernen Sie unser Team kennen",
+      "subtitle": "Lokale Experten, die Ihren Umzug Schritt für Schritt begleiten",
       "team": {
         "john_powell": {
           "name": "John Powell",
-          "title": "Kundenbetreuung"
+          "title": "Kundendienst"
         },
         "thomas_powell": {
           "name": "Thomas Powell",
@@ -294,55 +185,45 @@
       }
     },
     "footer": {
-      "brand_title": "IMMOBILIEN MEGA PROJEKTE",
-      "brand_description": "Seit 2010 schaffen wir prosperierende und nachhaltige Gemeinschaften. Ihr perfektes Zuhause wartet auf Sie.",
+      "brand_title": "MEGA PROJEKTE IMMOBILIEN",
+      "brand_description": "Wir schaffen sichere, nachhaltige Gemeinden seit 2010. Ihr ideales Zuhause erwartet Sie in Colonia Independencia.",
       "navigation_title": "Navigation",
       "contact_title": "Kontakt",
-      "address": "Hauptstraße 1234\nStadt, Staat 12345",
+      "address": "Av. Principal 1234\nColonia Independencia",
       "phone": "+52 (555) 555-1234",
       "email": "info@megaproyectos.com",
-      "hours": "Mo - Fr: 9:00 - 18:00 Uhr\nSa: 9:00 - 14:00 Uhr",
-      "actions_title": "Bereit anzufangen?",
-      "view_lots_cta": "Wohngebiete ansehen",
+      "hours": "Mo - Fr: 09:00 - 18:00\nSa: 09:00 - 14:00",
+      "actions_title": "Bereit zu starten?",
+      "view_lots_cta": "Projekte ansehen",
       "call_now_cta": "Jetzt anrufen",
-      "copyright": "© 2025 Immobilien Mega Projekte. Alle Rechte vorbehalten.",
+      "copyright": "© 2025 Mega Projekte Immobilien. Alle Rechte vorbehalten.",
       "legal": {
         "terms": "Nutzungsbedingungen",
-        "privacy": "Datenschutzrichtlinie",
-        "legal": "Rechtliche Hinweise"
+        "privacy": "Datenschutz",
+        "legal": "Rechtlicher Hinweis"
       },
-      "attribution": "Entwickelt mit hochpräziser Kartentechnologie",
+      "attribution": "Angetrieben von hochpräzisen Karten",
       "social": {
         "facebook": "Facebook",
         "instagram": "Instagram",
         "whatsapp": "WhatsApp"
       }
     },
-    "carousel": {
-      "prev_aria": "Vorherigen Grund anzeigen",
-      "next_aria": "Nächsten Grund anzeigen",
-      "reason1_aria": "Zu Grund 1 gehen: Strategische Lage",
-      "reason2_aria": "Zu Grund 2 gehen: Vollständige Infrastruktur",
-      "reason3_aria": "Zu Grund 3 gehen: Überlegene Lebensqualität",
-      "reason4_aria": "Zu Grund 4 gehen: Intelligente Investition"
-    },
     "image_alts": {
-      "hero": "Panoramablick auf nachhaltige Immobilienentwicklung mit modernen Häusern und Grünflächen",
-      "schools": "Schüler der deutschen Schule in Colonia Independencia mit exzellenter zweisprachiger Bildung",
-      "club": "Einrichtungen des privaten deutschen Clubs mit Sport-, Kunst- und Kulturbereichen",
-      "tranquility": "Ruhige Landschaft von Colonia Independencia mit weitläufigen Grundstücken und ländlicher Atmosphäre",
-      "connectivity": "Karte zeigt die Konnektivität von Colonia Independencia mit Städten und Einkaufszentren",
-      "map_preview": "Vorschau der interaktiven Karte zeigt verfügbare Grundstücke mit verschiedenen Farben je nach Verfügbarkeit",
-      "team": "Professionelles Team von Immobilien Mega Projekte arbeitet im modernen Büro"
+      "hero": "Panorama der Entwicklung mit Häusern und Grünflächen",
+      "schools": "Kinder in einer bilingualen Schule",
+      "club": "Einrichtungen des Gemeinschaftsklubs",
+      "tranquility": "Landschaft mit großen Parzellen",
+      "connectivity": "Karte mit lokalen Straßenverbindungen"
     },
     "aria_labels": {
       "main_nav": "Hauptnavigation",
       "main_section": "Hauptbereich",
       "why_live_section": "Warum hier leben",
-      "loteamiento_section": "Wohngebietsbereich",
+      "loteamiento_section": "Projektbereich",
       "about_section": "Über uns",
       "carousel": "Karussell der Gründe hier zu leben",
-      "carousel_indicators": "Grund-Indikatoren",
+      "carousel_indicators": "Karussellindikatoren",
       "footer_nav": "Fußzeilen-Navigationslinks"
     }
   }
