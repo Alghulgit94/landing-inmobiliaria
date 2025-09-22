@@ -396,8 +396,8 @@
 })();
 
 /**
- * Loteamientos Products Filtering - Inmobiliaria Mega Proyectos
- * Filter products by location with smooth animations
+ * Dynamic Products Rendering - Inmobiliaria Mega Proyectos
+ * Render products dynamically from API data with filtering capabilities
  */
 
 (function() {
@@ -405,47 +405,64 @@
 
   // DOM elements
   let locationChips = [];
-  let productCards = [];
+  let productsGrid = null;
+  let productsLoading = null;
+  let productsError = null;
+  let retryButton = null;
+  let productTemplate = null;
+  
+  // State
+  let allProducts = [];
+  let currentLocation = 'colonia-independencia';
 
   /**
-   * Initialize the loteamientos filtering when the DOM is loaded
+   * Initialize the dynamic products system when the DOM is loaded
    */
-  function initializeLoteamientosFilter() {
+  async function initializeDynamicProducts() {
     // Get DOM elements
+    productsGrid = document.getElementById('productsGrid');
+    productsLoading = document.getElementById('productsLoading');
+    productsError = document.getElementById('productsError');
+    retryButton = document.getElementById('retryButton');
+    productTemplate = document.getElementById('productCardTemplate');
     locationChips = document.querySelectorAll('.location-chip');
-    productCards = document.querySelectorAll('.product-card');
 
     // Validate required elements exist
-    if (!validateFilterElements()) {
-      console.log('Loteamientos filter: Elements not found. Filter will not function.');
+    if (!validateProductElements()) {
+      console.error('Dynamic Products: Required elements not found. System will not function.');
       return;
     }
 
     // Bind event listeners
-    bindFilterEventListeners();
+    bindProductEventListeners();
     
-    // Set initial state (Colonia Independencia active by default)
-    showProductsByLocation('colonia-independencia');
+    // Load and render products
+    await loadProducts();
 
-    console.log('Loteamientos filter initialized successfully');
+    console.log('Dynamic products system initialized successfully');
   }
 
   /**
    * Validate that all required DOM elements exist
    * @returns {boolean} True if all elements are found
    */
-  function validateFilterElements() {
-    return locationChips.length > 0 && productCards.length > 0;
+  function validateProductElements() {
+    return productsGrid && productsLoading && productsError && retryButton && 
+           productTemplate && locationChips.length > 0;
   }
 
   /**
-   * Bind all event listeners for the filter
+   * Bind all event listeners
    */
-  function bindFilterEventListeners() {
+  function bindProductEventListeners() {
+    // Location filter chips
     locationChips.forEach(chip => {
       chip.addEventListener('click', handleChipClick);
       chip.addEventListener('keydown', handleChipKeydown);
     });
+
+    // Retry button
+    retryButton.addEventListener('click', handleRetryClick);
   }
 
   /**
@@ -456,9 +473,10 @@
     const chip = event.target;
     const location = chip.getAttribute('data-location');
     
-    if (location) {
+    if (location && location !== currentLocation) {
       setActiveChip(chip);
-      showProductsByLocation(location);
+      currentLocation = location;
+      renderProductsByLocation(location);
     }
   }
 
@@ -471,6 +489,13 @@
       event.preventDefault();
       handleChipClick(event);
     }
+  }
+
+  /**
+   * Handle retry button click
+   */
+  async function handleRetryClick() {
+    await loadProducts();
   }
 
   /**
@@ -490,77 +515,228 @@
   }
 
   /**
-   * Show products for the selected location
-   * @param {string} location - The location to filter by
+   * Load products from the service
    */
-  function showProductsByLocation(location) {
-    productCards.forEach(card => {
-      const cardLocation = card.getAttribute('data-location');
+  async function loadProducts() {
+    try {
+      showLoadingState();
       
-      if (cardLocation === location) {
-        // Show card with animation
-        card.style.display = 'block';
-        
-        // Trigger reflow for smooth animation
-        card.offsetHeight;
-        
-        // Add entrance animation
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
-        // Animate to visible state
-        setTimeout(() => {
-          card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, 50);
-        
-      } else {
-        // Hide card with animation
-        card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(-20px)';
-        
-        // Hide after animation completes
-        setTimeout(() => {
-          card.style.display = 'none';
-        }, 300);
-      }
+      // Fetch products using the service
+      allProducts = await window.ProductService.fetchProducts();
+      
+      // Render products for current location
+      renderProductsByLocation(currentLocation);
+      
+      hideLoadingState();
+      
+    } catch (error) {
+      console.error('Error loading products:', error);
+      showErrorState();
+    }
+  }
+
+  /**
+   * Render products filtered by location
+   * @param {string} location - Location to filter by
+   */
+  function renderProductsByLocation(location) {
+    // Clear existing products (except template and loading/error states)
+    clearProductsGrid();
+    
+    // Get filtered products
+    const filteredProducts = window.ProductService.getProductsByLocation(location);
+    
+    if (filteredProducts.length === 0) {
+      showEmptyState(location);
+      return;
+    }
+
+    // Render each product
+    filteredProducts.forEach((product, index) => {
+      const productCard = createProductCard(product);
+      productsGrid.appendChild(productCard);
+      
+      // Add staggered animation
+      setTimeout(() => {
+        productCard.style.opacity = '1';
+        productCard.style.transform = 'translateY(0)';
+      }, index * 100);
     });
 
-    // Update section with count
-    updateProductCount(location);
+    console.log(`Rendered ${filteredProducts.length} products for location: ${location}`);
   }
 
   /**
-   * Update the visible product count (optional enhancement)
-   * @param {string} location - The current location filter
+   * Create a product card from template
+   * @param {Object} product - Product data
+   * @returns {HTMLElement} Product card element
    */
-  function updateProductCount(location) {
-    const visibleProducts = document.querySelectorAll(`[data-location="${location}"]`);
-    console.log(`Showing ${visibleProducts.length} products for location: ${location}`);
+  function createProductCard(product) {
+    // Clone template
+    const cardElement = productTemplate.content.cloneNode(true);
+    const card = cardElement.querySelector('.product-card');
+    
+    // Set data attributes
+    card.setAttribute('data-location', product.location);
+    card.setAttribute('data-product-id', product.id);
+    
+    // Set image
+    const img = card.querySelector('.product-card__image');
+    img.src = product.photo;
+    img.alt = product.description;
+    
+    // Set type badge
+    const typeBadge = card.querySelector('.product-card__type-badge');
+    typeBadge.textContent = formatProductType(product.type);
+    typeBadge.className = `product-card__type-badge product-card__type-badge--${product.type.toLowerCase().replace(' ', '-')}`;
+    
+    // Set title
+    card.querySelector('.product-card__title').textContent = product.name;
+    
+    // Set parcel count
+    const parcelCount = card.querySelector('.product-card__parcel-count');
+    if (product.parcel_quantity > 1) {
+      parcelCount.textContent = `${product.parcel_quantity} lotes`;
+      parcelCount.style.display = 'block';
+    } else {
+      parcelCount.style.display = 'none';
+    }
+    
+    // Set description
+    card.querySelector('.product-card__description').textContent = product.description;
+    
+    // Set location info
+    const locationName = card.querySelector('.location-name');
+    const locationCoordinates = card.querySelector('.location-coordinates');
+    locationName.textContent = formatLocationName(product.location);
+    locationCoordinates.textContent = `${product.lat.toFixed(4)}, ${product.long.toFixed(4)}`;
+    
+    // Set size info
+    const sizeArea = card.querySelector('.size-area');
+    const sizeDimensions = card.querySelector('.size-dimensions');
+    sizeArea.textContent = `${product.total_dim_m2.toLocaleString()}m²`;
+    sizeDimensions.textContent = product.dimensions || 'Dimensiones disponibles';
+    
+    // Set initial animation state
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    
+    return card;
   }
 
   /**
-   * Public API for external control (if needed)
+   * Format product type for display
+   * @param {string} type - Product type
+   * @returns {string} Formatted type
    */
-  window.LoteamientosFilterAPI = {
-    showProductsByLocation,
-    setActiveChip: (location) => {
+  function formatProductType(type) {
+    switch (type.toLowerCase()) {
+      case 'lote':
+        return 'Lote';
+      case 'barrio cerrado':
+        return 'Barrio Cerrado';
+      case 'fraccion':
+        return 'Fracción';
+      default:
+        return type;
+    }
+  }
+
+  /**
+   * Format location name for display
+   * @param {string} location - Location key
+   * @returns {string} Formatted location name
+   */
+  function formatLocationName(location) {
+    switch (location) {
+      case 'colonia-independencia':
+        return 'Colonia Independencia';
+      case 'other-options':
+        return 'Otras Ubicaciones';
+      default:
+        return location.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
+  }
+
+  /**
+   * Show loading state
+   */
+  function showLoadingState() {
+    productsLoading.style.display = 'block';
+    productsError.style.display = 'none';
+    clearProductsGrid();
+  }
+
+  /**
+   * Hide loading state
+   */
+  function hideLoadingState() {
+    productsLoading.style.display = 'none';
+  }
+
+  /**
+   * Show error state
+   */
+  function showErrorState() {
+    productsLoading.style.display = 'none';
+    productsError.style.display = 'block';
+    clearProductsGrid();
+  }
+
+  /**
+   * Show empty state
+   * @param {string} location - Current location filter
+   */
+  function showEmptyState(location) {
+    clearProductsGrid();
+    
+    const emptyMessage = document.createElement('div');
+    emptyMessage.className = 'products-empty';
+    emptyMessage.innerHTML = `
+      <div class="empty-icon">🔍</div>
+      <h4>No hay loteamientos disponibles</h4>
+      <p>No se encontraron loteamientos para la ubicación seleccionada.</p>
+    `;
+    
+    productsGrid.appendChild(emptyMessage);
+  }
+
+  /**
+   * Clear products grid (keep template and loading/error states)
+   */
+  function clearProductsGrid() {
+    const productCards = productsGrid.querySelectorAll('.product-card:not(template .product-card)');
+    const emptyMessages = productsGrid.querySelectorAll('.products-empty');
+    
+    productCards.forEach(card => card.remove());
+    emptyMessages.forEach(message => message.remove());
+  }
+
+  /**
+   * Public API for external control
+   */
+  window.DynamicProductsAPI = {
+    renderProductsByLocation,
+    loadProducts,
+    setActiveLocation: (location) => {
       const chip = document.querySelector(`[data-location="${location}"]`);
       if (chip) {
         setActiveChip(chip);
-        showProductsByLocation(location);
+        currentLocation = location;
+        renderProductsByLocation(location);
       }
-    }
+    },
+    getCurrentLocation: () => currentLocation,
+    getProducts: () => allProducts
   };
 
   // Initialize when DOM is loaded
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializeLoteamientosFilter);
+    document.addEventListener('DOMContentLoaded', initializeDynamicProducts);
   } else {
     // DOM is already loaded
-    initializeLoteamientosFilter();
+    initializeDynamicProducts();
   }
 
 })();
