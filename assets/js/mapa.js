@@ -1284,13 +1284,48 @@ function toggleParcelSidebar() {
 
 // Handle reservation action
 function handleReservation(parcelData) {
-  const phoneNumber = '+595971234567'; // Replace with actual phone number
+  // Get parcel coordinates
   const coords = getFeatureCoordinates(parcelData.feature);
-  const message = `Hola, estoy interesado en reservar el ${parcelData.name || 'lote'} en Colonia Independencia. Coordenadas: ${coords.lat}, ${coords.lng}`;
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-  window.open(whatsappUrl, '_blank');
+  
+  // Build URL parameters for the reservation form
+  const params = new URLSearchParams({
+    lotId: parcelData.name || 'lote',
+    lotName: parcelData.name || 'Lote sin nombre',
+    location: 'Colonia Independencia',
+    coordinates: `${coords.lat}, ${coords.lng}`,
+    price: parcelData.price || 'Consultar',
+    dimensions: getDimensionsString(parcelData),
+    status: parcelData.status || 'disponible'
+  });
+  
+  // Navigate to reservation form with parcel data
+  const reservationUrl = `reservation-form.html?${params.toString()}`;
+  window.location.href = reservationUrl;
+}
 
-  // Keep sidebar open after opening WhatsApp
+// Helper function to format dimensions for URL parameter
+function getDimensionsString(parcelData) {
+  // Check for pre-formatted dimensions
+  const preFormatted = parcelData.largoxancho || parcelData.LargoxAncho || parcelData.dimensions;
+  if (preFormatted && preFormatted !== 'null' && preFormatted !== '') {
+    return preFormatted;
+  }
+
+  // Try to construct from individual values
+  const largo = parcelData.largo || parcelData.Largo || parcelData.length;
+  const ancho = parcelData.ancho || parcelData.Ancho || parcelData.width;
+
+  if (largo && ancho && largo !== 'null' && ancho !== 'null') {
+    return `${largo} x ${ancho}`;
+  }
+
+  // Fallback to area if available
+  const area = parcelData.area || parcelData.Area || parcelData.superficie || parcelData.Superficie;
+  if (area && area !== 'null' && area !== '') {
+    return `${area} m²`;
+  }
+
+  return 'Dimensiones no disponibles';
 }
 
 // Initialize sidebar event handlers
