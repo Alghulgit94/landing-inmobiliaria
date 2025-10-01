@@ -3,6 +3,37 @@
 const map = L.map('map', { zoomControl: false, zoomAnimation: true }).setView([-25.695804, -56.174242], 16);
 
 // ===========================
+// URL PARAMETER HANDLING
+// ===========================
+
+/**
+ * Parse URL parameters for loteamiento data
+ * @returns {Object|null} Parsed parameters or null
+ */
+function parseURLParameters() {
+  const params = new URLSearchParams(window.location.search);
+
+  const loteamientoId = params.get('loteamiento');
+  const loteamientoName = params.get('name');
+  const lat = params.get('lat');
+  const lng = params.get('lng');
+
+  if (loteamientoId) {
+    return {
+      id: loteamientoId,
+      name: loteamientoName || 'Loteamiento',
+      lat: parseFloat(lat) || null,
+      lng: parseFloat(lng) || null
+    };
+  }
+
+  return null;
+}
+
+// Parse URL parameters on page load
+const urlParams = parseURLParameters();
+
+// ===========================
 // TOOLTIP CLASS - Following Single Responsibility Principle
 // ===========================
 class ParcelTooltip {
@@ -433,10 +464,19 @@ class MobileParcelCard {
       this.elements.status.className = `mobile-card-status ${statusClass}`;
     }
 
-    // Set coordinates
-    const coords = getFeatureCoordinates(parcelData.feature);
+    // Set coordinates from centroid data
     if (this.elements.coordinates) {
-      this.elements.coordinates.textContent = `${coords.lat}, ${coords.lng}`;
+      const lat = parcelData.centroide_lat || parcelData.centroid_lat;
+      const lng = parcelData.centroide_lng || parcelData.centroid_lng;
+
+      if (lat && lng) {
+        // Format with 6 decimal places for precision
+        const formattedLat = typeof lat === 'number' ? lat.toFixed(6) : parseFloat(lat).toFixed(6);
+        const formattedLng = typeof lng === 'number' ? lng.toFixed(6) : parseFloat(lng).toFixed(6);
+        this.elements.coordinates.textContent = `${formattedLat}, ${formattedLng}`;
+      } else {
+        this.elements.coordinates.textContent = 'N/A';
+      }
     }
 
     // Set price
@@ -824,8 +864,8 @@ let parcelCounts = {
 
 // Sidebar functionality - Initialize after DOM is loaded
 let sidebarLeft, sidebarClose, emptyState, parcelInfo;
-let parcelImage, parcelStatusBadge, parcelName, parcelLocation, parcelCoordinates;
-let parcelDimensions, parcelPrice, reserveBtn;
+let parcelImage, parcelStatusBadge, parcelName, parcelDescription, parcelLados;
+let parcelCoordinates, parcelArea, parcelPrice, reserveBtn;
 let isSidebarVisible = false;
 
 // Mobile components - Initialize global instances
@@ -836,18 +876,18 @@ let mobileBottomSheets;
 // Función para color por estado - Using Design System Colors
 function colorByEstado(estado) {
   estado = (estado || '').toString().toLowerCase();
-  if (estado.includes('disp')) return '#28a745';  // Green for available
-  if (estado.includes('res')) return '#ffc107';   // Yellow for reserved  
-  if (estado.includes('ven')) return '#dc3545';   // Red for sold
+  if (estado.includes('disponible')) return '#28a745';  // Green for disponible
+  if (estado.includes('reservado')) return '#ffc107';   // Yellow for reservado
+  if (estado.includes('no_disponible') || estado.includes('vendido')) return '#dc3545';   // Red for no_disponible/vendido
   return '#6c757d';  // Gray for unknown
 }
 
 // Enhanced function for hover color effects
 function getHoverStyle(estado) {
   estado = (estado || '').toString().toLowerCase();
-  if (estado.includes('disp')) return { fillColor: '#1e7e34', weight: 3, color: '#1F4B43' };
-  if (estado.includes('res')) return { fillColor: '#e0a800', weight: 3, color: '#1F4B43' };
-  if (estado.includes('ven')) return { fillColor: '#bd2130', weight: 3, color: '#1F4B43' };
+  if (estado.includes('disponible')) return { fillColor: '#1e7e34', weight: 3, color: '#1F4B43' };
+  if (estado.includes('reservado')) return { fillColor: '#e0a800', weight: 3, color: '#1F4B43' };
+  if (estado.includes('no_disponible') || estado.includes('vendido')) return { fillColor: '#bd2130', weight: 3, color: '#1F4B43' };
   return { fillColor: '#545b62', weight: 3, color: '#1F4B43' };
 }
 
@@ -869,13 +909,13 @@ const OBJECT_COLORS = {
   },
   [OBJECT_TYPES.PLAZA]: {
     border: '#1F4B43',
-    fill: '#FFB366', // Light orange (project color variation)
-    fillHover: '#FF9F40' // Darker orange for hover
+    fill: '#D3D3D3', // Light gray
+    fillHover: '#B0B0B0' // Slightly darker gray for hover
   },
   [OBJECT_TYPES.CALLE_PROYECTADA]: {
     border: '#1F4B43',
-    fill: '#9E9E9E', // Gray
-    fillHover: '#757575' // Darker gray for hover
+    fill: '#D3D3D3', // Light gray
+    fillHover: '#B0B0B0' // Slightly darker gray for hover
   }
 };
 
@@ -1046,11 +1086,11 @@ function categorizeObjectToLayer(objectType, estado = '') {
   // For LOTE objects, use estado-based categorization
   if (objectType === OBJECT_TYPES.LOTE) {
     const key = (estado || '').toString().toLowerCase();
-    if (key.includes('disp')) {
+    if (key.includes('disponible')) {
       return 'disponibles';
-    } else if (key.includes('res')) {
+    } else if (key.includes('reservado')) {
       return 'reservados';
-    } else if (key.includes('ven')) {
+    } else if (key.includes('no_disponible') || key.includes('vendido')) {
       return 'vendidos';
     } else {
       return 'disponibles'; // default for LOTE objects
@@ -1080,9 +1120,10 @@ function initializeSidebarElements() {
   parcelImage = document.getElementById('parcelImage');
   parcelStatusBadge = document.getElementById('parcelStatusBadge');
   parcelName = document.getElementById('parcelName');
-  parcelLocation = document.getElementById('parcelLocation');
+  parcelDescription = document.getElementById('parcelDescription');
+  parcelLados = document.getElementById('parcelLados');
   parcelCoordinates = document.getElementById('parcelCoordinates');
-  parcelDimensions = document.getElementById('parcelDimensions');
+  parcelArea = document.getElementById('parcelArea');
   parcelPrice = document.getElementById('parcelPrice');
   reserveBtn = document.getElementById('reserveBtn');
 
@@ -1171,11 +1212,11 @@ function showParcelSidebar(parcelData) {
   let statusText = 'Disponible';
   let statusClass = 'disponible';
 
-  if (estado.includes('res')) {
+  if (estado.includes('reservado')) {
     statusText = 'Reservado';
     statusClass = 'reservado';
-  } else if (estado.includes('ven')) {
-    statusText = 'Vendido';
+  } else if (estado.includes('no_disponible') || estado.includes('vendido')) {
+    statusText = 'No Disponible';
     statusClass = 'vendido';
   }
 
@@ -1184,46 +1225,71 @@ function showParcelSidebar(parcelData) {
     parcelStatusBadge.className = `status-badge ${statusClass}`;
   }
 
-  // Set parcel name/number
+  // Set nombre
   if (parcelName) {
-    parcelName.textContent = parcelData.name || 'N/A';
+    parcelName.textContent = parcelData.nombre || parcelData.name || 'N/A';
   }
 
-  // Set coordinates
-  const coords = getFeatureCoordinates(parcelData.feature);
-  if (parcelCoordinates) {
-    parcelCoordinates.textContent = `${coords.lat}, ${coords.lng}`;
+  // Set descripcion
+  if (parcelDescription) {
+    parcelDescription.textContent = parcelData.descripcion || parcelData.description || 'N/A';
   }
 
-  // Set dimensions
-  const dimensions = parcelData.largoxancho || parcelData.LargoxAncho || parcelData.dimensions;
-  if (parcelDimensions) {
-    if (dimensions && dimensions !== 'null' && dimensions !== '') {
-      parcelDimensions.textContent = dimensions;
+  // Set lados (dimensions)
+  if (parcelLados) {
+    const lados = parcelData.lados || parcelData.largoxancho || parcelData.LargoxAncho || parcelData.dimensions;
+    if (lados && lados !== 'null' && lados !== '') {
+      // Lados is already formatted from lote-service.js
+      // Just display it directly
+      parcelLados.textContent = lados;
     } else {
-      const largo = parcelData.largo || parcelData.Largo || parcelData.length;
-      const ancho = parcelData.ancho || parcelData.Ancho || parcelData.width;
-      const area = parcelData.area || parcelData.Area || parcelData.superficie || parcelData.Superficie;
-
+      const largo = parcelData.largo || parcelData.Largo;
+      const ancho = parcelData.ancho || parcelData.Ancho;
       if (largo && ancho) {
-        parcelDimensions.textContent = `${largo} x ${ancho} m`;
-      } else if (area && area !== 'null' && area !== '') {
-        parcelDimensions.textContent = `${area} m²`;
+        parcelLados.textContent = `${largo} × ${ancho} metros`;
       } else {
-        parcelDimensions.textContent = 'N/A';
+        parcelLados.textContent = 'N/A';
       }
+    }
+  }
+
+  // Set coordinates from centroid data
+  if (parcelCoordinates) {
+    const lat = parcelData.centroide_lat || parcelData.centroid_lat;
+    const lng = parcelData.centroide_lng || parcelData.centroid_lng;
+
+    if (lat && lng) {
+      // Format with 6 decimal places for precision
+      const formattedLat = typeof lat === 'number' ? lat.toFixed(6) : parseFloat(lat).toFixed(6);
+      const formattedLng = typeof lng === 'number' ? lng.toFixed(6) : parseFloat(lng).toFixed(6);
+      parcelCoordinates.textContent = `${formattedLat}, ${formattedLng}`;
+    } else {
+      parcelCoordinates.textContent = 'N/A';
+    }
+  }
+
+  // Set area_m2_rounded (integer only, no decimals)
+  if (parcelArea) {
+    const area = parcelData.area_m2_rounded || parcelData.area || parcelData.Area || parcelData.superficie || parcelData.Superficie;
+    if (area && area !== 'null' && area !== '') {
+      // Use only integer part, no decimals
+      const integerArea = typeof area === 'number' ? Math.round(area) : Math.round(parseFloat(area));
+      parcelArea.textContent = integerArea.toLocaleString();
+    } else {
+      parcelArea.textContent = 'N/A';
     }
   }
 
   // Set price with currency formatting
   const price = parcelData.precio || parcelData.price;
   if (parcelPrice) {
-    if (price && price !== 'null' && price !== '') {
-      // Format price as currency (assuming USD or PYG)
-      const formattedPrice = new Intl.NumberFormat('es-PY', {
+    if (price && price !== 'null' && price !== '' && price !== 0) {
+      // Format price as USD currency
+      const formattedPrice = new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'PYG',
-        minimumFractionDigits: 0
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
       }).format(price);
       parcelPrice.textContent = formattedPrice;
     } else {
@@ -1233,7 +1299,7 @@ function showParcelSidebar(parcelData) {
 
   // Configure reserve button based on availability
   if (reserveBtn) {
-    if (estado.includes('disp')) {
+    if (estado.includes('disponible')) {
       reserveBtn.style.display = 'block';
       reserveBtn.onclick = () => handleReservation(parcelData);
     } else {
@@ -1284,22 +1350,28 @@ function toggleParcelSidebar() {
 
 // Handle reservation action
 function handleReservation(parcelData) {
-  // Get parcel coordinates
-  const coords = getFeatureCoordinates(parcelData.feature);
-  
+  console.log('DEBUG handleReservation - parcelData:', parcelData);
+
+  // Get parcel coordinates from centroid data
+  const lat = parcelData.centroide_lat || parcelData.centroid_lat;
+  const lng = parcelData.centroide_lng || parcelData.centroid_lng;
+
+  console.log('DEBUG handleReservation - lat:', lat, 'lng:', lng);
+
   // Build URL parameters for the reservation form
   const params = new URLSearchParams({
-    lotId: parcelData.name || 'lote',
-    lotName: parcelData.name || 'Lote sin nombre',
+    lotId: parcelData.nombre || parcelData.name || 'lote',
+    lotName: parcelData.nombre || parcelData.name || 'Lote sin nombre',
     location: 'Colonia Independencia',
-    coordinates: `${coords.lat}, ${coords.lng}`,
-    price: parcelData.price || 'Consultar',
+    coordinates: `${lat}, ${lng}`,
+    price: parcelData.precio || parcelData.price || 'Consultar',
     dimensions: getDimensionsString(parcelData),
-    status: parcelData.status || 'disponible'
+    status: parcelData.estado || parcelData.status || 'disponible'
   });
-  
+
   // Navigate to reservation form with parcel data
   const reservationUrl = `reservation-form.html?${params.toString()}`;
+  console.log('DEBUG handleReservation - URL:', reservationUrl);
   window.location.href = reservationUrl;
 }
 
@@ -1469,15 +1541,221 @@ function updateMobileParcelCounts() {
   }
 }
 
-// Cargar KML y convertir
-fetch('assets/loteo_barrio_cerrado_enrique.kml')
-  .then(response => {
+/**
+ * Load and render map data
+ * Handles both URL parameter-based loading (from index page)
+ * and fallback to KML file for backward compatibility
+ */
+async function loadMapData() {
+  try {
+    // Check if we have URL parameters for dynamic loading
+    if (urlParams && urlParams.id) {
+      console.log(`Loading loteamiento from Supabase: ${urlParams.id}`);
+      await loadLoteamientoFromSupabase(urlParams);
+      return;
+    }
+
+    // Fallback to KML file loading for backward compatibility
+    console.log('No URL parameters found, loading default KML file');
+    await loadKMLFile();
+
+  } catch (error) {
+    console.error('Error loading map data:', error);
+    alert(`Error cargando datos del mapa: ${error.message}\n\nPor favor, recarga la página o contacta al administrador.`);
+  }
+}
+
+/**
+ * Load loteamiento and lotes from Supabase
+ * @param {Object} params - URL parameters
+ */
+async function loadLoteamientoFromSupabase(params) {
+  try {
+    // Check if services are available
+    if (!window.LoteamientoService || !window.LoteService) {
+      throw new Error('Supabase services not initialized. Please check script loading order.');
+    }
+
+    // Update map header with loteamiento name
+    const mapTitle = document.querySelector('.map-title');
+    if (mapTitle) {
+      mapTitle.textContent = `Loteamiento ${params.name}`;
+    }
+
+    // Center map on loteamiento coordinates if available
+    if (params.lat && params.lng) {
+      map.setView([params.lat, params.lng], 16);
+    }
+
+    // Fetch loteamiento details to get boundary geojson
+    const loteamiento = await window.LoteamientoService.fetchById(params.id);
+
+    if (!loteamiento) {
+      throw new Error(`Loteamiento ${params.id} not found`);
+    }
+
+    // Render loteamiento boundary if geojson available
+    if (loteamiento.geojson) {
+      renderLoteamientoBoundary(loteamiento.geojson);
+    } else {
+      // Try to get from sessionStorage
+      const storedGeojson = sessionStorage.getItem(`loteamiento_geojson_${params.id}`);
+      if (storedGeojson) {
+        renderLoteamientoBoundary(storedGeojson);
+      }
+    }
+
+    // Fetch and render lotes
+    const lotes = await window.LoteService.fetchByLoteamiento(params.id);
+
+    if (!lotes || lotes.length === 0) {
+      console.warn('No lotes found for this loteamiento');
+      alert('No se encontraron lotes para este loteamiento.');
+      return;
+    }
+
+    // Process and render each lote
+    lotes.forEach(lote => {
+      renderLote(lote);
+    });
+
+    // Update parcel counts in legend and mobile
+    updateParcelCounts();
+    updateMobileParcelCounts();
+
+    // Initialize with all layers visible
+    capas.disponibles.addTo(map);
+    capas.reservados.addTo(map);
+    capas.vendidos.addTo(map);
+    capas.plazas.addTo(map);
+    capas.callesProyectadas.addTo(map);
+
+    // Fit map to show all lotes
+    fitMapToLotes();
+
+    console.log(`✓ Loaded ${lotes.length} lotes from Supabase`);
+
+  } catch (error) {
+    console.error('Error loading from Supabase:', error);
+    throw error;
+  }
+}
+
+/**
+ * Render loteamiento boundary polygon
+ * @param {string|Object} geojsonData - GeoJSON data
+ */
+function renderLoteamientoBoundary(geojsonData) {
+  try {
+    // Parse if string
+    const geojson = typeof geojsonData === 'string' ? JSON.parse(geojsonData) : geojsonData;
+
+    // Create boundary layer with distinctive styling
+    const boundaryStyle = {
+      color: '#FF6B35',
+      weight: 3,
+      opacity: 0.8,
+      fillColor: '#FF6B35',
+      fillOpacity: 0.1,
+      dashArray: '10, 5'
+    };
+
+    const boundaryLayer = L.geoJSON(geojson, {
+      style: boundaryStyle
+    });
+
+    boundaryLayer.addTo(map);
+
+    console.log('✓ Loteamiento boundary rendered');
+
+  } catch (error) {
+    console.error('Error rendering loteamiento boundary:', error);
+  }
+}
+
+/**
+ * Render individual lote on map
+ * @param {Object} lote - Lote data
+ */
+function renderLote(lote) {
+  if (!lote.feature) {
+    console.warn(`Lote ${lote.name} has no geojson feature, skipping`);
+    return;
+  }
+
+  const props = lote;
+  const estado = lote.estado;
+
+  // CRITICAL FIX: Detect actual object type from lote data
+  const objectType = detectObjectType(lote);
+
+  // Get appropriate styling based on object type
+  const objectStyle = getObjectStyle(objectType, estado);
+
+  // Create event handlers
+  const eventHandlers = createObjectEventHandlers(objectType, lote, estado);
+
+  // Create layer
+  const layer = L.geoJSON(lote.feature, {
+    style: objectStyle,
+    onEachFeature: (feature, layer) => {
+      // Apply event handlers dynamically
+      Object.keys(eventHandlers).forEach(eventName => {
+        layer.on(eventName, eventHandlers[eventName]);
+      });
+    }
+  });
+
+  // Categorize to appropriate layer
+  const layerCategory = categorizeObjectToLayer(objectType, estado);
+  capas[layerCategory].addLayer(layer);
+
+  // Update parcel counts
+  if (objectType === OBJECT_TYPES.LOTE) {
+    switch (layerCategory) {
+      case 'disponibles':
+        parcelCounts.disponibles++;
+        break;
+      case 'reservados':
+        parcelCounts.reservados++;
+        break;
+      case 'vendidos':
+        parcelCounts.vendidos++;
+        break;
+    }
+  }
+}
+
+/**
+ * Fit map view to show all lotes
+ */
+function fitMapToLotes() {
+  try {
+    const all = L.featureGroup([
+      capas.disponibles,
+      capas.reservados,
+      capas.vendidos,
+      capas.plazas,
+      capas.callesProyectadas
+    ]);
+    map.fitBounds(all.getBounds(), { padding: [40, 40] });
+  } catch (e) {
+    console.warn('No se pudo ajustar bounds:', e);
+  }
+}
+
+/**
+ * Load KML file (fallback/backward compatibility)
+ */
+async function loadKMLFile() {
+  try {
+    const response = await fetch('assets/loteo_barrio_cerrado_enrique.kml');
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return response.text();
-  })
-  .then(kmlText => {
+
+    const kmlText = await response.text();
     const parser = new DOMParser();
     const kml = parser.parseFromString(kmlText, 'text/xml');
     const geojson = toGeoJSON.kml(kml);
@@ -1577,10 +1855,21 @@ fetch('assets/loteo_barrio_cerrado_enrique.kml')
       console.warn('No se pudo ajustar bounds:', e);
     }
 
-  }).catch(err => {
+    console.log('✓ KML file loaded successfully');
+
+  } catch (err) {
     console.error('Error leyendo KML:', err);
     alert('Error cargando KML. Revisa la consola.');
-  });
+    throw err;
+  }
+}
+
+// Initialize map data loading when page is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadMapData);
+} else {
+  loadMapData();
+}
 
 // Hide sidebar/mobile card when clicking on map background
 map.on('click', function (e) {

@@ -575,24 +575,40 @@
     // Clone template
     const cardElement = productTemplate.content.cloneNode(true);
     const card = cardElement.querySelector('.product-card');
-    
+
     // Set data attributes
     card.setAttribute('data-location', product.location);
     card.setAttribute('data-product-id', product.id);
-    
+
+    // Add loteamiento metadata for map navigation
+    card.setAttribute('data-loteamiento-id', product.id);
+    card.setAttribute('data-loteamiento-name', product.name);
+    card.setAttribute('data-loteamiento-lat', product.lat || product.centroid_lat || 0);
+    card.setAttribute('data-loteamiento-lng', product.long || product.centroid_long || 0);
+
+    // Store geojson in sessionStorage if available (for map rendering)
+    if (product.geojson) {
+      try {
+        sessionStorage.setItem(`loteamiento_geojson_${product.id}`,
+          typeof product.geojson === 'string' ? product.geojson : JSON.stringify(product.geojson));
+      } catch (e) {
+        console.warn('Failed to store geojson in sessionStorage:', e);
+      }
+    }
+
     // Set image
     const img = card.querySelector('.product-card__image');
     img.src = product.photo;
     img.alt = product.description;
-    
+
     // Set type badge
     const typeBadge = card.querySelector('.product-card__type-badge');
     typeBadge.textContent = formatProductType(product.type);
     typeBadge.className = `product-card__type-badge product-card__type-badge--${product.type.toLowerCase().replace(' ', '-')}`;
-    
+
     // Set title
     card.querySelector('.product-card__title').textContent = product.name;
-    
+
     // Set parcel count
     const parcelCount = card.querySelector('.product-card__parcel-count');
     if (product.parcel_quantity > 1) {
@@ -601,27 +617,33 @@
     } else {
       parcelCount.style.display = 'none';
     }
-    
+
     // Set description
     card.querySelector('.product-card__description').textContent = product.description;
-    
+
     // Set location info
     const locationName = card.querySelector('.location-name');
     const locationCoordinates = card.querySelector('.location-coordinates');
     locationName.textContent = formatLocationName(product.location);
     locationCoordinates.textContent = `${product.lat.toFixed(4)}, ${product.long.toFixed(4)}`;
-    
+
     // Set size info
     const sizeArea = card.querySelector('.size-area');
     const sizeDimensions = card.querySelector('.size-dimensions');
     sizeArea.textContent = `${product.total_dim_m2.toLocaleString()}m²`;
     sizeDimensions.textContent = product.dimensions || 'Dimensiones disponibles';
-    
+
+    // Update "Ver en Mapa" button to navigate with loteamiento data
+    const viewMapButton = card.querySelector('.product-card__btn');
+    if (viewMapButton) {
+      viewMapButton.href = `mapa.html?loteamiento=${encodeURIComponent(product.id)}&name=${encodeURIComponent(product.name)}&lat=${product.lat || product.centroid_lat || 0}&lng=${product.long || product.centroid_long || 0}`;
+    }
+
     // Set initial animation state
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    
+
     return card;
   }
 

@@ -20,17 +20,35 @@ class ProductService {
       this.isLoading = true;
       this.error = null;
 
-      // TODO: Replace with real API call
-      // const response = await fetch('/api/products');
-      // const products = await response.json();
-      
-      // For now, use hardcoded data
-      const products = await window.ProductsData.fetchProducts();
-      
-      this.products = products;
-      this.isLoading = false;
-      
-      return products;
+      // Try to fetch from Supabase first
+      try {
+        // Check if LoteamientoService is available
+        if (window.LoteamientoService) {
+          const products = await window.LoteamientoService.fetchAll();
+
+          if (products && products.length > 0) {
+            this.products = products;
+            this.isLoading = false;
+            console.log('✓ Products loaded from Supabase');
+            return products;
+          }
+        }
+      } catch (supabaseError) {
+        console.warn('Failed to fetch from Supabase, falling back to hardcoded data:', supabaseError.message);
+      }
+
+      // Fallback to hardcoded data if Supabase fails
+      if (window.ProductsData && typeof window.ProductsData.fetchProducts === 'function') {
+        console.log('Using fallback hardcoded data');
+        const products = await window.ProductsData.fetchProducts();
+        this.products = products;
+        this.isLoading = false;
+        return products;
+      }
+
+      // If both fail, throw error
+      throw new Error('No data source available. Please check Supabase configuration or hardcoded data.');
+
     } catch (error) {
       this.error = error.message;
       this.isLoading = false;

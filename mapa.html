@@ -47,15 +47,18 @@
             <span class="status-badge" id="parcelStatusBadge">Disponible</span>
 
             <div class="info-section">
-              <div class="info-label">Lote</div>
+              <div class="info-label">Nombre</div>
               <div class="info-value" id="parcelName">N/A</div>
             </div>
 
             <div class="info-section">
-              <div class="info-label">Ubicación</div>
-              <div class="info-value" id="parcelLocation">
-                Colonia Independencia
-              </div>
+              <div class="info-label">Descripción</div>
+              <div class="info-value" id="parcelDescription">N/A</div>
+            </div>
+
+            <div class="info-section">
+              <div class="info-label">Lados</div>
+              <div class="info-value" id="parcelLados">N/A</div>
             </div>
 
             <div class="info-section">
@@ -64,8 +67,8 @@
             </div>
 
             <div class="info-section">
-              <div class="info-label">Dimensiones</div>
-              <div class="info-value" id="parcelDimensions">N/A</div>
+              <div class="info-label">Área (m²)</div>
+              <div class="info-value" id="parcelArea">N/A</div>
             </div>
 
             <div class="price-display">
@@ -257,6 +260,16 @@
     <!-- Libraries -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/togeojson@0.16.0"></script>
+
+    <!-- Supabase Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Supabase Integration -->
+    <script src="assets/js/supabase-client.js"></script>
+    <script src="assets/js/loteamiento-service.js"></script>
+    <script src="assets/js/lote-service.js"></script>
+
+    <!-- Map Application -->
     <script src="assets/js/mapa.js"></script>
   </body>
 </html>
