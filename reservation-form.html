@@ -241,7 +241,6 @@
       .form-textarea:focus {
         outline: none;
         border-color: var(--color-green-primary);
-        box-shadow: 0 0 0 3px rgba(31, 75, 67, 0.15);
         background-color: rgba(255, 248, 246, 0.5);
       }
       
@@ -418,9 +417,10 @@
       @media (max-width: 768px) {
         .reservation-layout {
           grid-template-columns: 1fr;
-          grid-template-rows: auto 50vh;
+          grid-template-rows: 1fr;
           gap: 0;
-          min-height: auto;
+          height: auto;
+          min-height: 100vh;
         }
         
         .form-column {
@@ -430,17 +430,12 @@
         }
         
         .map-column {
-          border-left: none;
-          border-top: 1px solid var(--color-light-gray);
-        }
-        
-        #map {
-          min-height: 50vh;
+          display: none;
         }
         
         .form-group-double {
           grid-template-columns: 1fr;
-          gap: var(--spacing-sm);
+          gap: var(--spacing-md);
         }
         
         .lot-info-grid-compact {
@@ -459,6 +454,20 @@
         .reservation-title {
           font-size: var(--font-size-base);
         }
+        
+        .back-link {
+          font-size: var(--font-size-xs);
+          margin-bottom: var(--spacing-sm);
+        }
+        
+        .form-input,
+        .form-textarea {
+          font-size: var(--font-size-xs);
+        }
+        
+        .form-textarea {
+          min-height: 50px;
+        }
       }
       
       @media (max-width: 480px) {
@@ -474,26 +483,40 @@
           padding: var(--spacing-sm);
         }
         
+        .reservation-header {
+          margin-bottom: var(--spacing-sm);
+          padding-bottom: var(--spacing-xs);
+        }
+        
         .reservation-title {
-          font-size: var(--font-size-xs);
+          font-size: var(--font-size-sm);
         }
         
         .reservation-subtitle {
           font-size: var(--font-size-xs);
         }
         
-        .form-section-title {
-          font-size: var(--font-size-xs);
+        .lot-info-compact {
+          margin-bottom: var(--spacing-sm);
+        }
+        
+        .form-section {
+          margin-bottom: var(--spacing-md);
         }
         
         .form-input,
         .form-textarea {
-          padding: calc(var(--spacing-xs) * 0.75) var(--spacing-xs);
+          padding: var(--spacing-xs);
           font-size: var(--font-size-xs);
         }
         
         .form-textarea {
-          min-height: 60px;
+          min-height: 40px;
+        }
+        
+        .submit-btn {
+          font-size: var(--font-size-xs);
+          padding: var(--spacing-xs) var(--spacing-sm);
         }
       }
       
@@ -620,7 +643,10 @@
 
       /* Focus management for better accessibility */
       .form-input:focus-visible,
-      .form-textarea:focus-visible,
+      .form-textarea:focus-visible {
+        outline: none;
+      }
+      
       .submit-btn:focus-visible {
         outline: 2px solid var(--color-green-primary);
         outline-offset: 2px;
