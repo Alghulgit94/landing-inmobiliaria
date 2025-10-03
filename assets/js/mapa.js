@@ -1358,9 +1358,27 @@ function handleReservation(parcelData) {
 
   console.log('DEBUG handleReservation - lat:', lat, 'lng:', lng);
 
+  // Store lote GeoJSON in sessionStorage for reservation form to render actual parcel
+  const loteId = parcelData.nombre || parcelData.name || 'lote';
+  if (parcelData.feature) {
+    try {
+      sessionStorage.setItem(
+        `reservation_lote_geojson_${loteId}`,
+        typeof parcelData.feature === 'string'
+          ? parcelData.feature
+          : JSON.stringify(parcelData.feature)
+      );
+      console.log('✓ Stored lote GeoJSON in sessionStorage for reservation form');
+    } catch (e) {
+      console.warn('Failed to store lote GeoJSON in sessionStorage:', e);
+    }
+  } else {
+    console.warn('No GeoJSON feature available for lote:', loteId);
+  }
+
   // Build URL parameters for the reservation form
   const params = new URLSearchParams({
-    lotId: parcelData.nombre || parcelData.name || 'lote',
+    lotId: loteId,
     lotName: parcelData.nombre || parcelData.name || 'Lote sin nombre',
     location: 'Colonia Independencia',
     coordinates: `${lat}, ${lng}`,
@@ -1579,7 +1597,7 @@ async function loadLoteamientoFromSupabase(params) {
     // Update map header with loteamiento name
     const mapTitle = document.querySelector('.map-title');
     if (mapTitle) {
-      mapTitle.textContent = `Loteamiento ${params.name}`;
+      mapTitle.textContent = `${params.name}`;
     }
 
     // Center map on loteamiento coordinates if available

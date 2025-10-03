@@ -18,8 +18,8 @@
    * For production, consider using environment variables or a build process
    */
   const SUPABASE_CONFIG = {
-    url: '',
-    anonKey: ''
+    url: 'https://axvguhqlgobdpeyrfsin.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF4dmd1aHFsZ29iZHBleXJmc2luIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzc1MTAsImV4cCI6MjA3NDY1MzUxMH0.J9p8RBG8j9wNtWujBI7LCjYqtQnGRh-aobsxuCmKqdA'
   };
 
   /**
