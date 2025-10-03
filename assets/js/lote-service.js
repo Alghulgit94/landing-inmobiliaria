@@ -83,7 +83,7 @@ class LoteService {
 
   /**
    * Fetch single lote by ID
-   * @param {string} id - Lote ID
+   * @param {string|number} id - Lote ID
    * @returns {Promise<Object|null>} Lote object or null
    */
   async fetchById(id) {
@@ -95,7 +95,7 @@ class LoteService {
       }
 
       const { data, error } = await supabase.getClient()
-        .from('lote')
+        .from('lotes')
         .select('*')
         .eq('id', id)
         .single();
@@ -112,6 +112,44 @@ class LoteService {
 
     } catch (error) {
       console.error(`Error fetching lote ${id}:`, error);
+      throw error;
+    }
+  }
+
+  /**
+   * Fetch single lote by nombre (name) and loteamiento_id
+   * Useful for backward compatibility with old URL format
+   * @param {string} nombre - Lote name (e.g., "Lote 26")
+   * @param {string|number} loteamientoId - Loteamiento ID for uniqueness
+   * @returns {Promise<Object|null>} Lote object or null
+   */
+  async fetchByNombre(nombre, loteamientoId) {
+    try {
+      const supabase = window.SupabaseClient;
+
+      if (!supabase || !supabase.isReady()) {
+        throw new Error('Supabase client not initialized');
+      }
+
+      const { data, error } = await supabase.getClient()
+        .from('lotes')
+        .select('*')
+        .eq('nombre', nombre)
+        .eq('loteamiento_id', loteamientoId)
+        .single();
+
+      if (error) {
+        if (error.code === 'PGRST116') {
+          // Not found
+          return null;
+        }
+        throw new Error(`Database error: ${error.message}`);
+      }
+
+      return this.transformToMapFormat(data);
+
+    } catch (error) {
+      console.error(`Error fetching lote by nombre "${nombre}":`, error);
       throw error;
     }
   }

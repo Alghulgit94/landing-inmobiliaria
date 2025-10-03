@@ -1350,72 +1350,21 @@ function toggleParcelSidebar() {
 
 // Handle reservation action
 function handleReservation(parcelData) {
-  console.log('DEBUG handleReservation - parcelData:', parcelData);
+  // Get lote ID and loteamiento ID from parcel data
+  const loteId = parcelData.id;
+  const loteamientoId = parcelData.loteamiento_id;
 
-  // Get parcel coordinates from centroid data
-  const lat = parcelData.centroide_lat || parcelData.centroid_lat;
-  const lng = parcelData.centroide_lng || parcelData.centroid_lng;
-
-  console.log('DEBUG handleReservation - lat:', lat, 'lng:', lng);
-
-  // Store lote GeoJSON in sessionStorage for reservation form to render actual parcel
-  const loteId = parcelData.nombre || parcelData.name || 'lote';
-  if (parcelData.feature) {
-    try {
-      sessionStorage.setItem(
-        `reservation_lote_geojson_${loteId}`,
-        typeof parcelData.feature === 'string'
-          ? parcelData.feature
-          : JSON.stringify(parcelData.feature)
-      );
-      console.log('✓ Stored lote GeoJSON in sessionStorage for reservation form');
-    } catch (e) {
-      console.warn('Failed to store lote GeoJSON in sessionStorage:', e);
-    }
-  } else {
-    console.warn('No GeoJSON feature available for lote:', loteId);
+  if (!loteId || !loteamientoId) {
+    console.error('Cannot navigate to reservation form: missing lote ID or loteamiento ID', parcelData);
+    alert('Error: No se pudo procesar la reservación. Por favor intente nuevamente.');
+    return;
   }
 
-  // Build URL parameters for the reservation form
-  const params = new URLSearchParams({
-    lotId: loteId,
-    lotName: parcelData.nombre || parcelData.name || 'Lote sin nombre',
-    location: 'Colonia Independencia',
-    coordinates: `${lat}, ${lng}`,
-    price: parcelData.precio || parcelData.price || 'Consultar',
-    dimensions: getDimensionsString(parcelData),
-    status: parcelData.estado || parcelData.status || 'disponible'
-  });
-
-  // Navigate to reservation form with parcel data
-  const reservationUrl = `reservation-form.html?${params.toString()}`;
-  console.log('DEBUG handleReservation - URL:', reservationUrl);
+  // Navigate to reservation form with minimal URL parameters
+  // The reservation form will fetch all data from Supabase using these IDs
+  const reservationUrl = `reservation-form.html?lote_id=${loteId}&loteamiento_id=${loteamientoId}`;
+  console.log(`✓ Navigating to reservation form for lote ${loteId}`);
   window.location.href = reservationUrl;
-}
-
-// Helper function to format dimensions for URL parameter
-function getDimensionsString(parcelData) {
-  // Check for pre-formatted dimensions
-  const preFormatted = parcelData.largoxancho || parcelData.LargoxAncho || parcelData.dimensions;
-  if (preFormatted && preFormatted !== 'null' && preFormatted !== '') {
-    return preFormatted;
-  }
-
-  // Try to construct from individual values
-  const largo = parcelData.largo || parcelData.Largo || parcelData.length;
-  const ancho = parcelData.ancho || parcelData.Ancho || parcelData.width;
-
-  if (largo && ancho && largo !== 'null' && ancho !== 'null') {
-    return `${largo} x ${ancho}`;
-  }
-
-  // Fallback to area if available
-  const area = parcelData.area || parcelData.Area || parcelData.superficie || parcelData.Superficie;
-  if (area && area !== 'null' && area !== '') {
-    return `${area} m²`;
-  }
-
-  return 'Dimensiones no disponibles';
 }
 
 // Initialize sidebar event handlers

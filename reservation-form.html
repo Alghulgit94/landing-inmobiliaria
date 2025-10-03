@@ -796,9 +796,17 @@
     <!-- Toast Container -->
     <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
     
+    <!-- Supabase Client Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Supabase Services -->
+    <script src="assets/js/supabase-client.js"></script>
+    <script src="assets/js/loteamiento-service.js"></script>
+    <script src="assets/js/lote-service.js"></script>
+
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    
+
     <script>
       // Reservation Form JavaScript with Leaflet Integration
       
@@ -886,21 +894,112 @@
         createToast('error', 'Error', message, 7000);
       }
       
-      // URL Parameters Handler
+      // URL Parameters Handler - Simplified for database-based approach
       function getURLParameters() {
         const urlParams = new URLSearchParams(window.location.search);
         return {
-          lotId: urlParams.get('lotId'),
-          lotName: urlParams.get('lotName'),
-          location: urlParams.get('location'),
-          coordinates: urlParams.get('coordinates'),
-          price: urlParams.get('price'),
-          dimensions: urlParams.get('dimensions'),
-          status: urlParams.get('status')
+          lote_id: urlParams.get('lote_id'),
+          loteamiento_id: urlParams.get('loteamiento_id')
         };
       }
       
-      // Initialize Leaflet Map
+      // Render lote polygon on map
+      function renderLoteOnMap(loteData) {
+        if (!map || !loteData) return;
+
+        // Clear existing marker if any
+        if (lotMarker) {
+          map.removeLayer(lotMarker);
+          lotMarker = null;
+        }
+
+        // Render parcel polygon from GeoJSON feature
+        if (loteData.feature) {
+          try {
+            // Get color based on estado
+            let fillColor = '#28a745'; // disponible (green)
+            const estado = (loteData.estado || '').toLowerCase();
+            if (estado.includes('reservado')) {
+              fillColor = '#ffc107'; // reservado (yellow)
+            } else if (estado.includes('no_disponible') || estado.includes('vendido')) {
+              fillColor = '#dc3545'; // vendido (red)
+            }
+
+            // Render parcel polygon
+            const parcelLayer = L.geoJSON(loteData.feature, {
+              style: {
+                color: '#1F4B43',
+                weight: 3,
+                opacity: 0.9,
+                fillColor: fillColor,
+                fillOpacity: 0.5
+              }
+            }).addTo(map);
+
+            // Fit map to parcel bounds
+            map.fitBounds(parcelLayer.getBounds(), {
+              padding: [50, 50],
+              maxZoom: 19
+            });
+
+            // Add popup
+            parcelLayer.bindPopup(`
+              <div style="text-align: center; font-family: var(--font-family-primary);">
+                <strong style="color: var(--color-green-primary);">${loteData.nombre || loteData.name}</strong><br>
+                <small style="color: var(--color-dark-gray);">Colonia Independencia</small><br>
+                <small style="color: var(--color-dark-gray);">${loteData.lados || 'Ver dimensiones arriba'}</small>
+              </div>
+            `);
+
+            console.log('✓ Rendered parcel polygon from database');
+          } catch (e) {
+            console.error('Error rendering parcel polygon:', e);
+          }
+        }
+
+        // Handle map resize
+        setTimeout(() => {
+          map.invalidateSize();
+        }, 250);
+      }
+
+      // Populate lot information from lote data
+      function populateLotInformation(loteData) {
+        if (!loteData) return;
+
+        // Set lote name
+        const loteName = loteData.nombre || loteData.name || 'Lote';
+        if (lotIdElement) {
+          lotIdElement.textContent = loteName;
+        }
+        document.title = `Reservación ${loteName} - Mega Proyectos`;
+
+        // Set price
+        if (lotPriceElement) {
+          const price = loteData.precio;
+          if (price && price !== 0) {
+            lotPriceElement.textContent = new Intl.NumberFormat('en-US', {
+              style: 'currency',
+              currency: 'USD',
+              minimumFractionDigits: 0
+            }).format(price);
+          } else {
+            lotPriceElement.textContent = 'Consultar';
+          }
+        }
+
+        // Set dimensions
+        if (lotDimensionsElement) {
+          const dimensions = loteData.lados || loteData.dimensions;
+          if (dimensions) {
+            lotDimensionsElement.textContent = dimensions;
+          } else {
+            lotDimensionsElement.textContent = 'Consultar';
+          }
+        }
+      }
+
+      // Initialize map (called before data fetch)
       function initializeMap() {
         // Initialize map with default view
         map = L.map('map', {
@@ -915,113 +1014,79 @@
           maxZoom: 20,
           attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-
-        // Extract parameters from URL
-        const params = getURLParameters();
-        let mapCentered = false;
-
-        // Try to render actual parcel from sessionStorage GeoJSON
-        if (params.lotId) {
-          const storedGeojson = sessionStorage.getItem(`reservation_lote_geojson_${params.lotId}`);
-
-          if (storedGeojson) {
-            try {
-              const feature = JSON.parse(storedGeojson);
-
-              // Render parcel polygon with green styling (disponible style)
-              const parcelLayer = L.geoJSON(feature, {
-                style: {
-                  color: '#1F4B43',        // Green border (matching main map)
-                  weight: 3,
-                  opacity: 0.9,
-                  fillColor: '#28a745',     // Green fill (disponible)
-                  fillOpacity: 0.5
-                }
-              }).addTo(map);
-
-              // Fit map to parcel bounds with padding
-              map.fitBounds(parcelLayer.getBounds(), {
-                padding: [50, 50],
-                maxZoom: 19
-              });
-
-              // Add popup on parcel click
-              parcelLayer.bindPopup(`
-                <div style="text-align: center; font-family: var(--font-family-primary);">
-                  <strong style="color: var(--color-green-primary);">${params.lotId}</strong><br>
-                  <small style="color: var(--color-dark-gray);">Colonia Independencia</small><br>
-                  <small style="color: var(--color-dark-gray);">${params.dimensions || 'Ver dimensiones arriba'}</small>
-                </div>
-              `);
-
-              mapCentered = true;
-              console.log('✓ Rendered parcel polygon from GeoJSON');
-
-              // Clean up sessionStorage after successful rendering
-              sessionStorage.removeItem(`reservation_lote_geojson_${params.lotId}`);
-
-            } catch (e) {
-              console.warn('Failed to parse or render GeoJSON, falling back to marker:', e);
-            }
-          }
-        }
-
-        // Fallback: render marker if GeoJSON not available
-        if (!mapCentered && params.coordinates) {
-          const coordsStr = params.coordinates.replace(/[()]/g, '');
-          const coords = coordsStr.split(',').map(coord => parseFloat(coord.trim()));
-
-          if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
-            const lat = coords[0];
-            const lng = coords[1];
-
-            // Set map view to lot coordinates
-            map.setView([lat, lng], 18);
-
-            // Add marker for the lot
-            lotMarker = L.marker([lat, lng], {
-              icon: L.divIcon({
-                className: 'lot-marker',
-                html: '<div style="background-color: #28a745; width: 20px; height: 20px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.3);"></div>',
-                iconSize: [26, 26],
-                iconAnchor: [13, 13]
-              })
-            }).addTo(map);
-
-            // Add popup with lot information
-            const lotName = params.lotId || 'Lote Seleccionado';
-            lotMarker.bindPopup(`
-              <div style="text-align: center; font-family: var(--font-family-primary);">
-                <strong style="color: var(--color-green-primary);">${lotName}</strong><br>
-                <small style="color: var(--color-dark-gray);">Colonia Independencia</small>
-              </div>
-            `).openPopup();
-
-            console.log('✓ Rendered fallback marker at coordinates');
-          }
-        }
-
-        // Handle map resize when layout changes
-        setTimeout(() => {
-          map.invalidateSize();
-        }, 250);
       }
-      
-      // Populate lot information from URL parameters
-      function populateLotInformation() {
+
+      // Update back link to preserve loteamiento context
+      function updateBackLink(loteamientoId, loteamientoData) {
+        const backLink = document.querySelector('.back-link');
+        if (!backLink || !loteamientoData) return;
+
+        // Build URL with loteamiento parameters so map loads correctly
+        const mapUrl = new URLSearchParams({
+          loteamiento: loteamientoId,
+          name: loteamientoData.name || loteamientoData.nombre || 'Loteamiento',
+          lat: loteamientoData.centroid_lat || loteamientoData.lat || -25.695804,
+          lng: loteamientoData.centroid_long || loteamientoData.lng || -56.174242
+        });
+
+        backLink.href = `mapa.html?${mapUrl.toString()}`;
+        console.log('✓ Updated back link with loteamiento context');
+      }
+
+      // Fetch lote data from database and initialize form
+      async function initializeReservationForm() {
         const params = getURLParameters();
-        
-        if (params.lotId) {
-          lotIdElement.textContent = params.lotId;
-          document.title = `Reservación Lote ${params.lotId} - Mega Proyectos`;
+
+        // Validate URL parameters
+        if (!params.lote_id || !params.loteamiento_id) {
+          showError('Error: Parámetros de URL inválidos. Por favor, seleccione un lote desde el mapa.');
+          console.error('Missing URL parameters:', params);
+          return;
         }
-        
-        if (params.price) {
-          lotPriceElement.textContent = decodeURIComponent(params.price);
-        }
-        
-        if (params.dimensions) {
-          lotDimensionsElement.textContent = decodeURIComponent(params.dimensions);
+
+        try {
+          // Show loading state (optional - could add a spinner here)
+          console.log(`Loading lote data for ID: ${params.lote_id}...`);
+
+          // Initialize Supabase client and service
+          if (!window.SupabaseClient || !window.SupabaseClient.isReady()) {
+            await window.SupabaseClient.initialize();
+          }
+
+          if (!window.LoteService) {
+            window.LoteService = new LoteService();
+          }
+
+          if (!window.LoteamientoService) {
+            window.LoteamientoService = new LoteamientoService();
+          }
+
+          // Fetch lote data from database
+          const loteData = await window.LoteService.fetchById(params.lote_id);
+
+          if (!loteData) {
+            showError('Error: No se encontró el lote solicitado. Por favor, intente nuevamente.');
+            console.error('Lote not found for ID:', params.lote_id);
+            return;
+          }
+
+          console.log('✓ Lote data loaded:', loteData);
+
+          // Fetch loteamiento data to build proper back link
+          const loteamientoData = await window.LoteamientoService.fetchById(params.loteamiento_id);
+          if (loteamientoData) {
+            updateBackLink(params.loteamiento_id, loteamientoData);
+          }
+
+          // Populate form with fetched data
+          populateLotInformation(loteData);
+
+          // Render lote on map
+          renderLoteOnMap(loteData);
+
+        } catch (error) {
+          console.error('Error loading lote data:', error);
+          showError('Error al cargar los datos del lote. Por favor, intente nuevamente.');
         }
       }
       
@@ -1159,12 +1224,17 @@
       }
       
       // Initialize the form
-      function initializeForm() {
-        populateLotInformation();
+      async function initializeForm() {
+        // Initialize map first (shows base map while loading data)
         initializeMap();
+
+        // Fetch lote data and populate form
+        await initializeReservationForm();
+
+        // Setup form validation and event handlers
         setupRealTimeValidation();
         form.addEventListener('submit', handleFormSubmission);
-        
+
         // Handle responsive behavior
         window.addEventListener('resize', () => {
           setTimeout(() => {
@@ -1173,10 +1243,10 @@
             }
           }, 200);
         });
-        
+
         // Focus management
         firstName.focus();
-        
+
         // Accessibility enhancements
         document.addEventListener('keydown', (event) => {
           // ESC key to dismiss all toasts
