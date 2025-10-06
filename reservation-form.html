@@ -803,6 +803,7 @@
     <script src="assets/js/supabase-client.js"></script>
     <script src="assets/js/loteamiento-service.js"></script>
     <script src="assets/js/lote-service.js"></script>
+    <script src="assets/js/reservation-service.js"></script>
 
     <!-- Leaflet JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -830,6 +831,9 @@
       // Map variables
       let map;
       let lotMarker;
+
+      // Current lote data (populated during initialization)
+      let currentLoteData = null;
       
       // Toast Management System
       function createToast(type, title, message, duration = 5000) {
@@ -1072,6 +1076,9 @@
 
           console.log('✓ Lote data loaded:', loteData);
 
+          // Store lote data globally for form submission
+          currentLoteData = loteData;
+
           // Fetch loteamiento data to build proper back link
           const loteamientoData = await window.LoteamientoService.fetchById(params.loteamiento_id);
           if (loteamientoData) {
@@ -1159,21 +1166,21 @@
         });
       }
       
-      // Form submission
-      function handleFormSubmission(event) {
+      // Form submission with ReservationService
+      async function handleFormSubmission(event) {
         event.preventDefault();
-        
+
         // Validate all fields
         const isFirstNameValid = validateField(firstName, document.getElementById('firstName-error'), { required: true });
         const isLastNameValid = validateField(lastName, document.getElementById('lastName-error'), { required: true });
         const isEmailValid = validateField(email, document.getElementById('email-error'), { required: true, email: true });
         const isPhoneValid = validateField(phone, document.getElementById('phone-error'), { required: true, phone: true });
-        
+
         const isFormValid = isFirstNameValid && isLastNameValid && isEmailValid && isPhoneValid;
-        
+
         if (!isFormValid) {
           showError('Por favor, corrija los errores marcados en el formulario.');
-          
+
           // Focus on first invalid field
           const firstError = form.querySelector('.field-error.show');
           if (firstError) {
@@ -1182,45 +1189,96 @@
           }
           return;
         }
-        
+
+        // Check if we have lote data
+        if (!currentLoteData) {
+          showError('Error: No se encontraron datos del lote. Por favor, recargue la página.');
+          console.error('currentLoteData is null');
+          return;
+        }
+
+        // Get URL parameters for IDs
+        const params = getURLParameters();
+        if (!params.lote_id || !params.loteamiento_id) {
+          showError('Error: Faltan parámetros de URL. Por favor, seleccione un lote desde el mapa.');
+          return;
+        }
+
         // Show loading state
         submitBtn.classList.add('btn-loading');
         submitBtn.disabled = true;
-        
-        // Collect form data
-        const formData = {
+
+        // Prepare reservation data
+        const reservationData = {
           firstName: firstName.value.trim(),
           lastName: lastName.value.trim(),
           email: email.value.trim(),
           phone: phone.value.trim(),
-          lotId: lotIdElement.textContent,
+          additionalMessage: additionalMessage.value.trim() || null,
+          loteId: params.lote_id,
+          loteamientoId: params.loteamiento_id,
           lotDetails: {
-            location: 'Colonia Independencia',
-            coordinates: getURLParameters().coordinates || 'N/A',
-            price: lotPriceElement.textContent,
-            dimensions: lotDimensionsElement.textContent,
-            status: getURLParameters().status || 'Disponible'
-          },
-          additionalMessage: additionalMessage.value.trim(),
-          timestamp: new Date().toISOString()
+            nombre: currentLoteData.nombre || currentLoteData.name,
+            precio_usd: currentLoteData.precio,
+            loteamiento_id: params.loteamiento_id,
+            area_m2: currentLoteData.area_m2_rounded || currentLoteData.area,
+            lados: currentLoteData.lados
+          }
         };
-        
-        // Simulate API call
-        setTimeout(() => {
+
+        try {
+          // Submit reservation using ReservationService
+          const response = await window.ReservationService.submitReservation(reservationData);
+
           // Reset loading state
           submitBtn.classList.remove('btn-loading');
           submitBtn.disabled = false;
-          
-          // Simulate success (in real implementation, handle actual API response)
-          if (Math.random() > 0.1) { // 90% success rate for demo
-            showSuccess('¡Reservación enviada exitosamente! Nos pondremos en contacto con usted pronto.');
+
+          // Handle response
+          if (response.success) {
+            // Show success message (Spanish)
+            showSuccess(response.message_es);
+
+            // Reset form
             form.reset();
-            
-            console.log('Reservation data:', formData);
+
+            // Log success data
+            console.log('✓ Reservation created successfully:', response.data);
+
+            // Optional: Redirect to confirmation page after 3 seconds
+            // setTimeout(() => {
+            //   window.location.href = 'index.html';
+            // }, 3000);
+
           } else {
-            showError('Error al enviar la reservación. Por favor, verifique los datos e inténtelo nuevamente.');
+            // Show error message (Spanish)
+            const errorMessage = response.error.message_es || 'Error al procesar la reservación.';
+            showError(errorMessage);
+
+            // Log error details
+            console.error('Reservation error:', response.error);
+
+            // Handle specific error codes
+            if (response.error.code === 'LOT_NOT_AVAILABLE') {
+              // Optionally disable form or show special message
+              setTimeout(() => {
+                showError('Este lote ya no está disponible. Redirigiendo al mapa...');
+                setTimeout(() => {
+                  window.history.back();
+                }, 2000);
+              }, 1500);
+            }
           }
-        }, 2000);
+
+        } catch (error) {
+          // Reset loading state
+          submitBtn.classList.remove('btn-loading');
+          submitBtn.disabled = false;
+
+          // Show generic error
+          showError('Error inesperado al enviar la reservación. Por favor, intente nuevamente.');
+          console.error('Unexpected error in form submission:', error);
+        }
       }
       
       // Initialize the form
