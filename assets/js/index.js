@@ -3,7 +3,7 @@
  * Carousel functionality for the "Why Live Here" section
  */
 
-(function() {
+(function () {
   'use strict';
 
   // Carousel configuration
@@ -36,7 +36,7 @@
     nextBtn = document.getElementById('nextBtn');
     indicators = document.querySelectorAll('.carousel-indicator');
     reasonCards = document.querySelectorAll('.reason-card');
-    
+
     totalSlides = reasonCards.length;
 
     // Validate required elements exist
@@ -47,10 +47,10 @@
 
     // Initialize carousel state
     setupCarousel();
-    
+
     // Bind event listeners
     bindEventListeners();
-    
+
     // Start auto-play
     startAutoPlay();
 
@@ -87,7 +87,7 @@
     // Reset all states
     reasonCards.forEach(card => card.classList.remove('reason-card--active'));
     indicators.forEach(indicator => indicator.classList.remove('carousel-indicator--active'));
-    
+
     // Set initial active states
     if (reasonCards[0]) {
       reasonCards[0].classList.add('reason-card--active');
@@ -95,7 +95,7 @@
     if (indicators[0]) {
       indicators[0].classList.add('carousel-indicator--active');
     }
-    
+
     // Set initial transform
     updateCarouselTransform();
   }
@@ -107,24 +107,24 @@
     // Navigation buttons
     prevBtn.addEventListener('click', handlePrevClick);
     nextBtn.addEventListener('click', handleNextClick);
-    
+
     // Indicator clicks
     indicators.forEach((indicator, index) => {
       indicator.addEventListener('click', () => handleIndicatorClick(index));
     });
-    
+
     // Keyboard navigation
     document.addEventListener('keydown', handleKeyDown);
-    
+
     // Touch/swipe support
     bindTouchEvents();
-    
+
     // Pause auto-play on hover/focus
     track.addEventListener('mouseenter', stopAutoPlay);
     track.addEventListener('mouseleave', startAutoPlay);
     track.addEventListener('focusin', stopAutoPlay);
     track.addEventListener('focusout', startAutoPlay);
-    
+
     // Pause auto-play when page is not visible
     document.addEventListener('visibilitychange', handleVisibilityChange);
   }
@@ -163,7 +163,7 @@
    */
   function handleKeyDown(event) {
     if (isTransitioning) return;
-    
+
     switch (event.key) {
       case 'ArrowLeft':
         previousSlide();
@@ -211,15 +211,15 @@
    */
   function handleSwipeGesture(startX, endX, startTime) {
     if (isTransitioning) return;
-    
+
     const swipeDistance = endX - startX;
     const swipeTime = Date.now() - startTime;
-    
+
     // Validate swipe (minimum distance and reasonable time)
     if (Math.abs(swipeDistance) < CAROUSEL_CONFIG.swipeThreshold || swipeTime > 1000) {
       return;
     }
-    
+
     if (swipeDistance > 0) {
       // Swipe right - go to previous slide
       previousSlide();
@@ -227,7 +227,7 @@
       // Swipe left - go to next slide  
       nextSlide();
     }
-    
+
     resetAutoPlay();
   }
 
@@ -269,24 +269,24 @@
 
     const previousSlideIndex = currentSlide;
     isTransitioning = true;
-    
+
     // Use GSAP animation if available, otherwise fallback to CSS
     if (typeof window.animateCarouselTransition === 'function') {
       const timeline = window.animateCarouselTransition(previousSlideIndex, slideIndex);
-      
+
       if (timeline) {
         // Update current slide after GSAP animation
         currentSlide = slideIndex;
-        
+
         // Reset transition flag when GSAP animation completes
         timeline.eventCallback("onComplete", () => {
           isTransitioning = false;
         });
-        
+
         return;
       }
     }
-    
+
     // Fallback to original CSS-based animation
     currentSlide = slideIndex;
     updateCarouselDisplay();
@@ -305,7 +305,7 @@
     // Remove all active classes
     reasonCards.forEach(card => card.classList.remove('reason-card--active'));
     indicators.forEach(indicator => indicator.classList.remove('carousel-indicator--active'));
-    
+
     // Add active classes to current slide
     if (reasonCards[currentSlide]) {
       reasonCards[currentSlide].classList.add('reason-card--active');
@@ -320,7 +320,7 @@
    */
   function updateCarouselTransform() {
     if (!track) return;
-    
+
     const translateX = -currentSlide * 100;
     track.style.transform = `translateX(${translateX}%)`;
   }
@@ -400,7 +400,7 @@
  * Render products dynamically from API data with filtering capabilities
  */
 
-(function() {
+(function () {
   'use strict';
 
   // DOM elements
@@ -410,7 +410,7 @@
   let productsError = null;
   let retryButton = null;
   let productTemplate = null;
-  
+
   // State
   let allProducts = [];
   let currentLocation = 'colonia-independencia';
@@ -435,7 +435,7 @@
 
     // Bind event listeners
     bindProductEventListeners();
-    
+
     // Load and render products
     await loadProducts();
 
@@ -447,8 +447,8 @@
    * @returns {boolean} True if all elements are found
    */
   function validateProductElements() {
-    return productsGrid && productsLoading && productsError && retryButton && 
-           productTemplate && locationChips.length > 0;
+    return productsGrid && productsLoading && productsError && retryButton &&
+      productTemplate && locationChips.length > 0;
   }
 
   /**
@@ -472,7 +472,7 @@
   function handleChipClick(event) {
     const chip = event.target;
     const location = chip.getAttribute('data-location');
-    
+
     if (location && location !== currentLocation) {
       setActiveChip(chip);
       currentLocation = location;
@@ -508,7 +508,7 @@
       chip.classList.remove('location-chip--active');
       chip.setAttribute('aria-pressed', 'false');
     });
-    
+
     // Add active class to clicked chip
     activeChip.classList.add('location-chip--active');
     activeChip.setAttribute('aria-pressed', 'true');
@@ -520,15 +520,15 @@
   async function loadProducts() {
     try {
       showLoadingState();
-      
+
       // Fetch products using the service
       allProducts = await window.ProductService.fetchProducts();
-      
+
       // Render products for current location
       renderProductsByLocation(currentLocation);
-      
+
       hideLoadingState();
-      
+
     } catch (error) {
       console.error('Error loading products:', error);
       showErrorState();
@@ -542,10 +542,10 @@
   function renderProductsByLocation(location) {
     // Clear existing products (except template and loading/error states)
     clearProductsGrid();
-    
+
     // Get filtered products
     const filteredProducts = window.ProductService.getProductsByLocation(location);
-    
+
     if (filteredProducts.length === 0) {
       showEmptyState(location);
       return;
@@ -555,7 +555,7 @@
     filteredProducts.forEach((product, index) => {
       const productCard = createProductCard(product);
       productsGrid.appendChild(productCard);
-      
+
       // Add staggered animation
       setTimeout(() => {
         productCard.style.opacity = '1';
@@ -717,7 +717,7 @@
    */
   function showEmptyState(location) {
     clearProductsGrid();
-    
+
     const emptyMessage = document.createElement('div');
     emptyMessage.className = 'products-empty';
     emptyMessage.innerHTML = `
@@ -725,7 +725,7 @@
       <h4>No hay loteamientos disponibles</h4>
       <p>No se encontraron loteamientos para la ubicación seleccionada.</p>
     `;
-    
+
     productsGrid.appendChild(emptyMessage);
   }
 
@@ -735,7 +735,7 @@
   function clearProductsGrid() {
     const productCards = productsGrid.querySelectorAll('.product-card:not(template .product-card)');
     const emptyMessages = productsGrid.querySelectorAll('.products-empty');
-    
+
     productCards.forEach(card => card.remove());
     emptyMessages.forEach(message => message.remove());
   }
