@@ -131,23 +131,25 @@ class LoteamientoService {
 
     return {
       id: dbLoteamiento.id,
-      name: dbLoteamiento.name || 'Loteamiento sin nombre',
-      description: dbLoteamiento.description || '',
+      name: dbLoteamiento.nombre_loteamiento || dbLoteamiento.nombre || 'Loteamiento sin nombre',
+      description: dbLoteamiento.descripcion || '',
       photo: dbLoteamiento.photo || this.getDefaultPhoto(location),
       location: location,
-      lat: dbLoteamiento.centroid_lat || 0,
-      long: dbLoteamiento.centroid_long || 0,
+      lat: dbLoteamiento.centroide_lat || 0,
+      long: dbLoteamiento.centroide_lng || 0,
       type: this.determineLoteamientoType(dbLoteamiento),
       parcel_quantity: dbLoteamiento.parcel_quantity || 0,
-      total_dim_m2: dbLoteamiento.total_dim_m2 || 0,
+      total_dim_m2: dbLoteamiento.area_m2_rounded || dbLoteamiento.area_m2 || 0,
       features: this.extractFeatures(dbLoteamiento),
       dimensions: this.formatDimensions(dbLoteamiento),
       // Additional fields for map functionality
       geojson: dbLoteamiento.geojson || null,
-      centroid_lat: dbLoteamiento.centroid_lat || 0,
-      centroid_long: dbLoteamiento.centroid_long || 0,
+      centroid_lat: dbLoteamiento.centroide_lat || 0,
+      centroid_long: dbLoteamiento.centroide_lng || 0,
       // Metadata
       owner: dbLoteamiento.owner || null,
+      precio_total_usd: dbLoteamiento.precio_total_usd || 0,
+      external_id: dbLoteamiento.external_id || null,
       created_at: dbLoteamiento.created_at,
       updated_at: dbLoteamiento.updated_at
     };

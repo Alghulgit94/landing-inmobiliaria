@@ -30,35 +30,51 @@
   --color-cream: #FFF8F6;
   --color-dark-blue: #122223;
   --color-dark-gray: #222121;
-  
+
   /* Typography - Google Fonts Inter */
   --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-weight-normal: 400;    /* Regular - for paragraphs and body text */
-  --font-weight-medium: 500;    /* Medium - for subtitles and emphasis */
-  --font-weight-bold: 700;      /* Bold - for titles and headings */
-  
+  --font-weight-normal: 400;
+  /* Regular - for paragraphs and body text */
+  --font-weight-medium: 500;
+  /* Medium - for subtitles and emphasis */
+  --font-weight-bold: 700;
+  /* Bold - for titles and headings */
+
   /* Typography Scale - Modern responsive typography */
-  --font-size-xs: 0.75rem;      /* 12px */
-  --font-size-sm: 0.875rem;     /* 14px */
-  --font-size-base: 1rem;       /* 16px */
-  --font-size-lg: 1.125rem;     /* 18px */
-  --font-size-xl: 1.25rem;      /* 20px */
-  --font-size-2xl: 1.5rem;      /* 24px */
-  --font-size-3xl: 1.875rem;    /* 30px */
-  --font-size-4xl: 2.25rem;     /* 36px */
-  --font-size-5xl: 3rem;        /* 48px */
-  
+  --font-size-xs: 0.75rem;
+  /* 12px */
+  --font-size-sm: 0.875rem;
+  /* 14px */
+  --font-size-base: 1rem;
+  /* 16px */
+  --font-size-lg: 1.125rem;
+  /* 18px */
+  --font-size-xl: 1.25rem;
+  /* 20px */
+  --font-size-2xl: 1.5rem;
+  /* 24px */
+  --font-size-3xl: 1.875rem;
+  /* 30px */
+  --font-size-4xl: 2.25rem;
+  /* 36px */
+  --font-size-5xl: 3rem;
+  /* 48px */
+
   /* Line Heights - Optimized for readability */
-  --line-height-tight: 1.25;    /* For large headings */
-  --line-height-snug: 1.375;    /* For smaller headings */
-  --line-height-normal: 1.5;    /* For body text */
-  --line-height-relaxed: 1.625; /* For large body text */
-  
+  --line-height-tight: 1.25;
+  /* For large headings */
+  --line-height-snug: 1.375;
+  /* For smaller headings */
+  --line-height-normal: 1.5;
+  /* For body text */
+  --line-height-relaxed: 1.625;
+  /* For large body text */
+
   /* Letter Spacing - Subtle adjustments for elegance */
   --letter-spacing-tight: -0.025em;
   --letter-spacing-normal: 0;
   --letter-spacing-wide: 0.025em;
-  
+
   /* Spacing */
   --spacing-xs: 0.3rem;
   --spacing-sm: 1rem;
@@ -66,17 +82,17 @@
   --spacing-lg: 2rem;
   --spacing-xl: 3rem;
   --spacing-xxl: 4rem;
-  
+
   /* Border radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
-  
+
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(26, 26, 26, 0.1);
   --shadow-md: 0 4px 8px rgba(26, 26, 26, 0.15);
   --shadow-lg: 0 8px 16px rgba(26, 26, 26, 0.2);
-  
+
   /* Transitions */
   --transition-fast: 0.2s ease-in-out;
   --transition-normal: 0.3s ease-in-out;
@@ -111,7 +127,10 @@ body {
    ========================== */
 
 /* 1. TITLES (Main Headings - h1, h2, Hero Titles) */
-h1, h2, .hero__title, .section__title {
+h1,
+h2,
+.hero__title,
+.section__title {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
@@ -120,12 +139,14 @@ h1, h2, .hero__title, .section__title {
   color: var(--color-primary-dark);
 }
 
-h1 { 
-  font-size: var(--font-size-5xl); /* 48px */
+h1 {
+  font-size: var(--font-size-5xl);
+  /* 48px */
 }
 
-h2 { 
-  font-size: var(--font-size-4xl); /* 36px */
+h2 {
+  font-size: var(--font-size-4xl);
+  /* 36px */
 }
 
 .hero__title {
@@ -145,7 +166,12 @@ h2 {
 }
 
 /* 2. SUBTITLES (Secondary Headings - h3, h4, Section Subtitles) */
-h3, h4, .hero__subtitle, .section__subtitle, .about-story__title, .about-values__title {
+h3,
+h4,
+.hero__subtitle,
+.section__subtitle,
+.about-story__title,
+.about-values__title {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-snug);
@@ -153,13 +179,15 @@ h3, h4, .hero__subtitle, .section__subtitle, .about-story__title, .about-values_
   margin-bottom: var(--spacing-sm);
 }
 
-h3 { 
-  font-size: var(--font-size-3xl); /* 30px */
+h3 {
+  font-size: var(--font-size-3xl);
+  /* 30px */
   color: var(--color-primary-dark);
 }
 
-h4 { 
-  font-size: var(--font-size-2xl); /* 24px */
+h4 {
+  font-size: var(--font-size-2xl);
+  /* 24px */
   color: var(--color-primary-dark);
 }
 
@@ -180,7 +208,10 @@ h4 {
 }
 
 /* 3. PARAGRAPHS (Body Text, Descriptions) */
-p, .hero__description, .about-story__description, .loteamiento-cta__description {
+p,
+.hero__description,
+.about-story__description,
+.loteamiento-cta__description {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-base);
@@ -197,7 +228,8 @@ p, .hero__description, .about-story__description, .loteamiento-cta__description 
   line-height: var(--line-height-relaxed);
 }
 
-.about-story__description, .loteamiento-cta__description {
+.about-story__description,
+.loteamiento-cta__description {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
   color: var(--color-dark-gray);
@@ -212,7 +244,10 @@ p, .hero__description, .about-story__description, .loteamiento-cta__description 
 }
 
 /* 4. HYPERLINKS (Navigation, Footer Links) */
-a, .main-nav a, .footer__link, .social-link {
+a,
+.main-nav a,
+.footer__link,
+.social-link {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
@@ -240,7 +275,11 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 /* 5. CTAs (Call-to-Action Buttons) */
-.btn-primary, .btn-outline, .hero__cta, .loteamiento-cta__button, .main-nav .cta {
+.btn-primary,
+.btn-outline,
+.hero__cta,
+.loteamiento-cta__button,
+.main-nav .cta {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-base);
@@ -256,13 +295,15 @@ a, .main-nav a, .footer__link, .social-link {
   border: 2px solid transparent;
 }
 
-.btn-primary, .hero__cta {
+.btn-primary,
+.hero__cta {
   background-color: var(--color-green-primary);
   color: var(--color-white);
   border-color: var(--color-green-primary);
 }
 
-.btn-primary:hover, .hero__cta:hover {
+.btn-primary:hover,
+.hero__cta:hover {
   background-color: var(--color-dark-blue);
   border-color: var(--color-dark-blue);
   transform: translateY(-2px);
@@ -290,7 +331,8 @@ a, .main-nav a, .footer__link, .social-link {
    ========================== */
 
 /* Brand Typography */
-.brand, .footer__brand-title {
+.brand,
+.footer__brand-title {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-2xl);
@@ -304,7 +346,8 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 /* Card Typography */
-.reason-item__title, .value-item__title {
+.reason-item__title,
+.value-item__title {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-2xl);
@@ -312,7 +355,8 @@ a, .main-nav a, .footer__link, .social-link {
   margin-bottom: var(--spacing-md);
 }
 
-.reason-item__description, .value-item__text {
+.reason-item__description,
+.value-item__text {
   font-size: var(--font-size-base);
   line-height: var(--line-height-relaxed);
   color: var(--color-dark-gray);
@@ -334,7 +378,8 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 /* Feature List Typography */
-.feature-item__text, .reason-item__features li {
+.feature-item__text,
+.reason-item__features li {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-base);
@@ -387,7 +432,8 @@ a, .main-nav a, .footer__link, .social-link {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between; /* Maximum spacing between sections */
+  justify-content: space-between;
+  /* Maximum spacing between sections */
   align-items: center;
   padding: var(--spacing-xs) var(--spacing-xs);
   min-height: 60px;
@@ -397,7 +443,8 @@ a, .main-nav a, .footer__link, .social-link {
 .header-left {
   display: flex;
   align-items: center;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0;
+  /* Prevent shrinking */
 }
 
 .header-left .brand {
@@ -473,8 +520,10 @@ a, .main-nav a, .footer__link, .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-grow: 1; /* Takes available space, stays centered */
-  max-width: 500px; /* Prevent nav from being too wide */
+  flex-grow: 1;
+  /* Takes available space, stays centered */
+  max-width: 500px;
+  /* Prevent nav from being too wide */
 }
 
 .main-nav {
@@ -506,7 +555,8 @@ a, .main-nav a, .footer__link, .social-link {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0;
+  /* Prevent shrinking */
 }
 
 /* CTA Button in Header */
@@ -610,7 +660,7 @@ a, .main-nav a, .footer__link, .social-link {
 
 .section__header {
   text-align: center;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
 }
 
 .section__title {
@@ -849,7 +899,7 @@ a, .main-nav a, .footer__link, .social-link {
   font-weight: var(--font-weight-bold);
   color: var(--color-white);
   margin-bottom: var(--spacing-md);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .why-live-cta__description {
@@ -915,6 +965,7 @@ a, .main-nav a, .footer__link, .social-link {
 /* Loteamientos Products Section */
 .loteamientos-section {
   background-color: var(--color-white);
+  padding: var(--spacing-md) 0;
 }
 
 /* Location Filter Chips */
@@ -922,7 +973,7 @@ a, .main-nav a, .footer__link, .social-link {
   display: flex;
   justify-content: center;
   gap: var(--spacing-sm);
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
   flex-wrap: wrap;
 }
 
@@ -992,14 +1043,26 @@ a, .main-nav a, .footer__link, .social-link {
   box-shadow: 0 0 0 3px rgba(31, 75, 67, 0.3);
 }
 
-/* Products Grid - Horizontal 2x4 Layout */
+/* Products Grid - Flexible Layout (adapts to content) */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--spacing-md);
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* For single item, align left and reduce width by 20% */
+.products-grid:has(.product-card:only-of-type) {
+  grid-template-columns: 1fr;
+  max-width: 320px;
+  margin: 0;
+  /* Align to left, remove centering */
+}
+
+/* Reduce card size when single item */
+.products-grid:has(.product-card:only-of-type) .product-card {
+  transform: none;
 }
 
 /* Product Card - Optimized Design */
@@ -1007,12 +1070,12 @@ a, .main-nav a, .footer__link, .social-link {
   background-color: var(--color-white);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  border: 1px solid rgba(233, 233, 233, 0.4); /* Subtle border for definition */
+  border: 1px solid rgba(233, 233, 233, 0.4);
+  /* Subtle border for definition */
   overflow: hidden;
   transition: all var(--transition-normal);
   position: relative;
   will-change: transform;
-  min-height: 450px;
   display: flex;
   flex-direction: column;
 }
@@ -1026,7 +1089,7 @@ a, .main-nav a, .footer__link, .social-link {
 .product-card__image-container {
   position: relative;
   overflow: hidden;
-  height: 160px;
+  height: 100px;
 }
 
 .product-card__type-badge {
@@ -1123,8 +1186,10 @@ a, .main-nav a, .footer__link, .social-link {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xs);
-  margin: var(--spacing-xs) 0;
-  padding: var(--spacing-xs);
+  margin: var(--spacing-xs) 0 0 0;
+  padding: var(--spacing-xs) var(--spacing-xs) 0 var(--spacing-xs);
+  color: var(--color-dark-gray);
+  /* Dark gray for contrast */
   background-color: rgba(249, 249, 249, 0.3);
   border-radius: var(--radius-sm);
 }
@@ -1149,6 +1214,8 @@ a, .main-nav a, .footer__link, .social-link {
   gap: 2px;
   min-width: 0;
   flex: 1;
+  color: var(--color-dark-gray);
+  /* Ensure dark gray for all detail text */
 }
 
 .location-name,
@@ -1209,17 +1276,18 @@ a, .main-nav a, .footer__link, .social-link {
   color: var(--color-primary-dark);
   border: 2px solid var(--color-gold-accent);
   border-radius: var(--radius-sm);
-  padding: var(--spacing-xs) var(--spacing-md);
+  padding: calc(var(--spacing-xs) / 2) var(--spacing-md);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-sm); /* Increased from xs to sm for better readability */
+  font-size: var(--font-size-sm);
+  /* Increased from xs to sm for better readability */
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
   cursor: pointer;
   transition: all var(--transition-normal);
   position: relative;
   overflow: hidden;
-  margin-top: auto;
+  margin-top: 0;
   text-decoration: none;
   display: block;
   text-align: center;
@@ -1493,170 +1561,183 @@ a, .main-nav a, .footer__link, .social-link {
 
 /* Tablet Breakpoint (768px and below) */
 @media (max-width: 768px) {
+
   /* Typography Adjustments */
   .hero__title {
-    font-size: var(--font-size-4xl); /* 36px -> smaller on tablet */
+    font-size: var(--font-size-4xl);
+    /* 36px -> smaller on tablet */
   }
-  
+
   .section__title {
-    font-size: var(--font-size-3xl); /* 30px -> smaller on tablet */
+    font-size: var(--font-size-3xl);
+    /* 30px -> smaller on tablet */
   }
-  
+
   h1 {
     font-size: var(--font-size-4xl);
   }
-  
+
   h2 {
     font-size: var(--font-size-3xl);
   }
-  
+
   h3 {
     font-size: var(--font-size-2xl);
   }
-  
+
   .brand {
     font-size: var(--font-size-xl);
   }
-  
+
   /* Header Layout Adjustments for Tablet */
   .header-inner {
-    grid-template-columns: 1fr; /* Stack all sections vertically on tablet */
+    grid-template-columns: 1fr;
+    /* Stack all sections vertically on tablet */
     gap: var(--spacing-md);
     text-align: center;
-    padding: var(--spacing-sm) 0; /* Consistent padding on tablet */
-    min-height: auto; /* Allow natural height based on stacked content */
+    padding: var(--spacing-sm) 0;
+    /* Consistent padding on tablet */
+    min-height: auto;
+    /* Allow natural height based on stacked content */
   }
-  
+
   .header-left,
   .header-center,
   .header-right {
     justify-content: center;
   }
-  
+
   .header-left .brand {
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-xs);
   }
-  
+
   /* Responsive Logo Adjustments for Tablet */
   .brand-logo .logo {
-    height: 50px; /* Proportional size for tablet */
-    width: auto; /* Maintain aspect ratio */
-    max-width: 100px; /* Prevent oversized logo on tablet */
+    height: 50px;
+    /* Proportional size for tablet */
+    width: auto;
+    /* Maintain aspect ratio */
+    max-width: 100px;
+    /* Prevent oversized logo on tablet */
   }
-  
+
   /* Responsive Brand Text for Tablet */
   .brand-text__mega {
-    font-size: var(--font-size-base); /* 16px - slightly smaller on tablet */
+    font-size: var(--font-size-base);
+    /* 16px - slightly smaller on tablet */
   }
-  
+
   .brand-text__proyectos {
-    font-size: var(--font-size-sm); /* 14px - proportionally smaller */
+    font-size: var(--font-size-sm);
+    /* 14px - proportionally smaller */
   }
-  
+
   .main-nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: var(--spacing-sm);
   }
-  
+
   .main-nav a {
     font-size: var(--font-size-sm);
     padding: var(--spacing-xs) var(--spacing-sm);
   }
-  
+
   .header-right {
     justify-content: center;
     gap: var(--spacing-sm);
   }
-  
+
   .language-selector {
     min-width: 50px;
     font-size: 0.9rem;
   }
-  
+
   .header-right .cta {
     font-size: var(--font-size-xs);
     padding: var(--spacing-xs) var(--spacing-sm);
   }
-  
+
   /* Loteamientos Products Responsive - Tablet */
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: var(--spacing-md);
   }
-  
+
   .location-filters {
     margin-bottom: var(--spacing-lg);
   }
-  
+
   .location-chip {
     font-size: var(--font-size-sm);
     padding: var(--spacing-xs) var(--spacing-sm);
   }
-  
+
   .product-card {
     min-height: 420px;
   }
-  
+
   .product-card__image-container {
-    height: 140px;
+    height: 105px;
   }
-  
+
   .product-card__content {
-    padding: var(--spacing-md); /* Maintain generous padding on tablet */
-    gap: var(--spacing-sm); /* Slightly reduce gap on tablet */
+    padding: var(--spacing-md);
+    /* Maintain generous padding on tablet */
+    gap: var(--spacing-sm);
+    /* Slightly reduce gap on tablet */
   }
-  
+
   .product-card__title {
     font-size: var(--font-size-lg);
   }
-  
+
   .product-card__subtitle {
     font-size: var(--font-size-base);
   }
-  
+
   .land-info-item {
     font-size: var(--font-size-sm);
   }
-  
+
   .product-card__btn {
     font-size: var(--font-size-sm);
     padding: var(--spacing-sm) var(--spacing-md);
   }
-  
+
   /* Team Grid - Tablet: 2x2 Layout */
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-md);
   }
-  
+
   .team-card {
     height: 300px;
   }
-  
+
   .team-card__overlay {
     padding: var(--spacing-md);
   }
-  
+
   .team-card__name {
     font-size: var(--font-size-lg);
   }
-  
+
   .team-card__title {
     font-size: var(--font-size-base);
   }
-  
+
   .hero {
     min-height: 70vh;
   }
-  
+
   .hero__content {
     padding: var(--spacing-lg) 0;
   }
-  
+
   .reason-item,
   .reason-item--reverse {
     flex-direction: column;
@@ -1664,54 +1745,54 @@ a, .main-nav a, .footer__link, .social-link {
     padding: var(--spacing-lg);
     gap: var(--spacing-lg);
   }
-  
+
   .reason-item__content,
   .reason-item--reverse .reason-item__content {
     padding-right: 0;
     padding-left: 0;
   }
-  
+
   .reason-item__image-container {
     flex: none;
     width: 100%;
     max-width: 400px;
   }
-  
+
   .reason-item__image {
     height: 250px;
   }
-  
+
   /* Why Live CTA Mobile */
   .why-live-cta {
     margin-top: var(--spacing-xl);
     padding: var(--spacing-lg);
   }
-  
+
   .why-live-cta__title {
     font-size: var(--font-size-2xl);
   }
-  
+
   .why-live-cta__description {
     font-size: var(--font-size-base);
   }
-  
+
   .why-live-cta__button {
     font-size: var(--font-size-base);
     padding: var(--spacing-sm) var(--spacing-lg);
   }
-  
-  
+
+
   .footer__content {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .footer__bottom {
     flex-direction: column;
     gap: var(--spacing-md);
     text-align: center;
   }
-  
+
   .footer__legal-links {
     justify-content: center;
   }
@@ -1719,139 +1800,151 @@ a, .main-nav a, .footer__link, .social-link {
 
 /* Mobile Breakpoint (480px and below) */
 @media (max-width: 480px) {
+
   /* Typography Adjustments for Mobile */
   .hero__title {
-    font-size: var(--font-size-3xl); /* 30px -> smaller on mobile */
+    font-size: var(--font-size-3xl);
+    /* 30px -> smaller on mobile */
   }
-  
+
   .section__title {
-    font-size: var(--font-size-2xl); /* 24px -> smaller on mobile */
+    font-size: var(--font-size-2xl);
+    /* 24px -> smaller on mobile */
   }
-  
+
   h1 {
     font-size: var(--font-size-3xl);
   }
-  
+
   h2 {
     font-size: var(--font-size-2xl);
   }
-  
+
   h3 {
     font-size: var(--font-size-xl);
   }
-  
+
   .hero__subtitle {
     font-size: var(--font-size-lg);
   }
-  
+
   .hero__description {
     font-size: var(--font-size-base);
   }
-  
+
   .section__subtitle {
     font-size: var(--font-size-base);
   }
-  
+
   .brand {
     font-size: var(--font-size-lg);
   }
-  
-  .hero__cta, .btn-primary {
+
+  .hero__cta,
+  .btn-primary {
     font-size: var(--font-size-sm);
     padding: var(--spacing-sm) var(--spacing-lg);
   }
-  
+
   /* Header Mobile Adjustments */
   .header-inner {
-    padding: var(--spacing-sm) 0; /* Consistent padding on mobile */
-    min-height: auto; /* Allow natural height based on smaller logo and stacked content */
+    padding: var(--spacing-sm) 0;
+    /* Consistent padding on mobile */
+    min-height: auto;
+    /* Allow natural height based on smaller logo and stacked content */
   }
-  
+
   .header-left .brand {
     font-size: var(--font-size-base);
     margin-bottom: var(--spacing-xs);
   }
-  
+
   /* Responsive Logo Adjustments for Mobile */
   .brand-logo .logo {
-    height: 40px; /* Compact size for mobile */
-    width: auto; /* Maintain aspect ratio */
-    max-width: 80px; /* Prevent oversized logo on mobile */
+    height: 40px;
+    /* Compact size for mobile */
+    width: auto;
+    /* Maintain aspect ratio */
+    max-width: 80px;
+    /* Prevent oversized logo on mobile */
   }
-  
+
   /* Responsive Brand Text for Mobile */
   .brand-logo {
-    gap: calc(var(--spacing-sm) * 0.75); /* Smaller gap on mobile */
+    gap: calc(var(--spacing-sm) * 0.75);
+    /* Smaller gap on mobile */
   }
-  
+
   .brand-text__mega {
-    font-size: var(--font-size-sm); /* 14px - compact for mobile */
+    font-size: var(--font-size-sm);
+    /* 14px - compact for mobile */
   }
-  
+
   .brand-text__proyectos {
-    font-size: var(--font-size-xs); /* 12px - very compact for mobile */
+    font-size: var(--font-size-xs);
+    /* 12px - very compact for mobile */
   }
-  
+
   .main-nav {
     gap: var(--spacing-xs);
   }
-  
+
   .main-nav a {
     padding: var(--spacing-xs);
     font-size: var(--font-size-xs);
   }
-  
+
   .header-right {
     gap: var(--spacing-xs);
   }
-  
+
   .language-selector {
     min-width: 45px;
     font-size: 0.8rem;
     padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
   }
-  
+
   .header-right .cta {
     font-size: var(--font-size-xs);
     padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
     letter-spacing: normal;
   }
-  
+
   .reason-item__title {
     font-size: var(--font-size-xl);
   }
-  
+
   .stat-item__number {
     font-size: var(--font-size-3xl);
   }
-  
+
   /* Layout Adjustments */
   .container {
     padding: 0 var(--spacing-sm);
   }
-  
+
   .section {
     padding: var(--spacing-xl) 0;
   }
-  
+
   .hero {
     padding: var(--spacing-xl) 0;
     min-height: 60vh;
   }
-  
+
   /* Mobile specific reason item adjustments */
   .reasons-grid {
     gap: var(--spacing-xl);
   }
-  
+
   .reason-item {
     padding: var(--spacing-md);
   }
-  
+
   .main-nav {
     gap: var(--spacing-sm);
   }
-  
+
   /* Loteamientos Products Responsive - Mobile */
   .location-filters {
     flex-direction: column;
@@ -1859,79 +1952,81 @@ a, .main-nav a, .footer__link, .social-link {
     gap: var(--spacing-xs);
     margin-bottom: var(--spacing-md);
   }
-  
+
   .location-chip {
     font-size: var(--font-size-xs);
     padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
     min-width: 120px;
     text-align: center;
   }
-  
+
   .products-grid {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     gap: var(--spacing-md);
   }
-  
+
   .product-card {
     min-height: 380px;
   }
-  
+
   .product-card__image-container {
-    height: 120px;
+    height: 90px;
   }
-  
+
   .product-card__content {
-    padding: var(--spacing-sm); /* Compact padding for mobile */
-    gap: var(--spacing-sm); /* Maintain reasonable gap on mobile */
+    padding: var(--spacing-sm);
+    /* Compact padding for mobile */
+    gap: var(--spacing-sm);
+    /* Maintain reasonable gap on mobile */
   }
-  
+
   .product-card__title {
     font-size: var(--font-size-base);
     white-space: normal;
     line-height: var(--line-height-snug);
   }
-  
+
   .product-card__subtitle {
     font-size: var(--font-size-sm);
     white-space: normal;
   }
-  
+
   .land-info-item {
     font-size: var(--font-size-xs);
   }
-  
+
   .land-info-text {
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
   }
-  
+
   .product-card__btn {
     font-size: var(--font-size-xs);
     padding: var(--spacing-xs) var(--spacing-sm);
   }
-  
+
   /* Team Grid - Mobile: Single Column */
   .team-grid {
     grid-template-columns: 1fr;
     gap: var(--spacing-md);
   }
-  
+
   .team-card {
     height: 280px;
     max-width: 350px;
     margin: 0 auto;
   }
-  
+
   .team-card__overlay {
     padding: var(--spacing-md);
   }
-  
+
   .team-card__name {
     font-size: var(--font-size-lg);
   }
-  
+
   .team-card__title {
     font-size: var(--font-size-base);
   }
@@ -1961,7 +2056,7 @@ a, .main-nav a, .footer__link, .social-link {
 
 /* Hero section animation initial states */
 .hero__title,
-.hero__subtitle, 
+.hero__subtitle,
 .hero__description {
   opacity: 0;
   transform: translateY(60px);
@@ -1993,7 +2088,8 @@ a, .main-nav a, .footer__link, .social-link {
 .btn-primary,
 .btn-outline,
 .social-link {
-  transition: none; /* Let GSAP handle all transitions */
+  transition: none;
+  /* Let GSAP handle all transitions */
 }
 
 /* ===========================
@@ -2022,8 +2118,13 @@ a, .main-nav a, .footer__link, .social-link {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .products-loading p {
@@ -2106,26 +2207,27 @@ a, .main-nav a, .footer__link, .social-link {
 
 /* Responsive adjustments for dynamic states */
 @media (max-width: 768px) {
+
   .products-loading,
   .products-error,
   .products-empty {
     padding: var(--spacing-xl);
   }
-  
+
   .loading-spinner {
     width: 32px;
     height: 32px;
   }
-  
+
   .error-icon,
   .empty-icon {
     font-size: 2.5rem;
   }
-  
+
   .products-empty h4 {
     font-size: var(--font-size-base);
   }
-  
+
   .products-loading p,
   .products-error p,
   .products-empty p {
@@ -2135,6 +2237,7 @@ a, .main-nav a, .footer__link, .social-link {
 
 /* Accessibility: Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -2143,12 +2246,12 @@ a, .main-nav a, .footer__link, .social-link {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   /* Ensure GSAP respects reduced motion */
   .gsap-element {
     will-change: auto;
   }
-  
+
   /* Disable spinner animation for reduced motion */
   .loading-spinner {
     animation: none;

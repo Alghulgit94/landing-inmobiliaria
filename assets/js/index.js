@@ -606,8 +606,8 @@
     typeBadge.textContent = formatProductType(product.type);
     typeBadge.className = `product-card__type-badge product-card__type-badge--${product.type.toLowerCase().replace(' ', '-')}`;
 
-    // Set title
-    card.querySelector('.product-card__title').textContent = product.name;
+    // Set title (nombre_loteamiento from database)
+    card.querySelector('.product-card__title').textContent = product.name || 'Loteamiento sin nombre';
 
     // Set parcel count
     const parcelCount = card.querySelector('.product-card__parcel-count');
@@ -618,19 +618,24 @@
       parcelCount.style.display = 'none';
     }
 
-    // Set description
-    card.querySelector('.product-card__description').textContent = product.description;
+    // Set description (from loteamientos table)
+    card.querySelector('.product-card__description').textContent = product.description || 'Sin descripción disponible';
 
-    // Set location info
+    // Set location info with centroid coordinates
     const locationName = card.querySelector('.location-name');
     const locationCoordinates = card.querySelector('.location-coordinates');
     locationName.textContent = formatLocationName(product.location);
-    locationCoordinates.textContent = `${product.lat.toFixed(4)}, ${product.long.toFixed(4)}`;
+    // Use centroid_lat and centroid_long from loteamientos table
+    const lat = product.centroid_lat || product.lat || 0;
+    const lng = product.centroid_long || product.long || 0;
+    locationCoordinates.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
 
-    // Set size info
+    // Set size info (area_rounded_m2 from loteamientos table)
     const sizeArea = card.querySelector('.size-area');
     const sizeDimensions = card.querySelector('.size-dimensions');
-    sizeArea.textContent = `${product.total_dim_m2.toLocaleString()}m²`;
+    // Use total_dim_m2 which maps to area_rounded_m2 from database
+    const areaM2 = product.total_dim_m2 || 0;
+    sizeArea.textContent = `${Math.round(areaM2).toLocaleString()}m²`;
     sizeDimensions.textContent = product.dimensions || 'Dimensiones disponibles';
 
     // Update "Ver en Mapa" button to navigate with loteamiento data
