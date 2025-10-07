@@ -2187,8 +2187,16 @@ video {
 
   /* Layout Adjustments */
   .container {
-    padding: 0 var(--spacing-md);
-    /* Maintain reasonable padding on mobile */
+    padding: 0 var(--spacing-sm);
+    /* Reduce padding on mobile for better centering */
+  }
+
+  /* Specific adjustment for loteamientos section on mobile */
+  .loteamientos-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center all content including grid */
   }
 
   .section {
@@ -2220,16 +2228,26 @@ video {
 
   /* Loteamientos Products Responsive - Mobile */
   .location-filters {
-    flex-direction: column;
+    flex-direction: row;
+    /* Horizontal row like mockup design */
+    justify-content: center;
+    /* Center the chips horizontally */
     align-items: center;
-    gap: var(--spacing-xs);
-    margin-bottom: var(--spacing-md);
+    gap: var(--spacing-sm);
+    /* Space between chips */
+    margin-bottom: var(--spacing-lg);
+    /* More space below filters */
+    flex-wrap: wrap;
+    /* Allow wrapping if needed on very small screens */
   }
 
   .location-chip {
     font-size: var(--font-size-xs);
     padding: calc(var(--spacing-xs) * 0.75) var(--spacing-sm);
-    min-width: 120px;
+    min-width: auto;
+    /* Remove fixed width for natural sizing */
+    flex: 0 1 auto;
+    /* Natural sizing, no stretching */
     text-align: center;
   }
 
@@ -2237,10 +2255,19 @@ video {
     grid-template-columns: 1fr;
     grid-template-rows: none;
     gap: var(--spacing-md);
+    justify-items: center;
+    /* Center cards horizontally on mobile */
+    margin: 0 auto;
+    /* Ensure grid itself is centered */
   }
 
   .product-card {
     min-height: 380px;
+    width: 100%;
+    max-width: 350px;
+    /* Optimal width for mobile centering */
+    margin: 0 auto;
+    /* Additional centering fallback */
   }
 
   .product-card__image-container {
