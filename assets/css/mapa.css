@@ -52,11 +52,40 @@ html {
   height: 60px;
   background: var(--color-green-primary);
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 var(--spacing-sm);
   box-shadow: var(--shadow-sm);
   border-bottom: 2px solid var(--color-light-gray);
   z-index: 1001;
+}
+
+.map-back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.map-back-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(-2px);
+}
+
+.back-arrow {
+  font-size: var(--font-size-base);
+  transition: transform var(--transition-fast);
+}
+
+.map-back-button:hover .back-arrow {
+  transform: translateX(-2px);
 }
 
 .map-title {
@@ -67,6 +96,7 @@ html {
   margin: 0;
   letter-spacing: var(--letter-spacing-wide);
   text-transform: capitalize;
+  flex: 1;
 }
 
 /* ===========================
@@ -1067,6 +1097,14 @@ html {
     padding: 0 var(--spacing-md);
   }
 
+  .map-back-button span:not(.back-arrow) {
+    display: none; /* Hide "Volver" text on mobile, keep arrow only */
+  }
+
+  .map-back-button {
+    padding: var(--spacing-xs);
+  }
+
   .map-title {
     font-size: var(--font-size-lg);
   }
@@ -1140,6 +1178,15 @@ html {
   .map-header {
     height: 60px;
     padding: 0 var(--spacing-sm);
+  }
+
+  .map-back-button {
+    padding: 6px;
+    font-size: var(--font-size-xs);
+  }
+
+  .back-arrow {
+    font-size: var(--font-size-sm);
   }
 
   .map-title {
