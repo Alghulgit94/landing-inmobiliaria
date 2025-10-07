@@ -336,8 +336,13 @@ class LoteService {
    * @returns {string} Photo URL
    */
   getDefaultPhoto(estado) {
-    const seed = `lote-${estado}`;
-    return `https://picsum.photos/seed/${seed}/400/300`;
+    // Map of default images per estado (flexible for future expansion)
+    const defaultImages = {
+      'disponible': 'assets/img/wiesental.webp',
+      'reservado': 'assets/img/wiesental.webp',
+      'vendido': 'assets/img/wiesental.webp'
+    };
+    return defaultImages[estado] || 'assets/img/wiesental.webp';
   }
 
   /**
