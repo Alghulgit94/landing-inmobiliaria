@@ -251,8 +251,12 @@ class LoteamientoService {
    * @returns {string} Photo URL
    */
   getDefaultPhoto(location) {
-    const seed = location === 'colonia-independencia' ? 'lot-mega' : 'lot-other';
-    return `https://picsum.photos/seed/${seed}/400/300`;
+    // Map of default images per location (flexible for future expansion)
+    const defaultImages = {
+      'colonia-independencia': 'assets/img/wiesental.webp',
+      'other-options': 'assets/img/wiesental.webp'
+    };
+    return defaultImages[location] || 'assets/img/wiesental.webp';
   }
 
   /**
