@@ -47,4 +47,4 @@ coverage/
 /backend/
 
 # videos files
-assets/videos/
+#assets/videos/

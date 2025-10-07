@@ -396,6 +396,74 @@
 })();
 
 /**
+ * Map Navigation - Inmobiliaria Mega Proyectos
+ * Handle navigation to mapa.html with default loteamiento
+ */
+
+(function () {
+  'use strict';
+
+  /**
+   * Get default loteamiento map URL
+   * Fetches first loteamiento from Supabase and constructs URL
+   * @returns {Promise<string>} Map URL with loteamiento parameters
+   */
+  async function getDefaultLoteamientoURL() {
+    try {
+      if (!window.LoteamientoService) {
+        console.warn('LoteamientoService not available, using fallback URL');
+        return 'mapa.html';
+      }
+
+      // Fetch all loteamientos
+      const loteamientos = await window.LoteamientoService.fetchAll();
+
+      if (loteamientos && loteamientos.length > 0) {
+        const firstLoteamiento = loteamientos[0];
+        return `mapa.html?loteamiento=${encodeURIComponent(firstLoteamiento.id)}&name=${encodeURIComponent(firstLoteamiento.name)}&lat=${firstLoteamiento.centroid_lat || 0}&lng=${firstLoteamiento.centroid_long || 0}`;
+      }
+
+      // Fallback if no loteamientos
+      return 'mapa.html';
+    } catch (error) {
+      console.error('Error fetching default loteamiento:', error);
+      return 'mapa.html';
+    }
+  }
+
+  /**
+   * Initialize static map navigation links
+   * Updates all static links to mapa.html with default loteamiento
+   */
+  async function initializeMapNavigation() {
+    try {
+      const defaultURL = await getDefaultLoteamientoURL();
+
+      // Update all static map links
+      const mapLinks = document.querySelectorAll('a[href="mapa.html"]');
+      mapLinks.forEach(link => {
+        // Skip product card buttons (they're handled dynamically)
+        if (!link.classList.contains('product-card__btn')) {
+          link.href = defaultURL;
+        }
+      });
+
+      console.log(`Updated ${mapLinks.length} map navigation links with default loteamiento`);
+    } catch (error) {
+      console.error('Error initializing map navigation:', error);
+    }
+  }
+
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeMapNavigation);
+  } else {
+    initializeMapNavigation();
+  }
+
+})();
+
+/**
  * Dynamic Products Rendering - Inmobiliaria Mega Proyectos
  * Render products dynamically from API data with filtering capabilities
  */

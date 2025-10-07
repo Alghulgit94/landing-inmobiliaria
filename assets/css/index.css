@@ -304,8 +304,9 @@ a,
 
 .btn-primary:hover,
 .hero__cta:hover {
-  background-color: var(--color-dark-blue);
-  border-color: var(--color-dark-blue);
+  background-color: var(--color-red-accent);
+  border-color: var(--color-red-accent);
+  color: var(--color-white);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
