@@ -63,48 +63,44 @@
 
   /**
    * Header and Navigation Load Animations
+   * NOTE: Header itself is NOT animated to preserve position: sticky behavior
+   * Only child elements (logo, nav, buttons) are animated
    */
   function initHeaderAnimations() {
     if (prefersReducedMotion) return;
-    
+
     const header = document.querySelector('.site-header');
     const logo = document.querySelector('.brand-logo');
     const navItems = document.querySelectorAll('.main-nav a');
     const langSelector = document.querySelector('.language-selector-wrapper');
     const ctaButton = document.querySelector('.header-right .cta');
-    
+
     if (!header) return;
-    
-    // Initial state - hide elements
+
+    // Initial state - hide child elements only (not header)
+    // Using scale instead of y transform to avoid breaking sticky positioning
     gsap.set([logo, navItems, langSelector, ctaButton], {
-      y: -30,
+      scale: 0.9,
       opacity: 0
     });
-    
-    // Header background slide down
-    gsap.set(header, {
-      y: -100
-    });
-    
-    // Create timeline for header entrance
+
+    // DO NOT animate header itself - transform breaks position: sticky
+    // Header is visible immediately to ensure sticky behavior works
+
+    // Create timeline for child elements entrance
     const headerTimeline = gsap.timeline({
-      delay: 0.2
+      delay: 0.3
     });
-    
+
     headerTimeline
-      .to(header, {
-        y: 0,
-        duration: ANIMATION_CONFIG.normal,
-        ease: ANIMATION_CONFIG.ease.slide
-      })
       .to(logo, {
-        y: 0,
+        scale: 1,
         opacity: 1,
         duration: ANIMATION_CONFIG.fast,
         ease: ANIMATION_CONFIG.ease.elastic
-      }, "-=0.3")
+      })
       .to(navItems, {
-        y: 0,
+        scale: 1,
         opacity: 1,
         duration: ANIMATION_CONFIG.fast,
         stagger: ANIMATION_CONFIG.stagger.fast,
