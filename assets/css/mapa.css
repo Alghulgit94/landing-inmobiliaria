@@ -1093,8 +1093,11 @@ html {
   }
 
   .map-header {
+    position: sticky;
+    top: 0;
     height: 70px;
     padding: 0 var(--spacing-md);
+    z-index: 2200;
   }
 
   .map-back-button span:not(.back-arrow) {
@@ -1176,8 +1179,11 @@ html {
 
 @media (max-width: 480px) {
   .map-header {
+    position: sticky;
+    top: 0;
     height: 60px;
     padding: 0 var(--spacing-sm);
+    z-index: 2200;
   }
 
   .map-back-button {
