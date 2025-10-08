@@ -483,10 +483,11 @@ class MobileParcelCard {
     const price = parcelData.precio || parcelData.price;
     if (this.elements.price) {
       if (price && price !== 'null' && price !== '') {
-        const formattedPrice = new Intl.NumberFormat('es-PY', {
+        const formattedPrice = new Intl.NumberFormat('en-US', {
           style: 'currency',
-          currency: 'PYG',
-          minimumFractionDigits: 0
+          currency: 'USD',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
         }).format(price);
         this.elements.price.textContent = formattedPrice;
       } else {
