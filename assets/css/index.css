@@ -2330,6 +2330,35 @@ video {
   .team-card__title {
     font-size: var(--font-size-base);
   }
+
+  /* Footer Mobile - Left Alignment */
+  .footer__content {
+    text-align: left;
+  }
+
+  .footer__section {
+    text-align: left;
+  }
+
+  .footer__social {
+    justify-content: flex-start;
+  }
+
+  .footer__nav {
+    align-items: flex-start;
+  }
+
+  .footer__contact {
+    align-items: flex-start;
+  }
+
+  .footer__bottom {
+    text-align: left;
+  }
+
+  .footer__legal-links {
+    justify-content: flex-start;
+  }
 }
 
 /* ===========================
@@ -2480,6 +2509,8 @@ video {
   background: var(--color-cream);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-light-gray);
+  min-height: 400px;
+  /* Prevent container from shrinking */
 }
 
 .empty-icon {

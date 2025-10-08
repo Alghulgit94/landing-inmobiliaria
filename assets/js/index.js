@@ -789,7 +789,6 @@
     const emptyMessage = document.createElement('div');
     emptyMessage.className = 'products-empty';
     emptyMessage.innerHTML = `
-      <div class="empty-icon">🔍</div>
       <h4>No hay loteamientos disponibles</h4>
       <p>No se encontraron loteamientos para la ubicación seleccionada.</p>
     `;
