@@ -562,12 +562,14 @@ class MobileBottomSheets {
     // Cache bottom sheet elements
     this.sheets = {
       map: document.getElementById('mapBottomSheet'),
-      legend: document.getElementById('legendBottomSheet')
+      legend: document.getElementById('legendBottomSheet'),
+      interest: document.getElementById('interestBottomSheet')
     };
 
     this.backdrops = {
       map: document.getElementById('mapSheetBackdrop'),
-      legend: document.getElementById('legendSheetBackdrop')
+      legend: document.getElementById('legendSheetBackdrop'),
+      interest: document.getElementById('interestSheetBackdrop')
     };
 
     // Initialize FAB buttons
@@ -1571,6 +1573,11 @@ async function loadLoteamientoFromSupabase(params) {
       if (storedGeojson) {
         renderLoteamientoBoundary(storedGeojson);
       }
+    }
+
+    // Initialize interest points feature if available
+    if (window.initializeInterestPoints) {
+      window.initializeInterestPoints(loteamiento);
     }
 
     // Fetch and render lotes

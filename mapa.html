@@ -114,6 +114,11 @@
             <input type="checkbox" class="legend-checkbox" id="grayToggle" />
             <label for="grayToggle" class="legend-label">Escala Gris</label>
           </div>
+
+          <div class="legend-item" data-control="interest-points">
+            <input type="checkbox" class="legend-checkbox" id="interestPointsToggle" checked />
+            <label for="interestPointsToggle" class="legend-label">Puntos de Interés</label>
+          </div>
         </div>
 
         <!-- Legend Section -->
@@ -159,6 +164,14 @@
           </div>
         </div>
 
+        <!-- Interest Points Section -->
+        <div class="interest-points-section" id="interestPointsSection">
+          <h3 class="section-title">Puntos de Interés</h3>
+          <div class="interest-points-list" id="interestPointsList">
+            <!-- Dynamically populated by JavaScript -->
+          </div>
+        </div>
+
         <!-- Zoom Controls Section -->
         <div class="zoom-section">
           <h3 class="section-title">Zoom</h3>
@@ -181,6 +194,11 @@
         <button class="mobile-fab" id="mobileLegendToggle" aria-label="Estado de Lotes" title="Leyenda">
           <svg class="fab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 17H9V15H3V17ZM3 13H9V11H3V13ZM3 9H9V7H3V9ZM11 17H21V15H11V17ZM11 13H21V11H11V13ZM11 9H21V7H11V9ZM11 5H21V3H11V5ZM3 5H9V3H3V5Z" fill="currentColor"/>
+          </svg>
+        </button>
+        <button class="mobile-fab" id="mobileInterestToggle" aria-label="Puntos de Interés" title="Puntos de Interés">
+          <svg class="fab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor"/>
           </svg>
         </button>
       </div>
@@ -258,6 +276,18 @@
           </div>
         </div>
       </div>
+
+      <!-- Interest Points Bottom Sheet -->
+      <div class="mobile-bottom-sheet-backdrop" id="interestSheetBackdrop"></div>
+      <div class="mobile-bottom-sheet" id="interestBottomSheet">
+        <div class="mobile-bottom-sheet-header">
+          <div class="mobile-bottom-sheet-handle"></div>
+          <h3 class="mobile-bottom-sheet-title">Puntos de Interés</h3>
+        </div>
+        <div class="mobile-bottom-sheet-content" id="mobileInterestPointsList">
+          <!-- Dynamically populated by JavaScript -->
+        </div>
+      </div>
     </div>
 
     <!-- Libraries -->
@@ -274,5 +304,8 @@
 
     <!-- Map Application -->
     <script src="assets/js/mapa.js"></script>
+
+    <!-- Interest Points Feature -->
+    <script src="assets/js/interest-points.js"></script>
   </body>
 </html>

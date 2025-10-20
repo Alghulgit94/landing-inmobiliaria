@@ -151,7 +151,9 @@ class LoteamientoService {
       precio_total_usd: dbLoteamiento.precio_total_usd || 0,
       external_id: dbLoteamiento.external_id || null,
       created_at: dbLoteamiento.created_at,
-      updated_at: dbLoteamiento.updated_at
+      updated_at: dbLoteamiento.updated_at,
+      // Interest points for map feature
+      interest_points: dbLoteamiento.interest_points || null
     };
   }
 
