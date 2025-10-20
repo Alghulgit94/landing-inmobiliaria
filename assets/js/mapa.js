@@ -1861,15 +1861,18 @@ map.on('click', function (e) {
 // UI botones - removed back button as per requirements
 
 // Enhanced Satélite toggle with checkbox functionality
-let satLayer = null;
+// Initialize satellite layer and add it to map by default
+let satLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+  subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+  maxZoom: 20,
+  attribution: '© Google'
+});
+
+// Add satellite layer to map by default
+satLayer.addTo(map);
+
+// Setup toggle event listener
 document.getElementById('satToggle')?.addEventListener('change', function () {
-  if (!satLayer) {
-    satLayer = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-      maxZoom: 20,
-      attribution: '© Google'
-    });
-  }
   if (this.checked) {
     satLayer.addTo(map);
   } else {
