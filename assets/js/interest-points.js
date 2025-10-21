@@ -29,11 +29,12 @@ class RouteDrawer {
     this.currentRoute = null;
 
     // Route styling configuration
+    // Dotted line with accent color for elegant route visualization
     this.routeStyle = {
-      color: '#1F4B43',
-      weight: 3,
-      opacity: 0.8,
-      dashArray: '10, 10',
+      color: '#2c88f0ff',     // Red accent color from project palette
+      weight: 4,            // Slightly thicker for better visibility
+      opacity: 0.9,         // High opacity for prominence
+      dashArray: '1, 10',   // Dotted line pattern (1px dot, 10px gap)
       lineJoin: 'round',
       lineCap: 'round'
     };
@@ -44,11 +45,13 @@ class RouteDrawer {
   }
 
   /**
-   * Draw a route from origin to destination
+   * Draw a route from origin to destination using intermediate route points
+   * Only draws if route points are available (no fallback to straight line)
    * @param {Object} origin - Origin coordinates {lat, lng}
    * @param {Object} destination - Destination coordinates {lat, lng}
+   * @param {Array} routePoints - Array of intermediate route points (required)
    */
-  drawRoute(origin, destination) {
+  drawRoute(origin, destination, routePoints = []) {
     // Clear any existing route first
     this.clearRoute();
 
@@ -58,16 +61,38 @@ class RouteDrawer {
       return;
     }
 
-    // Create polyline coordinates
-    const latlngs = [
-      [origin.lat, origin.lng],
-      [destination.lat, destination.lng]
-    ];
+    // Check if route points are available
+    if (!routePoints || !Array.isArray(routePoints) || routePoints.length === 0) {
+      console.log('ℹ No route points available, skipping route drawing');
+      return; // Don't draw anything without route points
+    }
+
+    // Build polyline coordinates array starting with origin
+    const latlngs = [[origin.lat, origin.lng]];
+
+    // Sort route points by order field to ensure correct sequence
+    const sortedPoints = [...routePoints].sort((a, b) => {
+      const orderA = a.order || 0;
+      const orderB = b.order || 0;
+      return orderA - orderB;
+    });
+
+    // Add each route point to the polyline
+    sortedPoints.forEach(point => {
+      if (this.validateCoordinates(point)) {
+        latlngs.push([point.latitude, point.longitude]);
+      } else {
+        console.warn('Invalid route point found:', point);
+      }
+    });
+
+    // Add destination as final point
+    latlngs.push([destination.lat, destination.lng]);
 
     // Create and add polyline to map
     this.currentRoute = L.polyline(latlngs, this.routeStyle).addTo(this.map);
 
-    // Fit map bounds to show both points with padding
+    // Fit map bounds to show entire route with padding
     try {
       this.map.fitBounds(this.currentRoute.getBounds(), {
         padding: [80, 80],
@@ -77,7 +102,7 @@ class RouteDrawer {
       console.warn('Could not fit map to route bounds:', error);
     }
 
-    console.log(`✓ Route drawn from [${origin.lat}, ${origin.lng}] to [${destination.lat}, ${destination.lng}]`);
+    console.log(`✓ Route drawn with ${sortedPoints.length} intermediate points (${latlngs.length} total points)`);
   }
 
   /**
@@ -100,15 +125,26 @@ class RouteDrawer {
 
   /**
    * Validate coordinate object
+   * Supports both {lat, lng} and {latitude, longitude} formats
    * @param {Object} coords - Coordinates to validate
    * @returns {boolean} True if valid
    */
   validateCoordinates(coords) {
-    return coords &&
-           typeof coords.lat === 'number' &&
-           typeof coords.lng === 'number' &&
-           !isNaN(coords.lat) &&
-           !isNaN(coords.lng);
+    if (!coords) return false;
+
+    // Check for lat/lng format (used by origin/destination)
+    const hasLatLng = typeof coords.lat === 'number' &&
+      typeof coords.lng === 'number' &&
+      !isNaN(coords.lat) &&
+      !isNaN(coords.lng);
+
+    // Check for latitude/longitude format (used by route_points)
+    const hasLatitudeLongitude = typeof coords.latitude === 'number' &&
+      typeof coords.longitude === 'number' &&
+      !isNaN(coords.latitude) &&
+      !isNaN(coords.longitude);
+
+    return hasLatLng || hasLatitudeLongitude;
   }
 
   /**
@@ -256,14 +292,25 @@ class InterestPointsManager {
       return;
     }
 
-    // Store interest points
+    // Store interest points with validation and normalization
     this.interestPoints = pointsData.filter(point => {
       // Validate each point has required fields
       const isValid = point &&
-                     point.id &&
-                     point.name &&
-                     typeof point.latitude === 'number' &&
-                     typeof point.longitude === 'number';
+        point.id &&
+        point.name &&
+        typeof point.latitude === 'number' &&
+        typeof point.longitude === 'number';
+
+      // Validate and normalize route_points if present
+      if (isValid && point.route_points !== undefined) {
+        if (!Array.isArray(point.route_points)) {
+          console.warn(`Interest point "${point.name}" has invalid route_points (not an array), fixing to empty array`);
+          point.route_points = [];
+        }
+      } else if (isValid) {
+        // Ensure route_points exists even if not in database
+        point.route_points = [];
+      }
 
       if (!isValid) {
         console.warn('Invalid interest point found:', point);
@@ -460,15 +507,18 @@ class InterestPointsManager {
       lng: point.longitude
     };
 
-    // Draw route from loteamiento to selected point
-    this.routeDrawer.drawRoute(origin, destination);
+    // Extract route points from the interest point
+    const routePoints = point.route_points || [];
+
+    // Draw route from loteamiento to selected point using intermediate route points
+    this.routeDrawer.drawRoute(origin, destination, routePoints);
 
     // Hide mobile bottom sheet if visible
     if (window.mobileBottomSheets && window.mobileBottomSheets.currentSheet === 'interest') {
       window.mobileBottomSheets.hideSheet('interest');
     }
 
-    console.log(`✓ Selected interest point: ${point.name}`);
+    console.log(`✓ Selected interest point: ${point.name} (${routePoints.length} route points)`);
   }
 
   /**
@@ -482,13 +532,13 @@ class InterestPointsManager {
 
     // Try multiple field names for compatibility
     const lat = this.loteamientoData.centroid_lat ||
-                this.loteamientoData.centroide_lat ||
-                this.loteamientoData.lat;
+      this.loteamientoData.centroide_lat ||
+      this.loteamientoData.lat;
 
     const lng = this.loteamientoData.centroid_long ||
-                this.loteamientoData.centroide_lng ||
-                this.loteamientoData.long ||
-                this.loteamientoData.lng;
+      this.loteamientoData.centroide_lng ||
+      this.loteamientoData.long ||
+      this.loteamientoData.lng;
 
     if (typeof lat === 'number' && typeof lng === 'number') {
       return { lat, lng };
