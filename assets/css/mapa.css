@@ -578,93 +578,6 @@ html {
 }
 
 /* ===========================
-   INTEREST POINTS SECTION
-   =========================== */
-.interest-points-section {
-  padding: var(--spacing-sm);
-  border-bottom: 1px solid var(--color-light-gray);
-  max-height: 280px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.interest-points-list {
-  overflow-y: auto;
-  overflow-x: hidden;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  padding-right: 4px;
-}
-
-.interest-point-item {
-  padding: var(--spacing-xs) var(--spacing-sm);
-  margin-bottom: 2px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition-normal);
-  border-left: 3px solid var(--color-green-primary);
-  background: var(--color-white);
-  min-height: 44px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.interest-point-item:hover {
-  background: rgba(47, 139, 70, 0.1);
-  transform: translateX(2px);
-  box-shadow: var(--shadow-sm);
-}
-
-.interest-point-item.active {
-  background: rgba(47, 139, 70, 0.2);
-  border-left-color: var(--color-dark-blue);
-  border-left-width: 4px;
-  font-weight: var(--font-weight-bold);
-}
-
-.interest-point-name {
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-xs);
-  color: var(--color-primary-dark);
-  line-height: var(--line-height-snug);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-.interest-point-coords {
-  font-family: var(--font-family-primary);
-  font-size: 0.65rem;
-  color: var(--color-dark-gray);
-  margin-top: 2px;
-  line-height: var(--line-height-normal);
-  opacity: 0.85;
-}
-
-/* Custom scrollbar for interest points list */
-.interest-points-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.interest-points-list::-webkit-scrollbar-track {
-  background: var(--color-light-gray);
-  border-radius: 3px;
-}
-
-.interest-points-list::-webkit-scrollbar-thumb {
-  background: var(--color-green-primary);
-  border-radius: 3px;
-}
-
-.interest-points-list::-webkit-scrollbar-thumb:hover {
-  background: var(--color-dark-blue);
-}
-
-/* ===========================
    INTEREST POINT MARKERS - Custom Leaflet Markers
    =========================== */
 .interest-marker {
@@ -1231,11 +1144,6 @@ html {
     border-radius: 0;
     box-shadow: none;
     border: none;
-  }
-
-  /* Hide desktop interest points section on mobile */
-  .interest-points-section {
-    display: none !important;
   }
 
   .map-header {

@@ -184,7 +184,6 @@ class InterestPointsManager {
     this.loadInterestPoints = this.loadInterestPoints.bind(this);
     this.createMarker = this.createMarker.bind(this);
     this.createMarkers = this.createMarkers.bind(this);
-    this.renderList = this.renderList.bind(this);
     this.handlePointClick = this.handlePointClick.bind(this);
     this.toggle = this.toggle.bind(this);
     this.show = this.show.bind(this);
@@ -225,18 +224,12 @@ class InterestPointsManager {
   cacheElements() {
     this.elements = {
       // Desktop elements
-      toggle: document.getElementById('interestPointsToggle'),
-      list: document.getElementById('interestPointsList'),
-      section: document.getElementById('interestPointsSection'),
-
-      // Mobile elements
-      mobileList: document.getElementById('mobileInterestPointsList'),
-      mobileToggle: document.getElementById('mobileInterestToggle')
+      toggle: document.getElementById('interestPointsToggle')
     };
 
     // Validate critical elements
-    if (!this.elements.toggle || !this.elements.list) {
-      console.warn('Some interest points DOM elements not found');
+    if (!this.elements.toggle) {
+      console.warn('Interest points toggle checkbox not found');
     }
   }
 
@@ -325,9 +318,8 @@ class InterestPointsManager {
       return;
     }
 
-    // Create markers and render list
+    // Create markers
     this.createMarkers();
-    this.renderList();
 
     console.log(`✓ Loaded ${this.interestPoints.length} interest points`);
   }
@@ -398,101 +390,12 @@ class InterestPointsManager {
   }
 
   /**
-   * Render interest points list in sidebar
-   */
-  renderList() {
-    if (this.interestPoints.length === 0) {
-      this.renderEmptyState();
-      return;
-    }
-
-    // Generate HTML for list items
-    const listHTML = this.interestPoints.map(point => `
-      <div class="interest-point-item" data-point-id="${point.id}" role="button" tabindex="0" aria-label="Ver ruta a ${this.escapeHtml(point.name)}">
-        <div class="interest-point-name">${this.escapeHtml(point.name)}</div>
-        <div class="interest-point-coords">
-          ${point.latitude.toFixed(6)}, ${point.longitude.toFixed(6)}
-        </div>
-      </div>
-    `).join('');
-
-    // Render to desktop list
-    if (this.elements.list) {
-      this.elements.list.innerHTML = listHTML;
-    }
-
-    // Render to mobile list
-    if (this.elements.mobileList) {
-      this.elements.mobileList.innerHTML = listHTML;
-    }
-
-    // Add click listeners to list items
-    this.addListItemListeners();
-  }
-
-  /**
-   * Render empty state when no points available
-   */
-  renderEmptyState() {
-    const emptyHTML = `
-      <div style="text-align: center; padding: var(--spacing-md); color: var(--color-dark-gray);">
-        <p style="font-size: var(--font-size-xs); line-height: var(--line-height-relaxed);">
-          No hay puntos de interés disponibles para este loteamiento.
-        </p>
-      </div>
-    `;
-
-    if (this.elements.list) {
-      this.elements.list.innerHTML = emptyHTML;
-    }
-
-    if (this.elements.mobileList) {
-      this.elements.mobileList.innerHTML = emptyHTML;
-    }
-  }
-
-  /**
-   * Add click listeners to all list items
-   */
-  addListItemListeners() {
-    const items = document.querySelectorAll('.interest-point-item');
-
-    items.forEach(item => {
-      // Click handler
-      item.addEventListener('click', (e) => {
-        const pointId = parseInt(item.dataset.pointId);
-        const point = this.interestPoints.find(p => p.id === pointId);
-        if (point) {
-          this.handlePointClick(point);
-        }
-      });
-
-      // Keyboard accessibility
-      item.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          item.click();
-        }
-      });
-    });
-  }
-
-  /**
-   * Handle interest point selection (from marker or list)
+   * Handle interest point selection (from marker click)
    * @param {Object} point - Selected interest point
    */
   handlePointClick(point) {
     // Update selected state
     this.selectedPointId = point.id;
-
-    // Update UI active state for list items
-    document.querySelectorAll('.interest-point-item').forEach(item => {
-      item.classList.remove('active');
-    });
-
-    document.querySelectorAll(`[data-point-id="${point.id}"]`).forEach(item => {
-      item.classList.add('active');
-    });
 
     // Get loteamiento origin coordinates
     const origin = this.getLoteamientoOrigin();
@@ -557,16 +460,6 @@ class InterestPointsManager {
         this.toggle();
       });
     }
-
-    // Mobile FAB button
-    if (this.elements.mobileToggle) {
-      this.elements.mobileToggle.addEventListener('click', () => {
-        // Show mobile bottom sheet
-        if (window.mobileBottomSheets) {
-          window.mobileBottomSheets.showSheet('interest');
-        }
-      });
-    }
   }
 
   /**
@@ -581,7 +474,7 @@ class InterestPointsManager {
   }
 
   /**
-   * Show interest points (markers and list)
+   * Show interest points (markers only)
    */
   show() {
     // Show markers on map
@@ -589,17 +482,12 @@ class InterestPointsManager {
       this.markers.addTo(this.map);
     }
 
-    // Show section
-    if (this.elements.section) {
-      this.elements.section.style.display = 'flex';
-    }
-
     this.isVisible = true;
     console.log('✓ Interest points shown');
   }
 
   /**
-   * Hide interest points (markers, list, and route)
+   * Hide interest points (markers and route)
    */
   hide() {
     // Remove markers from map
@@ -609,11 +497,6 @@ class InterestPointsManager {
 
     // Clear any active route
     this.routeDrawer.clearRoute();
-
-    // Hide section
-    if (this.elements.section) {
-      this.elements.section.style.display = 'none';
-    }
 
     // Clear selection
     this.clearSelection();
@@ -628,11 +511,6 @@ class InterestPointsManager {
   clearSelection() {
     this.selectedPointId = null;
     this.routeDrawer.clearRoute();
-
-    // Remove active class from all items
-    document.querySelectorAll('.interest-point-item').forEach(item => {
-      item.classList.remove('active');
-    });
   }
 
   /**
