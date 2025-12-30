@@ -224,12 +224,19 @@ class InterestPointsManager {
   cacheElements() {
     this.elements = {
       // Desktop elements
-      toggle: document.getElementById('interestPointsToggle')
+      toggle: document.getElementById('interestPointsToggle'),
+
+      // Mobile elements
+      mobileToggle: document.getElementById('mobileInterestPointsToggle')
     };
 
     // Validate critical elements
     if (!this.elements.toggle) {
       console.warn('Interest points toggle checkbox not found');
+    }
+
+    if (!this.elements.mobileToggle) {
+      console.warn('Mobile interest points toggle button not found');
     }
   }
 
@@ -346,41 +353,58 @@ class InterestPointsManager {
   }
 
   /**
+   * Detect if current device is mobile
+   * @returns {boolean} True if mobile device
+   */
+  isMobileDevice() {
+    return window.innerWidth <= 767;
+  }
+
+  /**
    * Create a single marker with custom styling
    * @param {Object} point - Interest point data
    * @returns {L.Marker} Leaflet marker
    */
   createMarker(point) {
-    // Create custom div icon for teardrop marker
-    const customIcon = L.divIcon({
-      className: 'interest-marker',
-      html: '<div class="interest-marker-icon">📍</div>',
-      iconSize: [30, 30],
-      iconAnchor: [15, 30], // Point of the marker at bottom center
-      popupAnchor: [0, -30] // Popup above the marker
+    // Use SVG image icon for reliable rendering across all devices
+    const customIcon = L.icon({
+      iconUrl: 'assets/img/map-marker-svgrepo-com.svg',
+      iconSize: [32, 32], // Size of the icon
+      iconAnchor: [16, 32], // Point of the icon which will correspond to marker's location
+      popupAnchor: [0, -32], // Point from which the popup should open relative to the iconAnchor
+      className: 'interest-marker-img' // Custom class for styling
     });
 
     // Create marker at point coordinates
+    // On mobile, don't add title to prevent tooltip from showing
+    const markerOptions = {
+      icon: customIcon
+    };
+
+    // Only add title on desktop
+    if (!this.isMobileDevice()) {
+      markerOptions.title = point.name;
+    }
+
     const marker = L.marker(
       [point.latitude, point.longitude],
-      {
-        icon: customIcon,
-        title: point.name
-      }
+      markerOptions
     );
 
-    // Bind popup with point information
-    const popupContent = `
-      <div class="interest-popup">
-        <strong>${this.escapeHtml(point.name)}</strong>
-        <small>${point.latitude.toFixed(6)}, ${point.longitude.toFixed(6)}</small>
-      </div>
-    `;
-    marker.bindPopup(popupContent);
+    // Only bind popup on desktop (not on mobile for cleaner UX)
+    if (!this.isMobileDevice()) {
+      const popupContent = `
+        <div class="interest-popup">
+          <strong>${this.escapeHtml(point.name)}</strong>
+          <small>${point.latitude.toFixed(6)}, ${point.longitude.toFixed(6)}</small>
+        </div>
+      `;
+      marker.bindPopup(popupContent);
+    }
 
-    // Add click handler
-    marker.on('click', () => {
-      this.handlePointClick(point);
+    // Add click handler with visual feedback
+    marker.on('click', (e) => {
+      this.handlePointClick(point, e);
     });
 
     // Store point reference in marker
@@ -390,10 +414,33 @@ class InterestPointsManager {
   }
 
   /**
+   * Add visual click feedback to marker
+   * @param {L.DomEvent} event - Leaflet event object
+   */
+  addMarkerClickAnimation(event) {
+    const markerElement = event.target.getElement();
+    if (markerElement) {
+      // Add clicked class for animation
+      markerElement.classList.add('clicked');
+
+      // Remove class after animation completes
+      setTimeout(() => {
+        markerElement.classList.remove('clicked');
+      }, 600);
+    }
+  }
+
+  /**
    * Handle interest point selection (from marker click)
    * @param {Object} point - Selected interest point
+   * @param {L.DomEvent} event - Leaflet event object
    */
-  handlePointClick(point) {
+  handlePointClick(point, event) {
+    // Add visual feedback animation
+    if (event) {
+      this.addMarkerClickAnimation(event);
+    }
+
     // Update selected state
     this.selectedPointId = point.id;
 
@@ -416,12 +463,38 @@ class InterestPointsManager {
     // Draw route from loteamiento to selected point using intermediate route points
     this.routeDrawer.drawRoute(origin, destination, routePoints);
 
+    // Show mobile card on mobile devices
+    if (this.isMobileDevice() && window.mobileParcelCard) {
+      this.showMobileInterestCard(point);
+    }
+
     // Hide mobile bottom sheet if visible
     if (window.mobileBottomSheets && window.mobileBottomSheets.currentSheet === 'interest') {
       window.mobileBottomSheets.hideSheet('interest');
     }
 
     console.log(`✓ Selected interest point: ${point.name} (${routePoints.length} route points)`);
+  }
+
+  /**
+   * Show mobile card with interest point data
+   * @param {Object} point - Interest point data
+   */
+  showMobileInterestCard(point) {
+    // Transform interest point data to match parcel card format
+    const cardData = {
+      name: point.name,
+      photo: 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect width="80" height="80" fill="%23EB664E"/%3E%3Ctext x="40" y="45" font-family="Arial" font-size="12" fill="white" text-anchor="middle"%3EPunto de%3C/text%3E%3Ctext x="40" y="60" font-family="Arial" font-size="12" fill="white" text-anchor="middle"%3EInter%C3%A9s%3C/text%3E%3C/svg%3E',
+      estado: 'punto-interes', // Special status
+      location: point.name,
+      latitude: point.latitude,
+      longitude: point.longitude,
+      price: '', // No price for interest points
+      isInterestPoint: true // Flag to identify interest points
+    };
+
+    // Show the mobile card
+    window.mobileParcelCard.show(cardData);
   }
 
   /**
@@ -458,7 +531,53 @@ class InterestPointsManager {
     if (this.elements.toggle) {
       this.elements.toggle.addEventListener('change', () => {
         this.toggle();
+        this.syncMobileToggleState();
       });
+    }
+
+    // Mobile toggle FAB button
+    if (this.elements.mobileToggle) {
+      this.elements.mobileToggle.addEventListener('click', () => {
+        // Hide bottom card if it's visible
+        if (window.mobileParcelCard && window.mobileParcelCard.isVisible) {
+          window.mobileParcelCard.hide();
+        }
+
+        this.toggle();
+        this.syncDesktopToggleState();
+        this.updateMobileToggleVisualState();
+      });
+    }
+  }
+
+  /**
+   * Sync mobile toggle visual state with visibility
+   */
+  updateMobileToggleVisualState() {
+    if (!this.elements.mobileToggle) return;
+
+    if (this.isVisible) {
+      this.elements.mobileToggle.classList.add('active');
+      this.elements.mobileToggle.classList.remove('inactive');
+    } else {
+      this.elements.mobileToggle.classList.remove('active');
+      this.elements.mobileToggle.classList.add('inactive');
+    }
+  }
+
+  /**
+   * Sync mobile toggle state with desktop toggle
+   */
+  syncMobileToggleState() {
+    this.updateMobileToggleVisualState();
+  }
+
+  /**
+   * Sync desktop toggle state with mobile toggle
+   */
+  syncDesktopToggleState() {
+    if (this.elements.toggle) {
+      this.elements.toggle.checked = this.isVisible;
     }
   }
 
@@ -483,6 +602,7 @@ class InterestPointsManager {
     }
 
     this.isVisible = true;
+    this.updateMobileToggleVisualState();
     console.log('✓ Interest points shown');
   }
 
@@ -502,6 +622,7 @@ class InterestPointsManager {
     this.clearSelection();
 
     this.isVisible = false;
+    this.updateMobileToggleVisualState();
     console.log('✓ Interest points hidden');
   }
 

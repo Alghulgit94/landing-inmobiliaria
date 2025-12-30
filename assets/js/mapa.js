@@ -434,11 +434,20 @@ class MobileParcelCard {
   }
 
   updateCardContent(parcelData) {
+    // Check if this is an interest point
+    const isInterestPoint = parcelData.isInterestPoint || (parcelData.estado && parcelData.estado.toString().toLowerCase().includes('punto-interes'));
+
     // Set image - use data URL for placeholder to avoid network issues
     const imageUrl = parcelData.photo || parcelData.imagen || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect width="80" height="80" fill="%232f8b46"/%3E%3Ctext x="40" y="45" font-family="Arial" font-size="12" fill="white" text-anchor="middle"%3ELote%3C/text%3E%3C/svg%3E';
     if (this.elements.image) {
       this.elements.image.src = imageUrl;
       this.elements.image.alt = `Imagen de ${parcelData.name || 'la propiedad'}`;
+
+      // Hide image container for interest points
+      const imageContainer = this.elements.image.parentElement;
+      if (imageContainer) {
+        imageContainer.style.display = isInterestPoint ? 'none' : 'block';
+      }
     }
 
     // Set title
@@ -451,7 +460,10 @@ class MobileParcelCard {
     let statusText = 'Disponible';
     let statusClass = 'disponible';
 
-    if (estado.includes('res')) {
+    if (estado.includes('punto-interes')) {
+      statusText = 'Punto de Interés';
+      statusClass = 'punto-interes';
+    } else if (estado.includes('res')) {
       statusText = 'Reservado';
       statusClass = 'reservado';
     } else if (estado.includes('ven')) {
@@ -462,12 +474,15 @@ class MobileParcelCard {
     if (this.elements.status) {
       this.elements.status.textContent = statusText;
       this.elements.status.className = `mobile-card-status ${statusClass}`;
+
+      // Hide status badge for interest points
+      this.elements.status.style.display = isInterestPoint ? 'none' : 'inline-block';
     }
 
-    // Set coordinates from centroid data
+    // Set coordinates from centroid data or direct lat/lng (for interest points)
     if (this.elements.coordinates) {
-      const lat = parcelData.centroide_lat || parcelData.centroid_lat;
-      const lng = parcelData.centroide_lng || parcelData.centroid_lng;
+      const lat = parcelData.latitude || parcelData.centroide_lat || parcelData.centroid_lat;
+      const lng = parcelData.longitude || parcelData.centroide_lng || parcelData.centroid_lng;
 
       if (lat && lng) {
         // Format with 6 decimal places for precision
@@ -479,25 +494,33 @@ class MobileParcelCard {
       }
     }
 
-    // Set price
+    // Set price (hide for interest points)
     const price = parcelData.precio || parcelData.price;
     if (this.elements.price) {
-      if (price && price !== 'null' && price !== '') {
-        const formattedPrice = new Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-          minimumFractionDigits: 0,
-          maximumFractionDigits: 0
-        }).format(price);
-        this.elements.price.textContent = formattedPrice;
+      if (isInterestPoint) {
+        // Hide price element completely for interest points
+        this.elements.price.style.display = 'none';
       } else {
-        this.elements.price.textContent = 'Consultar';
+        this.elements.price.style.display = 'block';
+        if (price && price !== 'null' && price !== '') {
+          const formattedPrice = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+          }).format(price);
+          this.elements.price.textContent = formattedPrice;
+        } else {
+          this.elements.price.textContent = 'Consultar';
+        }
       }
     }
 
-    // Configure reserve button
+    // Configure reserve button (hide for interest points and unavailable parcels)
     if (this.elements.reserveBtn) {
-      if (estado.includes('disp')) {
+      if (parcelData.isInterestPoint || estado.includes('punto-interes')) {
+        this.elements.reserveBtn.style.display = 'none';
+      } else if (estado.includes('disp')) {
         this.elements.reserveBtn.style.display = 'block';
       } else {
         this.elements.reserveBtn.style.display = 'none';
