@@ -23,7 +23,7 @@
     },
     "why_live_here": {
       "title": "Warum Colonia Independencia?",
-      "subtitle": "Vier gute Gründe: Sicherheit, Gemeinschaft, Versorgung und Anbindung.",
+      "subtitle": "Fünf gute Gründe: Sicherheit, Gemeinschaft, Versorgung und Anbindung.",
       "cta": {
         "text": "Finden Sie jetzt Ihr ideales Grundstück!",
         "description": "Entdecken Sie verfügbare Projekte und wählen Sie das Grundstück, das zu Ihrem Lebensplan passt."
@@ -47,6 +47,16 @@
             "Deutsch- und Englischkurse",
             "Kunst- und Werkstattangebote",
             "Regelmäßige Gemeinschaftsveranstaltungen"
+          ]
+        },
+        "cultural_activities": {
+          "title": "Kulturelle Aktivitäten",
+          "description": "Tauchen Sie ein in die reiche deutsche Kultur mit traditionellen Veranstaltungen, Live-Musik und Zugang zu einer spezialisierten Bibliothek. Erleben und lernen Sie deutsche Traditionen.",
+          "features": [
+            "Traditionelle deutsche Veranstaltungen",
+            "Traditionelle Musikkapelle",
+            "Bibliothek mit deutscher Sammlung",
+            "Gemeinschaftsfeste und Feiern"
           ]
         },
         "tranquility": {
@@ -213,6 +223,7 @@
       "hero": "Panorama der Entwicklung mit Häusern und Grünflächen",
       "schools": "Kinder in einer bilingualen Schule",
       "club": "Einrichtungen des Gemeinschaftsklubs",
+      "cultural_activities": "Chorhaus und deutsche kulturelle Aktivitäten in Colonia Independencia",
       "tranquility": "Landschaft mit großen Parzellen",
       "connectivity": "Karte mit lokalen Straßenverbindungen"
     },

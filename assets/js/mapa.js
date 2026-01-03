@@ -219,6 +219,152 @@ class ParcelTooltip {
 const parcelTooltip = new ParcelTooltip('parcelTooltip');
 
 // ===========================
+// PARCEL CAROUSEL UTILITIES - Image Randomization and Management
+// ===========================
+
+/**
+ * Fisher-Yates shuffle algorithm for randomizing array order
+ * @param {Array} array - Array to shuffle
+ * @returns {Array} - Shuffled array
+ */
+function shuffleArray(array) {
+  const shuffled = [...array]; // Create a copy to avoid mutating original
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+/**
+ * Get randomized parcel images array
+ * @param {Object} parcelData - Parcel data object
+ * @returns {Array} - Array of randomized image URLs
+ */
+function getRandomizedParcelImages(parcelData) {
+  const baseImages = [
+    'assets/img/Wiesental1.webp',
+    'assets/img/Wiesental2.webp',
+    'assets/img/Wiesental3.webp'
+  ];
+
+  // Add parcel-specific image if available
+  const parcelImage = parcelData.photo || parcelData.imagen;
+  if (parcelImage && parcelImage !== 'null' && parcelImage !== '') {
+    baseImages.push(parcelImage);
+  }
+
+  // Shuffle and return
+  return shuffleArray(baseImages);
+}
+
+// Parcel Carousel State
+let parcelCarouselState = {
+  currentIndex: 0,
+  images: [],
+  track: null,
+  dotsContainer: null,
+  prevBtn: null,
+  nextBtn: null
+};
+
+/**
+ * Initialize parcel carousel with images
+ * @param {Array} images - Array of image URLs
+ */
+function initializeParcelCarousel(images) {
+  parcelCarouselState.images = images;
+  parcelCarouselState.currentIndex = 0;
+
+  // Get DOM elements
+  parcelCarouselState.track = document.getElementById('parcelCarouselTrack');
+  parcelCarouselState.dotsContainer = document.getElementById('parcelCarouselDots');
+
+  if (!parcelCarouselState.track || !parcelCarouselState.dotsContainer) {
+    console.warn('Parcel carousel elements not found');
+    return;
+  }
+
+  // Clear existing content
+  parcelCarouselState.track.innerHTML = '';
+  parcelCarouselState.dotsContainer.innerHTML = '';
+
+  // Add images to track
+  images.forEach((imgUrl, index) => {
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = `Imagen del lote ${index + 1}`;
+    img.loading = index === 0 ? 'eager' : 'lazy';
+    parcelCarouselState.track.appendChild(img);
+  });
+
+  // Add dot indicators
+  images.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.className = `parcel-carousel__dot ${index === 0 ? 'parcel-carousel__dot--active' : ''}`;
+    dot.addEventListener('click', () => goToParcelSlide(index));
+    parcelCarouselState.dotsContainer.appendChild(dot);
+  });
+
+  // Reset position
+  updateParcelCarouselPosition();
+}
+
+/**
+ * Go to specific slide
+ * @param {number} index - Slide index
+ */
+function goToParcelSlide(index) {
+  if (!parcelCarouselState.images.length) return;
+
+  parcelCarouselState.currentIndex = index;
+  updateParcelCarouselPosition();
+}
+
+/**
+ * Go to next slide
+ */
+function nextParcelSlide() {
+  if (!parcelCarouselState.images.length) return;
+
+  parcelCarouselState.currentIndex = (parcelCarouselState.currentIndex + 1) % parcelCarouselState.images.length;
+  updateParcelCarouselPosition();
+}
+
+/**
+ * Go to previous slide
+ */
+function prevParcelSlide() {
+  if (!parcelCarouselState.images.length) return;
+
+  parcelCarouselState.currentIndex =
+    (parcelCarouselState.currentIndex - 1 + parcelCarouselState.images.length) % parcelCarouselState.images.length;
+  updateParcelCarouselPosition();
+}
+
+/**
+ * Update carousel position and active states
+ */
+function updateParcelCarouselPosition() {
+  if (!parcelCarouselState.track) return;
+
+  const translateX = -(parcelCarouselState.currentIndex * 100);
+  parcelCarouselState.track.style.transform = `translateX(${translateX}%)`;
+
+  // Update dot indicators
+  if (parcelCarouselState.dotsContainer) {
+    const dots = parcelCarouselState.dotsContainer.querySelectorAll('.parcel-carousel__dot');
+    dots.forEach((dot, index) => {
+      if (index === parcelCarouselState.currentIndex) {
+        dot.classList.add('parcel-carousel__dot--active');
+      } else {
+        dot.classList.remove('parcel-carousel__dot--active');
+      }
+    });
+  }
+}
+
+// ===========================
 // MOBILE RESPONSIVENESS MANAGER - Following Single Responsibility Principle
 // ===========================
 class MobileResponsiveManager {
@@ -437,8 +583,10 @@ class MobileParcelCard {
     // Check if this is an interest point
     const isInterestPoint = parcelData.isInterestPoint || (parcelData.estado && parcelData.estado.toString().toLowerCase().includes('punto-interes'));
 
-    // Set image - use data URL for placeholder to avoid network issues
-    const imageUrl = parcelData.photo || parcelData.imagen || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="80" height="80"%3E%3Crect width="80" height="80" fill="%232f8b46"/%3E%3Ctext x="40" y="45" font-family="Arial" font-size="12" fill="white" text-anchor="middle"%3ELote%3C/text%3E%3C/svg%3E';
+    // Get randomized images and use the first one for mobile card
+    const randomizedImages = getRandomizedParcelImages(parcelData);
+    const imageUrl = randomizedImages[0];
+
     if (this.elements.image) {
       this.elements.image.src = imageUrl;
       this.elements.image.alt = `Imagen de ${parcelData.name || 'la propiedad'}`;
@@ -1226,12 +1374,9 @@ function showParcelSidebar(parcelData) {
     parcelTooltip.hide();
   }
 
-  // Set header image (use placeholder if no image available)
-  const imageUrl = parcelData.photo || parcelData.imagen || 'https://via.placeholder.com/350x200/2f8b46/ffffff?text=Propiedad';
-  if (parcelImage) {
-    parcelImage.src = imageUrl;
-    parcelImage.alt = `Imagen de ${parcelData.name || 'la propiedad'}`;
-  }
+  // Initialize carousel with randomized images
+  const carouselImages = getRandomizedParcelImages(parcelData);
+  initializeParcelCarousel(carouselImages);
 
   // Set status with proper styling
   const estado = (parcelData.estado || 'disponible').toString().toLowerCase();
@@ -1413,6 +1558,24 @@ function initializeSidebarEventHandlers() {
       hideParcelSidebar();
     }
   });
+
+  // Carousel navigation buttons
+  const prevBtn = document.getElementById('parcelPrevBtn');
+  const nextBtn = document.getElementById('parcelNextBtn');
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevParcelSlide();
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextParcelSlide();
+    });
+  }
 }
 
 // Initialize filter event handlers

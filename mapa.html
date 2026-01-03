@@ -43,8 +43,19 @@
 
           <!-- Parcel Information -->
           <div class="parcel-info" id="parcelInfo">
-            <div class="parcel-image">
-              <img id="parcelImage" src="" alt="Imagen del lote" />
+            <div class="parcel-image parcel-carousel">
+              <div class="parcel-carousel__track" id="parcelCarouselTrack">
+                <!-- Images will be dynamically inserted here -->
+              </div>
+              <button class="parcel-carousel__arrow parcel-carousel__arrow--prev" id="parcelPrevBtn" aria-label="Imagen anterior">
+                <span>‹</span>
+              </button>
+              <button class="parcel-carousel__arrow parcel-carousel__arrow--next" id="parcelNextBtn" aria-label="Siguiente imagen">
+                <span>›</span>
+              </button>
+              <div class="parcel-carousel__dots" id="parcelCarouselDots">
+                <!-- Dot indicators will be dynamically inserted here -->
+              </div>
             </div>
 
             <span class="status-badge" id="parcelStatusBadge">Disponible</span>

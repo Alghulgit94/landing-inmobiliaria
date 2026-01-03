@@ -1119,10 +1119,35 @@ video {
   height: 300px;
   object-fit: cover;
   transition: transform var(--transition-slow);
+  flex-shrink: 0;
 }
 
 .reason-item:hover .reason-item__image {
   transform: scale(1.05);
+}
+
+/* Carousel Styles */
+.reason-carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.reason-carousel__track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reason-carousel__track.animating {
+  pointer-events: none;
+}
+
+/* Remove old animation-based approach */
+@keyframes carouselScroll {
+  /* Kept for backwards compatibility but not used */
+  0%, 100% {
+    transform: translateX(0);
+  }
 }
 
 .reason-item__title {

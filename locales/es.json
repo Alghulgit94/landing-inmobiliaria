@@ -23,7 +23,7 @@
     },
     "why_live_here": {
       "title": "¿Por qué elegir vivir en Colonia Independencia?",
-      "subtitle": "Cuatro razones claras para mudarte: seguridad, comunidad, servicios y conexión.",
+      "subtitle": "Cinco razones claras para mudarte: seguridad, comunidad, servicios y conexión.",
       "cta": {
         "text": "¡Encuentra tu lote ideal ahora!",
         "description": "Explora los proyectos disponibles y descubre el lote que encaja con tu plan de vida."
@@ -40,13 +40,23 @@
           ]
         },
         "club": {
-          "title": "Club alemán y vida cultural",
+          "title": "Club alemán",
           "description": "Un club privado y actividades culturales que facilitan integración, ocio y aprendizaje en un entorno familiar.",
           "features": [
             "Instalaciones deportivas y recreativas",
             "Clases de alemán e inglés",
             "Talleres culturales y artísticos",
             "Eventos comunitarios regulares"
+          ]
+        },
+        "cultural_activities": {
+          "title": "Actividades Culturales",
+          "description": "Sumérgete en la rica cultura alemana con eventos tradicionales, música en vivo, y acceso a biblioteca especializada. Vive y aprende de las tradiciones germanas.",
+          "features": [
+            "Eventos tradicionales alemanes",
+            "Banda de música tradicional",
+            "Biblioteca con acervo alemán",
+            "Festivales y celebraciones comunitarias"
           ]
         },
         "tranquility": {
@@ -167,20 +177,20 @@
       "subtitle": "Profesionales locales que acompañan tu mudanza paso a paso",
       "team": {
         "john_powell": {
-          "name": "John Powell",
-          "title": "Soporte al Cliente"
+          "name": "Anette Klumpp",
+          "title": ""
         },
         "thomas_powell": {
-          "name": "Thomas Powell",
-          "title": "Marketing"
+          "name": "Jorge Klumpp",
+          "title": ""
         },
         "tom_wilson": {
-          "name": "Tom Wilson",
-          "title": "Diseñador"
+          "name": "Magdalena Bohnert",
+          "title": ""
         },
         "samuel_palmer": {
-          "name": "Samuel Palmer",
-          "title": "Marketing"
+          "name": "Orlando E. Jorgge",
+          "title": ""
         }
       }
     },
@@ -213,6 +223,7 @@
       "hero": "Panorámica del desarrollo: casas, áreas verdes y caminos",
       "schools": "Niños en colegio bilingüe",
       "club": "Instalaciones del club comunitario",
+      "cultural_activities": "Casa coral y actividades culturales alemanas en Colonia Independencia",
       "tranquility": "Paisaje campestre con terrenos amplios",
       "connectivity": "Mapa de la zona con conexiones viales"
     },
