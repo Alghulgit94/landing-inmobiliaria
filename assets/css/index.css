@@ -1144,8 +1144,10 @@ video {
 
 /* Remove old animation-based approach */
 @keyframes carouselScroll {
+
   /* Kept for backwards compatibility but not used */
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0);
   }
 }
@@ -1702,7 +1704,7 @@ video {
 .team-card__name {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-base);
   color: var(--color-white);
   margin-bottom: var(--spacing-xs);
   line-height: var(--line-height-snug);
@@ -1867,6 +1869,7 @@ video {
 
 /* Tablet Breakpoint (1024px and below) - Responsive Navigation */
 @media (max-width: 1024px) {
+
   /* Show Hamburger Menu */
   .hamburger-menu {
     display: flex !important;
