@@ -2029,6 +2029,12 @@ video {
 
   .team-card {
     height: 300px;
+    background-color: var(--color-light-gray);
+  }
+
+  .team-card__image {
+    object-fit: contain;
+    object-position: center;
   }
 
   .team-card__overlay {
@@ -2345,6 +2351,12 @@ video {
     height: 280px;
     max-width: 350px;
     margin: 0 auto;
+    background-color: var(--color-light-gray);
+  }
+
+  .team-card__image {
+    object-fit: contain;
+    object-position: center;
   }
 
   .team-card__overlay {
