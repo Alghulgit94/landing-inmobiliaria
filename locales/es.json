@@ -25,13 +25,13 @@
       "title": "¿Por qué elegir vivir en Colonia Independencia?",
       "subtitle": "Cinco razones claras para mudarte: seguridad, cultura, comunidad, servicios y conexión.",
       "cta": {
-        "text": "¡Encuentra tu lote ideal ahora!",
+        "text": "¡Encuentra tu terreno ideal ahora!",
         "description": "Explora los proyectos disponibles y descubre el lote que encaja con tu plan de vida."
       },
       "reasons": {
         "schools": {
-          "title": "Educación de excelencia",
-          "description": "Opciones educativas de alto nivel — colegios bilingües y programas internacionales ideales para familias que valoran la educación.",
+          "title": "Buena educación",
+          "description": "Opciones educativas de buen nivel: colegios bilingües, perfectos para familias que buscan educación de calidad cerca de casa.",
           "features": [
             "Colegios con programas en alemán",
             "Educación bilingüe de calidad",
@@ -41,12 +41,12 @@
         },
         "club": {
           "title": "Club alemán",
-          "description": "Un club privado y actividades culturales que facilitan integración, ocio y aprendizaje en un entorno familiar.",
+          "description": "Entidades deportivas y culturales que facilitan integración, ocio y aprendizaje en un entorno familiar.",
           "features": [
             "Instalaciones deportivas y recreativas",
             "Clases de alemán e inglés",
             "Talleres culturales y artísticos",
-            "Eventos comunitarios regulares"
+            "Eventos sociales regulares"
           ]
         },
         "cultural_activities": {
@@ -82,7 +82,7 @@
       }
     },
     "loteamientos": {
-      "title": "Nuestros Loteamientos",
+      "title": "Nuestros Terrenos",
       "subtitle": "Lotes listos para construir: familiares, comerciales y agroindustriales.",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
@@ -161,11 +161,11 @@
       "cta": "Ver mapa interactivo"
     },
     "loteamiento_cta": {
-      "title": "Explora nuestros loteamientos con precisión total",
+      "title": "Descubre nuestros terrenos con precisión total",
       "description": "Mapa interactivo con dimensiones reales, imágenes satelitales y disponibilidad actualizada. Todo lo que necesitas para decidir con seguridad.",
       "features": [
         "Mapas interactivos de alta resolución",
-        "Dimensiones exactas de cada lote",
+        "Dimensiones exactas de cada terreno",
         "Vista satelital en tiempo real",
         "Estado de disponibilidad actualizado"
       ],
@@ -196,7 +196,7 @@
     },
     "footer": {
       "brand_title": "INMOBILIARIA MEGA PROYECTOS",
-      "brand_description": "Construimos comunidades seguras y sostenibles desde 2010. Tu hogar ideal te espera en Colonia Independencia.",
+      "brand_description": "Ofrecemos comunidades seguras y sostenibles desde 2024. Tu hogar ideal te espera en Colonia Independencia.",
       "navigation_title": "Navegación",
       "contact_title": "Contacto",
       "address": "Colonia Independencia\n Paraguay",

@@ -1,52 +1,52 @@
 {
   "navigation": {
     "home": "Start",
-    "lots": "Projekte",
-    "why_live_here": "Warum hier leben",
-    "about_us": "Über uns",
-    "view_map": "Karte ansehen",
-    "get_reservation": "Grundstück reservieren"
+    "lots": "Parzellen",
+    "why_live_here": "Warum hier leben?",
+    "about_us": "Wir",
+    "view_map": "Siehe Karte",
+    "get_reservation": "Reservieren Sie jetzt Ihr Grundstück"
   },
   "titles": {
-    "main_title": "Impact Immobilien — Ihr neues Zuhause in Colonia Independencia",
-    "brand": "MEGA PROJEKTE IMMOBILIEN"
+    "main_title": "MEGA PROYECTOS IMMOBILIEN – Ihr neues Zuhause in Colonia Independencia",
+    "brand": "MEGA PROYECTOS IMMOBILIEN"
   },
   "index": {
-    "page_title": "Impact Immobilien — Ihr neues Zuhause in Colonia Independencia",
-    "meta_description": "Ruhige, sichere Grundstücksentwicklungen in Colonia Independencia mit interaktiven Karten, bautauglichen Parzellen und lokaler Betreuung. Ideal für Ruheständler und Familien.",
-    "meta_keywords": "grundstücke, parzellen, ruhestand, Colonia Independencia, ruhiges wohnen, sichere investition",
+    "page_title": "MEGA PROYECTOS IMMOBILIEN – Ihr neues Zuhause in Colonia Independencia",
+    "meta_description": "Wohnprojekte in Colonia Independencia – für ein ruhiges, sicheres Leben in der Nähe aller Annehmlichkeiten. Interaktive Karten, sofort bebaubare Grundstücke und individuelle Beratung.",
+    "meta_keywords": "Grundstücke, Land, Ruhestand, Rentner, Colonia Independencia, ruhiges Leben, sichere Kapitalanlage",
     "hero": {
-      "title": "Ein ruhiger Ort für Ihr neues Kapitel",
-      "subtitle": "Grundstücke für Menschen, die Sicherheit, Raum und Gemeinschaft suchen.",
-      "description": "Entdecken Sie unsere Projekte mit hochpräzisen interaktiven Karten. Sehen Sie Maße, genaue Lage und aktuelle Verfügbarkeit direkt im Browser.",
-      "cta": "Interaktive Karte ansehen"
+      "title": "Ein friedlicher Ort für Ihr neues Zuhause",
+      "subtitle": "Grundstücke, die Ruhe, Sicherheit und gemeinschaftliches Wohnen perfekt vereinen.",
+      "description": "EErkunden Sie unsere Grundstücke mit hochpräzisen interaktiven Karten. Sie sehen die tatsächlichen Abmessungen, die genaue Lage und die Verfügbarkeit in Echtzeit.",
+      "cta": "Siehe interaktive Karte"
     },
     "why_live_here": {
-      "title": "Warum Colonia Independencia?",
-      "subtitle": "Fünf gute Gründe: Sicherheit, Kultur, Gemeinschaft, Versorgung und Anbindung.",
+      "title": "Warum sollte man sich für ein Leben in Colonia Independencia entscheiden?",
+      "subtitle": "Fünf klare Gründe für einen Umzug: Sicherheit, Gemeinschaft, Dienstleistungen und Vernetzung. ",
       "cta": {
         "text": "Finden Sie jetzt Ihr ideales Grundstück!",
-        "description": "Entdecken Sie verfügbare Projekte und wählen Sie das Grundstück, das zu Ihrem Lebensplan passt."
+        "description": "Entdecken Sie die verfügbaren Projekte und finden Sie das Grundstück, das zu Ihren Lebensplänen passt.Entdecke unsere Projekte und finde das Grundstück, das perfekt zu deinem Lebensstil passt."
       },
       "reasons": {
         "schools": {
-          "title": "Hervorragende Bildung",
-          "description": "Qualitativ hochwertige Schulangebote — bilingual und international, ideal für Familien.",
+          "title": "Gute Schulausbildung",
+          "description": "Hochwertige Bildungsangebote: zweisprachige Schulen, ideal für Familien, die eine qualitativ hochwertige Bildung in Wohnortnähe suchen.",
           "features": [
-            "Deutsche Schulangebote verfügbar",
-            "Hochwertige bilingualer Unterricht",
-            "Internationale Programme",
+            "Schulen mit deutschen Programmen",
+            "Hochwertiger zweisprachiger Unterricht",
+            "Internationale Programmes",
             "Renommierte öffentliche Schulen"
           ]
         },
         "club": {
-          "title": "Deutscher Klub & Kultur",
-          "description": "Ein privater Klub und kulturelle Angebote, die Integration, Freizeit und Gemeinschaft fördern.",
+          "title": "Deutsches Vereins",
+          "description": "Lernen im familiären Umfeld fördern. Sport- und Kulturorganisationendie Integration, Freizeitgestaltung und Lernen im familiären Um",
           "features": [
             "Sport- und Freizeiteinrichtungen",
             "Deutsch- und Englischkurse",
-            "Kunst- und Werkstattangebote",
-            "Regelmäßige Gemeinschaftsveranstaltungen"
+            "Kulterelle und künstlerische Workshops",
+            "Regelmäßige gesellschaftliche Veranstaltungen"
           ]
         },
         "cultural_activities": {
@@ -61,29 +61,29 @@
         },
         "tranquility": {
           "title": "Ruhe und Raum",
-          "description": "Große Parzellen in ruhiger Lage — Privatsphäre, frische Luft und Platz für Hobbys oder kleine Landwirtschaftsprojekte.",
+          "description": "Großzügiges Grundstück in ruhiger Umgebung: Privatsphäre, frische Luft und Platz für Hobbys oder ländliche Projekte.",
           "features": [
             "Sichere, ruhige Umgebung",
-            "Große Parzellen verfügbar",
-            "Ideal für Gartenbau oder Agrarprojekte",
-            "Städtische Versorgung in Reichweite"
+            "Große Grundstücke verfügbar",
+            "Ideal für Gemüsegärten oder landwirtschaftliche Projekte",
+            "Städtische Dienstleistungen zur Hand"
           ]
         },
         "connectivity": {
-          "title": "Strategische Anbindung",
-          "description": "Nahe zu Städten und Einkaufszentren: Ländliche Ruhe mit einfacher Erreichbarkeit von Dienstleistungen und Straßen.",
+          "title": "Strategische Konnektivität",
+          "description": "Nähe zu Städten und Einkaufszentren: das Beste aus dem ländlichen Raum mit einfachem Zugang zu Dienstleistungen und Verkehrsmitteln.",
           "features": [
             "In der Nähe von Einkaufszentren",
-            "Anbindung an Hauptstädte",
-            "Zugang zu wichtigen Straßen",
-            "Städtische Dienste in Reichweite"
+            "Verbindung mit den wichtigsten Städten",
+            "Zugang zu Hauptstraßen",
+            "Nahegelegene städtische Dienstleistungen"
           ]
         }
       }
     },
     "loteamientos": {
-      "title": "Unsere Projekte",
-      "subtitle": "Bautaugliche Parzellen: Wohn-, Gewerbe- und Agrarflächen.",
+      "title": "Unsere Parzellen",
+      "subtitle": "Sofort bebaubare Grundstücke: für Familien, Gewerbe und Agrarindustrie.",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
         "other_options": "Weitere Optionen"
@@ -161,20 +161,20 @@
       "cta": "Interaktive Karte ansehen"
     },
     "loteamiento_cta": {
-      "title": "Entdecken Sie unsere Projekte mit höchster Präzision",
-      "description": "Interaktive Karte mit exakten Maßen, Satellitenansicht und aktueller Verfügbarkeit. Alles, um sicher zu entscheiden.",
+      "title": "Unsere Grundstücke bis ins kleinste Detail erkunden",
+      "description": "Interaktive Karte mit realen Abmessungen, Satellitenbildern und aktuellen Verfügbarkeitsinformationen. Alles, was Sie für eine fundierte Entscheidung benötigen.",
       "features": [
         "Hochauflösende interaktive Karten",
-        "Exakte Parzellengrößen",
-        "Echtzeit-Satellitenansicht",
+        "Genaue Abmessungen jeder Parzelle",
+        "Satellitenansicht in Echtzeit",
         "Aktueller Verfügbarkeitsstatus"
       ],
       "cta": "Interaktive Karte ansehen",
-      "note": "Verfügbarkeit prüfen — einige Parzellen sind einzigartig"
+      "note": "Verfügbarkeit prüfen – einige Grundstücke sind einzigartig"
     },
     "about_us": {
       "title": "Lernen Sie unser Team kennen",
-      "subtitle": "Lokale Experten, die Ihren Umzug Schritt für Schritt begleiten",
+      "subtitle": "Lokale Fachleute, die Sie bei jedem Schritt Ihres Umzugs begleiten.",
       "team": {
         "john_powell": {
           "name": "Anette Klumpp",
@@ -195,8 +195,8 @@
       }
     },
     "footer": {
-      "brand_title": "MEGA PROJEKTE IMMOBILIEN",
-      "brand_description": "Wir schaffen sichere, nachhaltige Gemeinden seit 2010. Ihr ideales Zuhause erwartet Sie in Colonia Independencia.",
+      "brand_title": "MEGA PROYECTOS IMMOBILIEN",
+      "brand_description": "Wir bieten sichere und nachhaltige Wohnanlagen. Ihr ideales Zuhause erwartet Sie in Colonia Independencia",
       "navigation_title": "Navigation",
       "contact_title": "Kontakt",
       "address": "Colonia Independencia\n Paraguay",
@@ -204,15 +204,15 @@
       "email": "info@megaproyectos.com",
       "hours": "Mo - Fr: 09:00 - 18:00\nSa: 09:00 - 14:00",
       "actions_title": "Bereit zu starten?",
-      "view_lots_cta": "Projekte ansehen",
+      "view_lots_cta": "Rufen Sie jetzt an",
       "call_now_cta": "Jetzt anrufen",
-      "copyright": "© 2025 Mega Projekte Immobilien. Alle Rechte vorbehalten.",
+      "copyright": "© 2025 Megaproyectos Immobilien. Alle Rechte vorbehalten.",
       "legal": {
         "terms": "Nutzungsbedingungen",
-        "privacy": "Datenschutz",
+        "privacy": "Datenschutzrichtlinie",
         "legal": "Rechtlicher Hinweis"
       },
-      "attribution": "Angetrieben von hochpräzisen Karten",
+      "attribution": "Hochpräzise Karten",
       "social": {
         "facebook": "Facebook",
         "instagram": "Instagram",
@@ -220,22 +220,22 @@
       }
     },
     "image_alts": {
-      "hero": "Panorama der Entwicklung mit Häusern und Grünflächen",
-      "schools": "Kinder in einer bilingualen Schule",
-      "club": "Einrichtungen des Gemeinschaftsklubs",
+      "hero": "Überblick über die Bebauung: Häuser, Grünflächen und Straßen",
+      "schools": "Kinder einer zweisprachigen Schule",
+      "club": "Einrichtungen des Gemeindezentrums",
       "cultural_activities": "Chorhaus und deutsche kulturelle Aktivitäten in Colonia Independencia",
-      "tranquility": "Landschaft mit großen Parzellen",
+      "tranquility": "Ländliche Umgebung mit weitläufigem Gelände",
       "connectivity": "Karte mit lokalen Straßenverbindungen"
     },
     "aria_labels": {
       "main_nav": "Hauptnavigation",
       "main_section": "Hauptbereich",
       "why_live_section": "Warum hier leben",
-      "loteamiento_section": "Projektbereich",
+      "loteamiento_section": "Grundstücksbereich",
       "about_section": "Über uns",
-      "carousel": "Karussell der Gründe hier zu leben",
-      "carousel_indicators": "Karussellindikatoren",
-      "footer_nav": "Fußzeilen-Navigationslinks"
+      "carousel": "Gründe für ein Leben hier (Karussell)",
+      "carousel_indicators": "Karussell-Indikatoren",
+      "footer_nav": "Fußnoten-Links"
     }
   }
 }
