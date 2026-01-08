@@ -12,10 +12,23 @@
     <div class="map-layout">
       <!-- Header -->
       <header class="map-header">
-        <a href="index.html" class="map-back-button" aria-label="Volver a inicio">
+        <a href="index.html" class="map-back-button" data-i18n-attr="aria-label:mapa.back_button" aria-label="Volver a inicio">
           <span class="back-arrow">←</span>
         </a>
-        <h1 class="map-title">Loteamiento Colonia Independencia</h1>
+        <h1 class="map-title" data-i18n="mapa.header.title">Loteamiento Colonia Independencia</h1>
+
+        <!-- Language Selector (Desktop) -->
+        <div class="language-selector-wrapper language-selector-wrapper--desktop">
+          <select
+            id="language-selector"
+            class="language-selector"
+            aria-label="Seleccionar idioma / Select language / Sprache wählen"
+          >
+            <option value="es" data-flag="🇪🇸" selected>🇪🇸</option>
+            <option value="en" data-flag="🇺🇸">🇺🇸</option>
+            <option value="de" data-flag="🇩🇪">🇩🇪</option>
+          </select>
+        </div>
       </header>
 
       <!-- Map Content Container -->
@@ -23,8 +36,8 @@
         <!-- Left Sidebar - Info Panel -->
         <aside class="sidebar-left" id="sidebarLeft">
         <div class="sidebar-header">
-          <h2 class="sidebar-title">Información del Lote</h2>
-          <button class="sidebar-close" id="sidebarClose" aria-label="Cerrar">
+          <h2 class="sidebar-title" data-i18n="mapa.sidebar.title">Información del Lote</h2>
+          <button class="sidebar-close" id="sidebarClose" data-i18n-attr="aria-label:mapa.sidebar.close" aria-label="Cerrar">
             &times;
           </button>
         </div>
@@ -33,8 +46,8 @@
           <!-- Empty State -->
           <div class="empty-state" id="emptyState">
             <div class="empty-state-icon">🗺️</div>
-            <h3>Selecciona un Lote</h3>
-            <p>
+            <h3 data-i18n="mapa.sidebar.empty_state.title">Selecciona un Lote</h3>
+            <p data-i18n="mapa.sidebar.empty_state.description">
               Haz clic en cualquier lote del mapa para ver información
               detallada, incluyendo precio, dimensiones y estado de
               disponibilidad.
@@ -47,10 +60,10 @@
               <div class="parcel-carousel__track" id="parcelCarouselTrack">
                 <!-- Images will be dynamically inserted here -->
               </div>
-              <button class="parcel-carousel__arrow parcel-carousel__arrow--prev" id="parcelPrevBtn" aria-label="Imagen anterior">
+              <button class="parcel-carousel__arrow parcel-carousel__arrow--prev" id="parcelPrevBtn" data-i18n-attr="aria-label:mapa.sidebar.buttons.prev_image" aria-label="Imagen anterior">
                 <span>‹</span>
               </button>
-              <button class="parcel-carousel__arrow parcel-carousel__arrow--next" id="parcelNextBtn" aria-label="Siguiente imagen">
+              <button class="parcel-carousel__arrow parcel-carousel__arrow--next" id="parcelNextBtn" data-i18n-attr="aria-label:mapa.sidebar.buttons.next_image" aria-label="Siguiente imagen">
                 <span>›</span>
               </button>
               <div class="parcel-carousel__dots" id="parcelCarouselDots">
@@ -58,39 +71,39 @@
               </div>
             </div>
 
-            <span class="status-badge" id="parcelStatusBadge">Disponible</span>
+            <span class="status-badge" id="parcelStatusBadge" data-i18n="mapa.sidebar.status.disponible">Disponible</span>
 
             <div class="info-section">
-              <div class="info-label">Nombre</div>
+              <div class="info-label" data-i18n="mapa.sidebar.labels.name">Nombre</div>
               <div class="info-value" id="parcelName">N/A</div>
             </div>
 
             <div class="info-section">
-              <div class="info-label">Descripción</div>
+              <div class="info-label" data-i18n="mapa.sidebar.labels.description">Descripción</div>
               <div class="info-value" id="parcelDescription">N/A</div>
             </div>
 
             <div class="info-section">
-              <div class="info-label">Lados</div>
+              <div class="info-label" data-i18n="mapa.sidebar.labels.sides">Lados</div>
               <div class="info-value" id="parcelLados">N/A</div>
             </div>
 
             <div class="info-section">
-              <div class="info-label">Coordenadas</div>
+              <div class="info-label" data-i18n="mapa.sidebar.labels.coordinates">Coordenadas</div>
               <div class="info-value" id="parcelCoordinates">N/A</div>
             </div>
 
             <div class="info-section">
-              <div class="info-label">Área (m²)</div>
+              <div class="info-label" data-i18n="mapa.sidebar.labels.area">Área (m²)</div>
               <div class="info-value" id="parcelArea">N/A</div>
             </div>
 
             <div class="price-display">
-              <div class="info-label">Precio</div>
-              <div class="price-amount" id="parcelPrice">Consultar</div>
+              <div class="info-label" data-i18n="mapa.sidebar.labels.price">Precio</div>
+              <div class="price-amount" id="parcelPrice" data-i18n="mapa.sidebar.labels.consult">Consultar</div>
             </div>
 
-            <button class="reserve-btn" id="reserveBtn">Reservar Lote</button>
+            <button class="reserve-btn" id="reserveBtn" data-i18n="mapa.sidebar.buttons.reserve">Reservar Lote</button>
           </div>
         </div>
       </aside>
@@ -114,27 +127,27 @@
       <aside class="sidebar-right">
         <!-- Map Controls Section -->
         <div class="map-controls-section">
-          <h3 class="section-title">Controles</h3>
+          <h3 class="section-title" data-i18n="mapa.controls.title">Controles</h3>
 
           <div class="legend-item" data-control="satellite">
             <input type="checkbox" class="legend-checkbox" id="satToggle" checked />
-            <label for="satToggle" class="legend-label">Satélite</label>
+            <label for="satToggle" class="legend-label" data-i18n="mapa.controls.satellite">Satélite</label>
           </div>
 
           <div class="legend-item" data-control="grayscale">
             <input type="checkbox" class="legend-checkbox" id="grayToggle" />
-            <label for="grayToggle" class="legend-label">Escala Gris</label>
+            <label for="grayToggle" class="legend-label" data-i18n="mapa.controls.grayscale">Escala Gris</label>
           </div>
 
           <div class="legend-item" data-control="interest-points">
             <input type="checkbox" class="legend-checkbox" id="interestPointsToggle" checked />
-            <label for="interestPointsToggle" class="legend-label">Puntos de Interés</label>
+            <label for="interestPointsToggle" class="legend-label" data-i18n="mapa.controls.interest_points">Puntos de Interés</label>
           </div>
         </div>
 
         <!-- Legend Section -->
         <div class="legend-section">
-          <h3 class="section-title">Estado de Lotes</h3>
+          <h3 class="section-title" data-i18n="mapa.legend.title">Estado de Lotes</h3>
 
           <div class="legend-item" data-status="disponible">
             <input
@@ -144,9 +157,7 @@
               checked
             />
             <div class="legend-color disponible"></div>
-            <label for="filterDisponible" class="legend-label"
-              >Disponible</label
-            >
+            <label for="filterDisponible" class="legend-label" data-i18n="mapa.legend.available">Disponible</label>
             <span class="legend-count" id="countDisponible">0</span>
           </div>
 
@@ -158,7 +169,7 @@
               checked
             />
             <div class="legend-color reservado"></div>
-            <label for="filterReservado" class="legend-label">Reservado</label>
+            <label for="filterReservado" class="legend-label" data-i18n="mapa.legend.reserved">Reservado</label>
             <span class="legend-count" id="countReservado">0</span>
           </div>
 
@@ -170,17 +181,17 @@
               checked
             />
             <div class="legend-color vendido"></div>
-            <label for="filterVendido" class="legend-label">Vendido</label>
+            <label for="filterVendido" class="legend-label" data-i18n="mapa.legend.sold">Vendido</label>
             <span class="legend-count" id="countVendido">0</span>
           </div>
         </div>
 
         <!-- Zoom Controls Section -->
         <div class="zoom-section">
-          <h3 class="section-title">Zoom</h3>
+          <h3 class="section-title" data-i18n="mapa.controls.zoom">Zoom</h3>
           <div class="zoom-controls">
-            <button class="zoom-btn" id="zoomIn" aria-label="Acercar">+</button>
-            <button class="zoom-btn" id="zoomOut" aria-label="Alejar">−</button>
+            <button class="zoom-btn" id="zoomIn" data-i18n-attr="aria-label:mapa.controls.zoom_in" aria-label="Acercar">+</button>
+            <button class="zoom-btn" id="zoomOut" data-i18n-attr="aria-label:mapa.controls.zoom_out" aria-label="Alejar">−</button>
           </div>
         </div>
       </aside>
@@ -189,17 +200,17 @@
       <!-- Mobile Components -->
       <!-- Mobile Floating Action Buttons -->
       <div class="mobile-fabs" id="mobileFabs">
-        <button class="mobile-fab" id="mobileMapToggle" aria-label="Opciones de Mapa" title="Mapa">
+        <button class="mobile-fab" id="mobileMapToggle" data-i18n-attr="aria-label:mapa.mobile.map_toggle" aria-label="Opciones de Mapa" title="Mapa">
           <svg class="fab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20.5 3L20.34 3.03L15 5.1L9 3L3.36 4.9C3.15 4.97 3 5.15 3 5.38V20.5C3 20.78 3.22 21 3.5 21L3.66 20.97L9 18.9L15 21L20.64 19.1C20.85 19.03 21 18.85 21 18.62V3.5C21 3.22 20.78 3 20.5 3ZM15 19L9 17V5L15 7V19Z" fill="currentColor"/>
           </svg>
         </button>
-        <button class="mobile-fab" id="mobileLegendToggle" aria-label="Estado de Lotes" title="Leyenda">
+        <button class="mobile-fab" id="mobileLegendToggle" data-i18n-attr="aria-label:mapa.mobile.legend_toggle" aria-label="Estado de Lotes" title="Leyenda">
           <svg class="fab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3 17H9V15H3V17ZM3 13H9V11H3V13ZM3 9H9V7H3V9ZM11 17H21V15H11V17ZM11 13H21V11H11V13ZM11 9H21V7H11V9ZM11 5H21V3H11V5ZM3 5H9V3H3V5Z" fill="currentColor"/>
           </svg>
         </button>
-        <button class="mobile-fab active" id="mobileInterestPointsToggle" aria-label="Puntos de Interés" title="Puntos de Interés">
+        <button class="mobile-fab active" id="mobileInterestPointsToggle" data-i18n-attr="aria-label:mapa.mobile.interest_points_toggle" aria-label="Puntos de Interés" title="Puntos de Interés">
           <svg class="fab-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="currentColor"/>
           </svg>
@@ -209,25 +220,25 @@
       <!-- Mobile Bottom Parcel Card -->
       <div class="mobile-parcel-card" id="mobileParcelCard">
         <!-- Close button positioned in top-right corner -->
-        <button class="mobile-card-close" id="mobileCardClose" aria-label="Cerrar">
+        <button class="mobile-card-close" id="mobileCardClose" data-i18n-attr="aria-label:mapa.mobile.close" aria-label="Cerrar">
           &times;
         </button>
-        
+
         <div class="mobile-card-content">
           <div class="mobile-card-image">
             <img id="mobileCardImage" src="" alt="Imagen del lote" />
           </div>
           <div class="mobile-card-details">
             <h3 class="mobile-card-title" id="mobileCardTitle">Lote N/A</h3>
-            <span class="mobile-card-status" id="mobileCardStatus">Disponible</span>
+            <span class="mobile-card-status" id="mobileCardStatus" data-i18n="mapa.sidebar.status.disponible">Disponible</span>
             <p class="mobile-card-location" id="mobileCardLocation">Colonia Independencia</p>
             <p class="mobile-card-coordinates" id="mobileCardCoordinates">N/A, N/A</p>
-            <p class="mobile-card-price" id="mobileCardPrice">Consultar</p>
+            <p class="mobile-card-price" id="mobileCardPrice" data-i18n="mapa.sidebar.labels.consult">Consultar</p>
           </div>
         </div>
-        
+
         <div class="mobile-card-actions">
-          <button class="mobile-reserve-btn" id="mobileReserveBtn">Reservar</button>
+          <button class="mobile-reserve-btn" id="mobileReserveBtn" data-i18n="mapa.mobile.reserve">Reservar</button>
         </div>
       </div>
 
@@ -237,16 +248,25 @@
       <div class="mobile-bottom-sheet" id="mapBottomSheet">
         <div class="mobile-bottom-sheet-header">
           <div class="mobile-bottom-sheet-handle"></div>
-          <h3 class="mobile-bottom-sheet-title">Opciones de Mapa</h3>
+          <h3 class="mobile-bottom-sheet-title" data-i18n="mapa.mobile.map_options">Opciones de Mapa</h3>
         </div>
         <div class="mobile-bottom-sheet-content">
           <div class="mobile-sheet-option" id="mobileSatelliteOption">
             <input type="checkbox" class="mobile-sheet-checkbox" id="mobileSatToggle" checked />
-            <label for="mobileSatToggle" class="mobile-sheet-label">Satélite</label>
+            <label for="mobileSatToggle" class="mobile-sheet-label" data-i18n="mapa.controls.satellite">Satélite</label>
           </div>
           <div class="mobile-sheet-option" id="mobileGrayscaleOption">
             <input type="checkbox" class="mobile-sheet-checkbox" id="mobileGrayToggle" />
-            <label for="mobileGrayToggle" class="mobile-sheet-label">Escala de Grises</label>
+            <label for="mobileGrayToggle" class="mobile-sheet-label" data-i18n="mapa.mobile.grayscale_label">Escala de Grises</label>
+          </div>
+
+          <!-- Language Selector for Mobile -->
+          <div class="mobile-sheet-divider"></div>
+          <h4 class="mobile-sheet-subtitle" data-i18n="mapa.mobile.language_selector">Seleccionar idioma</h4>
+          <div class="mobile-language-selector">
+            <button class="mobile-lang-btn active" data-lang="es" aria-label="Español">🇪🇸 Español</button>
+            <button class="mobile-lang-btn" data-lang="en" aria-label="English">🇺🇸 English</button>
+            <button class="mobile-lang-btn" data-lang="de" aria-label="Deutsch">🇩🇪 Deutsch</button>
           </div>
         </div>
       </div>
@@ -256,25 +276,25 @@
       <div class="mobile-bottom-sheet" id="legendBottomSheet">
         <div class="mobile-bottom-sheet-header">
           <div class="mobile-bottom-sheet-handle"></div>
-          <h3 class="mobile-bottom-sheet-title">Estado de Lotes</h3>
+          <h3 class="mobile-bottom-sheet-title" data-i18n="mapa.mobile.lot_status">Estado de Lotes</h3>
         </div>
         <div class="mobile-bottom-sheet-content">
           <div class="mobile-sheet-option" id="mobileDisponibleOption">
             <input type="checkbox" class="mobile-sheet-checkbox" id="mobileFilterDisponible" checked />
             <div class="mobile-sheet-color disponible"></div>
-            <label for="mobileFilterDisponible" class="mobile-sheet-label">Disponible</label>
+            <label for="mobileFilterDisponible" class="mobile-sheet-label" data-i18n="mapa.legend.available">Disponible</label>
             <span class="mobile-sheet-count" id="mobileCountDisponible">0</span>
           </div>
           <div class="mobile-sheet-option" id="mobileReservadoOption">
             <input type="checkbox" class="mobile-sheet-checkbox" id="mobileFilterReservado" checked />
             <div class="mobile-sheet-color reservado"></div>
-            <label for="mobileFilterReservado" class="mobile-sheet-label">Reservado</label>
+            <label for="mobileFilterReservado" class="mobile-sheet-label" data-i18n="mapa.legend.reserved">Reservado</label>
             <span class="mobile-sheet-count" id="mobileCountReservado">0</span>
           </div>
           <div class="mobile-sheet-option" id="mobileVendidoOption">
             <input type="checkbox" class="mobile-sheet-checkbox" id="mobileFilterVendido" checked />
             <div class="mobile-sheet-color vendido"></div>
-            <label for="mobileFilterVendido" class="mobile-sheet-label">Vendido</label>
+            <label for="mobileFilterVendido" class="mobile-sheet-label" data-i18n="mapa.legend.sold">Vendido</label>
             <span class="mobile-sheet-count" id="mobileCountVendido">0</span>
           </div>
         </div>
@@ -287,6 +307,9 @@
 
     <!-- Supabase Client Library -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Internationalization -->
+    <script src="assets/js/i18n.js"></script>
 
     <!-- Supabase Integration -->
     <script src="assets/js/supabase-client.js"></script>

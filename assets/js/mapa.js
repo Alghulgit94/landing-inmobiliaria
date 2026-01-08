@@ -2095,3 +2095,123 @@ document.getElementById('grayToggle')?.addEventListener('change', function () {
 
   observer.observe(document.getElementById('map'), { childList: true, subtree: true });
 });
+
+// ===========================
+// INTERNATIONALIZATION SUPPORT
+// ===========================
+
+/**
+ * Initialize language selector and event handlers
+ */
+function initializeLanguageSupport() {
+  // Get desktop language selector
+  const desktopSelector = document.getElementById('language-selector');
+
+  // Get mobile language buttons
+  const mobileLangButtons = document.querySelectorAll('.mobile-lang-btn');
+
+  // Sync desktop selector with i18n.js language changes
+  if (desktopSelector) {
+    // Update desktop selector on language change
+    document.addEventListener('languageChanged', (e) => {
+      const newLang = e.detail.language;
+      if (desktopSelector.value !== newLang) {
+        desktopSelector.value = newLang;
+      }
+
+      // Update mobile button active states
+      syncMobileLanguageButtons(newLang);
+
+      // Retranslate dynamic content
+      retranslateDynamicContent(newLang);
+    });
+
+    // Handle desktop selector changes
+    desktopSelector.addEventListener('change', (e) => {
+      const selectedLang = e.target.value;
+      if (window.i18n && window.i18n.setLanguage) {
+        window.i18n.setLanguage(selectedLang);
+      }
+    });
+  }
+
+  // Handle mobile language button clicks
+  mobileLangButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedLang = btn.getAttribute('data-lang');
+      if (window.i18n && window.i18n.setLanguage) {
+        window.i18n.setLanguage(selectedLang);
+      }
+
+      // Hide mobile map options sheet after selection
+      if (mobileBottomSheets) {
+        setTimeout(() => {
+          mobileBottomSheets.hideSheet('map');
+        }, 300);
+      }
+    });
+  });
+}
+
+/**
+ * Sync mobile language button active states
+ * @param {string} lang - Current language code
+ */
+function syncMobileLanguageButtons(lang) {
+  const mobileLangButtons = document.querySelectorAll('.mobile-lang-btn');
+  mobileLangButtons.forEach(btn => {
+    if (btn.getAttribute('data-lang') === lang) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+/**
+ * Retranslate dynamic content that may have been set by JavaScript
+ * @param {string} lang - Current language code
+ */
+function retranslateDynamicContent(lang) {
+  if (!window.i18n) return;
+
+  // Retranslate status badges if sidebar is open
+  if (isSidebarVisible && parcelStatusBadge) {
+    const statusClass = parcelStatusBadge.className.replace('status-badge ', '');
+    const statusKey = `mapa.sidebar.status.${statusClass}`;
+    const translatedStatus = window.i18n.t(statusKey);
+    if (translatedStatus !== statusKey) {
+      parcelStatusBadge.textContent = translatedStatus;
+    }
+  }
+
+  // Retranslate mobile card status if visible
+  if (mobileParcelCard && mobileParcelCard.isCardVisible()) {
+    const mobileStatus = document.getElementById('mobileCardStatus');
+    if (mobileStatus) {
+      const statusClass = mobileStatus.className.replace('mobile-card-status ', '');
+      const statusKey = `mapa.sidebar.status.${statusClass}`;
+      const translatedStatus = window.i18n.t(statusKey);
+      if (translatedStatus !== statusKey) {
+        mobileStatus.textContent = translatedStatus;
+      }
+    }
+  }
+
+  // Update "Consultar" price text if needed
+  if (parcelPrice && parcelPrice.textContent === 'Consultar') {
+    parcelPrice.textContent = window.i18n.t('mapa.sidebar.labels.consult');
+  }
+
+  const mobilePrice = document.getElementById('mobileCardPrice');
+  if (mobilePrice && mobilePrice.textContent === 'Consultar') {
+    mobilePrice.textContent = window.i18n.t('mapa.sidebar.labels.consult');
+  }
+}
+
+// Initialize language support when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeLanguageSupport);
+} else {
+  initializeLanguageSupport();
+}

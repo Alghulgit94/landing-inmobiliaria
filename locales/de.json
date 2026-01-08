@@ -18,7 +18,7 @@
     "hero": {
       "title": "Ein friedlicher Ort für Ihr neues Zuhause",
       "subtitle": "Grundstücke, die Ruhe, Sicherheit und gemeinschaftliches Wohnen perfekt vereinen.",
-      "description": "EErkunden Sie unsere Grundstücke mit hochpräzisen interaktiven Karten. Sie sehen die tatsächlichen Abmessungen, die genaue Lage und die Verfügbarkeit in Echtzeit.",
+      "description": "Erkunden Sie unsere Grundstücke mit hochpräzisen interaktiven Karten. Sie sehen die tatsächlichen Abmessungen, die genaue Lage und die Verfügbarkeit in Echtzeit.",
       "cta": "Siehe interaktive Karte"
     },
     "why_live_here": {
@@ -56,7 +56,7 @@
             "Traditionelle deutsche Veranstaltungen",
             "Traditionelle Musikkapelle",
             "Bibliothek mit deutscher Sammlung",
-            "Das traditionelle deutsche Choppfest in Paraguay"
+            "Das traditionelle deutsche Volkfest in Paraguay"
           ]
         },
         "tranquility": {
@@ -84,6 +84,13 @@
     "loteamientos": {
       "title": "Unsere Parzellen",
       "subtitle": "Sofort bebaubare Grundstücke: für Familien, Gewerbe und Agrarindustrie.",
+      "dimensions_available": "Abmessungen verfügbar",
+      "no_description": "Keine Beschreibung verfügbar",
+      "parcels_count": "Parzellen",
+      "loading": "Parzellen werden geladen...",
+      "error": "Fehler beim Laden der Parzellen. Bitte versuchen Sie es erneut.",
+      "retry": "Erneut versuchen",
+      "view_map_button": "Siehe Karte",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
         "other_options": "Weitere Optionen"
@@ -236,6 +243,121 @@
       "carousel": "Gründe für ein Leben hier (Karussell)",
       "carousel_indicators": "Karussell-Indikatoren",
       "footer_nav": "Fußnoten-Links"
+    }
+  },
+  "mapa": {
+    "page_title": "Interaktive Karte - Entwicklung Colonia Independencia",
+    "meta_description": "Erkunden Sie unsere Grundstücke mit hochpräzisen interaktiven Karten. Echte Abmessungen, genaue Lage und Live-Verfügbarkeit.",
+    "back_button": "Zurück zur Startseite",
+    "header": {
+      "title": "Wiesental"
+    },
+    "sidebar": {
+      "title": "Grundstücksinformationen",
+      "close": "Schließen",
+      "empty_state": {
+        "title": "Wählen Sie ein Grundstück",
+        "description": "Klicken Sie auf ein Grundstück auf der Karte, um detaillierte Informationen wie Preis, Abmessungen und Verfügbarkeitsstatus anzuzeigen."
+      },
+      "labels": {
+        "name": "Name",
+        "description": "Beschreibung",
+        "sides": "Seiten",
+        "coordinates": "Koordinaten",
+        "area": "Fläche (m²)",
+        "price": "Preis",
+        "consult": "Anfragen",
+        "not_available": "N/V"
+      },
+      "buttons": {
+        "reserve": "Grundstück reservieren",
+        "prev_image": "Vorheriges Bild",
+        "next_image": "Nächstes Bild"
+      },
+      "status": {
+        "disponible": "Verfügbar",
+        "reservado": "Reserviert",
+        "vendido": "Verkauft"
+      }
+    },
+    "controls": {
+      "title": "Steuerelemente",
+      "satellite": "Satellit",
+      "grayscale": "Graustufen",
+      "interest_points": "Interessante Orte",
+      "zoom": "Zoom",
+      "zoom_in": "Vergrößern",
+      "zoom_out": "Verkleinern"
+    },
+    "legend": {
+      "title": "Grundstücksstatus",
+      "available": "Verfügbar",
+      "reserved": "Reserviert",
+      "sold": "Verkauft"
+    },
+    "mobile": {
+      "map_toggle": "Kartenoptionen",
+      "legend_toggle": "Grundstücksstatus",
+      "interest_points_toggle": "Interessante Orte",
+      "map_options": "Kartenoptionen",
+      "lot_status": "Grundstücksstatus",
+      "close": "Schließen",
+      "reserve": "Reservieren",
+      "grayscale_label": "Graustufen",
+      "language_selector": "Sprache wählen"
+    }
+  },
+  "reservation": {
+    "page_title": "Reservierungsformular - Mega Projects",
+    "meta_description": "Vervollständigen Sie Ihre Grundstücksreservierung in Colonia Independencia. Sicheres und benutzerfreundliches Formular für Ihre ideale Immobilie.",
+    "back_link": "Zurück zur Karte",
+    "header": {
+      "title": "Reservierungsformular",
+      "subtitle": "Füllen Sie die Informationen aus, um Ihr Grundstück zu reservieren. Wir werden Sie innerhalb von 24 Stunden kontaktieren."
+    },
+    "lot_info": {
+      "id": "Grundstücks-ID",
+      "price": "Preis",
+      "dimensions": "Abmessungen",
+      "not_specified": "Nicht angegeben",
+      "consult": "Anfragen"
+    },
+    "form": {
+      "personal_info": {
+        "title": "Persönliche Informationen",
+        "first_name": "Vorname",
+        "last_name": "Nachname",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefon",
+        "required": "*"
+      },
+      "additional_message": {
+        "placeholder": "Zusätzliche Nachricht (optional)",
+        "help": "Maximal 500 Zeichen."
+      },
+      "submit": "Reservierung senden",
+      "submitting": "Wird gesendet..."
+    },
+    "validation": {
+      "required": "Dieses Feld ist erforderlich.",
+      "email_invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "phone_invalid": "Bitte geben Sie eine gültige Telefonnummer ein.",
+      "max_length": "Maximal {{max}} Zeichen erlaubt.",
+      "fix_errors": "Bitte korrigieren Sie die im Formular markierten Fehler."
+    },
+    "toast": {
+      "success_title": "Erfolg!",
+      "error_title": "Fehler",
+      "close": "Schließen"
+    },
+    "errors": {
+      "invalid_params": "Fehler: Ungültige URL-Parameter. Bitte wählen Sie ein Grundstück von der Karte.",
+      "lot_not_found": "Fehler: Das angeforderte Grundstück wurde nicht gefunden. Bitte versuchen Sie es erneut.",
+      "loading_error": "Fehler beim Laden der Grundstücksdaten. Bitte versuchen Sie es erneut.",
+      "no_lot_data": "Fehler: Grundstücksdaten nicht gefunden. Bitte laden Sie die Seite neu.",
+      "missing_params": "Fehler: Fehlende URL-Parameter. Bitte wählen Sie ein Grundstück von der Karte.",
+      "submission_error": "Unerwarteter Fehler beim Senden der Reservierung. Bitte versuchen Sie es erneut.",
+      "lot_not_available": "Dieses Grundstück ist nicht mehr verfügbar. Weiterleitung zur Karte..."
     }
   }
 }

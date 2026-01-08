@@ -384,6 +384,27 @@
   }
 
   /**
+   * Get translation for a key
+   * @param {string} key - Translation key (e.g., 'reservation.validation.required')
+   * @returns {string} Translation or key if not found
+   */
+  function translate(key) {
+    if (!isInitialized || !languageCache[currentLanguage]) {
+      console.warn(`i18n not initialized or language data not loaded for key: ${key}`);
+      return key;
+    }
+
+    const translation = getNestedTranslation(languageCache[currentLanguage], key);
+
+    if (!translation) {
+      console.warn(`Translation not found for key: ${key}`);
+      return key;
+    }
+
+    return translation;
+  }
+
+  /**
    * Public API
    */
   window.I18n = {
@@ -392,9 +413,18 @@
     getCurrentLanguage: getCurrentLanguage,
     getSupportedLanguages: getSupportedLanguages,
     isInitialized: isI18nInitialized,
-    
+    t: translate,
+
+    // Expose language cache for external use
+    get _languageCache() {
+      return languageCache;
+    },
+
     // Events: 'languageChanged', 'i18nInitialized'
   };
+
+  // Create lowercase alias for convenience
+  window.i18n = window.I18n;
 
   // Auto-initialize when DOM is loaded
   if (document.readyState === 'loading') {

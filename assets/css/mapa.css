@@ -1238,6 +1238,65 @@ html {
   border-radius: 12px;
 }
 
+/* Mobile Language Selector Styles */
+.mobile-sheet-divider {
+  height: 1px;
+  background: var(--color-light-gray);
+  margin: var(--spacing-md) 0;
+}
+
+.mobile-sheet-subtitle {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-sm);
+  color: var(--color-green-primary);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+  margin: var(--spacing-sm) 0;
+}
+
+.mobile-language-selector {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.mobile-lang-btn {
+  background: var(--color-white);
+  border: 2px solid var(--color-light-gray);
+  color: var(--color-primary-dark);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  min-height: 44px;
+  width: 100%;
+}
+
+.mobile-lang-btn:hover {
+  background: rgba(47, 139, 70, 0.05);
+  border-color: var(--color-green-primary);
+}
+
+.mobile-lang-btn.active {
+  background: var(--color-green-primary);
+  color: var(--color-white);
+  border-color: var(--color-green-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+.mobile-lang-btn:active {
+  transform: scale(0.98);
+}
+
 /* ===========================
    RESPONSIVE DESIGN - Enhanced Mobile First
    =========================== */

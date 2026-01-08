@@ -504,6 +504,9 @@
     // Bind event listeners
     bindProductEventListeners();
 
+    // Listen for language change events
+    document.addEventListener('languageChanged', handleLanguageChange);
+
     // Load and render products
     await loadProducts();
 
@@ -563,6 +566,23 @@
    * Handle retry button click
    */
   async function handleRetryClick() {
+    await loadProducts();
+  }
+
+  /**
+   * Handle language change event
+   * Reload products with new language
+   */
+  async function handleLanguageChange(event) {
+    console.log('Language changed to:', event.detail.language);
+
+    // Clear the loteamiento service cache to force fresh fetch with new language
+    if (window.LoteamientoService && typeof window.LoteamientoService.clearCache === 'function') {
+      window.LoteamientoService.clearCache();
+      console.log('Cleared loteamiento cache for language change');
+    }
+
+    // Reload products to apply new language
     await loadProducts();
   }
 
@@ -677,17 +697,19 @@
     // Set title (nombre_loteamiento from database)
     card.querySelector('.product-card__title').textContent = product.name || 'Loteamiento sin nombre';
 
-    // Set parcel count
+    // Set parcel count with localization
     const parcelCount = card.querySelector('.product-card__parcel-count');
     if (product.parcel_quantity > 1) {
-      parcelCount.textContent = `${product.parcel_quantity} lotes`;
+      const parcelsText = getLocalizedText('index.loteamientos.parcels_count', 'lotes');
+      parcelCount.textContent = `${product.parcel_quantity} ${parcelsText}`;
       parcelCount.style.display = 'block';
     } else {
       parcelCount.style.display = 'none';
     }
 
-    // Set description (from loteamientos table)
-    card.querySelector('.product-card__description').textContent = product.description || 'Sin descripción disponible';
+    // Set description (from loteamientos table) with localized fallback
+    const noDescriptionText = getLocalizedText('index.loteamientos.no_description', 'Sin descripción disponible');
+    card.querySelector('.product-card__description').textContent = product.description || noDescriptionText;
 
     // Set location info with centroid coordinates
     const locationName = card.querySelector('.location-name');
@@ -698,18 +720,27 @@
     const lng = product.centroid_long || product.long || 0;
     locationCoordinates.textContent = `${lat.toFixed(6)}, ${lng.toFixed(6)}`;
 
-    // Set size info (area_rounded_m2 from loteamientos table)
+    // Set size info - just show the area value
     const sizeArea = card.querySelector('.size-area');
     const sizeDimensions = card.querySelector('.size-dimensions');
-    // Use total_dim_m2 which maps to area_rounded_m2 from database
+
+    // Show the actual area in m² with proper locale formatting
     const areaM2 = product.total_dim_m2 || 0;
-    sizeArea.textContent = `${Math.round(areaM2).toLocaleString()}m²`;
-    sizeDimensions.textContent = product.dimensions || 'Dimensiones disponibles';
+    const currentLang = window.I18n?.getCurrentLanguage() || 'es';
+    const localeMap = { 'es': 'es-PY', 'en': 'en-US', 'de': 'de-DE' };
+    const locale = localeMap[currentLang] || 'es-PY';
+    const formattedArea = `${Math.round(areaM2).toLocaleString(locale)} m²`;
+
+    // Show in size-area element
+    sizeArea.textContent = formattedArea;
+    sizeDimensions.textContent = '';  // Leave subtitle empty
 
     // Update "Ver en Mapa" button to navigate with loteamiento data
     const viewMapButton = card.querySelector('.product-card__btn');
     if (viewMapButton) {
       viewMapButton.href = `mapa.html?loteamiento=${encodeURIComponent(product.id)}&name=${encodeURIComponent(product.name)}&lat=${product.lat || product.centroid_lat || 0}&lng=${product.long || product.centroid_long || 0}`;
+      // Set localized button text
+      viewMapButton.textContent = getLocalizedText('index.loteamientos.view_map_button', 'Ver Mapa');
     }
 
     // Set initial animation state
@@ -735,6 +766,57 @@
         return 'Fracción';
       default:
         return type;
+    }
+  }
+
+  /**
+   * Get localized text from i18n system
+   * @param {string} key - Translation key
+   * @param {string} fallback - Fallback text if translation not found
+   * @returns {string} Localized text
+   */
+  function getLocalizedText(key, fallback) {
+    try {
+      // First, check if I18n is available
+      if (!window.I18n || !window.I18n.getCurrentLanguage) {
+        console.warn('I18n system not available, using fallback');
+        return fallback;
+      }
+
+      const lang = window.I18n.getCurrentLanguage();
+      const languageCache = window.I18n._languageCache;
+
+      // Debug logging
+      console.log(`[getLocalizedText] Getting "${key}" for language "${lang}"`);
+      console.log('[getLocalizedText] Language cache:', languageCache);
+
+      if (!languageCache || !languageCache[lang]) {
+        console.warn(`No translations found for language: ${lang}`);
+        return fallback;
+      }
+
+      const translations = languageCache[lang];
+
+      // Navigate through the key path
+      const keys = key.split('.');
+      let value = translations;
+
+      for (let i = 0; i < keys.length; i++) {
+        const k = keys[i];
+        if (value && value[k] !== undefined) {
+          value = value[k];
+        } else {
+          console.warn(`Translation key not found: ${key} (failed at ${k})`);
+          return fallback;
+        }
+      }
+
+      console.log(`[getLocalizedText] Found translation: "${value}"`);
+      return value;
+
+    } catch (error) {
+      console.error('Error in getLocalizedText:', error);
+      return fallback;
     }
   }
 

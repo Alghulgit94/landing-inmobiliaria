@@ -84,6 +84,13 @@
     "loteamientos": {
       "title": "Our Developments",
       "subtitle": "Build-ready lots: family, commercial and agricultural options.",
+      "dimensions_available": "Dimensions available",
+      "no_description": "No description available",
+      "parcels_count": "lots",
+      "loading": "Loading developments...",
+      "error": "Error loading developments. Please try again.",
+      "retry": "Retry",
+      "view_map_button": "View Map",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
         "other_options": "Other options"
@@ -236,6 +243,121 @@
       "carousel": "Carousel of reasons to live here",
       "carousel_indicators": "Carousel indicators",
       "footer_nav": "Footer navigation links"
+    }
+  },
+  "mapa": {
+    "page_title": "Interactive Map - Colonia Independencia Development",
+    "meta_description": "Explore our lots with high-precision interactive maps. Real dimensions, exact location and live availability.",
+    "back_button": "Back to home",
+    "header": {
+      "title": "Wiesental"
+    },
+    "sidebar": {
+      "title": "Lot Information",
+      "close": "Close",
+      "empty_state": {
+        "title": "Select a Lot",
+        "description": "Click on any lot on the map to view detailed information, including price, dimensions and availability status."
+      },
+      "labels": {
+        "name": "Name",
+        "description": "Description",
+        "sides": "Sides",
+        "coordinates": "Coordinates",
+        "area": "Area (m²)",
+        "price": "Price",
+        "consult": "Inquire",
+        "not_available": "N/A"
+      },
+      "buttons": {
+        "reserve": "Reserve Lot",
+        "prev_image": "Previous image",
+        "next_image": "Next image"
+      },
+      "status": {
+        "disponible": "Available",
+        "reservado": "Reserved",
+        "vendido": "Sold"
+      }
+    },
+    "controls": {
+      "title": "Controls",
+      "satellite": "Satellite",
+      "grayscale": "Grayscale",
+      "interest_points": "Points of Interest",
+      "zoom": "Zoom",
+      "zoom_in": "Zoom in",
+      "zoom_out": "Zoom out"
+    },
+    "legend": {
+      "title": "Lot Status",
+      "available": "Available",
+      "reserved": "Reserved",
+      "sold": "Sold"
+    },
+    "mobile": {
+      "map_toggle": "Map Options",
+      "legend_toggle": "Lot Status",
+      "interest_points_toggle": "Points of Interest",
+      "map_options": "Map Options",
+      "lot_status": "Lot Status",
+      "close": "Close",
+      "reserve": "Reserve",
+      "grayscale_label": "Grayscale",
+      "language_selector": "Select language"
+    }
+  },
+  "reservation": {
+    "page_title": "Reservation Form - Mega Projects",
+    "meta_description": "Complete your lot reservation in Colonia Independencia. Secure and easy-to-use form to secure your ideal property.",
+    "back_link": "Back to map",
+    "header": {
+      "title": "Reservation Form",
+      "subtitle": "Fill out the information to reserve your lot. We will contact you within 24 hours."
+    },
+    "lot_info": {
+      "id": "Lot ID",
+      "price": "Price",
+      "dimensions": "Dimensions",
+      "not_specified": "Not specified",
+      "consult": "Inquire"
+    },
+    "form": {
+      "personal_info": {
+        "title": "Personal Information",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email Address",
+        "phone": "Phone",
+        "required": "*"
+      },
+      "additional_message": {
+        "placeholder": "Additional message (optional)",
+        "help": "Maximum 500 characters."
+      },
+      "submit": "Submit Reservation",
+      "submitting": "Submitting..."
+    },
+    "validation": {
+      "required": "This field is required.",
+      "email_invalid": "Please enter a valid email address.",
+      "phone_invalid": "Please enter a valid phone number.",
+      "max_length": "Maximum {{max}} characters allowed.",
+      "fix_errors": "Please correct the errors marked in the form."
+    },
+    "toast": {
+      "success_title": "Success!",
+      "error_title": "Error",
+      "close": "Close"
+    },
+    "errors": {
+      "invalid_params": "Error: Invalid URL parameters. Please select a lot from the map.",
+      "lot_not_found": "Error: The requested lot was not found. Please try again.",
+      "loading_error": "Error loading lot data. Please try again.",
+      "no_lot_data": "Error: Lot data not found. Please reload the page.",
+      "missing_params": "Error: Missing URL parameters. Please select a lot from the map.",
+      "submission_error": "Unexpected error submitting reservation. Please try again.",
+      "lot_not_available": "This lot is no longer available. Redirecting to map..."
     }
   }
 }

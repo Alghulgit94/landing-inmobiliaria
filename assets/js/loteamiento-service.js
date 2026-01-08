@@ -129,15 +129,18 @@ class LoteamientoService {
     // Determine location based on owner field
     const location = this.mapOwnerToLocation(dbLoteamiento.owner);
 
+    // Get current language for localized content
+    const currentLang = this.getCurrentLanguage();
+
     return {
       id: dbLoteamiento.id,
       name: dbLoteamiento.nombre_loteamiento || dbLoteamiento.nombre || 'Loteamiento sin nombre',
-      description: dbLoteamiento.descripcion || '',
+      description: this.getLocalizedDescription(dbLoteamiento, currentLang),
       photo: dbLoteamiento.photo || this.getDefaultPhoto(location),
       location: location,
       lat: dbLoteamiento.centroide_lat || 0,
       long: dbLoteamiento.centroide_lng || 0,
-      type: this.determineLoteamientoType(dbLoteamiento),
+      type: this.getLocalizedType(dbLoteamiento, currentLang),
       parcel_quantity: dbLoteamiento.parcel_quantity || 0,
       total_dim_m2: dbLoteamiento.area_m2_rounded || dbLoteamiento.area_m2 || 0,
       features: this.extractFeatures(dbLoteamiento),
@@ -153,8 +156,77 @@ class LoteamientoService {
       created_at: dbLoteamiento.created_at,
       updated_at: dbLoteamiento.updated_at,
       // Interest points for map feature
-      interest_points: dbLoteamiento.interest_points || null
+      interest_points: dbLoteamiento.interest_points || null,
+      // Store raw data for dynamic language switching
+      _raw: {
+        descripcion: dbLoteamiento.descripcion,
+        descripcion_en: dbLoteamiento.descripcion_en,
+        descripcion_de: dbLoteamiento.descripcion_de,
+        loteamiento_type: dbLoteamiento.loteamiento_type,
+        loteamiento_type_en: dbLoteamiento.loteamiento_type_en,
+        loteamiento_type_de: dbLoteamiento.loteamiento_type_de
+      }
     };
+  }
+
+  /**
+   * Get current language from i18n system
+   * @returns {string} Current language code (es, en, de)
+   */
+  getCurrentLanguage() {
+    if (window.I18n && typeof window.I18n.getCurrentLanguage === 'function') {
+      return window.I18n.getCurrentLanguage();
+    }
+    return 'es'; // Default fallback
+  }
+
+  /**
+   * Get localized description based on current language
+   * @param {Object} loteamiento - Database loteamiento object
+   * @param {string} lang - Language code (es, en, de)
+   * @returns {string} Localized description
+   */
+  getLocalizedDescription(loteamiento, lang) {
+    switch (lang) {
+      case 'en':
+        return loteamiento.descripcion_en || loteamiento.descripcion || '';
+      case 'de':
+        return loteamiento.descripcion_de || loteamiento.descripcion || '';
+      case 'es':
+      default:
+        return loteamiento.descripcion || '';
+    }
+  }
+
+  /**
+   * Get localized type based on current language
+   * @param {Object} loteamiento - Database loteamiento object
+   * @param {string} lang - Language code (es, en, de)
+   * @returns {string} Localized type
+   */
+  getLocalizedType(loteamiento, lang) {
+    // First, try to get localized type from database
+    let type = '';
+    switch (lang) {
+      case 'en':
+        type = loteamiento.loteamiento_type_en || loteamiento.loteamiento_type;
+        break;
+      case 'de':
+        type = loteamiento.loteamiento_type_de || loteamiento.loteamiento_type;
+        break;
+      case 'es':
+      default:
+        type = loteamiento.loteamiento_type;
+        break;
+    }
+
+    // If type is found, return it; otherwise, determine from data
+    if (type) {
+      return type;
+    }
+
+    // Fallback: determine type from parcel quantity
+    return this.determineLoteamientoType(loteamiento);
   }
 
   /**
@@ -231,7 +303,7 @@ class LoteamientoService {
   }
 
   /**
-   * Format dimensions string
+   * Format dimensions string with localization support
    * @param {Object} loteamiento - Database loteamiento
    * @returns {string} Formatted dimensions
    */
@@ -240,11 +312,36 @@ class LoteamientoService {
       return loteamiento.dimensions;
     }
 
-    if (loteamiento.total_dim_m2) {
-      return `${loteamiento.total_dim_m2.toLocaleString()} m²`;
+    const currentLang = this.getCurrentLanguage();
+    const area = loteamiento.total_dim_m2 || loteamiento.area_m2_rounded || loteamiento.area_m2;
+
+    if (area) {
+      // Format number according to locale
+      const localeMap = {
+        'es': 'es-PY',
+        'en': 'en-US',
+        'de': 'de-DE'
+      };
+      const locale = localeMap[currentLang] || 'es-PY';
+      return `${area.toLocaleString(locale)} m²`;
     }
 
-    return 'Dimensiones disponibles';
+    // Return localized "Dimensions available" text
+    return this.getLocalizedDimensionsText(currentLang);
+  }
+
+  /**
+   * Get localized "dimensions available" text
+   * @param {string} lang - Language code
+   * @returns {string} Localized text
+   */
+  getLocalizedDimensionsText(lang) {
+    const texts = {
+      'es': 'Dimensiones disponibles',
+      'en': 'Dimensions available',
+      'de': 'Abmessungen verfügbar'
+    };
+    return texts[lang] || texts['es'];
   }
 
   /**

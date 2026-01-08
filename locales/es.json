@@ -84,6 +84,13 @@
     "loteamientos": {
       "title": "Nuestros Terrenos",
       "subtitle": "Lotes listos para construir: familiares, comerciales y agroindustriales.",
+      "dimensions_available": "Dimensiones disponibles",
+      "no_description": "Sin descripción disponible",
+      "parcels_count": "lotes",
+      "loading": "Cargando loteamientos...",
+      "error": "Error al cargar los loteamientos. Por favor, inténtalo de nuevo.",
+      "retry": "Reintentar",
+      "view_map_button": "Ver Mapa",
       "filters": {
         "colonia_independencia": "Colonia Independencia",
         "other_options": "Otras opciones"
@@ -236,6 +243,121 @@
       "carousel": "Carrusel de razones para vivir aquí",
       "carousel_indicators": "Indicadores del carrusel",
       "footer_nav": "Enlaces del pie de página"
+    }
+  },
+  "mapa": {
+    "page_title": "Mapa Interactivo - Loteamiento Colonia Independencia",
+    "meta_description": "Explora nuestros lotes con mapas interactivos de alta precisión. Dimensiones reales, ubicación exacta y disponibilidad en tiempo real.",
+    "back_button": "Volver a inicio",
+    "header": {
+      "title": "Wiesental"
+    },
+    "sidebar": {
+      "title": "Información del Lote",
+      "close": "Cerrar",
+      "empty_state": {
+        "title": "Selecciona un Lote",
+        "description": "Haz clic en cualquier lote del mapa para ver información detallada, incluyendo precio, dimensiones y estado de disponibilidad."
+      },
+      "labels": {
+        "name": "Nombre",
+        "description": "Descripción",
+        "sides": "Lados",
+        "coordinates": "Coordenadas",
+        "area": "Área (m²)",
+        "price": "Precio",
+        "consult": "Consultar",
+        "not_available": "N/A"
+      },
+      "buttons": {
+        "reserve": "Reservar Lote",
+        "prev_image": "Imagen anterior",
+        "next_image": "Siguiente imagen"
+      },
+      "status": {
+        "disponible": "Disponible",
+        "reservado": "Reservado",
+        "vendido": "Vendido"
+      }
+    },
+    "controls": {
+      "title": "Controles",
+      "satellite": "Satélite",
+      "grayscale": "Escala Gris",
+      "interest_points": "Puntos de Interés",
+      "zoom": "Zoom",
+      "zoom_in": "Acercar",
+      "zoom_out": "Alejar"
+    },
+    "legend": {
+      "title": "Estado de Lotes",
+      "available": "Disponible",
+      "reserved": "Reservado",
+      "sold": "Vendido"
+    },
+    "mobile": {
+      "map_toggle": "Opciones de Mapa",
+      "legend_toggle": "Estado de Lotes",
+      "interest_points_toggle": "Puntos de Interés",
+      "map_options": "Opciones de Mapa",
+      "lot_status": "Estado de Lotes",
+      "close": "Cerrar",
+      "reserve": "Reservar",
+      "grayscale_label": "Escala de Grises",
+      "language_selector": "Seleccionar idioma"
+    }
+  },
+  "reservation": {
+    "page_title": "Formulario de Reservación - Mega Proyectos",
+    "meta_description": "Complete su reservación de lote en Colonia Independencia. Formulario seguro y fácil de usar para asegurar su propiedad ideal.",
+    "back_link": "Volver al mapa",
+    "header": {
+      "title": "Formulario de Reservación",
+      "subtitle": "Complete la información para reservar su lote. Nos contactaremos con usted en 24 horas."
+    },
+    "lot_info": {
+      "id": "ID del Lote",
+      "price": "Precio",
+      "dimensions": "Dimensiones",
+      "not_specified": "No especificado",
+      "consult": "Consultar"
+    },
+    "form": {
+      "personal_info": {
+        "title": "Información Personal",
+        "first_name": "Nombre",
+        "last_name": "Apellido",
+        "email": "Correo Electrónico",
+        "phone": "Teléfono",
+        "required": "*"
+      },
+      "additional_message": {
+        "placeholder": "Mensaje adicional (opcional)",
+        "help": "Máximo 500 caracteres."
+      },
+      "submit": "Enviar Reservación",
+      "submitting": "Enviando..."
+    },
+    "validation": {
+      "required": "Este campo es obligatorio.",
+      "email_invalid": "Por favor, ingrese un correo electrónico válido.",
+      "phone_invalid": "Por favor, ingrese un número de teléfono válido.",
+      "max_length": "Máximo {{max}} caracteres permitidos.",
+      "fix_errors": "Por favor, corrija los errores marcados en el formulario."
+    },
+    "toast": {
+      "success_title": "¡Éxito!",
+      "error_title": "Error",
+      "close": "Cerrar"
+    },
+    "errors": {
+      "invalid_params": "Error: Parámetros de URL inválidos. Por favor, seleccione un lote desde el mapa.",
+      "lot_not_found": "Error: No se encontró el lote solicitado. Por favor, intente nuevamente.",
+      "loading_error": "Error al cargar los datos del lote. Por favor, intente nuevamente.",
+      "no_lot_data": "Error: No se encontraron datos del lote. Por favor, recargue la página.",
+      "missing_params": "Error: Faltan parámetros de URL. Por favor, seleccione un lote desde el mapa.",
+      "submission_error": "Error inesperado al enviar la reservación. Por favor, intente nuevamente.",
+      "lot_not_available": "Este lote ya no está disponible. Redirigiendo al mapa..."
     }
   }
 }
