@@ -91,6 +91,10 @@
       "error": "Error loading developments. Please try again.",
       "retry": "Retry",
       "view_map_button": "View Map",
+      "empty_state": {
+        "title": "No lots available",
+        "description": "No lots were found for the selected location."
+      },
       "filters": {
         "colonia_independencia": "Colonia Independencia",
         "other_options": "Other options"

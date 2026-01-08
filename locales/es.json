@@ -91,6 +91,10 @@
       "error": "Error al cargar los loteamientos. Por favor, inténtalo de nuevo.",
       "retry": "Reintentar",
       "view_map_button": "Ver Mapa",
+      "empty_state": {
+        "title": "No hay loteamientos disponibles",
+        "description": "No se encontraron loteamientos para la ubicación seleccionada."
+      },
       "filters": {
         "colonia_independencia": "Colonia Independencia",
         "other_options": "Otras opciones"

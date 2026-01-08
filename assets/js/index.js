@@ -870,9 +870,11 @@
 
     const emptyMessage = document.createElement('div');
     emptyMessage.className = 'products-empty';
+    const emptyTitle = getLocalizedText('index.loteamientos.empty_state.title', 'No hay loteamientos disponibles');
+    const emptyDescription = getLocalizedText('index.loteamientos.empty_state.description', 'No se encontraron loteamientos para la ubicación seleccionada.');
     emptyMessage.innerHTML = `
-      <h4>No hay loteamientos disponibles</h4>
-      <p>No se encontraron loteamientos para la ubicación seleccionada.</p>
+      <h4>${emptyTitle}</h4>
+      <p>${emptyDescription}</p>
     `;
 
     productsGrid.appendChild(emptyMessage);

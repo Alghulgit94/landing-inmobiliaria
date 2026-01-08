@@ -91,6 +91,10 @@
       "error": "Fehler beim Laden der Parzellen. Bitte versuchen Sie es erneut.",
       "retry": "Erneut versuchen",
       "view_map_button": "Siehe Karte",
+      "empty_state": {
+        "title": "Keine Parzellen verfügbar",
+        "description": "Für den ausgewählten Standort wurden keine Parzellen gefunden."
+      },
       "filters": {
         "colonia_independencia": "Colonia Independencia",
         "other_options": "Weitere Optionen"
