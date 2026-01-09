@@ -200,7 +200,7 @@
       
       .lot-info-grid-compact {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: var(--spacing-xs);
       }
       
@@ -506,7 +506,7 @@
         }
 
         .lot-info-grid-compact {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(2, 1fr);
           gap: var(--spacing-xs);
         }
 
@@ -784,6 +784,10 @@
                   <div class="lot-info-label-compact" data-i18n="reservation.lot_info.dimensions">Dimensiones</div>
                   <div id="lotDimensions" class="lot-info-value-compact">No especificadas</div>
                 </div>
+                <div class="lot-info-item-compact">
+                  <div class="lot-info-label-compact" data-i18n="reservation.lot_info.area">Área (m²)</div>
+                  <div id="lotArea" class="lot-info-value-compact">N/A</div>
+                </div>
               </div>
             </div>
             
@@ -930,6 +934,7 @@
       const lotIdElement = document.getElementById('lotId');
       const lotPriceElement = document.getElementById('lotPrice');
       const lotDimensionsElement = document.getElementById('lotDimensions');
+      const lotAreaElement = document.getElementById('lotArea');
       
       // Map variables
       let map;
@@ -1111,6 +1116,22 @@
             lotDimensionsElement.textContent = dimensions;
           } else {
             lotDimensionsElement.textContent = 'Consultar';
+          }
+        }
+
+        // Set area
+        if (lotAreaElement) {
+          const area = loteData.area_m2_rounded || loteData.area;
+          if (area && area !== 0) {
+            // Get current language for number formatting
+            const currentLang = (window.i18n && window.i18n.isInitialized && window.i18n.isInitialized())
+              ? window.i18n.getCurrentLanguage()
+              : 'es';
+            const localeMap = { 'es': 'es-PY', 'en': 'en-US', 'de': 'de-DE' };
+            const formattedArea = area.toLocaleString(localeMap[currentLang]) + ' m²';
+            lotAreaElement.textContent = formattedArea;
+          } else {
+            lotAreaElement.textContent = 'N/A';
           }
         }
       }
@@ -1515,6 +1536,16 @@
         }
         if (lotDimensionsElement && lotDimensionsElement.textContent === 'No especificadas') {
           lotDimensionsElement.textContent = window.i18n.t('reservation.lot_info.not_specified');
+        }
+
+        // Reformat area with new language number formatting if we have lote data
+        if (currentLoteData && lotAreaElement) {
+          const area = currentLoteData.area_m2_rounded || currentLoteData.area;
+          if (area && area !== 0) {
+            const localeMap = { 'es': 'es-PY', 'en': 'en-US', 'de': 'de-DE' };
+            const formattedArea = area.toLocaleString(localeMap[lang]) + ' m²';
+            lotAreaElement.textContent = formattedArea;
+          }
         }
 
         // Update validation error messages with translations

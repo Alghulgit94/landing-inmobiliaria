@@ -8,17 +8,17 @@
     "get_reservation": "Reserve a lot"
   },
   "titles": {
-    "main_title": "Impact Real Estate — Your new home in Colonia Independencia",
-    "brand": "MEGA PROJECTS REAL ESTATE"
+    "main_title": "MEGA Proyectos Real Estate — Your new home in Colonia Independencia",
+    "brand": "MEGA PROYECTOS REAL ESTATE"
   },
   "index": {
-    "page_title": "Impact Real Estate — Your new home in Colonia Independencia",
-    "meta_description": "Quiet, secure developments in Colonia Independencia with interactive maps, build-ready lots and local support. Ideal for retirees and families seeking a peaceful life.",
+    "page_title": "MEGA Proyectos Estate — Your new home in Colonia Independencia",
+    "meta_description": "Quiet and secure developments in Colonia Independencia with interactive maps, build-ready lands and local support. Ideal for retirees and families seeking a peaceful life.",
     "meta_keywords": "lots, land, retirement, Colonia Independencia, peaceful living, secure investment",
     "hero": {
       "title": "A peaceful place to start your next chapter",
       "subtitle": "Lots designed for people seeking safety, space and community.",
-      "description": "Browse our developments with high-precision interactive maps. See real dimensions, exact location and live availability — all from your browser.",
+      "description": "Browse our developments with high precision interactive maps. See real dimensions, exact location and availability in real time, all from your browser.",
       "cta": "View interactive map"
     },
     "why_live_here": {
@@ -26,22 +26,22 @@
       "subtitle": "Five clear reasons to move: safety, culture, community, services and connectivity.",
       "cta": {
         "text": "Find your ideal lot now!",
-        "description": "Explore available projects and find the plot that fits your life plan."
+        "description": "Explore available projects and find the place of land that fits your life plan."
       },
       "reasons": {
         "schools": {
           "title": "Excellent education",
-          "description": "High-quality schooling options — bilingual and international programs great for families.",
+          "description": "High-quality educational options: bilingual schools, perfect for families seeking quality education close to home.",
           "features": [
-            "German-language schools available",
-            "High-standard bilingual education",
+            "German language schools",
+            "High standard bilingual education",
             "International programs",
-            "Reputable public schools"
+            "Prestigious public schools"
           ]
         },
         "club": {
-          "title": "German club & cultural life",
-          "description": "A private club and cultural activities to help you integrate, stay active and enjoy community life.",
+          "title": "German club",
+          "description": "Sports and cultural organizations that facilitate integration, leisure and learning in a family friendly environment.",
           "features": [
             "Sports and recreational facilities",
             "German and English classes",
@@ -51,7 +51,7 @@
         },
         "cultural_activities": {
           "title": "Cultural Activities",
-          "description": "Immerse yourself in rich German culture with traditional events, live music, and access to a specialized library. Experience and learn German traditions.",
+          "description": "Immerse yourself into a rich German culture with traditional events, live music, and access to a specialized library. Experience and learn German traditions.",
           "features": [
             "Traditional German events",
             "Traditional music band",
@@ -61,11 +61,10 @@
         },
         "tranquility": {
           "title": "Peace and space",
-          "description": "Spacious lots in a calm setting — privacy, fresh air and room for hobbies or small-scale farming.",
+          "description": "Spacious lots in a calm setting privacy space, fresh air and room for hobbies.",
           "features": [
             "Safe, peaceful environment",
-            "Large plots available",
-            "Perfect for gardening or agri-projects",
+            "Large place of land available",
             "Urban services nearby"
           ]
         },
@@ -75,7 +74,7 @@
           "features": [
             "Near shopping centers",
             "Connected to main cities",
-            "Access to major roads",
+            "Easy access to main roads",
             "Urban services within reach"
           ]
         }
@@ -83,7 +82,7 @@
     },
     "loteamientos": {
       "title": "Our Developments",
-      "subtitle": "Build-ready lots: family, commercial and agricultural options.",
+      "subtitle": "Build-ready lots available.",
       "dimensions_available": "Dimensions available",
       "no_description": "No description available",
       "parcels_count": "lots",
@@ -176,7 +175,7 @@
       "description": "Interactive map with real dimensions, satellite imagery and live availability. Everything you need to decide with confidence.",
       "features": [
         "High-resolution interactive maps",
-        "Exact lot dimensions",
+        "Exact developments dimensions",
         "Real-time satellite view",
         "Updated availability status"
       ],
@@ -206,18 +205,18 @@
       }
     },
     "footer": {
-      "brand_title": "MEGA PROJECTS REAL ESTATE",
-      "brand_description": "We build safe, sustainable communities since 2010. Your ideal home awaits in Colonia Independencia.",
+      "brand_title": "MEGA PROYECTOS REAL ESTATE",
+      "brand_description": "We build safe, sustainable communities since 2024. Your ideal home awaits in Colonia Independencia.",
       "navigation_title": "Navigation",
       "contact_title": "Contact",
-      "address": "Colonia Independencia\n Paraguay",
+      "address": "Weisental, Colonia independencia - Paraguay",
       "phone": "+595 (986) 755-222",
       "email": "info@megaproyectos.com",
       "hours": "Mon - Fri: 09:00 - 18:00\nSat: 09:00 - 14:00",
       "actions_title": "Ready to get started?",
       "view_lots_cta": "View developments",
       "call_now_cta": "Call now",
-      "copyright": "© 2025 Mega Projects Real Estate. All rights reserved.",
+      "copyright": "© 2025 Mega Proyectos Real Estate. All rights reserved.",
       "legal": {
         "terms": "Terms of use",
         "privacy": "Privacy policy",
@@ -323,6 +322,7 @@
       "id": "Lot ID",
       "price": "Price",
       "dimensions": "Dimensions",
+      "area": "Area",
       "not_specified": "Not specified",
       "consult": "Inquire"
     },

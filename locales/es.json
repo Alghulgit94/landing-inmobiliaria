@@ -64,8 +64,7 @@
           "description": "Terrenos amplios en un entorno sereno: privacidad, aire puro y espacio para disfrutar hobbies o proyectos rurales.",
           "features": [
             "Ambiente seguro y apacible",
-            "Parcelas amplias disponibles",
-            "Ideal para huerto o agroproyectos",
+            "Terrenos amplios disponibles",
             "Servicios urbanos a mano"
           ]
         },
@@ -83,7 +82,7 @@
     },
     "loteamientos": {
       "title": "Nuestros Terrenos",
-      "subtitle": "Lotes listos para construir: familiares, comerciales y agroindustriales.",
+      "subtitle": "Terrenos listos para construir",
       "dimensions_available": "Dimensiones disponibles",
       "no_description": "Sin descripción disponible",
       "parcels_count": "lotes",
@@ -210,7 +209,7 @@
       "brand_description": "Ofrecemos comunidades seguras y sostenibles desde 2024. Tu hogar ideal te espera en Colonia Independencia.",
       "navigation_title": "Navegación",
       "contact_title": "Contacto",
-      "address": "Colonia Independencia\n Paraguay",
+      "address": "Weisental, Colonia independencia - Paraguay",
       "phone": "+595 (986) 755-222",
       "email": "info@megaproyectos.com",
       "hours": "Lun - Vie: 9:00 - 18:00\nSáb: 9:00 - 14:00",
@@ -323,6 +322,7 @@
       "id": "ID del Lote",
       "price": "Precio",
       "dimensions": "Dimensiones",
+      "area": "Área",
       "not_specified": "No especificado",
       "consult": "Consultar"
     },

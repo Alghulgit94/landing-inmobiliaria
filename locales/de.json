@@ -1,7 +1,7 @@
 {
   "navigation": {
     "home": "Start",
-    "lots": "Parzellen",
+    "lots": "Grundstücke",
     "why_live_here": "Warum hier leben?",
     "about_us": "Wir",
     "view_map": "Siehe Karte",
@@ -55,16 +55,16 @@
           "features": [
             "Traditionelle deutsche Veranstaltungen",
             "Traditionelle Musikkapelle",
-            "Bibliothek mit deutscher Sammlung"
+            "Bibliothek mit deutscher Sammlung",
+            "Das traditionelle deutsche Volkfest in Independencia"
           ]
         },
         "tranquility": {
           "title": "Ruhe und Raum",
           "description": "Großzügiges Grundstück in ruhiger Umgebung: Privatsphäre, frische Luft und Platz für Hobbys oder ländliche Projekte.",
           "features": [
-            "Sichere, ruhige Umgebung",
+            "Sichere und ruhige Umgebung",
             "Große Grundstücke verfügbar",
-            "Ideal für Gemüsegärten oder landwirtschaftliche Projekte",
             "Städtische Dienstleistungen zur Hand"
           ]
         },
@@ -81,8 +81,8 @@
       }
     },
     "loteamientos": {
-      "title": "Unsere Parzellen",
-      "subtitle": "Sofort bebaubare Grundstücke: für Familien, Gewerbe und Agrarindustrie.",
+      "title": "Unsere Grundstücke",
+      "subtitle": "Sofort bebaubare Grundstücke.",
       "dimensions_available": "Abmessungen verfügbar",
       "no_description": "Keine Beschreibung verfügbar",
       "parcels_count": "Parzellen",
@@ -209,7 +209,7 @@
       "brand_description": "Wir bieten sichere und nachhaltige Wohnanlagen. Ihr ideales Zuhause erwartet Sie in Colonia Independencia",
       "navigation_title": "Navigation",
       "contact_title": "Kontakt",
-      "address": "Colonia Independencia\n Paraguay",
+      "address": "Weisental, Colonia independencia - Paraguay",
       "phone": "+595 (986) 755-222",
       "email": "info@megaproyectos.com",
       "hours": "Mo - Fr: 09:00 - 18:00\nSa: 09:00 - 14:00",
@@ -322,6 +322,7 @@
       "id": "Grundstücks-ID",
       "price": "Preis",
       "dimensions": "Abmessungen",
+      "area": "Fläche",
       "not_specified": "Nicht angegeben",
       "consult": "Anfragen"
     },
