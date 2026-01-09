@@ -155,6 +155,53 @@ class LoteService {
   }
 
   /**
+   * Get current language from i18n system
+   * @returns {string} Current language code (es, en, de)
+   */
+  getCurrentLanguage() {
+    if (window.I18n && typeof window.I18n.getCurrentLanguage === 'function') {
+      return window.I18n.getCurrentLanguage();
+    }
+    return 'es'; // Default fallback
+  }
+
+  /**
+   * Get localized name based on current language
+   * @param {Object} lote - Database lote object
+   * @param {string} lang - Language code (es, en, de)
+   * @returns {string} Localized name
+   */
+  getLocalizedName(lote, lang) {
+    switch (lang) {
+      case 'en':
+        return lote.nombre_en || lote.nombre || 'Unnamed lot';
+      case 'de':
+        return lote.nombre_de || lote.nombre || 'Unbenanntes Grundstück';
+      case 'es':
+      default:
+        return lote.nombre || 'Lote sin nombre';
+    }
+  }
+
+  /**
+   * Get localized description based on current language
+   * @param {Object} lote - Database lote object
+   * @param {string} lang - Language code (es, en, de)
+   * @returns {string} Localized description
+   */
+  getLocalizedDescription(lote, lang) {
+    switch (lang) {
+      case 'en':
+        return lote.descripcion_en || lote.descripcion || lote.matricula || '';
+      case 'de':
+        return lote.descripcion_de || lote.descripcion || lote.matricula || '';
+      case 'es':
+      default:
+        return lote.descripcion || lote.matricula || '';
+    }
+  }
+
+  /**
    * Transform database lote to map-compatible format
    * Creates a GeoJSON feature structure compatible with mapa.js
    *
@@ -215,21 +262,24 @@ class LoteService {
       ladosFormatted = dbLote.sup_legal + ' m²';
     }
 
+    // Get current language for localized content
+    const currentLang = this.getCurrentLanguage();
+
     // Create map-compatible object structure
     // This matches the structure expected by mapa.js KML parser
     return {
       // Core identification
       id: dbLote.id,
-      name: dbLote.nombre || 'Lote sin nombre',
-      nombre: dbLote.nombre || 'Lote sin nombre',
+      name: this.getLocalizedName(dbLote, currentLang),
+      nombre: this.getLocalizedName(dbLote, currentLang),
 
       // Estado (status) - critical for map categorization
       estado: estado,
       Estado: estado, // Capitalized version for compatibility
 
       // Description
-      descripcion: dbLote.descripcion || dbLote.matricula || '',
-      description: dbLote.descripcion || dbLote.matricula || '',
+      descripcion: this.getLocalizedDescription(dbLote, currentLang),
+      description: this.getLocalizedDescription(dbLote, currentLang),
 
       // Dimensions - lados (sides) - parsed from JSON
       lados: ladosFormatted || this.formatDimensions(dbLote),
@@ -284,7 +334,17 @@ class LoteService {
       centroide_lat: dbLote.centroide_lat,
       centroide_lng: dbLote.centroide_lng,
       centroid_lat: dbLote.centroide_lat, // Compatibility
-      centroid_lng: dbLote.centroide_lng  // Compatibility
+      centroid_lng: dbLote.centroide_lng,  // Compatibility
+
+      // Store raw data for dynamic language switching
+      _raw: {
+        nombre: dbLote.nombre,
+        nombre_en: dbLote.nombre_en,
+        nombre_de: dbLote.nombre_de,
+        descripcion: dbLote.descripcion,
+        descripcion_en: dbLote.descripcion_en,
+        descripcion_de: dbLote.descripcion_de
+      }
     };
   }
 

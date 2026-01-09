@@ -603,20 +603,31 @@ class MobileParcelCard {
       this.elements.title.textContent = parcelData.name || 'Lote N/A';
     }
 
-    // Set status
+    // Set status with i18n translation
     const estado = (parcelData.estado || 'disponible').toString().toLowerCase();
-    let statusText = 'Disponible';
     let statusClass = 'disponible';
 
     if (estado.includes('punto-interes')) {
-      statusText = 'Punto de Interés';
       statusClass = 'punto-interes';
     } else if (estado.includes('res')) {
-      statusText = 'Reservado';
       statusClass = 'reservado';
     } else if (estado.includes('ven')) {
-      statusText = 'Vendido';
       statusClass = 'vendido';
+    }
+
+    // Get translated status text from i18n
+    let statusText = 'Disponible';
+    if (window.i18n && window.i18n.t) {
+      if (statusClass === 'punto-interes') {
+        statusText = 'Punto de Interés'; // Keep hardcoded for interest points
+      } else {
+        statusText = window.i18n.t(`mapa.sidebar.status.${statusClass}`);
+      }
+    } else {
+      // Fallback texts
+      if (statusClass === 'punto-interes') statusText = 'Punto de Interés';
+      else if (statusClass === 'reservado') statusText = 'Reservado';
+      else if (statusClass === 'vendido') statusText = 'Vendido';
     }
 
     if (this.elements.status) {
@@ -1041,6 +1052,7 @@ let sidebarLeft, sidebarClose, emptyState, parcelInfo;
 let parcelImage, parcelStatusBadge, parcelName, parcelDescription, parcelLados;
 let parcelCoordinates, parcelArea, parcelPrice, reserveBtn;
 let isSidebarVisible = false;
+let currentSelectedParcel = null; // Store currently selected parcel for language switching
 
 // Mobile components - Initialize global instances
 let mobileResponsiveManager;
@@ -1374,21 +1386,27 @@ function showParcelSidebar(parcelData) {
     parcelTooltip.hide();
   }
 
+  // Store currently selected parcel for language switching
+  currentSelectedParcel = parcelData;
+
   // Initialize carousel with randomized images
   const carouselImages = getRandomizedParcelImages(parcelData);
   initializeParcelCarousel(carouselImages);
 
-  // Set status with proper styling
+  // Set status with proper styling and i18n translation
   const estado = (parcelData.estado || 'disponible').toString().toLowerCase();
-  let statusText = 'Disponible';
   let statusClass = 'disponible';
 
   if (estado.includes('reservado')) {
-    statusText = 'Reservado';
     statusClass = 'reservado';
   } else if (estado.includes('no_disponible') || estado.includes('vendido')) {
-    statusText = 'No Disponible';
     statusClass = 'vendido';
+  }
+
+  // Get translated status text from i18n
+  let statusText = 'Disponible';
+  if (window.i18n && window.i18n.t) {
+    statusText = window.i18n.t(`mapa.sidebar.status.${statusClass}`);
   }
 
   if (parcelStatusBadge) {
@@ -1396,14 +1414,48 @@ function showParcelSidebar(parcelData) {
     parcelStatusBadge.className = `status-badge ${statusClass}`;
   }
 
-  // Set nombre
+  // Set nombre with translation support
   if (parcelName) {
-    parcelName.textContent = parcelData.nombre || parcelData.name || 'N/A';
+    let nombre = parcelData.nombre || parcelData.name || 'N/A';
+
+    // Use _raw data for translation if available
+    if (parcelData._raw) {
+      const currentLang = (window.I18n && window.I18n.getCurrentLanguage) ? window.I18n.getCurrentLanguage() : 'es';
+      switch (currentLang) {
+        case 'en':
+          nombre = parcelData._raw.nombre_en || parcelData._raw.nombre || 'Unnamed lot';
+          break;
+        case 'de':
+          nombre = parcelData._raw.nombre_de || parcelData._raw.nombre || 'Unbenanntes Grundstück';
+          break;
+        default:
+          nombre = parcelData._raw.nombre || 'Lote sin nombre';
+      }
+    }
+
+    parcelName.textContent = nombre;
   }
 
-  // Set descripcion
+  // Set descripcion with translation support
   if (parcelDescription) {
-    parcelDescription.textContent = parcelData.descripcion || parcelData.description || 'N/A';
+    let descripcion = parcelData.descripcion || parcelData.description || 'N/A';
+
+    // Use _raw data for translation if available
+    if (parcelData._raw) {
+      const currentLang = (window.I18n && window.I18n.getCurrentLanguage) ? window.I18n.getCurrentLanguage() : 'es';
+      switch (currentLang) {
+        case 'en':
+          descripcion = parcelData._raw.descripcion_en || parcelData._raw.descripcion || '';
+          break;
+        case 'de':
+          descripcion = parcelData._raw.descripcion_de || parcelData._raw.descripcion || '';
+          break;
+        default:
+          descripcion = parcelData._raw.descripcion || '';
+      }
+    }
+
+    parcelDescription.textContent = descripcion || 'N/A';
   }
 
   // Set lados (dimensions)
@@ -1497,6 +1549,9 @@ function hideParcelSidebar() {
   if (!sidebarLeft) {
     return;
   }
+
+  // Clear currently selected parcel
+  currentSelectedParcel = null;
 
   // Hide parcel details and show empty state
   if (parcelInfo) {
@@ -2122,6 +2177,12 @@ function initializeLanguageSupport() {
       // Update mobile button active states
       syncMobileLanguageButtons(newLang);
 
+      // Clear LoteService cache for language change
+      if (window.LoteService && typeof window.LoteService.clearCache === 'function') {
+        window.LoteService.clearCache();
+        console.log('Cleared lote cache for language change');
+      }
+
       // Retranslate dynamic content
       retranslateDynamicContent(newLang);
     });
@@ -2175,6 +2236,37 @@ function syncMobileLanguageButtons(lang) {
 function retranslateDynamicContent(lang) {
   if (!window.i18n) return;
 
+  // Retranslate parcel name and description if sidebar is open and parcel data is available
+  if (isSidebarVisible && currentSelectedParcel && currentSelectedParcel._raw) {
+    // Update name
+    if (parcelName) {
+      let translatedName = currentSelectedParcel._raw.nombre || 'Lote sin nombre';
+      switch (lang) {
+        case 'en':
+          translatedName = currentSelectedParcel._raw.nombre_en || currentSelectedParcel._raw.nombre || 'Unnamed lot';
+          break;
+        case 'de':
+          translatedName = currentSelectedParcel._raw.nombre_de || currentSelectedParcel._raw.nombre || 'Unbenanntes Grundstück';
+          break;
+      }
+      parcelName.textContent = translatedName;
+    }
+
+    // Update description
+    if (parcelDescription) {
+      let translatedDescription = currentSelectedParcel._raw.descripcion || '';
+      switch (lang) {
+        case 'en':
+          translatedDescription = currentSelectedParcel._raw.descripcion_en || currentSelectedParcel._raw.descripcion || '';
+          break;
+        case 'de':
+          translatedDescription = currentSelectedParcel._raw.descripcion_de || currentSelectedParcel._raw.descripcion || '';
+          break;
+      }
+      parcelDescription.textContent = translatedDescription || 'N/A';
+    }
+  }
+
   // Retranslate status badges if sidebar is open
   if (isSidebarVisible && parcelStatusBadge) {
     const statusClass = parcelStatusBadge.className.replace('status-badge ', '');
@@ -2185,15 +2277,37 @@ function retranslateDynamicContent(lang) {
     }
   }
 
-  // Retranslate mobile card status if visible
-  if (mobileParcelCard && mobileParcelCard.isCardVisible()) {
+  // Retranslate mobile card if visible
+  if (mobileParcelCard && mobileParcelCard.isCardVisible() && mobileParcelCard.currentParcelData) {
+    const currentData = mobileParcelCard.currentParcelData;
+
+    // Update mobile card name if _raw data is available
+    if (currentData._raw) {
+      const mobileTitle = document.getElementById('mobileCardTitle');
+      if (mobileTitle) {
+        let translatedName = currentData._raw.nombre || 'Lote N/A';
+        switch (lang) {
+          case 'en':
+            translatedName = currentData._raw.nombre_en || currentData._raw.nombre || 'Lot N/A';
+            break;
+          case 'de':
+            translatedName = currentData._raw.nombre_de || currentData._raw.nombre || 'Grundstück N/V';
+            break;
+        }
+        mobileTitle.textContent = translatedName;
+      }
+    }
+
+    // Update mobile card status
     const mobileStatus = document.getElementById('mobileCardStatus');
     if (mobileStatus) {
       const statusClass = mobileStatus.className.replace('mobile-card-status ', '');
-      const statusKey = `mapa.sidebar.status.${statusClass}`;
-      const translatedStatus = window.i18n.t(statusKey);
-      if (translatedStatus !== statusKey) {
-        mobileStatus.textContent = translatedStatus;
+      if (statusClass !== 'punto-interes') {
+        const statusKey = `mapa.sidebar.status.${statusClass}`;
+        const translatedStatus = window.i18n.t(statusKey);
+        if (translatedStatus !== statusKey) {
+          mobileStatus.textContent = translatedStatus;
+        }
       }
     }
   }
