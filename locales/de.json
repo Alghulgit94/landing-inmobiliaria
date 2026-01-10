@@ -31,7 +31,7 @@
       "reasons": {
         "schools": {
           "title": "Gute Schulausbildung",
-          "description": "Hochwertige Bildungsangebote: zweisprachige Schulen, ideal für Familien, die eine qualitativ hochwertige Bildung in Wohnortnähe suchen.",
+          "description": "Hochwertige Bildungsangebote: Schulen, ideal für Familien, die eine qualitativ hochwertige Bildung in Wohnortnähe suchen.",
           "features": [
             "Schulen mit Sprachprogrammen: Spanisch, Guarani, Deutsch, Englisch",
             "",
@@ -40,12 +40,12 @@
           ]
         },
         "club": {
-          "title": "Deutsche Vereine",
+          "title": "Sport Vereine",
           "description": "Sozialer Treffpunkt, der durch Sport, Spiel und gemeinsame Feste Menschen verbindet",
           "features": [
             "Sport- und Freizeiteinrichtungen",
             "Regelmäßige gesellschaftliche Veranstaltungen",
-            "Das traditionelle deutsche Volkfest in Paraguay",
+            "Das traditionelle Volkfest und Choppfest",
             ""
           ]
         },

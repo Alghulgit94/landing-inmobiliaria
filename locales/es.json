@@ -31,7 +31,7 @@
       "reasons": {
         "schools": {
           "title": "Buena educación",
-          "description": "Opciones educativas de buen nivel: colegios bilingües, perfectos para familias que buscan educación de calidad cerca de casa.",
+          "description": "Opciones educativas de buen nivel: Colegios ideales para familias que buscan educación de calidad cerca de casa.",
           "features": [
             "Colegios con programas enfocados en idiomas: Español, Guarani, Alemán, Inglés",
             "",
@@ -40,13 +40,12 @@
           ]
         },
         "club": {
-          "title": "Club alemán",
+          "title": "Entidades deportivas",
           "description": "Entidades deportivas y culturales que facilitan integración, ocio y aprendizaje en un entorno familiar.",
           "features": [
             "Instalaciones deportivas y recreativas",
-            "Clases de alemán e inglés",
-            "Talleres culturales y artísticos",
-            "Eventos sociales regulares"
+            "Eventos sociales y culturales",
+            "Fiestas tradicionales como la Volkfest y Choppfest"
           ]
         },
         "cultural_activities": {
@@ -55,8 +54,7 @@
           "features": [
             "Eventos tradicionales alemanes",
             "Banda de música tradicional",
-            "Biblioteca con acervo alemán",
-            "La tradicional Choppfest de Alemania en Paraguay"
+            "Biblioteca con acervo alemán"
           ]
         },
         "tranquility": {
