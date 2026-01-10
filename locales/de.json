@@ -51,9 +51,8 @@
         },
         "cultural_activities": {
           "title": "Kulturelle Aktivitäten",
-          "description": "Tauchen Sie ein in die reiche deutsche Kultur mit traditionellen Veranstaltungen, Live-Musik und Zugang zu einer spezialisierten Bibliothek. Erleben und lernen Sie deutsche Traditionen.",
+          "description": "Tauchen Sie ein in die reiche deutsche Kultur mit traditionellen Veranstaltungen, Live-Musik und Zugang zu einer spezialisierten Bibliothek.",
           "features": [
-            "Traditionelle deutsche Veranstaltungen",
             "Traditionelle Musikkapelle und Chor",
             "Bibliothek mit deutscher Sammlung"
           ]

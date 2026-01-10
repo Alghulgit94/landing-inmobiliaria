@@ -50,9 +50,8 @@
         },
         "cultural_activities": {
           "title": "Actividades Culturales",
-          "description": "Sumérgete en la rica cultura alemana con eventos tradicionales, música en vivo, y acceso a biblioteca especializada. Vive y aprende de las tradiciones germanas.",
+          "description": "Sumérgete en la rica cultura alemana con eventos tradicionales, música en vivo, y acceso a biblioteca especializada.",
           "features": [
-            "Eventos tradicionales alemanes",
             "Banda de música tradicional y coro polifónico",
             "Biblioteca con acervo alemán"
           ]

@@ -50,9 +50,8 @@
         },
         "cultural_activities": {
           "title": "Cultural Activities",
-          "description": "Immerse yourself into a rich German culture with traditional events, live music, and access to a specialized library. Experience and learn German traditions.",
+          "description": "Immerse yourself into a rich German culture with traditional events, live music, and access to a specialized library.",
           "features": [
-            "Traditional German events",
             "Traditional music band and polyphonic choir",
             "Library with German collection"
           ]
