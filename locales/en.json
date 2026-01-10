@@ -78,7 +78,7 @@
       }
     },
     "loteamientos": {
-      "title": "Our Developments",
+      "title": "Our Developments and Options",
       "subtitle": "Build-ready lots available.",
       "dimensions_available": "Dimensions available",
       "no_description": "No description available",
@@ -92,7 +92,7 @@
         "description": "No lots were found for the selected location."
       },
       "filters": {
-        "colonia_independencia": "Colonia Independencia",
+        "colonia_independencia": "Own developments",
         "other_options": "Other options"
       },
       "products": {

@@ -78,7 +78,7 @@
       }
     },
     "loteamientos": {
-      "title": "Nuestros Terrenos",
+      "title": "Nuestros proyectos y opciones",
       "subtitle": "Terrenos listos para construir",
       "dimensions_available": "Dimensiones disponibles",
       "no_description": "Sin descripción disponible",
@@ -92,7 +92,7 @@
         "description": "No se encontraron loteamientos para la ubicación seleccionada."
       },
       "filters": {
-        "colonia_independencia": "Colonia Independencia",
+        "colonia_independencia": "Desarrollos propios",
         "other_options": "Otras opciones"
       },
       "products": {

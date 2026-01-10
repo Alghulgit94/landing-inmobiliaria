@@ -79,7 +79,7 @@
       }
     },
     "loteamientos": {
-      "title": "Unsere Grundstücke",
+      "title": "Unsere Projekte/Optionen",
       "subtitle": "Sofort bebaubare Grundstücke.",
       "dimensions_available": "Abmessungen verfügbar",
       "no_description": "Keine Beschreibung verfügbar",
@@ -93,7 +93,7 @@
         "description": "Für den ausgewählten Standort wurden keine Parzellen gefunden."
       },
       "filters": {
-        "colonia_independencia": "Colonia Independencia",
+        "colonia_independencia": "Eigene Projekte",
         "other_options": "Weitere Optionen"
       },
       "products": {
