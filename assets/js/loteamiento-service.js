@@ -134,7 +134,7 @@ class LoteamientoService {
 
     return {
       id: dbLoteamiento.id,
-      name: dbLoteamiento.nombre_loteamiento || dbLoteamiento.nombre || 'Loteamiento sin nombre',
+      name: this.getLocalizedName(dbLoteamiento, currentLang),
       description: this.getLocalizedDescription(dbLoteamiento, currentLang),
       photo: dbLoteamiento.photo || this.getDefaultPhoto(location),
       location: location,
@@ -159,6 +159,9 @@ class LoteamientoService {
       interest_points: dbLoteamiento.interest_points || null,
       // Store raw data for dynamic language switching
       _raw: {
+        nombre: dbLoteamiento.nombre_loteamiento || dbLoteamiento.nombre,
+        nombre_en: dbLoteamiento.nombre_en,
+        nombre_de: dbLoteamiento.nombre_de,
         descripcion: dbLoteamiento.descripcion,
         descripcion_en: dbLoteamiento.descripcion_en,
         descripcion_de: dbLoteamiento.descripcion_de,
@@ -195,6 +198,27 @@ class LoteamientoService {
       case 'es':
       default:
         return loteamiento.descripcion || '';
+    }
+  }
+
+  /**
+   * Get localized name based on current language
+   * @param {Object} loteamiento - Database loteamiento object
+   * @param {string} lang - Language code (es, en, de)
+   * @returns {string} Localized name
+   */
+  getLocalizedName(loteamiento, lang) {
+    // Try nombre_loteamiento first, then nombre field
+    const nombreEs = loteamiento.nombre_loteamiento || loteamiento.nombre || '';
+
+    switch (lang) {
+      case 'en':
+        return loteamiento.nombre_en || nombreEs || 'Unnamed Development';
+      case 'de':
+        return loteamiento.nombre_de || nombreEs || 'Unbenannte Siedlung';
+      case 'es':
+      default:
+        return nombreEs || 'Loteamiento sin nombre';
     }
   }
 

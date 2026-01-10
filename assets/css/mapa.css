@@ -21,7 +21,7 @@ html {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
-  grid-template-areas: 
+  grid-template-areas:
     "header"
     "map-content";
   height: 100vh;
@@ -692,10 +692,12 @@ html {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.25);
     filter: brightness(0) saturate(100%) invert(45%) sepia(89%) saturate(1738%) hue-rotate(334deg) brightness(120%) contrast(100%);
   }
+
   100% {
     transform: scale(1);
   }
@@ -752,8 +754,8 @@ html {
   max-width: 200px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-fast), 
-              visibility var(--transition-fast);
+  transition: opacity var(--transition-fast),
+    visibility var(--transition-fast);
   pointer-events: none;
   font-family: var(--font-family-primary);
 }
@@ -855,7 +857,8 @@ html {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   z-index: 1500;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-  display: none; /* Hidden by default - only show on mobile via media query */
+  display: none;
+  /* Hidden by default - only show on mobile via media query */
   padding: 16px;
   border: 2px solid var(--color-green-primary);
   opacity: 0;
@@ -1048,7 +1051,8 @@ html {
   top: 80px;
   right: 16px;
   z-index: 1400;
-  display: none; /* Hidden by default - only show on mobile via media query */
+  display: none;
+  /* Hidden by default - only show on mobile via media query */
   flex-direction: column;
   gap: 12px;
 }
@@ -1117,7 +1121,8 @@ html {
   box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
   z-index: 1600;
   transition: bottom 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-  display: none; /* Hidden by default - only show on mobile via media query */
+  display: none;
+  /* Hidden by default - only show on mobile via media query */
 }
 
 .mobile-bottom-sheet.visible {
@@ -1136,7 +1141,8 @@ html {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  display: none; /* Hidden by default - only show on mobile via media query */
+  display: none;
+  /* Hidden by default - only show on mobile via media query */
 }
 
 .mobile-bottom-sheet-backdrop.visible {
@@ -1303,6 +1309,7 @@ html {
 
 /* DESKTOP: Ensure mobile components are hidden on large screens */
 @media (min-width: 768px) {
+
   .mobile-parcel-card,
   .mobile-fabs,
   .mobile-bottom-sheet,
@@ -1325,7 +1332,7 @@ html {
   .sidebar-left.open {
     width: 280px;
   }
-  
+
   /* Tooltip adjustments for tablet */
   .parcel-tooltip {
     max-width: 180px;
@@ -1334,6 +1341,7 @@ html {
 }
 
 @media (max-width: 767px) {
+
   /* MOBILE LAYOUT ACTIVATION */
   .map-content {
     grid-template-columns: 1fr;
@@ -1357,10 +1365,12 @@ html {
     0% {
       transform: scale(1);
     }
+
     50% {
       transform: scale(1.3);
       filter: brightness(0) saturate(100%) invert(45%) sepia(89%) saturate(1738%) hue-rotate(334deg) brightness(120%) contrast(100%);
     }
+
     100% {
       transform: scale(1);
     }
@@ -1391,7 +1401,8 @@ html {
   }
 
   .map-back-button span:not(.back-arrow) {
-    display: none; /* Hide "Volver" text on mobile, keep arrow only */
+    display: none;
+    /* Hide "Volver" text on mobile, keep arrow only */
   }
 
   .map-back-button {
@@ -1413,7 +1424,7 @@ html {
     display: block !important;
     z-index: 2000 !important;
   }
-  
+
   /* Mobile card visible state */
   .mobile-parcel-card.visible {
     opacity: 1 !important;
@@ -1445,18 +1456,18 @@ html {
     height: 100%;
     width: 100%;
   }
-  
+
   /* Mobile tooltip adjustments */
   .parcel-tooltip {
     max-width: 160px;
     padding: var(--spacing-xs);
     font-size: var(--font-size-xs);
   }
-  
+
   .tooltip-name {
     font-size: var(--font-size-xs);
   }
-  
+
   .tooltip-dimensions {
     font-size: 0.65rem;
   }
@@ -1543,31 +1554,31 @@ html {
     min-width: 80px;
     min-height: 36px;
   }
-  
+
   /* Extra small mobile tooltip adjustments */
   .parcel-tooltip {
     max-width: 140px;
     padding: 6px;
     min-width: 100px;
   }
-  
+
   .tooltip-name {
     font-size: 0.65rem;
     line-height: 1.2;
   }
-  
+
   .tooltip-dimensions {
     font-size: 0.6rem;
     line-height: 1.1;
   }
-  
+
   .parcel-tooltip.arrow-left .tooltip-arrow {
     border-top-width: 5px;
     border-bottom-width: 5px;
     border-right-width: 6px;
     left: -6px;
   }
-  
+
   .parcel-tooltip.arrow-left .tooltip-arrow::before {
     border-top-width: 6px;
     border-bottom-width: 6px;
@@ -1575,14 +1586,14 @@ html {
     left: 1px;
     top: -6px;
   }
-  
+
   .parcel-tooltip.arrow-right .tooltip-arrow {
     border-top-width: 5px;
     border-bottom-width: 5px;
     border-left-width: 6px;
     right: -6px;
   }
-  
+
   .parcel-tooltip.arrow-right .tooltip-arrow::before {
     border-top-width: 6px;
     border-bottom-width: 6px;
@@ -1624,7 +1635,7 @@ html {
   .zoom-section {
     display: none;
   }
-  
+
   .leaflet-control-zoom {
     display: none !important;
   }

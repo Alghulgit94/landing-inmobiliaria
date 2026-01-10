@@ -33,10 +33,10 @@
           "title": "Gute Schulausbildung",
           "description": "Hochwertige Bildungsangebote: zweisprachige Schulen, ideal für Familien, die eine qualitativ hochwertige Bildung in Wohnortnähe suchen.",
           "features": [
-            "Deutsche Schulen",
-            "Hochwertiger zweisprachiger Unterricht",
-            "Internationale Programme",
-            "Renommierte öffentliche Schulen"
+            "Schulen mit Sprachprogrammen: Spanisch, Guarani, Deutsch, Englisch",
+            "",
+            "",
+            "Öffentliche Schulen"
           ]
         },
         "club": {
@@ -184,7 +184,7 @@
     },
     "about_us": {
       "title": "Lernen Sie unser Team kennen",
-      "subtitle": "Mega Proyectos ist ein Team, das Ideen in ihr Zuhause verwandelt. Durchdachte Projekte in ruhiger Lage, gestaltet für eine bessere Lebensqualität.",
+      "subtitle": "Mega Proyectos ist ein Team, das Ideen in Ihr Zuhause verwandelt. Durchdachte Projekte in ruhiger Lage, gestaltet für eine bessere Lebensqualität.",
       "subtitle2": "Wir bauen mehr als Projekte – wir bauen Vertrauen.",
       "team": {
         "john_powell": {
