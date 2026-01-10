@@ -598,9 +598,26 @@ class MobileParcelCard {
       }
     }
 
-    // Set title
+    // Set title with translation support
     if (this.elements.title) {
-      this.elements.title.textContent = parcelData.name || 'Lote N/A';
+      let nombre = parcelData.name || 'Lote N/A';
+
+      // Use _raw data for translation if available
+      if (parcelData._raw) {
+        const currentLang = (window.I18n && window.I18n.getCurrentLanguage) ? window.I18n.getCurrentLanguage() : 'es';
+        switch (currentLang) {
+          case 'en':
+            nombre = parcelData._raw.nombre_en || parcelData._raw.nombre || 'Lot N/A';
+            break;
+          case 'de':
+            nombre = parcelData._raw.nombre_de || parcelData._raw.nombre || 'Grundstück N/V';
+            break;
+          default:
+            nombre = parcelData._raw.nombre || 'Lote N/A';
+        }
+      }
+
+      this.elements.title.textContent = nombre;
     }
 
     // Set status with i18n translation
@@ -638,22 +655,42 @@ class MobileParcelCard {
       this.elements.status.style.display = isInterestPoint ? 'none' : 'inline-block';
     }
 
-    // Set coordinates from centroid data or direct lat/lng (for interest points)
+    // Set dimensions (largo x ancho - área) instead of coordinates for mobile
     if (this.elements.coordinates) {
-      const lat = parcelData.latitude || parcelData.centroide_lat || parcelData.centroid_lat;
-      const lng = parcelData.longitude || parcelData.centroide_lng || parcelData.centroid_lng;
+      const lados = parcelData.lados || parcelData.largoxancho || parcelData.LargoxAncho;
+      const area = parcelData.area_m2_rounded || parcelData.area || parcelData.Area || parcelData.superficie || parcelData.Superficie;
 
-      if (lat && lng) {
-        // Format with 6 decimal places for precision
-        const formattedLat = typeof lat === 'number' ? lat.toFixed(6) : parseFloat(lat).toFixed(6);
-        const formattedLng = typeof lng === 'number' ? lng.toFixed(6) : parseFloat(lng).toFixed(6);
-        this.elements.coordinates.textContent = `${formattedLat}, ${formattedLng}`;
+      if (lados && area) {
+        // Parse lados to extract individual dimensions
+        // lados format is typically "68.5 x 67.2 m"
+        const ladosParsed = lados.replace(' m', '').trim();
+        const dimensionsParts = ladosParsed.split('x').map(d => d.trim());
+
+        if (dimensionsParts.length >= 2) {
+          const largo = dimensionsParts[0];
+          const ancho = dimensionsParts[1];
+
+          // Format area with thousands separator
+          const formattedArea = typeof area === 'number' ? area.toLocaleString() : parseInt(area).toLocaleString();
+
+          this.elements.coordinates.textContent = `${largo} m x ${ancho} m - ${formattedArea} m²`;
+        } else if (area) {
+          // Fallback: just show area if can't parse dimensions
+          const formattedArea = typeof area === 'number' ? area.toLocaleString() : parseInt(area).toLocaleString();
+          this.elements.coordinates.textContent = `${formattedArea} m²`;
+        } else {
+          this.elements.coordinates.textContent = 'N/A';
+        }
+      } else if (area) {
+        // If only area available, show just area
+        const formattedArea = typeof area === 'number' ? area.toLocaleString() : parseInt(area).toLocaleString();
+        this.elements.coordinates.textContent = `${formattedArea} m²`;
       } else {
         this.elements.coordinates.textContent = 'N/A';
       }
     }
 
-    // Set price (hide for interest points)
+    // Set price in European format (hide for interest points)
     const price = parcelData.precio || parcelData.price;
     if (this.elements.price) {
       if (isInterestPoint) {
@@ -661,13 +698,9 @@ class MobileParcelCard {
         this.elements.price.style.display = 'none';
       } else {
         this.elements.price.style.display = 'block';
-        if (price && price !== 'null' && price !== '') {
-          const formattedPrice = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 0,
-            maximumFractionDigits: 0
-          }).format(price);
+        if (price && price !== 'null' && price !== '' && price !== 0) {
+          // Format price in European format (e.g., "160.705,65 €")
+          const formattedPrice = formatEuroPrice(price);
           this.elements.price.textContent = formattedPrice;
         } else {
           this.elements.price.textContent = 'Consultar';
@@ -1058,6 +1091,34 @@ let currentSelectedParcel = null; // Store currently selected parcel for languag
 let mobileResponsiveManager;
 let mobileParcelCard;
 let mobileBottomSheets;
+
+// ===========================
+// PRICE FORMATTING UTILITIES
+// ===========================
+
+/**
+ * Format price in European format with euro symbol
+ * @param {number} price - Price value
+ * @returns {string} Formatted price (e.g., "160.705,65 €")
+ */
+function formatEuroPrice(price) {
+  if (!price || price === 0) return 'Consultar';
+
+  // Convert to number if string
+  const numPrice = typeof price === 'number' ? price : parseFloat(price);
+
+  // Format with 2 decimals
+  const priceStr = numPrice.toFixed(2);
+
+  // Split integer and decimal parts
+  const [integerPart, decimalPart] = priceStr.split('.');
+
+  // Add thousand separators (dots) to integer part
+  const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // Combine with comma as decimal separator and euro symbol
+  return `${formattedInteger},${decimalPart} €`;
+}
 
 // Función para color por estado - Using Design System Colors
 function colorByEstado(estado) {
@@ -1503,17 +1564,12 @@ function showParcelSidebar(parcelData) {
     }
   }
 
-  // Set price with currency formatting
+  // Set price with European currency formatting
   const price = parcelData.precio || parcelData.price;
   if (parcelPrice) {
     if (price && price !== 'null' && price !== '' && price !== 0) {
-      // Format price as USD currency
-      const formattedPrice = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0
-      }).format(price);
+      // Format price in European format (e.g., "160.705,65 €")
+      const formattedPrice = formatEuroPrice(price);
       parcelPrice.textContent = formattedPrice;
     } else {
       parcelPrice.textContent = 'Consultar';
@@ -2176,12 +2232,6 @@ function initializeLanguageSupport() {
 
       // Update mobile button active states
       syncMobileLanguageButtons(newLang);
-
-      // Clear LoteService cache for language change
-      if (window.LoteService && typeof window.LoteService.clearCache === 'function') {
-        window.LoteService.clearCache();
-        console.log('Cleared lote cache for language change');
-      }
 
       // Retranslate dynamic content
       retranslateDynamicContent(newLang);

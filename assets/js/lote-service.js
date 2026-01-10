@@ -301,11 +301,11 @@ class LoteService {
       LargoxAncho: ladosFormatted || this.formatDimensions(dbLote),
       dimensions: ladosFormatted || this.formatDimensions(dbLote),
 
-      // Pricing - use precio_usd from database
-      precio: dbLote.precio_usd || null,
-      Precio: dbLote.precio_usd || null,
-      price: dbLote.precio_usd || null,
-      Price: dbLote.precio_usd || null,
+      // Pricing - use precio_euro from database
+      precio: dbLote.precio_euro || null,
+      Precio: dbLote.precio_euro || null,
+      price: dbLote.precio_euro || null,
+      Price: dbLote.precio_euro || null,
 
       // Visual
       photo: dbLote.photo || this.getDefaultPhoto(estado),

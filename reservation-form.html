@@ -1084,6 +1084,30 @@
         }, 250);
       }
 
+      /**
+       * Format price in European EUR format
+       * @param {number} price - Price value
+       * @returns {string} Formatted price (e.g., "160.705,65 €")
+       */
+      function formatEuroPrice(price) {
+        if (!price || price === 0) return 'Consultar';
+
+        // Convert to number if string
+        const numPrice = typeof price === 'number' ? price : parseFloat(price);
+
+        // Format with 2 decimal places
+        const priceStr = numPrice.toFixed(2);
+
+        // Split integer and decimal parts
+        const [integerPart, decimalPart] = priceStr.split('.');
+
+        // Add thousands separator (dot)
+        const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+        // Return with European format: dot for thousands, comma for decimals, € at end
+        return `${formattedInteger},${decimalPart} €`;
+      }
+
       // Populate lot information from lote data
       function populateLotInformation(loteData) {
         if (!loteData) return;
@@ -1095,18 +1119,10 @@
         }
         document.title = `Reservación ${loteName} - Mega Proyectos`;
 
-        // Set price
+        // Set price (EUR format)
         if (lotPriceElement) {
           const price = loteData.precio;
-          if (price && price !== 0) {
-            lotPriceElement.textContent = new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: 'USD',
-              minimumFractionDigits: 0
-            }).format(price);
-          } else {
-            lotPriceElement.textContent = 'Consultar';
-          }
+          lotPriceElement.textContent = formatEuroPrice(price);
         }
 
         // Set dimensions
@@ -1367,7 +1383,7 @@
           loteamientoId: params.loteamiento_id,
           lotDetails: {
             nombre: currentLoteData.nombre || currentLoteData.name,
-            precio_usd: currentLoteData.precio,
+            precio_euro: currentLoteData.precio,
             loteamiento_id: params.loteamiento_id,
             area_m2: currentLoteData.area_m2_rounded || currentLoteData.area,
             lados: currentLoteData.lados
