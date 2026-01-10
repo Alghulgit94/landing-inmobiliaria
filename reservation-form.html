@@ -778,8 +778,7 @@
                 </div>
                 <div class="lot-info-item-compact">
                   <div class="lot-info-label-compact" data-i18n="reservation.lot_info.price">Precio</div>
-                  <!-- <div id="lotPrice" class="lot-info-value-compact">Consultar</div> -->
-                   <div id="" class="lot-info-value-compact">Consultar</div>
+                  <div id="lotPrice" class="lot-info-value-compact">Consultar</div>
                 </div>
                 <div class="lot-info-item-compact">
                   <div class="lot-info-label-compact" data-i18n="reservation.lot_info.dimensions">Dimensiones</div>
@@ -1120,10 +1119,12 @@
         }
         document.title = `Reservación ${loteName} - Mega Proyectos`;
 
-        // Set price (EUR format)
+        // Set price (always show static localized "Consultar" text)
         if (lotPriceElement) {
-          const price = loteData.precio;
-          lotPriceElement.textContent = formatEuroPrice(price);
+          const consultText = (window.i18n && window.i18n.isInitialized && window.i18n.isInitialized())
+            ? window.i18n.t('reservation.lot_info.consult')
+            : 'Consultar';
+          lotPriceElement.textContent = consultText;
         }
 
         // Set dimensions
@@ -1548,7 +1549,8 @@
         if (lotIdElement && lotIdElement.textContent === 'No especificado') {
           lotIdElement.textContent = window.i18n.t('reservation.lot_info.not_specified');
         }
-        if (lotPriceElement && lotPriceElement.textContent === 'Consultar') {
+        // Always update price text with localized "Consultar"
+        if (lotPriceElement) {
           lotPriceElement.textContent = window.i18n.t('reservation.lot_info.consult');
         }
         if (lotDimensionsElement && lotDimensionsElement.textContent === 'No especificadas') {
