@@ -1244,8 +1244,10 @@ function createObjectEventHandlers(objectType, objectData, estado = '') {
     const currentLayer = e.target;
     const hoverStyle = getObjectHoverStyle(objectType, estado);
 
-    // Apply hover styling
-    currentLayer.setStyle(hoverStyle);
+    // Apply hover styling only for clickable objects (LOTE)
+    if (shouldObjectBeClickable(objectType)) {
+      currentLayer.setStyle(hoverStyle);
+    }
 
     // Show tooltip only for objects that should have tooltips
     if (shouldObjectShowTooltip(objectType) && parcelTooltip.enabled && e.originalEvent) {
@@ -1264,9 +1266,11 @@ function createObjectEventHandlers(objectType, objectData, estado = '') {
       currentLayer._tooltipUpdateTimer = null;
     }
 
-    // Reset layer styling
-    const originalStyle = getObjectStyle(objectType, estado);
-    currentLayer.setStyle(originalStyle);
+    // Reset layer styling only for clickable objects (LOTE)
+    if (shouldObjectBeClickable(objectType)) {
+      const originalStyle = getObjectStyle(objectType, estado);
+      currentLayer.setStyle(originalStyle);
+    }
 
     // Hide tooltip only for objects that show tooltips
     if (shouldObjectShowTooltip(objectType) && parcelTooltip.enabled) {
