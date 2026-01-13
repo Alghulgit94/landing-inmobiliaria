@@ -701,7 +701,7 @@ class MobileParcelCard {
           const formattedPrice = formatEuroPrice(price);
           this.elements.price.textContent = formattedPrice;
         } else {
-          this.elements.price.textContent = 'Consultar';
+          this.elements.price.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.sidebar.labels.consult') : 'Consultar';
         }
       }
     }
@@ -1127,7 +1127,7 @@ let mobileBottomSheets;
  * @returns {string} Formatted price (e.g., "160.705,65 €")
  */
 function formatEuroPrice(price) {
-  if (!price || price === 0) return 'Consultar';
+  if (!price || price === 0) return window.i18n && window.i18n.t ? window.i18n.t('mapa.sidebar.labels.consult') : 'Consultar';
 
   // Convert to number if string
   const numPrice = typeof price === 'number' ? price : parseFloat(price);
@@ -1609,7 +1609,7 @@ function showParcelSidebar(parcelData) {
       const formattedPrice = formatEuroPrice(price);
       parcelPrice.textContent = formattedPrice;
     } else {
-      parcelPrice.textContent = 'Consultar';
+      parcelPrice.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.sidebar.labels.consult') : 'Consultar';
     }
   }
 
