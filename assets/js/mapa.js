@@ -453,7 +453,6 @@ class MobileParcelCard {
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleReservation = this.handleReservation.bind(this);
     this.handleTouchStart = this.handleTouchStart.bind(this);
     this.handleTouchMove = this.handleTouchMove.bind(this);
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
@@ -488,9 +487,8 @@ class MobileParcelCard {
       this.elements.closeBtn.addEventListener('click', this.handleClose);
     }
 
-    if (this.elements.reserveBtn) {
-      this.elements.reserveBtn.addEventListener('click', this.handleReservation);
-    }
+    // Note: Reserve button handler is set dynamically in updateCardContent()
+    // based on the parcel estado (disponible, reservado, vendido)
 
     // Add swipe-to-dismiss functionality
     this.addSwipeGestures();
@@ -708,14 +706,43 @@ class MobileParcelCard {
       }
     }
 
-    // Configure reserve button (hide for interest points and unavailable parcels)
+    // Configure action button (reserve for disponible, interest for reservado)
     if (this.elements.reserveBtn) {
       if (parcelData.isInterestPoint || estado.includes('punto-interes')) {
         this.elements.reserveBtn.style.display = 'none';
+        this.elements.reserveBtn.onclick = null;
       } else if (estado.includes('disp')) {
+        // Show as reserve button for disponible lots
+        this.elements.reserveBtn.className = 'mobile-reserve-btn';
         this.elements.reserveBtn.style.display = 'block';
+        this.elements.reserveBtn.setAttribute('data-i18n', 'mapa.mobile.reserve');
+        this.elements.reserveBtn.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.mobile.reserve') : 'Reservar';
+        this.elements.reserveBtn.disabled = false;
+        this.elements.reserveBtn.onclick = () => handleReservation(parcelData);
+      } else if (estado.includes('reservado')) {
+        // Check if user has already registered interest
+        const hasRegisteredInterest = window.InterestService && window.InterestService.hasRegisteredInterest(parcelData.id);
+
+        // Show as interest button for reservado lots
+        this.elements.reserveBtn.className = 'mobile-interest-btn';
+        this.elements.reserveBtn.style.display = 'block';
+
+        if (hasRegisteredInterest) {
+          this.elements.reserveBtn.setAttribute('data-i18n', 'mapa.mobile.interest_registered');
+          this.elements.reserveBtn.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.mobile.interest_registered') : 'Interés registrado';
+          this.elements.reserveBtn.disabled = true;
+          this.elements.reserveBtn.onclick = null;
+        } else {
+          this.elements.reserveBtn.setAttribute('data-i18n', 'mapa.mobile.interest');
+          this.elements.reserveBtn.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.mobile.interest') : 'Estoy interesado';
+          this.elements.reserveBtn.disabled = false;
+          // Update the click handler to open interest modal for reservado lots
+          this.elements.reserveBtn.onclick = () => openInterestModal(parcelData);
+        }
       } else {
+        // Hide for vendido or other estados
         this.elements.reserveBtn.style.display = 'none';
+        this.elements.reserveBtn.onclick = null;
       }
     }
   }
@@ -736,12 +763,6 @@ class MobileParcelCard {
 
   handleClose() {
     this.hide();
-  }
-
-  handleReservation() {
-    if (this.currentParcelData) {
-      handleReservation(this.currentParcelData);
-    }
   }
 
   isCardVisible() {
@@ -1083,9 +1104,13 @@ let parcelCounts = {
 // Sidebar functionality - Initialize after DOM is loaded
 let sidebarLeft, sidebarClose, emptyState, parcelInfo;
 let parcelImage, parcelStatusBadge, parcelName, parcelDescription, parcelLados;
-let parcelCoordinates, parcelArea, parcelPrice, reserveBtn;
+let parcelCoordinates, parcelArea, parcelPrice, reserveBtn, interestBtn;
 let isSidebarVisible = false;
 let currentSelectedParcel = null; // Store currently selected parcel for language switching
+
+// Interest modal elements
+let interestModal, interestModalBackdrop, interestForm, interestModalClose, interestCancelBtn;
+let currentLotForInterest = null;
 
 // Mobile components - Initialize global instances
 let mobileResponsiveManager;
@@ -1378,10 +1403,18 @@ function initializeSidebarElements() {
   parcelPrice = document.getElementById('parcelPrice');
   reserveBtn = document.getElementById('reserveBtn');
 
+  // Interest modal elements
+  interestModal = document.getElementById('interestModal');
+  interestModalBackdrop = document.getElementById('interestModalBackdrop');
+  interestForm = document.getElementById('interestForm');
+  interestModalClose = document.getElementById('interestModalClose');
+  interestCancelBtn = document.getElementById('interestCancelBtn');
+
   // Initialize event handlers after elements are found
   initializeSidebarEventHandlers();
   initializeFilterEventHandlers();
   initializeZoomEventHandlers();
+  initializeInterestModalHandlers();
 
   // Initialize mobile components
   initializeMobileComponents();
@@ -1580,12 +1613,37 @@ function showParcelSidebar(parcelData) {
     }
   }
 
-  // Configure reserve button based on availability
+  // Configure action button based on availability (reserve for disponible, interest for reservado)
   if (reserveBtn) {
     if (estado.includes('disponible')) {
+      // Show as reserve button for disponible lots
+      reserveBtn.className = 'reserve-btn';
       reserveBtn.style.display = 'block';
+      reserveBtn.setAttribute('data-i18n', 'mapa.sidebar.buttons.reserve');
+      reserveBtn.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.sidebar.buttons.reserve') : 'Reservar Lote';
       reserveBtn.onclick = () => handleReservation(parcelData);
+      reserveBtn.disabled = false;
+    } else if (estado.includes('reservado')) {
+      // Check if user has already registered interest for this lot
+      const hasRegisteredInterest = window.InterestService && window.InterestService.hasRegisteredInterest(parcelData.id);
+
+      // Show as interest button for reservado lots
+      reserveBtn.className = 'interest-action-btn';
+      reserveBtn.style.display = 'block';
+
+      if (hasRegisteredInterest) {
+        reserveBtn.setAttribute('data-i18n', 'mapa.sidebar.buttons.interest_registered');
+        reserveBtn.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.sidebar.buttons.interest_registered') : 'Interés registrado';
+        reserveBtn.disabled = true;
+        reserveBtn.onclick = null;
+      } else {
+        reserveBtn.setAttribute('data-i18n', 'mapa.sidebar.buttons.interest');
+        reserveBtn.textContent = window.i18n && window.i18n.t ? window.i18n.t('mapa.sidebar.buttons.interest') : 'Estoy interesado';
+        reserveBtn.disabled = false;
+        reserveBtn.onclick = () => openInterestModal(parcelData);
+      }
     } else {
+      // Hide for vendido or other estados
       reserveBtn.style.display = 'none';
     }
   }
@@ -2382,4 +2440,351 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initializeLanguageSupport);
 } else {
   initializeLanguageSupport();
+}
+
+// ===========================
+// INTEREST MODAL HANDLERS
+// ===========================
+
+/**
+ * Initialize interest modal event handlers
+ */
+function initializeInterestModalHandlers() {
+  if (!interestModal || !interestModalBackdrop || !interestForm) {
+    console.warn('Interest modal elements not found');
+    return;
+  }
+
+  // Close button handler
+  if (interestModalClose) {
+    interestModalClose.addEventListener('click', closeInterestModal);
+  }
+
+  // Cancel button handler
+  if (interestCancelBtn) {
+    interestCancelBtn.addEventListener('click', closeInterestModal);
+  }
+
+  // Backdrop click handler
+  if (interestModalBackdrop) {
+    interestModalBackdrop.addEventListener('click', closeInterestModal);
+  }
+
+  // Form submit handler
+  if (interestForm) {
+    interestForm.addEventListener('submit', handleInterestSubmit);
+  }
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && interestModal.classList.contains('visible')) {
+      closeInterestModal();
+    }
+  });
+}
+
+/**
+ * Open interest modal and populate with lot data
+ * @param {Object} parcelData - Lot data
+ */
+function openInterestModal(parcelData) {
+  if (!interestModal || !interestModalBackdrop) {
+    console.error('Interest modal elements not found');
+    return;
+  }
+
+  // Store current lot for submission
+  currentLotForInterest = parcelData;
+
+  // Clear any previous form data and errors
+  if (interestForm) {
+    interestForm.reset();
+    const errorElements = interestForm.querySelectorAll('.interest-form-error');
+    errorElements.forEach(el => el.textContent = '');
+  }
+
+  // Show backdrop
+  interestModalBackdrop.classList.add('visible');
+
+  // Show modal with slight delay for smooth animation
+  setTimeout(() => {
+    interestModal.classList.add('visible');
+  }, 50);
+
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+
+  // Focus on first input field
+  const contactNameInput = document.getElementById('contactName');
+  if (contactNameInput) {
+    setTimeout(() => {
+      contactNameInput.focus();
+    }, 300);
+  }
+}
+
+/**
+ * Close interest modal and reset form
+ */
+function closeInterestModal() {
+  if (!interestModal || !interestModalBackdrop) {
+    return;
+  }
+
+  // Hide modal
+  interestModal.classList.remove('visible');
+
+  // Hide backdrop with delay
+  setTimeout(() => {
+    interestModalBackdrop.classList.remove('visible');
+  }, 300);
+
+  // Clear form and errors
+  if (interestForm) {
+    interestForm.reset();
+    const errorElements = interestForm.querySelectorAll('.interest-form-error');
+    errorElements.forEach(el => el.textContent = '');
+  }
+
+  // Restore body scroll
+  document.body.style.overflow = '';
+
+  // Clear current lot reference
+  currentLotForInterest = null;
+}
+
+/**
+ * Handle interest form submission
+ * @param {Event} e - Submit event
+ */
+async function handleInterestSubmit(e) {
+  e.preventDefault();
+
+  if (!currentLotForInterest || !window.InterestService) {
+    console.error('Cannot submit interest: missing lot data or InterestService');
+    return;
+  }
+
+  // Get form values
+  const contactNameInput = document.getElementById('contactName');
+  const contactPhoneInput = document.getElementById('contactPhone');
+  const contactNameError = document.getElementById('contactNameError');
+  const contactPhoneError = document.getElementById('contactPhoneError');
+  const submitBtn = document.getElementById('interestSubmitBtn');
+
+  if (!contactNameInput || !contactPhoneInput) {
+    console.error('Form input elements not found');
+    return;
+  }
+
+  const contactName = contactNameInput.value.trim();
+  const contactPhone = contactPhoneInput.value.trim();
+
+  // Clear previous errors
+  if (contactNameError) contactNameError.textContent = '';
+  if (contactPhoneError) contactPhoneError.textContent = '';
+
+  // Validate inputs
+  let hasError = false;
+
+  if (contactName.length < 2) {
+    if (contactNameError) {
+      contactNameError.textContent = window.i18n && window.i18n.t
+        ? window.i18n.t('mapa.interest_modal.validation.name_min_length')
+        : 'El nombre debe tener al menos 2 caracteres';
+    }
+    hasError = true;
+  }
+
+  if (contactPhone.length < 6) {
+    if (contactPhoneError) {
+      contactPhoneError.textContent = window.i18n && window.i18n.t
+        ? window.i18n.t('mapa.interest_modal.validation.phone_min_length')
+        : 'El teléfono debe tener al menos 6 caracteres';
+    }
+    hasError = true;
+  }
+
+  if (hasError) {
+    return;
+  }
+
+  // Disable submit button and show loading state
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = window.i18n && window.i18n.t
+      ? window.i18n.t('mapa.interest_modal.submitting')
+      : 'Enviando...';
+  }
+
+  try {
+    // Submit interest via InterestService
+    const result = await window.InterestService.submitInterest({
+      lotId: currentLotForInterest.id,
+      contactName: contactName,
+      contactPhone: contactPhone
+    });
+
+    if (result.success) {
+      // Close modal
+      closeInterestModal();
+
+      // Show success message
+      const successMessage = window.i18n && window.i18n.t
+        ? window.i18n.t('mapa.interest_modal.success_description')
+        : 'Gracias por tu interés. Te contactaremos pronto.';
+
+      showSuccess(successMessage);
+
+      // Update button state to show "Interés registrado" and disable it
+      // For desktop sidebar
+      if (reserveBtn && isSidebarVisible) {
+        reserveBtn.setAttribute('data-i18n', 'mapa.sidebar.buttons.interest_registered');
+        reserveBtn.textContent = window.i18n && window.i18n.t
+          ? window.i18n.t('mapa.sidebar.buttons.interest_registered')
+          : 'Interés registrado';
+        reserveBtn.disabled = true;
+        reserveBtn.onclick = null;
+      }
+
+      // For mobile card
+      if (mobileParcelCard && mobileParcelCard.isCardVisible() && mobileParcelCard.elements.reserveBtn) {
+        const mobileBtn = mobileParcelCard.elements.reserveBtn;
+        mobileBtn.setAttribute('data-i18n', 'mapa.mobile.interest_registered');
+        mobileBtn.textContent = window.i18n && window.i18n.t
+          ? window.i18n.t('mapa.mobile.interest_registered')
+          : 'Interés registrado';
+        mobileBtn.disabled = true;
+        mobileBtn.onclick = null;
+      }
+
+    } else {
+      // Show error message
+      const errorMessage = window.i18n && window.i18n.t
+        ? window.i18n.t('mapa.interest_modal.error_message')
+        : 'No se pudo registrar tu interés. Intentá de nuevo.';
+
+      showError(errorMessage);
+    }
+
+  } catch (error) {
+    console.error('Error submitting interest:', error);
+
+    // Show user-friendly error message
+    const errorMessage = window.i18n && window.i18n.t
+      ? window.i18n.t('mapa.interest_modal.error_message')
+      : 'No se pudo registrar tu interés. Intentá de nuevo.';
+
+    showError(errorMessage);
+
+  } finally {
+    // Re-enable submit button
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = window.i18n && window.i18n.t
+        ? window.i18n.t('mapa.interest_modal.submit_button')
+        : 'Enviar';
+    }
+  }
+}
+
+// ===========================
+// TOAST NOTIFICATION SYSTEM
+// ===========================
+
+/**
+ * Create and show a toast notification
+ * @param {string} type - Toast type ('success' or 'error')
+ * @param {string} title - Toast title
+ * @param {string} message - Toast message
+ * @param {number} duration - Auto-hide duration in ms (0 = manual close only)
+ * @returns {string} Toast ID
+ */
+function createToast(type, title, message, duration = 5000) {
+  const toastContainer = document.getElementById('toastContainer');
+  if (!toastContainer) {
+    console.warn('Toast container not found');
+    return null;
+  }
+
+  const toastId = 'toast-' + Date.now();
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.id = toastId;
+  toast.setAttribute('role', 'alert');
+  toast.setAttribute('aria-live', 'assertive');
+  toast.setAttribute('aria-atomic', 'true');
+
+  const closeLabel = (window.i18n && window.i18n.t)
+    ? window.i18n.t('reservation.toast.close')
+    : 'Cerrar';
+
+  toast.innerHTML = `
+    <div class="toast-header">
+      <strong class="toast-title">${title}</strong>
+      <button type="button" class="toast-close" aria-label="${closeLabel}">×</button>
+    </div>
+    <div class="toast-body">${message}</div>
+  `;
+
+  // Add close functionality
+  const closeBtn = toast.querySelector('.toast-close');
+  closeBtn.addEventListener('click', () => {
+    hideToast(toastId);
+  });
+
+  // Add to container
+  toastContainer.appendChild(toast);
+
+  // Show toast with animation
+  setTimeout(() => {
+    toast.classList.add('show');
+  }, 100);
+
+  // Auto-hide after duration
+  if (duration > 0) {
+    setTimeout(() => {
+      hideToast(toastId);
+    }, duration);
+  }
+
+  return toastId;
+}
+
+/**
+ * Hide a toast notification
+ * @param {string} toastId - Toast ID to hide
+ */
+function hideToast(toastId) {
+  const toast = document.getElementById(toastId);
+  if (toast) {
+    toast.classList.remove('show');
+    setTimeout(() => {
+      if (toast.parentNode) {
+        toast.parentNode.removeChild(toast);
+      }
+    }, 300);
+  }
+}
+
+/**
+ * Show success toast
+ * @param {string} message - Success message
+ */
+function showSuccess(message) {
+  const title = (window.i18n && window.i18n.t)
+    ? window.i18n.t('mapa.interest_modal.success_message')
+    : 'Interés registrado';
+  createToast('success', title, message, 5000);
+}
+
+/**
+ * Show error toast
+ * @param {string} message - Error message
+ */
+function showError(message) {
+  const title = (window.i18n && window.i18n.t)
+    ? window.i18n.t('mapa.interest_modal.error_message')
+    : 'Error';
+  createToast('error', title, message, 7000);
 }

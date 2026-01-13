@@ -272,6 +272,8 @@
       },
       "buttons": {
         "reserve": "Reserve Lot",
+        "interest": "I'm interested",
+        "interest_registered": "Interest registered",
         "prev_image": "Previous image",
         "next_image": "Next image"
       },
@@ -279,6 +281,26 @@
         "disponible": "Available",
         "reservado": "Reserved",
         "vendido": "Sold"
+      }
+    },
+    "interest_modal": {
+      "title": "Register Interest",
+      "description": "Leave your details and we'll contact you about this lot.",
+      "contact_name_label": "Name",
+      "contact_name_placeholder": "Your full name",
+      "contact_phone_label": "Phone",
+      "contact_phone_placeholder": "+595 xxx xxx xxx",
+      "submit_button": "Submit",
+      "cancel_button": "Cancel",
+      "submitting": "Submitting...",
+      "success_message": "Interest registered",
+      "success_description": "Thank you for your interest. We'll contact you soon.",
+      "error_message": "Could not register your interest. Please try again.",
+      "validation": {
+        "name_required": "Name is required",
+        "name_min_length": "Name must be at least 2 characters",
+        "phone_required": "Phone is required",
+        "phone_min_length": "Phone must be at least 6 characters"
       }
     },
     "controls": {
@@ -304,6 +326,8 @@
       "lot_status": "Lot Status",
       "close": "Close",
       "reserve": "Reserve",
+      "interest": "I'm interested",
+      "interest_registered": "Interest registered",
       "grayscale_label": "Grayscale",
       "language_selector": "Select language"
     }

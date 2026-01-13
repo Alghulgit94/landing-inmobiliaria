@@ -301,6 +301,79 @@
       </div>
     </div>
 
+    <!-- Interest Modal -->
+    <div class="interest-modal-backdrop" id="interestModalBackdrop"></div>
+    <div class="interest-modal" id="interestModal">
+      <div class="interest-modal-content">
+        <div class="interest-modal-header">
+          <h2 class="interest-modal-title" data-i18n="mapa.interest_modal.title">Registro de interés</h2>
+          <button class="interest-modal-close" id="interestModalClose" data-i18n-attr="aria-label:mapa.sidebar.close" aria-label="Cerrar">
+            &times;
+          </button>
+        </div>
+
+        <div class="interest-modal-body">
+          <p class="interest-modal-description" data-i18n="mapa.interest_modal.description">
+            Dejá tus datos y te contactaremos para informarte sobre este lote.
+          </p>
+
+          <form id="interestForm" class="interest-form">
+            <div class="interest-form-group">
+              <label for="contactName" class="interest-form-label" data-i18n="mapa.interest_modal.contact_name_label">Nombre</label>
+              <input
+                type="text"
+                id="contactName"
+                name="contactName"
+                class="interest-form-input"
+                data-i18n-attr="placeholder:mapa.interest_modal.contact_name_placeholder"
+                placeholder="Tu nombre completo"
+                required
+                minlength="2"
+              />
+              <span class="interest-form-error" id="contactNameError"></span>
+            </div>
+
+            <div class="interest-form-group">
+              <label for="contactPhone" class="interest-form-label" data-i18n="mapa.interest_modal.contact_phone_label">Teléfono</label>
+              <input
+                type="tel"
+                id="contactPhone"
+                name="contactPhone"
+                class="interest-form-input"
+                data-i18n-attr="placeholder:mapa.interest_modal.contact_phone_placeholder"
+                placeholder="+595 xxx xxx xxx"
+                required
+                minlength="6"
+              />
+              <span class="interest-form-error" id="contactPhoneError"></span>
+            </div>
+
+            <div class="interest-form-actions">
+              <button
+                type="button"
+                class="interest-btn interest-btn-secondary"
+                id="interestCancelBtn"
+                data-i18n="mapa.interest_modal.cancel_button"
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                class="interest-btn interest-btn-primary"
+                id="interestSubmitBtn"
+                data-i18n="mapa.interest_modal.submit_button"
+              >
+                Enviar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
     <!-- Libraries -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/togeojson@0.16.0"></script>
@@ -315,6 +388,7 @@
     <script src="assets/js/supabase-client.js"></script>
     <script src="assets/js/loteamiento-service.js"></script>
     <script src="assets/js/lote-service.js"></script>
+    <script src="assets/js/interest-service.js"></script>
 
     <!-- Map Application -->
     <script src="assets/js/mapa.js"></script>

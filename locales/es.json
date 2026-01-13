@@ -272,6 +272,8 @@
       },
       "buttons": {
         "reserve": "Reservar Lote",
+        "interest": "Estoy interesado",
+        "interest_registered": "Interés registrado",
         "prev_image": "Imagen anterior",
         "next_image": "Siguiente imagen"
       },
@@ -279,6 +281,26 @@
         "disponible": "Disponible",
         "reservado": "Reservado",
         "vendido": "Vendido"
+      }
+    },
+    "interest_modal": {
+      "title": "Registro de interés",
+      "description": "Dejá tus datos y te contactaremos para informarte sobre este lote.",
+      "contact_name_label": "Nombre",
+      "contact_name_placeholder": "Tu nombre completo",
+      "contact_phone_label": "Teléfono",
+      "contact_phone_placeholder": "+595 xxx xxx xxx",
+      "submit_button": "Enviar",
+      "cancel_button": "Cancelar",
+      "submitting": "Enviando...",
+      "success_message": "Interés registrado",
+      "success_description": "Gracias por tu interés. Te contactaremos pronto.",
+      "error_message": "No se pudo registrar tu interés. Intentá de nuevo.",
+      "validation": {
+        "name_required": "El nombre es obligatorio",
+        "name_min_length": "El nombre debe tener al menos 2 caracteres",
+        "phone_required": "El teléfono es obligatorio",
+        "phone_min_length": "El teléfono debe tener al menos 6 caracteres"
       }
     },
     "controls": {
@@ -304,6 +326,8 @@
       "lot_status": "Estado de Lotes",
       "close": "Cerrar",
       "reserve": "Reservar",
+      "interest": "Estoy interesado",
+      "interest_registered": "Interés registrado",
       "grayscale_label": "Escala de Grises",
       "language_selector": "Seleccionar idioma"
     }

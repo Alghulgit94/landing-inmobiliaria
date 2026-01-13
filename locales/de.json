@@ -273,6 +273,8 @@
       },
       "buttons": {
         "reserve": "Grundstück reservieren",
+        "interest": "Ich bin interessiert",
+        "interest_registered": "Interesse registriert",
         "prev_image": "Vorheriges Bild",
         "next_image": "Nächstes Bild"
       },
@@ -280,6 +282,26 @@
         "disponible": "Verfügbar",
         "reservado": "Reserviert",
         "vendido": "Verkauft"
+      }
+    },
+    "interest_modal": {
+      "title": "Interesse registrieren",
+      "description": "Hinterlassen Sie Ihre Kontaktdaten und wir werden Sie bezüglich dieses Grundstücks kontaktieren.",
+      "contact_name_label": "Name",
+      "contact_name_placeholder": "Ihr vollständiger Name",
+      "contact_phone_label": "Telefon",
+      "contact_phone_placeholder": "+595 xxx xxx xxx",
+      "submit_button": "Absenden",
+      "cancel_button": "Abbrechen",
+      "submitting": "Wird gesendet...",
+      "success_message": "Interesse registriert",
+      "success_description": "Vielen Dank für Ihr Interesse. Wir werden Sie bald kontaktieren.",
+      "error_message": "Ihr Interesse konnte nicht registriert werden. Bitte versuchen Sie es erneut.",
+      "validation": {
+        "name_required": "Name ist erforderlich",
+        "name_min_length": "Der Name muss mindestens 2 Zeichen lang sein",
+        "phone_required": "Telefon ist erforderlich",
+        "phone_min_length": "Die Telefonnummer muss mindestens 6 Zeichen lang sein"
       }
     },
     "controls": {
@@ -305,6 +327,8 @@
       "lot_status": "Grundstücksstatus",
       "close": "Schließen",
       "reserve": "Reservieren",
+      "interest": "Ich bin interessiert",
+      "interest_registered": "Interesse registriert",
       "grayscale_label": "Graustufen",
       "language_selector": "Sprache wählen"
     }
