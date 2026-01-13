@@ -78,21 +78,19 @@ class ReservationService {
 
       // Step 1: Fetch current lote data and validate availability
       const { data: loteData, error: fetchError } = await client
-        .from('lotes')
-        .select('id, nombre, estado, precio_usd, loteamiento_id')
+        .from('public_lotes')
+        .select('id, nombre, estado, loteamiento_id')
         .eq('id', reservationData.loteId)
         .single();
 
       if (fetchError) {
-        console.error('Error fetching lote:', fetchError);
         this.isProcessing = false;
         return {
           success: false,
           error: {
             code: 'LOT_NOT_FOUND',
             message_es: 'El lote solicitado no existe.',
-            message_en: 'The requested lot does not exist.',
-            details: fetchError.message
+            message_en: 'The requested lot does not exist.'
           }
         };
       }
@@ -105,9 +103,8 @@ class ReservationService {
           success: false,
           error: {
             code: 'LOT_NOT_AVAILABLE',
-            message_es: `Este lote ya no está disponible. Estado actual: ${loteData.estado}`,
-            message_en: `This lot is no longer available. Current status: ${loteData.estado}`,
-            current_estado: loteData.estado
+            message_es: 'Este lote ya no está disponible.',
+            message_en: 'This lot is no longer available.'
           }
         };
       }
@@ -123,32 +120,32 @@ class ReservationService {
         lot_id: reservationData.loteId,
         lot_details: reservationData.lotDetails || {
           nombre: loteData.nombre,
-          precio_usd: loteData.precio_usd,
           loteamiento_id: loteData.loteamiento_id
         },
         reservation_date: new Date().toISOString(),
         status: 'pending'
       };
 
-      const { data: insertedReservation, error: insertError } = await client
+      const { error: insertError } = await client
         .from('reservations')
-        .insert([reservationRecord])
-        .select()
-        .single();
+        .insert([reservationRecord]);
 
       if (insertError) {
-        console.error('Error inserting reservation:', insertError);
         this.isProcessing = false;
 
-        // Check for duplicate email constraint
-        if (insertError.code === '23505' || insertError.message.includes('duplicate')) {
+        // Check for duplicate or not available errors
+        const errorMsg = (insertError.message || '').toLowerCase();
+        if (
+          insertError.code === '23505' ||
+          errorMsg.includes('duplicate') ||
+          errorMsg.includes('not available')
+        ) {
           return {
             success: false,
             error: {
-              code: 'DUPLICATE_RESERVATION',
-              message_es: 'Ya existe una reservación con este correo electrónico para este lote.',
-              message_en: 'A reservation with this email already exists for this lot.',
-              details: insertError.message
+              code: 'LOT_NOT_AVAILABLE',
+              message_es: 'Este lote ya no está disponible.',
+              message_en: 'This lot is no longer available.'
             }
           };
         }
@@ -157,16 +154,15 @@ class ReservationService {
           success: false,
           error: {
             code: 'INSERT_FAILED',
-            message_es: 'Error al guardar la reservación. Por favor intente nuevamente.',
-            message_en: 'Failed to save reservation. Please try again.',
-            details: insertError.message
+            message_es: 'No se pudo guardar la reserva. Por favor intente nuevamente.',
+            message_en: 'Failed to save reservation. Please try again.'
           }
         };
       }
 
       // Step 3: Update lote estado to "reservado"
       const { error: updateError } = await client
-        .from('lotes')
+        .from('public_lotes')
         .update({
           estado: 'reservado',
           updated_at: new Date().toISOString()
@@ -174,13 +170,12 @@ class ReservationService {
         .eq('id', reservationData.loteId);
 
       if (updateError) {
-        console.error('Error updating lote estado:', updateError);
-
         // Rollback: Delete the reservation if estado update failed
         await client
           .from('reservations')
           .delete()
-          .eq('id', insertedReservation.id);
+          .eq('lot_id', reservationData.loteId)
+          .eq('email', reservationData.email.trim().toLowerCase());
 
         this.isProcessing = false;
 
@@ -188,9 +183,8 @@ class ReservationService {
           success: false,
           error: {
             code: 'UPDATE_ESTADO_FAILED',
-            message_es: 'Error al actualizar el estado del lote. La reservación ha sido cancelada.',
-            message_en: 'Failed to update lot status. The reservation has been cancelled.',
-            details: updateError.message
+            message_es: 'No se pudo guardar la reserva. Por favor intente nuevamente.',
+            message_en: 'Failed to save reservation. Please try again.'
           }
         };
       }
@@ -198,16 +192,11 @@ class ReservationService {
       // Success!
       this.isProcessing = false;
 
-      console.log('✓ Reservation created successfully:', insertedReservation.id);
-
       return {
         success: true,
         data: {
-          reservation_id: insertedReservation.id,
           lot_id: reservationData.loteId,
-          lot_name: loteData.nombre,
-          customer_email: reservationData.email,
-          reservation_date: insertedReservation.reservation_date
+          lot_name: loteData.nombre
         },
         message_es: '¡Reservación enviada exitosamente! Nos pondremos en contacto con usted pronto.',
         message_en: 'Reservation submitted successfully! We will contact you soon.'
@@ -217,15 +206,12 @@ class ReservationService {
       this.error = error.message;
       this.isProcessing = false;
 
-      console.error('Unexpected error in submitReservation:', error);
-
       return {
         success: false,
         error: {
           code: 'UNEXPECTED_ERROR',
           message_es: 'Error inesperado al procesar la reservación. Por favor intente nuevamente.',
-          message_en: 'Unexpected error processing reservation. Please try again.',
-          details: error.message
+          message_en: 'Unexpected error processing reservation. Please try again.'
         }
       };
     }

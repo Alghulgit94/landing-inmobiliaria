@@ -48,7 +48,7 @@ class LoteamientoService {
 
       // Fetch loteamientos from database
       const { data, error } = await supabase.getClient()
-        .from('loteamientos')
+        .from('public_loteamientos')
         .select('*')
         .order('created_at', { ascending: false });
 
@@ -97,7 +97,7 @@ class LoteamientoService {
       }
 
       const { data, error } = await supabase.getClient()
-        .from('loteamientos')
+        .from('public_loteamientos')
         .select('*')
         .eq('id', id)
         .single();
@@ -151,7 +151,6 @@ class LoteamientoService {
       centroid_long: dbLoteamiento.centroide_lng || 0,
       // Metadata
       owner: dbLoteamiento.owner || null,
-      precio_total_usd: dbLoteamiento.precio_total_usd || 0,
       external_id: dbLoteamiento.external_id || null,
       created_at: dbLoteamiento.created_at,
       updated_at: dbLoteamiento.updated_at,

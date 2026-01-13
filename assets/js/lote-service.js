@@ -45,7 +45,7 @@ class LoteService {
 
       // Fetch lotes from database
       const { data, error } = await supabase.getClient()
-        .from('lotes')
+        .from('public_lotes')
         .select('*')
         .eq('loteamiento_id', loteamientoId)
         .order('nombre', { ascending: true });
@@ -95,7 +95,7 @@ class LoteService {
       }
 
       const { data, error } = await supabase.getClient()
-        .from('lotes')
+        .from('public_lotes')
         .select('*')
         .eq('id', id)
         .single();
@@ -132,7 +132,7 @@ class LoteService {
       }
 
       const { data, error } = await supabase.getClient()
-        .from('lotes')
+        .from('public_lotes')
         .select('*')
         .eq('nombre', nombre)
         .eq('loteamiento_id', loteamientoId)
@@ -300,12 +300,6 @@ class LoteService {
       largoxancho: ladosFormatted || this.formatDimensions(dbLote),
       LargoxAncho: ladosFormatted || this.formatDimensions(dbLote),
       dimensions: ladosFormatted || this.formatDimensions(dbLote),
-
-      // Pricing - use precio_euro from database
-      precio: dbLote.precio_euro || null,
-      Precio: dbLote.precio_euro || null,
-      price: dbLote.precio_euro || null,
-      Price: dbLote.precio_euro || null,
 
       // Visual
       photo: dbLote.photo || this.getDefaultPhoto(estado),
