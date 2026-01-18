@@ -238,22 +238,18 @@ class LoteService {
           // lados is an object like {lado1: value, lado2: value, ...}
           const ladosValues = Object.values(ladosData).filter(v => v !== null && v !== '');
 
-          // Get unique values to avoid repetition (68.5 × 67.2 × 68.5 × 67.2 → 68.5 × 67.2)
-          const uniqueLados = [...new Set(ladosValues)];
-
-          // Format as simple "68.5 x 67.2 m" instead of "× metros"
-          ladosFormatted = uniqueLados.join(' x ') + ' m';
+          // Keep all sides in original order (important for irregular polygons)
+          // Format as simple "68.5 x 67.2 x 68.5 x 70.0 m" showing all sides
+          ladosFormatted = ladosValues.join(' x ') + ' m';
         } catch (e) {
           ladosFormatted = dbLote.lados;
         }
       } else if (typeof dbLote.lados === 'object') {
         const ladosValues = Object.values(dbLote.lados).filter(v => v !== null && v !== '');
 
-        // Get unique values to avoid repetition
-        const uniqueLados = [...new Set(ladosValues)];
-
-        // Format as simple "68.5 x 67.2 m" instead of "× metros"
-        ladosFormatted = uniqueLados.join(' x ') + ' m';
+        // Keep all sides in original order (important for irregular polygons)
+        // Format as simple "68.5 x 67.2 x 68.5 x 70.0 m" showing all sides
+        ladosFormatted = ladosValues.join(' x ') + ' m';
       }
     }
 

@@ -659,19 +659,19 @@ class MobileParcelCard {
       const area = parcelData.area_m2_rounded || parcelData.area || parcelData.Area || parcelData.superficie || parcelData.Superficie;
 
       if (lados && area) {
-        // Parse lados to extract individual dimensions
-        // lados format is typically "68.5 x 67.2 m"
+        // Parse lados to extract ALL individual dimensions (supports polygons with 3, 4, 5+ sides)
+        // lados format: "68.5 x 67.2 x 68.5 x 70.0 m"
         const ladosParsed = lados.replace(' m', '').trim();
         const dimensionsParts = ladosParsed.split('x').map(d => d.trim());
 
-        if (dimensionsParts.length >= 2) {
-          const largo = dimensionsParts[0];
-          const ancho = dimensionsParts[1];
+        if (dimensionsParts.length >= 1 && dimensionsParts[0] !== '') {
+          // Show ALL dimensions with proper formatting (responsive word-wrap handled by CSS)
+          const allDimensions = dimensionsParts.join(' m x ') + ' m';
 
           // Format area with thousands separator
           const formattedArea = typeof area === 'number' ? area.toLocaleString() : parseInt(area).toLocaleString();
 
-          this.elements.coordinates.textContent = `${largo} m x ${ancho} m - ${formattedArea} m²`;
+          this.elements.coordinates.textContent = `${allDimensions} - ${formattedArea} m²`;
         } else if (area) {
           // Fallback: just show area if can't parse dimensions
           const formattedArea = typeof area === 'number' ? area.toLocaleString() : parseInt(area).toLocaleString();
