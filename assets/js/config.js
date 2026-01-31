@@ -16,7 +16,7 @@ const RESERVATION_CONFIG = {
    * @example 'https://api.megaproyectos.com'
    * @example 'https://your-backend-domain.com'
    */
-  apiBase: 'https://mega-proyectos-wsnotification-qzx5ly-024631-217-216-64-58.traefik.me',
+  apiBase: 'https://reservations.mega-proyectos.com/api/reservations',
 
   /**
    * API Key for authentication
