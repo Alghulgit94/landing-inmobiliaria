@@ -16,7 +16,7 @@ const RESERVATION_CONFIG = {
    * @example 'https://api.megaproyectos.com'
    * @example 'https://your-backend-domain.com'
    */
-  apiBase: 'https://reservations.mega-proyectos.com/api/reservations',
+  apiBase: 'https://reservations.mega-proyectos.com',
 
   /**
    * API Key for authentication
