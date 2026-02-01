@@ -355,6 +355,8 @@
         "last_name": "Last Name",
         "email": "Email Address",
         "phone": "Phone",
+        "country_code_label": "Country code",
+        "country_search": "Search",
         "required": "*"
       },
       "additional_message": {

@@ -134,12 +134,12 @@
         background-color: var(--color-white);
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow-lg);
-        overflow: hidden;
+        overflow: visible; /* Permitir que el dropdown sea visible fuera del layout */
       }
       
       .form-column {
         padding: var(--spacing-sm);
-        overflow-y: auto;
+        overflow-y: auto; /* Scroll interno para el form en desktop */
         max-height: calc(100vh - 80px);
       }
       
@@ -147,12 +147,14 @@
         position: relative;
         background-color: var(--color-light-gray);
         border-left: 1px solid var(--color-light-gray);
+        z-index: 1; /* Mantener el mapa por debajo del dropdown */
       }
-      
+
       #map {
         width: 100%;
         height: 100%;
         min-height: calc(100vh - 80px);
+        z-index: 1; /* Mantener el mapa por debajo del dropdown */
       }
       
       /* Compact Header */
@@ -316,7 +318,220 @@
         min-height: 60px;
         line-height: var(--line-height-normal);
       }
-      
+
+      /* Phone Input Group */
+      .phone-input-group {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: var(--spacing-xs);
+        position: relative; /* Contexto de posicionamiento para el dropdown */
+      }
+
+      .phone-country-code {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: var(--color-white);
+        border: 2px solid var(--color-light-gray);
+        border-radius: var(--radius-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-primary-dark);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        box-sizing: border-box;
+      }
+
+      .phone-country-code:hover {
+        border-color: var(--color-green-primary);
+        background-color: rgba(255, 248, 246, 0.5);
+      }
+
+      .phone-country-code:focus {
+        outline: none;
+        border-color: var(--color-green-primary);
+        background-color: rgba(255, 248, 246, 0.5);
+      }
+
+      .phone-number-input {
+        flex: 1;
+      }
+
+      /* Custom Country Dropdown */
+      .country-dropdown {
+        position: relative;
+        width: 100%;
+        z-index: 10; /* Por encima del contenido del formulario */
+      }
+
+      .country-trigger {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: var(--color-white);
+        border: 2px solid var(--color-light-gray);
+        border-radius: var(--radius-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-primary-dark);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .country-trigger:hover {
+        border-color: var(--color-green-primary);
+        background-color: rgba(255, 248, 246, 0.5);
+      }
+
+      .country-trigger:focus {
+        outline: none;
+        border-color: var(--color-green-primary);
+        background-color: rgba(255, 248, 246, 0.5);
+      }
+
+      .country-trigger[aria-expanded="true"] {
+        border-color: var(--color-green-primary);
+        background-color: rgba(255, 248, 246, 0.5);
+      }
+
+      .country-flag {
+        width: 20px;
+        height: 15px;
+        object-fit: cover;
+        border-radius: 2px;
+        flex-shrink: 0;
+      }
+
+      .country-iso {
+        display: none !important; /* Ocultar código ISO siempre - solo mostrar bandera + dial */
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-primary-dark);
+        flex-shrink: 0;
+      }
+
+      .country-dial {
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        color: var(--color-primary-dark);
+        flex-shrink: 0;
+      }
+
+      .country-chevron {
+        margin-left: auto;
+        flex-shrink: 0;
+        transition: transform var(--transition-fast);
+      }
+
+      .country-trigger[aria-expanded="true"] .country-chevron {
+        transform: rotate(180deg);
+      }
+
+      .country-popover {
+        position: absolute;
+        top: calc(100% + 8px);
+        bottom: auto;
+        left: 0;
+        width: 280px;
+        height: min(70vh, 360px); /* Altura FIJA para evitar que empuje elementos */
+        background-color: var(--color-white);
+        border: 2px solid var(--color-light-gray);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 5000; /* Por encima del mapa Leaflet */
+        display: flex;
+        flex-direction: column;
+        overflow: hidden; /* Contenedor sin scroll */
+        margin: 0 !important; /* Evitar margin que interfiera con posicionamiento */
+      }
+
+      .country-popover[hidden] {
+        display: none;
+      }
+
+      /* Clase para cuando el popover está "portaleado" al body en desktop */
+      .country-popover.portaled {
+        position: fixed !important;
+        /* Top y left serán calculados por JavaScript */
+      }
+
+      .country-search-wrapper {
+        padding: var(--spacing-xs);
+        border-bottom: 1px solid var(--color-light-gray);
+        flex-shrink: 0;
+      }
+
+      .country-search {
+        width: 100%;
+        padding: var(--spacing-xs);
+        border: 1px solid var(--color-light-gray);
+        border-radius: var(--radius-sm);
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-xs);
+        color: var(--color-primary-dark);
+        box-sizing: border-box;
+      }
+
+      .country-search:focus {
+        outline: none;
+        border-color: var(--color-green-primary);
+      }
+
+      .country-list {
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0; /* CRÍTICO: permite que flex calcule correctamente el scroll */
+      }
+
+      .country-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: var(--spacing-xs) var(--spacing-sm);
+        cursor: pointer;
+        transition: background-color var(--transition-fast);
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        font-family: var(--font-family-primary);
+        font-size: var(--font-size-xs);
+      }
+
+      .country-option:hover {
+        background-color: rgba(255, 248, 246, 0.8);
+      }
+
+      .country-option:focus {
+        outline: none;
+        background-color: rgba(255, 248, 246, 0.8);
+      }
+
+      .country-option.selected {
+        background-color: rgba(46, 125, 50, 0.1);
+      }
+
+      .country-option-name {
+        flex: 1;
+        color: var(--color-primary-dark);
+        font-weight: var(--font-weight-regular);
+      }
+
+      .country-option-dial {
+        color: var(--color-dark-gray);
+        font-size: var(--font-size-xs);
+        flex-shrink: 0;
+      }
+
       /* Submit Button */
       .form-actions {
         margin-top: var(--spacing-md);
@@ -537,8 +752,37 @@
         .form-textarea {
           min-height: 50px;
         }
+
+        .phone-input-group {
+          grid-template-columns: 100px 1fr;
+        }
+
+        /* Mobile Country Dropdown Adjustments */
+        .country-trigger {
+          padding: var(--spacing-xs) 6px;
+          gap: 4px;
+        }
+
+        .country-iso {
+          display: none !important; /* Hide ISO code on mobile */
+        }
+
+        .country-popover {
+          position: fixed !important; /* Modal fijo desde abajo */
+          top: auto;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100vw;
+          max-width: none;
+          height: 60vh;
+          max-height: 60vh;
+          border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+          transform: none;
+          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+        }
       }
-      
+
       @media (max-width: 480px) {
         .reservation-container {
           padding: var(--spacing-sm) 0;
@@ -851,17 +1095,40 @@
                   </div>
 
                   <div class="form-group">
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      class="form-input"
-                      required
-                      autocomplete="tel"
-                      data-i18n-attr="placeholder:reservation.form.personal_info.phone"
-                      placeholder="Teléfono *"
-                      aria-describedby="phone-error"
-                    />
+                    <div class="phone-input-group">
+                      <!-- Custom Country Dropdown -->
+                      <div class="country-dropdown" id="countryDropdown">
+                        <button type="button" class="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Seleccionar código de país">
+                          <img src="https://flagcdn.com/w20/py.png" alt="PY" class="country-flag" id="selectedFlag">
+                          <span class="country-iso" id="selectedIso">PY</span>
+                          <span class="country-dial" id="selectedDial">+595</span>
+                          <svg class="country-chevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                          </svg>
+                        </button>
+
+                        <div class="country-popover" hidden>
+                          <div class="country-search-wrapper">
+                            <input type="text" class="country-search" data-i18n-attr="placeholder:reservation.form.personal_info.country_search,aria-label:reservation.form.personal_info.country_search" placeholder="" aria-label="Buscar">
+                          </div>
+                          <div class="country-list" role="listbox"></div>
+                        </div>
+
+                        <input type="hidden" id="countryCode" name="countryCode" value="+595">
+                        <input type="hidden" id="countryIso2" name="countryIso2" value="PY">
+                      </div>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        class="form-input phone-number-input"
+                        required
+                        autocomplete="tel"
+                        data-i18n-attr="placeholder:reservation.form.personal_info.phone"
+                        placeholder="Teléfono *"
+                        aria-describedby="phone-error"
+                      />
+                    </div>
                     <div id="phone-error" class="field-error"></div>
                   </div>
                 </div>
@@ -934,7 +1201,11 @@
       const lastName = document.getElementById('lastName');
       const email = document.getElementById('email');
       const phone = document.getElementById('phone');
+      const countryCodeSelect = document.getElementById('countryCode');
       const additionalMessage = document.getElementById('additionalMessage');
+
+      // Track if user manually changed country code (to avoid overriding their choice)
+      let userModifiedCountryCode = false;
       
       // Lot information elements
       const lotIdElement = document.getElementById('lotId');
@@ -1020,7 +1291,32 @@
           : 'Error';
         createToast('error', title, message, 7000);
       }
-      
+
+      /**
+       * Auto-detect and set country code based on current language
+       * @param {string} lang - Current language code ('es', 'en', 'de')
+       */
+      function autoDetectCountryCode(lang) {
+        // Don't override if user manually changed it
+        if (userModifiedCountryCode) {
+          console.log('✓ Country code not changed (user manually selected)');
+          return;
+        }
+
+        const countryCodeMap = {
+          'es': '+595',  // Paraguay
+          'de': '+49',   // Alemania
+          'en': '+1'     // USA
+        };
+
+        const defaultCode = countryCodeMap[lang] || '+595';
+
+        if (countryCodeSelect && countryCodeSelect.value !== defaultCode) {
+          countryCodeSelect.value = defaultCode;
+          console.log(`✓ Country code auto-set to ${defaultCode} based on language: ${lang}`);
+        }
+      }
+
       // URL Parameters Handler - Simplified for database-based approach
       function getURLParameters() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -1263,6 +1559,133 @@
         }
       }
       
+      /**
+       * Clean and format phone number
+       * Removes leading zero and non-digit characters
+       * @param {string} phoneNumber - Raw phone number input
+       * @param {string} countryCode - Selected country code
+       * @returns {Object} { cleaned: string, isValid: boolean }
+       */
+      function cleanPhoneNumber(phoneNumber, countryCode) {
+        // Remove all non-digit characters
+        let cleaned = phoneNumber.replace(/\D/g, '');
+
+        // Remove leading zero (common in local formats like Paraguay 0983...)
+        if (cleaned.startsWith('0')) {
+          cleaned = cleaned.substring(1);
+        }
+
+        // Validation rules by country code (comprehensive list)
+        const validationRules = {
+          // Americas
+          '+1': { minLength: 10, maxLength: 10 }, // USA/Canada/Caribbean
+          '+52': { minLength: 10, maxLength: 10 }, // México
+          '+54': { minLength: 10, maxLength: 10 }, // Argentina
+          '+55': { minLength: 10, maxLength: 11 }, // Brasil
+          '+56': { minLength: 9, maxLength: 9 }, // Chile
+          '+57': { minLength: 10, maxLength: 10 }, // Colombia
+          '+58': { minLength: 10, maxLength: 10 }, // Venezuela
+          '+51': { minLength: 9, maxLength: 9 }, // Perú
+          '+591': { minLength: 8, maxLength: 8 }, // Bolivia
+          '+593': { minLength: 9, maxLength: 9 }, // Ecuador
+          '+595': { minLength: 9, maxLength: 9 }, // Paraguay
+          '+598': { minLength: 8, maxLength: 8 }, // Uruguay
+          '+506': { minLength: 8, maxLength: 8 }, // Costa Rica
+          '+503': { minLength: 8, maxLength: 8 }, // El Salvador
+          '+502': { minLength: 8, maxLength: 8 }, // Guatemala
+          '+504': { minLength: 8, maxLength: 8 }, // Honduras
+          '+505': { minLength: 8, maxLength: 8 }, // Nicaragua
+          '+507': { minLength: 8, maxLength: 8 }, // Panamá
+          '+509': { minLength: 8, maxLength: 8 }, // Haití
+          '+53': { minLength: 8, maxLength: 8 }, // Cuba
+          '+1809': { minLength: 10, maxLength: 10 }, // República Dominicana
+          '+1787': { minLength: 10, maxLength: 10 }, // Puerto Rico
+
+          // Europe
+          '+33': { minLength: 9, maxLength: 9 }, // Francia
+          '+34': { minLength: 9, maxLength: 9 }, // España
+          '+39': { minLength: 9, maxLength: 10 }, // Italia
+          '+44': { minLength: 10, maxLength: 10 }, // Reino Unido
+          '+49': { minLength: 10, maxLength: 11 }, // Alemania
+          '+31': { minLength: 9, maxLength: 9 }, // Países Bajos
+          '+32': { minLength: 9, maxLength: 9 }, // Bélgica
+          '+41': { minLength: 9, maxLength: 9 }, // Suiza
+          '+43': { minLength: 10, maxLength: 13 }, // Austria
+          '+45': { minLength: 8, maxLength: 8 }, // Dinamarca
+          '+46': { minLength: 9, maxLength: 9 }, // Suecia
+          '+47': { minLength: 8, maxLength: 8 }, // Noruega
+          '+48': { minLength: 9, maxLength: 9 }, // Polonia
+          '+351': { minLength: 9, maxLength: 9 }, // Portugal
+          '+353': { minLength: 9, maxLength: 9 }, // Irlanda
+          '+358': { minLength: 9, maxLength: 10 }, // Finlandia
+          '+30': { minLength: 10, maxLength: 10 }, // Grecia
+          '+36': { minLength: 9, maxLength: 9 }, // Hungría
+          '+40': { minLength: 9, maxLength: 9 }, // Rumania
+          '+420': { minLength: 9, maxLength: 9 }, // República Checa
+          '+421': { minLength: 9, maxLength: 9 }, // Eslovaquia
+          '+380': { minLength: 9, maxLength: 9 }, // Ucrania
+          '+7': { minLength: 10, maxLength: 10 }, // Rusia/Kazajistán
+
+          // Asia
+          '+81': { minLength: 10, maxLength: 10 }, // Japón
+          '+82': { minLength: 9, maxLength: 11 }, // Corea del Sur
+          '+86': { minLength: 11, maxLength: 11 }, // China
+          '+91': { minLength: 10, maxLength: 10 }, // India
+          '+60': { minLength: 9, maxLength: 10 }, // Malasia
+          '+62': { minLength: 9, maxLength: 12 }, // Indonesia
+          '+63': { minLength: 10, maxLength: 10 }, // Filipinas
+          '+65': { minLength: 8, maxLength: 8 }, // Singapur
+          '+66': { minLength: 9, maxLength: 9 }, // Tailandia
+          '+84': { minLength: 9, maxLength: 10 }, // Vietnam
+          '+852': { minLength: 8, maxLength: 8 }, // Hong Kong
+          '+853': { minLength: 8, maxLength: 8 }, // Macao
+          '+886': { minLength: 9, maxLength: 9 }, // Taiwán
+          '+92': { minLength: 10, maxLength: 10 }, // Pakistán
+          '+94': { minLength: 9, maxLength: 9 }, // Sri Lanka
+          '+95': { minLength: 8, maxLength: 10 }, // Myanmar
+          '+98': { minLength: 10, maxLength: 10 }, // Irán
+          '+972': { minLength: 9, maxLength: 9 }, // Israel
+          '+961': { minLength: 7, maxLength: 8 }, // Líbano
+          '+962': { minLength: 9, maxLength: 9 }, // Jordania
+          '+963': { minLength: 9, maxLength: 9 }, // Siria
+          '+964': { minLength: 10, maxLength: 10 }, // Irak
+          '+965': { minLength: 8, maxLength: 8 }, // Kuwait
+          '+966': { minLength: 9, maxLength: 9 }, // Arabia Saudita
+          '+967': { minLength: 9, maxLength: 9 }, // Yemen
+          '+968': { minLength: 8, maxLength: 8 }, // Omán
+          '+971': { minLength: 9, maxLength: 9 }, // Emiratos Árabes
+          '+973': { minLength: 8, maxLength: 8 }, // Baréin
+          '+974': { minLength: 8, maxLength: 8 }, // Catar
+
+          // Oceania
+          '+61': { minLength: 9, maxLength: 9 }, // Australia
+          '+64': { minLength: 8, maxLength: 10 }, // Nueva Zelanda
+          '+679': { minLength: 7, maxLength: 7 }, // Fiyi
+          '+675': { minLength: 8, maxLength: 8 }, // Papúa Nueva Guinea
+
+          // Africa
+          '+27': { minLength: 9, maxLength: 9 }, // Sudáfrica
+          '+20': { minLength: 10, maxLength: 10 }, // Egipto
+          '+212': { minLength: 9, maxLength: 9 }, // Marruecos
+          '+213': { minLength: 9, maxLength: 9 }, // Argelia
+          '+216': { minLength: 8, maxLength: 8 }, // Túnez
+          '+218': { minLength: 9, maxLength: 10 }, // Libia
+          '+220': { minLength: 7, maxLength: 7 }, // Gambia
+          '+221': { minLength: 9, maxLength: 9 }, // Senegal
+          '+234': { minLength: 10, maxLength: 10 }, // Nigeria
+          '+254': { minLength: 9, maxLength: 10 }, // Kenia
+          '+255': { minLength: 9, maxLength: 9 }, // Tanzania
+          '+256': { minLength: 9, maxLength: 9 }, // Uganda
+          '+260': { minLength: 9, maxLength: 9 }, // Zambia
+          '+263': { minLength: 9, maxLength: 9 }, // Zimbabue
+        };
+
+        const rules = validationRules[countryCode] || { minLength: 8, maxLength: 15 };
+        const isValid = cleaned.length >= rules.minLength && cleaned.length <= rules.maxLength;
+
+        return { cleaned, isValid };
+      }
+
       // Form Validation
       function validateField(field, errorElement, validationRules) {
         const value = field.value.trim();
@@ -1281,9 +1704,12 @@
         }
         // Phone validation
         else if (validationRules.phone && value) {
-          const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
-          const cleanPhone = value.replace(/[\s\-\(\)]/g, '');
-          if (!phoneRegex.test(cleanPhone) || cleanPhone.length < 10) {
+          const countryCodeSelect = document.getElementById('countryCode');
+          const countryCode = countryCodeSelect ? countryCodeSelect.value : '+595';
+
+          const { cleaned, isValid } = cleanPhoneNumber(value, countryCode);
+
+          if (!isValid) {
             errorMessage = getValidationMessage('phone_invalid');
           }
         }
@@ -1311,19 +1737,29 @@
         firstName.addEventListener('blur', () => {
           validateField(firstName, document.getElementById('firstName-error'), { required: true });
         });
-        
+
         lastName.addEventListener('blur', () => {
           validateField(lastName, document.getElementById('lastName-error'), { required: true });
         });
-        
+
         email.addEventListener('blur', () => {
           validateField(email, document.getElementById('email-error'), { required: true, email: true });
         });
-        
+
         phone.addEventListener('blur', () => {
           validateField(phone, document.getElementById('phone-error'), { required: true, phone: true });
         });
-        
+
+        // Revalidate phone number when country code changes
+        const countryCodeSelect = document.getElementById('countryCode');
+        if (countryCodeSelect) {
+          countryCodeSelect.addEventListener('change', () => {
+            if (phone.value.trim()) {
+              validateField(phone, document.getElementById('phone-error'), { required: true, phone: true });
+            }
+          });
+        }
+
         additionalMessage.addEventListener('input', () => {
           const charCount = additionalMessage.value.length;
           if (charCount > 500) {
@@ -1380,12 +1816,18 @@
         submitBtn.classList.add('btn-loading');
         submitBtn.disabled = true;
 
+        // Get country code and clean phone number
+        const countryCodeSelect = document.getElementById('countryCode');
+        const countryCode = countryCodeSelect ? countryCodeSelect.value : '+595';
+        const { cleaned } = cleanPhoneNumber(phone.value.trim(), countryCode);
+        const fullPhoneNumber = `${countryCode}${cleaned}`;
+
         // Prepare reservation data
         const reservationData = {
           firstName: firstName.value.trim(),
           lastName: lastName.value.trim(),
           email: email.value.trim(),
-          phone: phone.value.trim(),
+          phone: fullPhoneNumber,
           additionalMessage: additionalMessage.value.trim() || null,
           loteId: params.lote_id,
           loteamientoId: params.loteamiento_id,
@@ -1515,6 +1957,9 @@
               languageSelector.value = newLang;
             }
 
+            // Auto-detect country code based on new language
+            autoDetectCountryCode(newLang);
+
             // Retranslate dynamic content
             retranslateDynamicContent(newLang);
           });
@@ -1527,6 +1972,20 @@
             }
           });
         }
+
+        // Track manual changes to country code
+        if (countryCodeSelect) {
+          countryCodeSelect.addEventListener('change', () => {
+            userModifiedCountryCode = true;
+            console.log('✓ User manually changed country code');
+          });
+        }
+
+        // Auto-detect country code on initial load
+        const initialLang = (window.i18n && window.i18n.getCurrentLanguage)
+          ? window.i18n.getCurrentLanguage()
+          : 'es';
+        autoDetectCountryCode(initialLang);
       }
 
       /**
@@ -1654,6 +2113,426 @@
         initializeLanguageSupport();
         initializeForm();
       }
+
+      // ===========================
+      // CUSTOM COUNTRY DROPDOWN
+      // ===========================
+      (function initCountryDropdown() {
+        'use strict';
+
+        // All countries with flags (priority + alphabetical)
+        const COUNTRIES = [
+          // Priority countries
+          { iso2: 'PY', name: 'Paraguay', dial: '+595', priority: true },
+          { iso2: 'DE', name: 'Alemania', dial: '+49', priority: true },
+          { iso2: 'NL', name: 'Países Bajos', dial: '+31', priority: true },
+          { iso2: 'US', name: 'USA', dial: '+1', priority: true },
+
+          // Alphabetical list
+          { iso2: 'AF', name: 'Afganistán', dial: '+93' },
+          { iso2: 'AL', name: 'Albania', dial: '+355' },
+          { iso2: 'AD', name: 'Andorra', dial: '+376' },
+          { iso2: 'AO', name: 'Angola', dial: '+244' },
+          { iso2: 'AI', name: 'Anguila', dial: '+1264' },
+          { iso2: 'AG', name: 'Antigua y Barbuda', dial: '+1268' },
+          { iso2: 'SA', name: 'Arabia Saudita', dial: '+966' },
+          { iso2: 'DZ', name: 'Argelia', dial: '+213' },
+          { iso2: 'AR', name: 'Argentina', dial: '+54' },
+          { iso2: 'AM', name: 'Armenia', dial: '+374' },
+          { iso2: 'AW', name: 'Aruba', dial: '+297' },
+          { iso2: 'AU', name: 'Australia', dial: '+61' },
+          { iso2: 'AT', name: 'Austria', dial: '+43' },
+          { iso2: 'AZ', name: 'Azerbaiyán', dial: '+994' },
+          { iso2: 'BS', name: 'Bahamas', dial: '+1242' },
+          { iso2: 'BD', name: 'Bangladés', dial: '+880' },
+          { iso2: 'BB', name: 'Barbados', dial: '+1246' },
+          { iso2: 'BH', name: 'Baréin', dial: '+973' },
+          { iso2: 'BE', name: 'Bélgica', dial: '+32' },
+          { iso2: 'BZ', name: 'Belice', dial: '+501' },
+          { iso2: 'BJ', name: 'Benín', dial: '+229' },
+          { iso2: 'BM', name: 'Bermudas', dial: '+1441' },
+          { iso2: 'BY', name: 'Bielorrusia', dial: '+375' },
+          { iso2: 'BO', name: 'Bolivia', dial: '+591' },
+          { iso2: 'BA', name: 'Bosnia-Herzegovina', dial: '+387' },
+          { iso2: 'BW', name: 'Botsuana', dial: '+267' },
+          { iso2: 'BR', name: 'Brasil', dial: '+55' },
+          { iso2: 'BN', name: 'Brunéi', dial: '+673' },
+          { iso2: 'BG', name: 'Bulgaria', dial: '+359' },
+          { iso2: 'BF', name: 'Burkina Faso', dial: '+226' },
+          { iso2: 'BI', name: 'Burundi', dial: '+257' },
+          { iso2: 'BT', name: 'Bután', dial: '+975' },
+          { iso2: 'CV', name: 'Cabo Verde', dial: '+238' },
+          { iso2: 'KH', name: 'Camboya', dial: '+855' },
+          { iso2: 'CM', name: 'Camerún', dial: '+237' },
+          { iso2: 'CA', name: 'Canadá', dial: '+1' },
+          { iso2: 'QA', name: 'Catar', dial: '+974' },
+          { iso2: 'TD', name: 'Chad', dial: '+235' },
+          { iso2: 'CZ', name: 'Chequia', dial: '+420' },
+          { iso2: 'CL', name: 'Chile', dial: '+56' },
+          { iso2: 'CN', name: 'China', dial: '+86' },
+          { iso2: 'CY', name: 'Chipre', dial: '+357' },
+          { iso2: 'CO', name: 'Colombia', dial: '+57' },
+          { iso2: 'KM', name: 'Comoras', dial: '+269' },
+          { iso2: 'KP', name: 'Corea del Norte', dial: '+850' },
+          { iso2: 'KR', name: 'Corea del Sur', dial: '+82' },
+          { iso2: 'CI', name: 'Costa de Marfil', dial: '+225' },
+          { iso2: 'CR', name: 'Costa Rica', dial: '+506' },
+          { iso2: 'HR', name: 'Croacia', dial: '+385' },
+          { iso2: 'CU', name: 'Cuba', dial: '+53' },
+          { iso2: 'DK', name: 'Dinamarca', dial: '+45' },
+          { iso2: 'DM', name: 'Dominica', dial: '+1767' },
+          { iso2: 'EC', name: 'Ecuador', dial: '+593' },
+          { iso2: 'EG', name: 'Egipto', dial: '+20' },
+          { iso2: 'SV', name: 'El Salvador', dial: '+503' },
+          { iso2: 'AE', name: 'Emiratos Árabes', dial: '+971' },
+          { iso2: 'ER', name: 'Eritrea', dial: '+291' },
+          { iso2: 'SK', name: 'Eslovaquia', dial: '+421' },
+          { iso2: 'SI', name: 'Eslovenia', dial: '+386' },
+          { iso2: 'ES', name: 'España', dial: '+34' },
+          { iso2: 'EE', name: 'Estonia', dial: '+372' },
+          { iso2: 'SZ', name: 'Esuatini', dial: '+268' },
+          { iso2: 'ET', name: 'Etiopía', dial: '+251' },
+          { iso2: 'PH', name: 'Filipinas', dial: '+63' },
+          { iso2: 'FI', name: 'Finlandia', dial: '+358' },
+          { iso2: 'FJ', name: 'Fiyi', dial: '+679' },
+          { iso2: 'FR', name: 'Francia', dial: '+33' },
+          { iso2: 'GA', name: 'Gabón', dial: '+241' },
+          { iso2: 'GM', name: 'Gambia', dial: '+220' },
+          { iso2: 'GE', name: 'Georgia', dial: '+995' },
+          { iso2: 'GH', name: 'Ghana', dial: '+233' },
+          { iso2: 'GI', name: 'Gibraltar', dial: '+350' },
+          { iso2: 'GD', name: 'Granada', dial: '+1473' },
+          { iso2: 'GR', name: 'Grecia', dial: '+30' },
+          { iso2: 'GL', name: 'Groenlandia', dial: '+299' },
+          { iso2: 'GP', name: 'Guadalupe', dial: '+590' },
+          { iso2: 'GU', name: 'Guam', dial: '+1671' },
+          { iso2: 'GT', name: 'Guatemala', dial: '+502' },
+          { iso2: 'GF', name: 'Guayana Francesa', dial: '+594' },
+          { iso2: 'GN', name: 'Guinea', dial: '+224' },
+          { iso2: 'GQ', name: 'Guinea Ecuatorial', dial: '+240' },
+          { iso2: 'GW', name: 'Guinea-Bisáu', dial: '+245' },
+          { iso2: 'GY', name: 'Guyana', dial: '+592' },
+          { iso2: 'HT', name: 'Haití', dial: '+509' },
+          { iso2: 'HN', name: 'Honduras', dial: '+504' },
+          { iso2: 'HK', name: 'Hong Kong', dial: '+852' },
+          { iso2: 'HU', name: 'Hungría', dial: '+36' },
+          { iso2: 'IN', name: 'India', dial: '+91' },
+          { iso2: 'ID', name: 'Indonesia', dial: '+62' },
+          { iso2: 'IR', name: 'Irán', dial: '+98' },
+          { iso2: 'IQ', name: 'Irak', dial: '+964' },
+          { iso2: 'IE', name: 'Irlanda', dial: '+353' },
+          { iso2: 'IS', name: 'Islandia', dial: '+354' },
+          { iso2: 'KY', name: 'Islas Caimán', dial: '+1345' },
+          { iso2: 'CK', name: 'Islas Cook', dial: '+682' },
+          { iso2: 'FO', name: 'Islas Feroe', dial: '+298' },
+          { iso2: 'FK', name: 'Islas Malvinas', dial: '+500' },
+          { iso2: 'MP', name: 'Islas Marianas', dial: '+1670' },
+          { iso2: 'MH', name: 'Islas Marshall', dial: '+692' },
+          { iso2: 'SB', name: 'Islas Salomón', dial: '+677' },
+          { iso2: 'TC', name: 'Islas Turcas y Caicos', dial: '+1649' },
+          { iso2: 'VI', name: 'Islas Vírgenes (EE.UU.)', dial: '+1340' },
+          { iso2: 'VG', name: 'Islas Vírgenes (RU)', dial: '+1284' },
+          { iso2: 'IL', name: 'Israel', dial: '+972' },
+          { iso2: 'IT', name: 'Italia', dial: '+39' },
+          { iso2: 'JM', name: 'Jamaica', dial: '+1876' },
+          { iso2: 'JP', name: 'Japón', dial: '+81' },
+          { iso2: 'JO', name: 'Jordania', dial: '+962' },
+          { iso2: 'KZ', name: 'Kazajistán', dial: '+7' },
+          { iso2: 'KE', name: 'Kenia', dial: '+254' },
+          { iso2: 'KG', name: 'Kirguistán', dial: '+996' },
+          { iso2: 'KI', name: 'Kiribati', dial: '+686' },
+          { iso2: 'KW', name: 'Kuwait', dial: '+965' },
+          { iso2: 'LA', name: 'Laos', dial: '+856' },
+          { iso2: 'LS', name: 'Lesoto', dial: '+266' },
+          { iso2: 'LV', name: 'Letonia', dial: '+371' },
+          { iso2: 'LB', name: 'Líbano', dial: '+961' },
+          { iso2: 'LR', name: 'Liberia', dial: '+231' },
+          { iso2: 'LY', name: 'Libia', dial: '+218' },
+          { iso2: 'LI', name: 'Liechtenstein', dial: '+423' },
+          { iso2: 'LT', name: 'Lituania', dial: '+370' },
+          { iso2: 'LU', name: 'Luxemburgo', dial: '+352' },
+          { iso2: 'MO', name: 'Macao', dial: '+853' },
+          { iso2: 'MG', name: 'Madagascar', dial: '+261' },
+          { iso2: 'MY', name: 'Malasia', dial: '+60' },
+          { iso2: 'MW', name: 'Malaui', dial: '+265' },
+          { iso2: 'MV', name: 'Maldivas', dial: '+960' },
+          { iso2: 'ML', name: 'Malí', dial: '+223' },
+          { iso2: 'MT', name: 'Malta', dial: '+356' },
+          { iso2: 'MA', name: 'Marruecos', dial: '+212' },
+          { iso2: 'MQ', name: 'Martinica', dial: '+596' },
+          { iso2: 'MU', name: 'Mauricio', dial: '+230' },
+          { iso2: 'MR', name: 'Mauritania', dial: '+222' },
+          { iso2: 'YT', name: 'Mayotte', dial: '+262' },
+          { iso2: 'MX', name: 'México', dial: '+52' },
+          { iso2: 'FM', name: 'Micronesia', dial: '+691' },
+          { iso2: 'MD', name: 'Moldavia', dial: '+373' },
+          { iso2: 'MC', name: 'Mónaco', dial: '+377' },
+          { iso2: 'MN', name: 'Mongolia', dial: '+976' },
+          { iso2: 'ME', name: 'Montenegro', dial: '+382' },
+          { iso2: 'MS', name: 'Montserrat', dial: '+1664' },
+          { iso2: 'MZ', name: 'Mozambique', dial: '+258' },
+          { iso2: 'MM', name: 'Myanmar', dial: '+95' },
+          { iso2: 'NA', name: 'Namibia', dial: '+264' },
+          { iso2: 'NR', name: 'Nauru', dial: '+674' },
+          { iso2: 'NP', name: 'Nepal', dial: '+977' },
+          { iso2: 'NI', name: 'Nicaragua', dial: '+505' },
+          { iso2: 'NE', name: 'Níger', dial: '+227' },
+          { iso2: 'NG', name: 'Nigeria', dial: '+234' },
+          { iso2: 'NU', name: 'Niue', dial: '+683' },
+          { iso2: 'NO', name: 'Noruega', dial: '+47' },
+          { iso2: 'NC', name: 'Nueva Caledonia', dial: '+687' },
+          { iso2: 'NZ', name: 'Nueva Zelanda', dial: '+64' },
+          { iso2: 'OM', name: 'Omán', dial: '+968' },
+          { iso2: 'PK', name: 'Pakistán', dial: '+92' },
+          { iso2: 'PW', name: 'Palaos', dial: '+680' },
+          { iso2: 'PS', name: 'Palestina', dial: '+970' },
+          { iso2: 'PA', name: 'Panamá', dial: '+507' },
+          { iso2: 'PG', name: 'Papúa Nueva Guinea', dial: '+675' },
+          { iso2: 'PE', name: 'Perú', dial: '+51' },
+          { iso2: 'PF', name: 'Polinesia Francesa', dial: '+689' },
+          { iso2: 'PL', name: 'Polonia', dial: '+48' },
+          { iso2: 'PT', name: 'Portugal', dial: '+351' },
+          { iso2: 'PR', name: 'Puerto Rico', dial: '+1787' },
+          { iso2: 'GB', name: 'Reino Unido', dial: '+44' },
+          { iso2: 'CF', name: 'República Centroafricana', dial: '+236' },
+          { iso2: 'CD', name: 'Rep. Dem. del Congo', dial: '+243' },
+          { iso2: 'CG', name: 'República del Congo', dial: '+242' },
+          { iso2: 'DO', name: 'República Dominicana', dial: '+1809' },
+          { iso2: 'RE', name: 'Reunión', dial: '+262' },
+          { iso2: 'RW', name: 'Ruanda', dial: '+250' },
+          { iso2: 'RO', name: 'Rumania', dial: '+40' },
+          { iso2: 'RU', name: 'Rusia', dial: '+7' },
+          { iso2: 'WS', name: 'Samoa', dial: '+685' },
+          { iso2: 'AS', name: 'Samoa Americana', dial: '+1684' },
+          { iso2: 'LC', name: 'Santa Lucía', dial: '+1758' },
+          { iso2: 'KN', name: 'San Cristóbal y Nieves', dial: '+1869' },
+          { iso2: 'SM', name: 'San Marino', dial: '+378' },
+          { iso2: 'ST', name: 'Santo Tomé y Príncipe', dial: '+239' },
+          { iso2: 'VC', name: 'San Vicente y Granadinas', dial: '+1784' },
+          { iso2: 'SN', name: 'Senegal', dial: '+221' },
+          { iso2: 'RS', name: 'Serbia', dial: '+381' },
+          { iso2: 'SC', name: 'Seychelles', dial: '+248' },
+          { iso2: 'SL', name: 'Sierra Leona', dial: '+232' },
+          { iso2: 'SG', name: 'Singapur', dial: '+65' },
+          { iso2: 'SY', name: 'Siria', dial: '+963' },
+          { iso2: 'SO', name: 'Somalia', dial: '+252' },
+          { iso2: 'LK', name: 'Sri Lanka', dial: '+94' },
+          { iso2: 'ZA', name: 'Sudáfrica', dial: '+27' },
+          { iso2: 'SD', name: 'Sudán', dial: '+249' },
+          { iso2: 'SS', name: 'Sudán del Sur', dial: '+211' },
+          { iso2: 'SE', name: 'Suecia', dial: '+46' },
+          { iso2: 'CH', name: 'Suiza', dial: '+41' },
+          { iso2: 'SR', name: 'Surinam', dial: '+597' },
+          { iso2: 'TH', name: 'Tailandia', dial: '+66' },
+          { iso2: 'TW', name: 'Taiwán', dial: '+886' },
+          { iso2: 'TZ', name: 'Tanzania', dial: '+255' },
+          { iso2: 'TJ', name: 'Tayikistán', dial: '+992' },
+          { iso2: 'TL', name: 'Timor Oriental', dial: '+670' },
+          { iso2: 'TG', name: 'Togo', dial: '+228' },
+          { iso2: 'TK', name: 'Tokelau', dial: '+690' },
+          { iso2: 'TO', name: 'Tonga', dial: '+676' },
+          { iso2: 'TT', name: 'Trinidad y Tobago', dial: '+1868' },
+          { iso2: 'TN', name: 'Túnez', dial: '+216' },
+          { iso2: 'TM', name: 'Turkmenistán', dial: '+993' },
+          { iso2: 'TR', name: 'Turquía', dial: '+90' },
+          { iso2: 'TV', name: 'Tuvalu', dial: '+688' },
+          { iso2: 'UA', name: 'Ucrania', dial: '+380' },
+          { iso2: 'UG', name: 'Uganda', dial: '+256' },
+          { iso2: 'UY', name: 'Uruguay', dial: '+598' },
+          { iso2: 'UZ', name: 'Uzbekistán', dial: '+998' },
+          { iso2: 'VU', name: 'Vanuatu', dial: '+678' },
+          { iso2: 'VA', name: 'Vaticano', dial: '+379' },
+          { iso2: 'VE', name: 'Venezuela', dial: '+58' },
+          { iso2: 'VN', name: 'Vietnam', dial: '+84' },
+          { iso2: 'WF', name: 'Wallis y Futuna', dial: '+681' },
+          { iso2: 'YE', name: 'Yemen', dial: '+967' },
+          { iso2: 'DJ', name: 'Yibuti', dial: '+253' },
+          { iso2: 'ZM', name: 'Zambia', dial: '+260' },
+          { iso2: 'ZW', name: 'Zimbabue', dial: '+263' }
+        ];
+
+        // DOM elements
+        const dropdown = document.getElementById('countryDropdown');
+        if (!dropdown) return;
+
+        const trigger = dropdown.querySelector('.country-trigger');
+        const popover = dropdown.querySelector('.country-popover');
+        const countryList = dropdown.querySelector('.country-list');
+        const searchInput = dropdown.querySelector('.country-search');
+        const selectedFlag = document.getElementById('selectedFlag');
+        const selectedIso = document.getElementById('selectedIso');
+        const selectedDial = document.getElementById('selectedDial');
+        const hiddenInput = document.getElementById('countryCode');
+        const hiddenIso2 = document.getElementById('countryIso2');
+
+        let allCountries = [];
+        let filteredCountries = [];
+
+        // Render countries (priority first, then alphabetical)
+        function renderCountries() {
+          const priorityCountries = COUNTRIES.filter(c => c.priority);
+          const regularCountries = COUNTRIES.filter(c => !c.priority).sort((a, b) => a.name.localeCompare(b.name));
+          allCountries = [...priorityCountries, ...regularCountries];
+          filteredCountries = [...allCountries];
+          updateList();
+        }
+
+        // Update country list
+        function updateList() {
+          countryList.innerHTML = '';
+          filteredCountries.forEach(country => {
+            const option = document.createElement('button');
+            option.type = 'button';
+            option.className = 'country-option';
+            option.setAttribute('role', 'option');
+            option.setAttribute('data-dial', country.dial);
+            option.setAttribute('data-iso2', country.iso2);
+
+            const flagUrl = `https://flagcdn.com/w20/${country.iso2.toLowerCase()}.png`;
+
+            option.innerHTML = `
+              <img src="${flagUrl}" alt="${country.iso2}" class="country-flag">
+              <span class="country-option-name">${country.name}</span>
+              <span class="country-option-dial">${country.dial}</span>
+            `;
+
+            // Mark selected
+            if (country.dial === hiddenInput.value) {
+              option.classList.add('selected');
+            }
+
+            option.addEventListener('click', () => selectCountry(country));
+            countryList.appendChild(option);
+          });
+        }
+
+        // Select country
+        function selectCountry(country) {
+          // Update trigger UI
+          selectedFlag.src = `https://flagcdn.com/w20/${country.iso2.toLowerCase()}.png`;
+          selectedFlag.alt = country.iso2;
+          selectedIso.textContent = country.iso2;
+          selectedDial.textContent = country.dial;
+
+          // Update hidden inputs
+          hiddenInput.value = country.dial;
+          hiddenIso2.value = country.iso2;
+
+          // Dispatch change event for compatibility
+          const changeEvent = new Event('change', { bubbles: true });
+          hiddenInput.dispatchEvent(changeEvent);
+
+          // Close popover
+          closePopover();
+
+          console.log(`✓ Country selected: ${country.name} (${country.dial})`);
+        }
+
+        // Open/close popover
+        function togglePopover() {
+          const isOpen = popover.hasAttribute('hidden');
+          if (isOpen) {
+            openPopover();
+          } else {
+            closePopover();
+          }
+        }
+
+        function openPopover() {
+          popover.removeAttribute('hidden');
+          trigger.setAttribute('aria-expanded', 'true');
+
+          // Desktop: Portalear al body para escapar del clipping
+          if (window.innerWidth > 768) {
+            const rect = trigger.getBoundingClientRect();
+            document.body.appendChild(popover);
+            popover.classList.add('portaled');
+            popover.style.position = 'fixed';
+            popover.style.top = `${rect.bottom + 8}px`;
+            popover.style.left = `${rect.left}px`;
+            popover.style.zIndex = '5000';
+          } else {
+            // Mobile: Bloquear scroll del body
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+          }
+
+          searchInput.focus();
+        }
+
+        function closePopover() {
+          popover.setAttribute('hidden', '');
+          trigger.setAttribute('aria-expanded', 'false');
+
+          // Devolver al contenedor original si está portaleado
+          if (popover.classList.contains('portaled')) {
+            dropdown.appendChild(popover);
+            popover.classList.remove('portaled');
+            popover.style.position = '';
+            popover.style.top = '';
+            popover.style.left = '';
+            popover.style.zIndex = '';
+          }
+
+          // Restaurar scroll del body
+          document.body.style.overflow = '';
+          document.documentElement.style.overflow = '';
+
+          searchInput.value = '';
+          filteredCountries = [...allCountries];
+          updateList();
+        }
+
+        // Search functionality
+        function handleSearch(e) {
+          const query = e.target.value.toLowerCase();
+          filteredCountries = allCountries.filter(country =>
+            country.name.toLowerCase().includes(query) ||
+            country.dial.includes(query) ||
+            country.iso2.toLowerCase().includes(query)
+          );
+          updateList();
+        }
+
+        // Close on click outside
+        function handleClickOutside(e) {
+          if (!dropdown.contains(e.target)) {
+            closePopover();
+          }
+        }
+
+        // Close on ESC key
+        function handleKeydown(e) {
+          if (e.key === 'Escape' && !popover.hasAttribute('hidden')) {
+            closePopover();
+            trigger.focus();
+          }
+        }
+
+        // Reposicionar popover cuando hay scroll o resize (solo desktop)
+        function repositionPopover() {
+          if (!popover.hasAttribute('hidden') && popover.classList.contains('portaled')) {
+            const rect = trigger.getBoundingClientRect();
+            popover.style.top = `${rect.bottom + 8}px`;
+            popover.style.left = `${rect.left}px`;
+          }
+        }
+
+        // Event listeners
+        trigger.addEventListener('click', togglePopover);
+        searchInput.addEventListener('input', handleSearch);
+        document.addEventListener('click', handleClickOutside);
+        document.addEventListener('keydown', handleKeydown);
+
+        // Listeners para reposicionar en desktop
+        window.addEventListener('scroll', repositionPopover, true);
+        window.addEventListener('resize', repositionPopover);
+
+        // Initialize
+        renderCountries();
+        console.log('✓ Custom country dropdown initialized');
+
+      })();
     </script>
   </body>
 </html>

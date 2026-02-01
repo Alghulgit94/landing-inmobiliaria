@@ -355,6 +355,8 @@
         "last_name": "Apellido",
         "email": "Correo Electrónico",
         "phone": "Teléfono",
+        "country_code_label": "Código de país",
+        "country_search": "Buscar",
         "required": "*"
       },
       "additional_message": {
