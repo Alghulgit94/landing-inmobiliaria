@@ -88,6 +88,7 @@
       "error": "Fehler beim Laden der Parzellen. Bitte versuchen Sie es erneut.",
       "retry": "Erneut versuchen",
       "view_map_button": "Siehe Karte",
+      "view_gallery_button": "Galerie ansehen",
       "empty_state": {
         "title": "Keine Parzellen verfügbar",
         "description": "Für den ausgewählten Standort wurden keine Parzellen gefunden."

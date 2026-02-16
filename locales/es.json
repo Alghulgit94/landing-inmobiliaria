@@ -87,6 +87,7 @@
       "error": "Error al cargar los loteamientos. Por favor, inténtalo de nuevo.",
       "retry": "Reintentar",
       "view_map_button": "Ver Mapa",
+      "view_gallery_button": "Ver Galería",
       "empty_state": {
         "title": "No hay loteamientos disponibles",
         "description": "No se encontraron loteamientos para la ubicación seleccionada."

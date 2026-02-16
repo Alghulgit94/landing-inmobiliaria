@@ -87,6 +87,7 @@
       "error": "Error loading developments. Please try again.",
       "retry": "Retry",
       "view_map_button": "View Map",
+      "view_gallery_button": "View Gallery",
       "empty_state": {
         "title": "No lots available",
         "description": "No lots were found for the selected location."

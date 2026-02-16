@@ -743,6 +743,23 @@
       viewMapButton.textContent = getLocalizedText('index.loteamientos.view_map_button', 'Ver Mapa');
     }
 
+    // Update "Ver Galería" link to open gallery modal
+    const galleryLink = card.querySelector('.product-card__gallery-link');
+    if (galleryLink) {
+      // Set localized button text
+      galleryLink.textContent = getLocalizedText('index.loteamientos.view_gallery_button', 'Ver Galería');
+
+      // Add click event to open gallery modal
+      galleryLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (window.GalleryModal && typeof window.GalleryModal.open === 'function') {
+          window.GalleryModal.open(0); // Open at first image
+        } else {
+          console.error('GalleryModal not available');
+        }
+      });
+    }
+
     // Set initial animation state
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';

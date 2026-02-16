@@ -256,7 +256,12 @@ html {
   box-sizing: border-box;
 }
 
-/* Parcel Carousel Styles */
+/* ===========================
+   PARCEL CAROUSEL STYLES - DISABLED FOR MAPA.HTML
+   Carousel functionality commented out as images are hidden in sidebar.
+   Uncomment below to re-enable parcel carousel in sidebar.
+   =========================== */
+/*
 .parcel-carousel {
   position: relative;
 }
@@ -279,7 +284,6 @@ html {
   transform: scale(1.05);
 }
 
-/* Carousel Navigation Arrows */
 .parcel-carousel__arrow {
   position: absolute;
   top: 50%;
@@ -325,7 +329,6 @@ html {
   margin-top: -2px;
 }
 
-/* Carousel Dot Indicators */
 .parcel-carousel__dots {
   position: absolute;
   bottom: 8px;
@@ -356,6 +359,7 @@ html {
   border-color: var(--color-green-primary);
   transform: scale(1.3);
 }
+*/
 
 .status-badge {
   display: inline-block;

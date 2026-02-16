@@ -60,9 +60,13 @@
 
           <!-- Parcel Information -->
           <div class="parcel-info" id="parcelInfo">
+            <!-- PARCEL CAROUSEL HIDDEN: Carousel functionality disabled for mapa.html
+                 The carousel is only used in index.html for property features.
+                 Uncomment below to re-enable image carousel in sidebar. -->
+            <!--
             <div class="parcel-image parcel-carousel">
               <div class="parcel-carousel__track" id="parcelCarouselTrack">
-                <!-- Images will be dynamically inserted here -->
+                Images will be dynamically inserted here
               </div>
               <button class="parcel-carousel__arrow parcel-carousel__arrow--prev" id="parcelPrevBtn" data-i18n-attr="aria-label:mapa.sidebar.buttons.prev_image" aria-label="Imagen anterior">
                 <span>‹</span>
@@ -71,9 +75,10 @@
                 <span>›</span>
               </button>
               <div class="parcel-carousel__dots" id="parcelCarouselDots">
-                <!-- Dot indicators will be dynamically inserted here -->
+                Dot indicators will be dynamically inserted here
               </div>
             </div>
+            -->
 
             <span class="status-badge" id="parcelStatusBadge" data-i18n="mapa.sidebar.status.disponible">Disponible</span>
 
@@ -378,6 +383,34 @@
     <!-- Toast Container -->
     <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
 
+    <!-- GALLERY MODAL HIDDEN: Gallery modal disabled for mapa.html
+         This modal is only used in index.html for land image galleries.
+         Uncomment below to re-enable gallery modal functionality. -->
+    <!--
+    <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="gallery-modal__overlay" id="galleryOverlay"></div>
+      <div class="gallery-modal__content">
+        <button class="gallery-modal__close" id="galleryClose" aria-label="Cerrar galería">
+          <span class="close-icon">&times;</span>
+        </button>
+        <div class="gallery-carousel">
+          <button class="gallery-carousel__nav gallery-carousel__nav--prev" id="galleryPrev" aria-label="Imagen anterior">
+            <span>‹</span>
+          </button>
+          <div class="gallery-carousel__image-container">
+            <img class="gallery-carousel__image" id="galleryImage" src="" alt="Imagen de terreno" />
+          </div>
+          <button class="gallery-carousel__nav gallery-carousel__nav--next" id="galleryNext" aria-label="Siguiente imagen">
+            <span>›</span>
+          </button>
+        </div>
+        <div class="gallery-carousel__counter" id="galleryCounter">
+          <span id="galleryCurrentIndex">1</span> / <span id="galleryTotal">11</span>
+        </div>
+      </div>
+    </div>
+    -->
+
     <!-- Libraries -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/togeojson@0.16.0"></script>
@@ -393,6 +426,9 @@
     <script src="assets/js/loteamiento-service.js"></script>
     <script src="assets/js/lote-service.js"></script>
     <script src="assets/js/interest-service.js"></script>
+
+    <!-- Gallery Modal - DISABLED for mapa.html (only used in index.html) -->
+    <!-- <script src="assets/js/gallery-modal.js"></script> -->
 
     <!-- Map Application -->
     <script src="assets/js/mapa.js"></script>

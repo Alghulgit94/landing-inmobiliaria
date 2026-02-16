@@ -681,7 +681,8 @@
                       </div>
                     </div>
                   </div>
-                  
+
+                  <a href="#" class="product-card__gallery-link" data-i18n="index.loteamientos.view_gallery_button">Ver Galería</a>
                   <a href="mapa.html" class="product-card__btn"></a>
                 </div>
               </article>
@@ -974,6 +975,34 @@
       </div>
     </footer>
 
+    <!-- Gallery Modal -->
+    <div class="gallery-modal" id="galleryModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="galleryModalTitle">
+      <div class="gallery-modal__overlay" id="galleryOverlay"></div>
+      <div class="gallery-modal__content">
+        <button class="gallery-modal__close" id="galleryClose" aria-label="Cerrar galería">
+          <span class="close-icon">&times;</span>
+        </button>
+
+        <div class="gallery-carousel">
+          <button class="gallery-carousel__nav gallery-carousel__nav--prev" id="galleryPrev" aria-label="Imagen anterior">
+            <span>‹</span>
+          </button>
+
+          <div class="gallery-carousel__image-container">
+            <img class="gallery-carousel__image" id="galleryImage" src="" alt="Imagen de terreno" />
+          </div>
+
+          <button class="gallery-carousel__nav gallery-carousel__nav--next" id="galleryNext" aria-label="Siguiente imagen">
+            <span>›</span>
+          </button>
+        </div>
+
+        <div class="gallery-carousel__counter" id="galleryCounter">
+          <span id="galleryCurrentIndex">1</span> / <span id="galleryTotal">11</span>
+        </div>
+      </div>
+    </div>
+
     <!-- External JavaScript -->
     <!-- GSAP Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -999,6 +1028,9 @@
 
     <!-- Reason Carousel -->
     <script src="assets/js/reason-carousel.js"></script>
+
+    <!-- Gallery Modal -->
+    <script src="assets/js/gallery-modal.js"></script>
 
     <!-- Page Scripts -->
     <script src="assets/js/index.js"></script>
