@@ -88,6 +88,7 @@
       "retry": "Reintentar",
       "view_map_button": "Ver Mapa",
       "view_gallery_button": "Ver Galería",
+      "catastral_label": "Cuenta Catastral",
       "empty_state": {
         "title": "No hay loteamientos disponibles",
         "description": "No se encontraron loteamientos para la ubicación seleccionada."

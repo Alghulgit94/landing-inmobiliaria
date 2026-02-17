@@ -735,6 +735,16 @@
     sizeArea.textContent = formattedArea;
     sizeDimensions.textContent = '';  // Leave subtitle empty
 
+    // Set cadastral account number
+    const catastralContainer = card.querySelector('.product-card__catastral');
+    const catastralLabel = card.querySelector('.catastral-label');
+    const catastralValue = card.querySelector('.catastral-value');
+    if (product.nro_cta_catastral && catastralContainer && catastralLabel && catastralValue) {
+      catastralLabel.textContent = getLocalizedText('index.loteamientos.catastral_label', 'Cuenta Catastral');
+      catastralValue.textContent = `Nº ${product.nro_cta_catastral}`;
+      catastralContainer.style.display = 'flex';
+    }
+
     // Update "Ver en Mapa" button to navigate with loteamiento data
     const viewMapButton = card.querySelector('.product-card__btn');
     if (viewMapButton) {

@@ -89,6 +89,7 @@
       "retry": "Erneut versuchen",
       "view_map_button": "Siehe Karte",
       "view_gallery_button": "Galerie ansehen",
+      "catastral_label": "Grundbuchnummer",
       "empty_state": {
         "title": "Keine Parzellen verfügbar",
         "description": "Für den ausgewählten Standort wurden keine Parzellen gefunden."

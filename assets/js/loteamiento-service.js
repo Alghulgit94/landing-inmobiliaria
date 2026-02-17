@@ -156,6 +156,8 @@ class LoteamientoService {
       updated_at: dbLoteamiento.updated_at,
       // Interest points for map feature
       interest_points: dbLoteamiento.interest_points || null,
+      // Cadastral account number
+      nro_cta_catastral: dbLoteamiento.nro_cta_catastral || null,
       // Store raw data for dynamic language switching
       _raw: {
         nombre: dbLoteamiento.nombre_loteamiento || dbLoteamiento.nombre,

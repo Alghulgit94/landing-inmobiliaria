@@ -1602,6 +1602,39 @@ video {
   flex: 1;
 }
 
+/* Cadastral Account Field */
+.product-card__catastral {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.catastral-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+  color: var(--color-dark-gray);
+}
+
+.catastral-label {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xs);
+  color: var(--color-primary-dark);
+  line-height: var(--line-height-snug);
+}
+
+.catastral-value {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-xs);
+  color: var(--color-dark-gray);
+  line-height: var(--line-height-normal);
+  opacity: 0.8;
+}
+
 /* Product Card Button - Matching btn-primary styles */
 .product-card__btn {
   width: 100%;
