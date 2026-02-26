@@ -945,3 +945,60 @@
   }
 
 })();
+
+/**
+ * Dynamic Copyright Year - Inmobiliaria Mega Proyectos
+ * Updates the copyright year dynamically
+ */
+
+(function () {
+  'use strict';
+
+  /**
+   * Update copyright year in footer
+   * Replaces {year} placeholder with current year
+   */
+  function updateCopyrightYear() {
+    const copyrightElement = document.querySelector('.footer__copyright');
+
+    if (!copyrightElement) {
+      console.warn('Copyright element not found');
+      return;
+    }
+
+    const currentYear = new Date().getFullYear();
+    const copyrightText = copyrightElement.textContent;
+
+    // Replace {year} placeholder with current year
+    if (copyrightText.includes('{year}')) {
+      copyrightElement.textContent = copyrightText.replace('{year}', currentYear);
+      console.log(`Copyright year updated to ${currentYear}`);
+    }
+  }
+
+  /**
+   * Initialize copyright year update
+   * Also listen for language changes to re-apply the year
+   */
+  function initializeCopyright() {
+    // Update immediately
+    updateCopyrightYear();
+
+    // Re-update when language changes (after i18n updates the text)
+    document.addEventListener('languageChanged', () => {
+      // Wait a short moment for i18n to update the DOM
+      setTimeout(updateCopyrightYear, 100);
+    });
+
+    console.log('Dynamic copyright year initialized');
+  }
+
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCopyright);
+  } else {
+    // DOM is already loaded
+    initializeCopyright();
+  }
+
+})();
