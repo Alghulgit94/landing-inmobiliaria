@@ -30,7 +30,10 @@
     'assets/img/land8.JPG',
     'assets/img/land9.JPG',
     'assets/img/land10.JPG',
-    'assets/img/land11.JPG'
+    'assets/img/land11.JPG',
+    'assets/img/land13.jpeg',
+    'assets/img/land14.jpeg',
+    'assets/img/land15.jpeg'
   ];
 
   // DOM Elements
