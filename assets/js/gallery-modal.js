@@ -1,6 +1,6 @@
 /**
  * Gallery Modal - Image Carousel for Land Images
- * Displays all land*.jpg/JPG images in a modal with keyboard and touch navigation
+ * Displays all land*.webp images in a modal with keyboard and touch navigation
  *
  * NOTE: This modal is only used in index.html for land image galleries.
  * It is disabled on mapa.html as the carousel functionality is not needed there.
@@ -18,22 +18,22 @@
     return; // Exit early on map page
   }
 
-  // Land images array (11 total)
+  // Land images array (14 total - WebP optimized)
   const landImages = [
-    'assets/img/land1.jpg',
-    'assets/img/land2.jpg',
-    'assets/img/land3.jpg',
-    'assets/img/land4.jpg',
-    'assets/img/land5.JPG',
-    'assets/img/land6.JPG',
-    'assets/img/land7.JPG',
-    'assets/img/land8.JPG',
-    'assets/img/land9.JPG',
-    'assets/img/land10.JPG',
-    'assets/img/land11.JPG',
-    'assets/img/land13.jpeg',
-    'assets/img/land14.jpeg',
-    'assets/img/land15.jpeg'
+    'assets/img/land1.webp',
+    'assets/img/land2.webp',
+    'assets/img/land3.webp',
+    'assets/img/land4.webp',
+    'assets/img/land5.webp',
+    'assets/img/land6.webp',
+    'assets/img/land7.webp',
+    'assets/img/land8.webp',
+    'assets/img/land9.webp',
+    'assets/img/land10.webp',
+    'assets/img/land11.webp',
+    'assets/img/land13.webp',
+    'assets/img/land14.webp',
+    'assets/img/land15.webp'
   ];
 
   // DOM Elements
