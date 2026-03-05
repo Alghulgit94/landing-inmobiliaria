@@ -15,6 +15,76 @@
  */
 
 // ===========================
+// HELPER FUNCTIONS
+// Coordinate normalization and distance calculations
+// ===========================
+
+/**
+ * Normalize latitude/longitude from coordinates object if present
+ * Ensures latitude/longitude properties are synced with coordinates.lat/lng
+ * @param {Object} obj - Object that may contain coordinates.lat/lng
+ * @returns {Object} Object with normalized latitude/longitude properties
+ */
+function normalizeLatLng(obj) {
+  if (!obj) return obj;
+  if (obj.coordinates && typeof obj.coordinates === 'object') {
+    if (typeof obj.coordinates.lat === 'number' && typeof obj.coordinates.lng === 'number') {
+      return {
+        ...obj,
+        latitude: obj.coordinates.lat,
+        longitude: obj.coordinates.lng,
+      };
+    }
+  }
+  return obj;
+}
+
+/**
+ * Check if two coordinate points are the same (within epsilon tolerance)
+ * @param {Object} a - First point {lat, lng}
+ * @param {Object} b - Second point {lat, lng}
+ * @param {number} eps - Epsilon tolerance (default 1e-7)
+ * @returns {boolean} True if points are equal within tolerance
+ */
+function same(a, b, eps = 1e-7) {
+  return Math.abs(a.lat - b.lat) < eps && Math.abs(a.lng - b.lng) < eps;
+}
+
+/**
+ * Calculate haversine distance between two points (great-circle distance)
+ * @param {Object} a - First point {lat, lng}
+ * @param {Object} b - Second point {lat, lng}
+ * @returns {number} Distance in meters
+ */
+function haversine(a, b) {
+  const R = 6371000; // Earth radius in meters
+  const toRad = (d) => (d * Math.PI) / 180;
+  const dLat = toRad(b.lat - a.lat);
+  const dLng = toRad(b.lng - a.lng);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+
+  const x =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
+
+  return 2 * R * Math.asin(Math.sqrt(x));
+}
+
+/**
+ * Calculate total distance of a polyline by summing segment distances
+ * @param {Array} points - Array of points [{lat, lng}, ...]
+ * @returns {number} Total distance in meters
+ */
+function polylineDistance(points) {
+  let total = 0;
+  for (let i = 1; i < points.length; i++) {
+    total += haversine(points[i - 1], points[i]);
+  }
+  return total;
+}
+
+// ===========================
 // ROUTE DRAWER CLASS
 // Single Responsibility: Handle route/polyline drawing only
 // ===========================
@@ -46,7 +116,14 @@ class RouteDrawer {
 
   /**
    * Draw a route from origin to destination using intermediate route points
-   * Only draws if route points are available (no fallback to straight line)
+   * ROBUST VERSION: Normalizes coordinates, filters duplicates, calculates distance
+   *
+   * Fixes applied:
+   * - Normalizes ALL route_points from coordinates.lat/lng if present
+   * - Filters out route_points that match origin or destination (prevents visual glitches)
+   * - Removes consecutive duplicate points
+   * - Calculates distance using EXACT same latlngs as polyline
+   *
    * @param {Object} origin - Origin coordinates {lat, lng}
    * @param {Object} destination - Destination coordinates {lat, lng}
    * @param {Array} routePoints - Array of intermediate route points (required)
@@ -55,11 +132,14 @@ class RouteDrawer {
     // Clear any existing route first
     this.clearRoute();
 
-    // Validate coordinates
+    // Validate and normalize origin/destination to numeric coords
     if (!this.validateCoordinates(origin) || !this.validateCoordinates(destination)) {
       console.error('Invalid coordinates provided for route drawing');
       return;
     }
+
+    const o = { lat: Number(origin.lat), lng: Number(origin.lng) };
+    const d = { lat: Number(destination.lat), lng: Number(destination.lng) };
 
     // Check if route points are available
     if (!routePoints || !Array.isArray(routePoints) || routePoints.length === 0) {
@@ -67,30 +147,37 @@ class RouteDrawer {
       return; // Don't draw anything without route points
     }
 
-    // Build polyline coordinates array starting with origin
-    const latlngs = [[origin.lat, origin.lng]];
+    // CRITICAL FIX: Normalize ALL route_points and filter out origin/destination
+    // This prevents visual glitches when route_points accidentally include start/end
+    const sorted = [...routePoints]
+      .map(normalizeLatLng) // Normalize coordinates.lat/lng → latitude/longitude
+      .filter(Boolean) // Remove null/undefined
+      .sort((a, b) => Number(a.order || 0) - Number(b.order || 0)) // Sort by order
+      .map((p) => ({ lat: Number(p.latitude), lng: Number(p.longitude) })) // Convert to {lat, lng}
+      .filter((p) => Number.isFinite(p.lat) && Number.isFinite(p.lng)) // Remove invalid coords
+      .filter((p) => !same(p, o) && !same(p, d)); // Filter if equals origin or destination
 
-    // Sort route points by order field to ensure correct sequence
-    const sortedPoints = [...routePoints].sort((a, b) => {
-      const orderA = a.order || 0;
-      const orderB = b.order || 0;
-      return orderA - orderB;
-    });
+    // Build final route: origin → sorted waypoints → destination
+    const pts = [o, ...sorted, d];
 
-    // Add each route point to the polyline
-    sortedPoints.forEach(point => {
-      if (this.validateCoordinates(point)) {
-        latlngs.push([point.latitude, point.longitude]);
-      } else {
-        console.warn('Invalid route point found:', point);
+    // Remove consecutive duplicates to avoid zero-length segments
+    const dedup = [];
+    for (const p of pts) {
+      const last = dedup[dedup.length - 1];
+      if (!last || !same(last, p)) {
+        dedup.push(p);
       }
-    });
+    }
 
-    // Add destination as final point
-    latlngs.push([destination.lat, destination.lng]);
+    // Convert to Leaflet format [lat, lng]
+    const latlngs = dedup.map((p) => [p.lat, p.lng]);
 
     // Create and add polyline to map
     this.currentRoute = L.polyline(latlngs, this.routeStyle).addTo(this.map);
+
+    // Calculate distance using EXACT same points as polyline
+    const meters = polylineDistance(dedup);
+    const km = (meters / 1000).toFixed(2);
 
     // Fit map bounds to show entire route with padding
     try {
@@ -102,7 +189,12 @@ class RouteDrawer {
       console.warn('Could not fit map to route bounds:', error);
     }
 
-    console.log(`✓ Route drawn with ${sortedPoints.length} intermediate points (${latlngs.length} total points)`);
+    console.log(`✓ Route drawn: ${sorted.length} waypoints, ${latlngs.length} total points, ${km} km (${meters.toFixed(0)} m)`);
+
+    // Expose distance via callback for future UI integration
+    if (this.onRouteDistance && typeof this.onRouteDistance === 'function') {
+      this.onRouteDistance(meters);
+    }
   }
 
   /**
@@ -170,6 +262,7 @@ class InterestPointsManager {
     this.map = map;
     this.loteamientoData = loteamientoData;
     this.interestPoints = [];
+    this.origin = null; // Store origin coordinates from interest_points JSON
     this.markers = L.layerGroup();
     this.routeDrawer = new RouteDrawer(map);
     this.isVisible = true;
@@ -280,6 +373,16 @@ class InterestPointsManager {
     if (pointsData && typeof pointsData === 'object' && !Array.isArray(pointsData)) {
       if (pointsData.interest_points && Array.isArray(pointsData.interest_points)) {
         console.log('✓ Detected nested interest_points structure, extracting inner array');
+
+        // Extract origin coordinates if present in nested structure
+        if (pointsData.origin) {
+          this.origin = this.extractOriginCoordinates(pointsData.origin);
+          if (this.origin) {
+            console.log(`✓ Extracted origin coordinates from interest_points: ${this.origin.lat}, ${this.origin.lng}`);
+          }
+        }
+
+        // Extract the actual points array
         pointsData = pointsData.interest_points;
       }
     }
@@ -294,6 +397,16 @@ class InterestPointsManager {
 
     // Store interest points with validation and normalization
     this.interestPoints = pointsData.filter(point => {
+      // Normalize coordinates: prefer coordinates.lat/lng over latitude/longitude
+      if (point.coordinates && typeof point.coordinates === 'object') {
+        if (typeof point.coordinates.lat === 'number' && typeof point.coordinates.lng === 'number') {
+          // Use coordinates object as source of truth
+          point.latitude = point.coordinates.lat;
+          point.longitude = point.coordinates.lng;
+          console.log(`📍 Normalized "${point.name}" coords: ${point.latitude}, ${point.longitude}`);
+        }
+      }
+
       // Validate each point has required fields
       const isValid = point &&
         point.id &&
@@ -306,6 +419,16 @@ class InterestPointsManager {
         if (!Array.isArray(point.route_points)) {
           console.warn(`Interest point "${point.name}" has invalid route_points (not an array), fixing to empty array`);
           point.route_points = [];
+        } else {
+          // Normalize route_points coordinates too
+          point.route_points.forEach(rp => {
+            if (rp.coordinates && typeof rp.coordinates === 'object') {
+              if (typeof rp.coordinates.lat === 'number' && typeof rp.coordinates.lng === 'number') {
+                rp.latitude = rp.coordinates.lat;
+                rp.longitude = rp.coordinates.lng;
+              }
+            }
+          });
         }
       } else if (isValid) {
         // Ensure route_points exists even if not in database
@@ -324,6 +447,15 @@ class InterestPointsManager {
       this.renderEmptyState();
       return;
     }
+
+    // Log summary table of loaded points
+    console.table(this.interestPoints.map(p => ({
+      ID: p.id,
+      Name: p.name,
+      Latitude: p.latitude.toFixed(6),
+      Longitude: p.longitude.toFixed(6),
+      'Route Points': p.route_points.length
+    })));
 
     // Create markers
     this.createMarkers();
@@ -366,6 +498,9 @@ class InterestPointsManager {
    * @returns {L.Marker} Leaflet marker
    */
   createMarker(point) {
+    // Log marker creation for debugging
+    console.log(`🎯 Creating marker for "${point.name}" at [${point.latitude}, ${point.longitude}]`);
+
     // Use SVG image icon for reliable rendering across all devices
     const customIcon = L.icon({
       iconUrl: 'assets/img/map-marker-svgrepo-com.svg',
@@ -386,6 +521,7 @@ class InterestPointsManager {
       markerOptions.title = point.name;
     }
 
+    // IMPORTANT: Leaflet uses [latitude, longitude] order (NOT [lng, lat])
     const marker = L.marker(
       [point.latitude, point.longitude],
       markerOptions
@@ -410,6 +546,7 @@ class InterestPointsManager {
     // Store point reference in marker
     marker._interestPoint = point;
 
+    console.log(`✅ Marker created successfully for "${point.name}"`);
     return marker;
   }
 
@@ -452,13 +589,17 @@ class InterestPointsManager {
       return;
     }
 
+    // CRITICAL FIX: Normalize point before creating destination
+    // Ensures coordinates.lat/lng are used if present (instead of potentially outdated latitude/longitude)
+    const normalizedPoint = normalizeLatLng(point);
+
     const destination = {
-      lat: point.latitude,
-      lng: point.longitude
+      lat: normalizedPoint.latitude,
+      lng: normalizedPoint.longitude
     };
 
     // Extract route points from the interest point
-    const routePoints = point.route_points || [];
+    const routePoints = normalizedPoint.route_points || [];
 
     // Draw route from loteamiento to selected point using intermediate route points
     this.routeDrawer.drawRoute(origin, destination, routePoints);
@@ -498,10 +639,47 @@ class InterestPointsManager {
   }
 
   /**
+   * Extract origin coordinates from various formats
+   * @param {Object} originData - Origin data object
+   * @returns {Object|null} Normalized coordinates {lat, lng} or null
+   */
+  extractOriginCoordinates(originData) {
+    if (!originData || typeof originData !== 'object') {
+      return null;
+    }
+
+    // Try coordinates.lat/lng format first (new JSON structure)
+    if (originData.coordinates && typeof originData.coordinates === 'object') {
+      const lat = originData.coordinates.lat;
+      const lng = originData.coordinates.lng;
+      if (typeof lat === 'number' && typeof lng === 'number') {
+        return { lat, lng };
+      }
+    }
+
+    // Try latitude/longitude format
+    const lat = originData.latitude || originData.lat;
+    const lng = originData.longitude || originData.lng;
+
+    if (typeof lat === 'number' && typeof lng === 'number') {
+      return { lat, lng };
+    }
+
+    return null;
+  }
+
+  /**
    * Get loteamiento origin coordinates
+   * Priority: 1) origin from interest_points JSON, 2) loteamiento data fields
    * @returns {Object|null} Origin coordinates {lat, lng} or null
    */
   getLoteamientoOrigin() {
+    // Priority 1: Use origin extracted from interest_points JSON
+    if (this.origin) {
+      return this.origin;
+    }
+
+    // Priority 2: Fallback to loteamiento data fields
     if (!this.loteamientoData) {
       return null;
     }
