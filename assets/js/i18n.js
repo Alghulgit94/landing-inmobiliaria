@@ -25,9 +25,13 @@
    */
   async function initializeI18n() {
     try {
-      // Detect and set initial language
+      // Detect and set initial language for the visible content.
+      // updateMeta:false keeps <title>/meta description/og:* as authored in the
+      // static HTML (Spanish) so crawlers never index a browser/timezone-guessed
+      // language for the page's search snippet — only an explicit manual language
+      // switch (setupLanguageSwitcher) should update those tags.
       const detectedLanguage = detectLanguage();
-      await setLanguage(detectedLanguage);
+      await setLanguage(detectedLanguage, { updateMeta: false });
       
       // Setup language switcher if present
       setupLanguageSwitcher();
@@ -43,7 +47,7 @@
     } catch (error) {
       console.error('Failed to initialize i18n:', error);
       // Fallback to default language
-      await setLanguage(I18N_CONFIG.fallbackLanguage);
+      await setLanguage(I18N_CONFIG.fallbackLanguage, { updateMeta: false });
     }
   }
 
@@ -157,8 +161,15 @@
   /**
    * Set and apply language
    * @param {string} languageCode - Language code to set
+   * @param {Object} [options]
+   * @param {boolean} [options.updateMeta=true] - Whether to also update <title>/meta
+   *   description/og:* tags. Defaults to true (manual, user-initiated language changes).
+   *   Automatic detection on initial load passes false so the page's SEO meta tags
+   *   always match the static HTML instead of a guessed browser/timezone language.
    */
-  async function setLanguage(languageCode) {
+  async function setLanguage(languageCode, options) {
+    const updateMeta = !options || options.updateMeta !== false;
+
     if (!I18N_CONFIG.supportedLanguages.includes(languageCode)) {
       console.warn(`Unsupported language: ${languageCode}. Using fallback.`);
       languageCode = I18N_CONFIG.fallbackLanguage;
@@ -167,18 +178,18 @@
     try {
       // Load language data
       const languageData = await loadLanguageFile(languageCode);
-      
+
       // Update current language
       currentLanguage = languageCode;
-      
+
       // Save to localStorage
       localStorage.setItem(I18N_CONFIG.storageKey, languageCode);
-      
+
       // Update HTML lang attribute
       document.documentElement.lang = languageCode;
-      
+
       // Apply translations to DOM
-      applyTranslations(languageData);
+      applyTranslations(languageData, updateMeta);
       
       // Update language switcher UI
       updateLanguageSwitcherUI(languageCode);
@@ -202,8 +213,9 @@
   /**
    * Apply translations to DOM elements
    * @param {Object} languageData - Language data object
+   * @param {boolean} [updateMeta=true] - Whether to also update <title>/meta tags
    */
-  function applyTranslations(languageData) {
+  function applyTranslations(languageData, updateMeta) {
     // Handle text content translations
     const elementsWithText = document.querySelectorAll('[data-i18n]');
     elementsWithText.forEach(element => {
@@ -257,8 +269,11 @@
       }
     });
 
-    // Update meta tags
-    updateMetaTags(languageData);
+    // Update meta tags only for explicit, user-initiated language changes —
+    // never for the automatic initial detection (see setLanguage/initializeI18n).
+    if (updateMeta !== false) {
+      updateMetaTags(languageData);
+    }
   }
 
   /**
@@ -278,16 +293,22 @@
    * @param {Object} languageData - Language data object
    */
   function updateMetaTags(languageData) {
-    // Update title
-    const title = getNestedTranslation(languageData, 'index.page_title');
+    // Read the translation key from each page's own <title>/<meta description>
+    // data-i18n attribute instead of assuming the homepage's keys, so mapa.html
+    // and reservation-form.html update their own title/description instead of
+    // being overwritten with index.*.
+    const titleEl = document.querySelector('title');
+    const titleKey = (titleEl && titleEl.getAttribute('data-i18n')) || 'index.page_title';
+    const title = getNestedTranslation(languageData, titleKey);
     if (title) {
       document.title = title;
     }
 
     // Update meta description
-    const description = getNestedTranslation(languageData, 'index.meta_description');
+    const metaDesc = document.querySelector('meta[name="description"]');
+    const descriptionKey = (metaDesc && metaDesc.getAttribute('data-i18n')) || 'index.meta_description';
+    const description = getNestedTranslation(languageData, descriptionKey);
     if (description) {
-      const metaDesc = document.querySelector('meta[name="description"]');
       if (metaDesc) {
         metaDesc.setAttribute('content', description);
       }
