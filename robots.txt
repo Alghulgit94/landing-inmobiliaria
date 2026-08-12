@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://mega-proyectos.com/sitemap.xml
+Sitemap: https://grundstucke-paraguay.com/sitemap-de.xml

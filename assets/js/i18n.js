@@ -15,6 +15,15 @@
     fallbackLanguage: 'es'
   };
 
+  // Domains that should deterministically default to a given language,
+  // regardless of the visitor's browser/timezone. Unlike browser/timezone
+  // detection, the hostname a request actually arrives on can't be spoofed,
+  // so it's safe to also drive the indexed <title>/meta tags (see detectLanguage).
+  const HOSTNAME_LANGUAGE_MAP = {
+    'grundstucke-paraguay.com': 'de',
+    'www.grundstucke-paraguay.com': 'de'
+  };
+
   // Language data cache
   let languageCache = {};
   let currentLanguage = I18N_CONFIG.defaultLanguage;
@@ -26,12 +35,15 @@
   async function initializeI18n() {
     try {
       // Detect and set initial language for the visible content.
-      // updateMeta:false keeps <title>/meta description/og:* as authored in the
-      // static HTML (Spanish) so crawlers never index a browser/timezone-guessed
-      // language for the page's search snippet — only an explicit manual language
-      // switch (setupLanguageSwitcher) should update those tags.
-      const detectedLanguage = detectLanguage();
-      await setLanguage(detectedLanguage, { updateMeta: false });
+      // Only a "confident" source (a manual choice remembered in localStorage, or
+      // the domain's own hostname) is allowed to also update <title>/meta
+      // description/og:* — those drive what Google indexes for this URL, and
+      // must never depend on a guessed/spoofable signal like navigator.language
+      // or timezone. A non-confident detection still translates the visible
+      // content (so a real visitor still sees their browser's language) but
+      // leaves the meta tags as authored in the static HTML.
+      const detected = detectLanguage();
+      await setLanguage(detected.language, { updateMeta: detected.confident });
       
       // Setup language switcher if present
       setupLanguageSwitcher();
@@ -53,29 +65,46 @@
 
   /**
    * Detect user's preferred language
-   * @returns {string} Detected language code
+   * @returns {{language: string, confident: boolean}} Detected language code, and
+   *   whether the source is deterministic enough to also drive SEO meta tags.
    */
   function detectLanguage() {
-    // 1. Check if user has previously selected a language
+    // 1. Check if user has previously selected a language (explicit, confident)
     const savedLanguage = localStorage.getItem(I18N_CONFIG.storageKey);
     if (savedLanguage && I18N_CONFIG.supportedLanguages.includes(savedLanguage)) {
-      return savedLanguage;
+      return { language: savedLanguage, confident: true };
     }
 
-    // 2. Detect from browser language
+    // 2. Domain the request actually arrived on — can't be spoofed, confident
+    const hostnameLanguage = getHostnameLanguage();
+    if (hostnameLanguage && I18N_CONFIG.supportedLanguages.includes(hostnameLanguage)) {
+      return { language: hostnameLanguage, confident: true };
+    }
+
+    // 3. Detect from browser language — guessable/spoofable, not confident
     const browserLanguage = getBrowserLanguage();
     if (browserLanguage && I18N_CONFIG.supportedLanguages.includes(browserLanguage)) {
-      return browserLanguage;
+      return { language: browserLanguage, confident: false };
     }
 
-    // 3. Try to detect from user location (basic implementation)
+    // 4. Try to detect from user location (basic implementation) — not confident
     const locationLanguage = getLocationBasedLanguage();
     if (locationLanguage && I18N_CONFIG.supportedLanguages.includes(locationLanguage)) {
-      return locationLanguage;
+      return { language: locationLanguage, confident: false };
     }
 
-    // 4. Fallback to default
-    return I18N_CONFIG.defaultLanguage;
+    // 5. Fallback to default (matches the static HTML already, so confident)
+    return { language: I18N_CONFIG.defaultLanguage, confident: true };
+  }
+
+  /**
+   * Get language forced by the current hostname (e.g. a dedicated
+   * German-market domain), if any.
+   * @returns {string|null} Language code or null
+   */
+  function getHostnameLanguage() {
+    const hostname = (window.location && window.location.hostname || '').toLowerCase();
+    return HOSTNAME_LANGUAGE_MAP[hostname] || null;
   }
 
   /**
@@ -323,6 +352,23 @@
     const ogDesc = document.querySelector('meta[property="og:description"]');
     if (ogDesc && description) {
       ogDesc.setAttribute('content', description);
+    }
+
+    // Self-reference canonical/og:url to the domain actually serving this
+    // request. The same static HTML is served on more than one domain
+    // (e.g. mega-proyectos.com and grundstucke-paraguay.com), so these can't
+    // be a single hardcoded value — the hardcoded content in the HTML source
+    // is just the fallback for when JS doesn't run.
+    const selfUrl = window.location.origin + window.location.pathname;
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', selfUrl);
+    }
+
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+      ogUrl.setAttribute('content', selfUrl);
     }
   }
 
