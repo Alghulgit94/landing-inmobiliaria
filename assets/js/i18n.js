@@ -245,8 +245,16 @@
    * @param {boolean} [updateMeta=true] - Whether to also update <title>/meta tags
    */
   function applyTranslations(languageData, updateMeta) {
-    // Handle text content translations
-    const elementsWithText = document.querySelectorAll('[data-i18n]');
+    // Handle text content translations.
+    // <title> is excluded here even though it carries data-i18n (used by
+    // updateMetaTags to look up its own key) — this generic loop sets
+    // element.textContent unconditionally, which for a <title> element IS the
+    // page's title. That would silently bypass the updateMeta gate below and
+    // undo the whole point of freezing the SEO title on unconfident/automatic
+    // detection. <meta> elements are unaffected by this (their rendered value
+    // comes from the content attribute, not textContent), so only <title>
+    // needs the exclusion.
+    const elementsWithText = document.querySelectorAll('[data-i18n]:not(title)');
     elementsWithText.forEach(element => {
       const translationKey = element.getAttribute('data-i18n');
       const translation = getNestedTranslation(languageData, translationKey);
